@@ -1,0 +1,7 @@
+tmp/
+*.pyc
+*.npy
+*.csv
+*.log
+*.pt
+*.pth

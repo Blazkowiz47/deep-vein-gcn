@@ -1,0 +1,77 @@
+batch_size: 32
+epochs: 20
+device: "cpu"
+width: 224
+height: 224
+lr: 0.001
+validate_after_epochs: 1
+seed: 2025
+num_workers: 4
+
+
+# Hyper parameters for loss funtion
+num_classes: 301 # For training on FV-300
+scale: 64.0
+embedding_size: 512
+margin: 0.3
+
+
+# Hyper parameters for model
+bias: True
+act: "gelu"
+conv: "mr"
+
+indim_0: 3
+outdim_0: 32
+kernel_0: 3
+stride_0: 2
+
+blocks:
+  block1:
+    indim: 32
+    outdim: 64
+    hidden: 128
+    kernel: 3
+    stride: 2
+    knn: 9
+    ffn_kernel: 1
+    ffn_stride: 1
+    reduce_ratio: 4
+    graphers: 2
+
+  block2:
+    indim: 64
+    outdim: 128
+    hidden: 256
+    kernel: 3
+    stride: 2
+    knn: 9
+    ffn_kernel: 1
+    ffn_stride: 1
+    reduce_ratio: 2
+    graphers: 2
+
+  block3:
+    indim: 128
+    outdim: 256
+    hidden: 512
+    kernel: 3
+    stride: 2
+    knn: 9
+    ffn_kernel: 1
+    ffn_stride: 1
+    reduce_ratio: 1
+    graphers: 6
+
+  block4:
+    indim: 256
+    outdim: 512
+    hidden: 1024
+    kernel: 3
+    stride: 2
+    knn: 9
+    ffn_kernel: 1
+    ffn_stride: 1
+    reduce_ratio: 1
+    graphers: 2
+
