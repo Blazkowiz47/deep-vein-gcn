@@ -10,7 +10,9 @@ import numpy as np
 import torch
 import yaml
 from torch.optim import AdamW
+from torch.optim.lr_scheduler import StepLR
 from tqdm import tqdm
+
 
 # Incase you use wandb uncomment following line
 import wandb
@@ -87,8 +89,8 @@ def main():
 
     model_name: str = args.model_name or get_run_name(args.model, args.dataset)
     initialise_dirs(model_name)
-    logfile = f"tmp/{model_name}/train.log"
-    ckptdir = f"tmp/{model_name}/checkpoints"
+    logfile = rf"tmp/{model_name}/train.log"
+    ckptdir = rf"tmp/{model_name}/checkpoints"
     log = logger.get_logger(model_name, logfile, args.logger_level)
 
     # Uncomment following line if you use wandb
@@ -108,7 +110,7 @@ def main():
     epochs = config["epochs"]
     validate_after_epochs = config["validate_after_epochs"]
 
-    device = "cpu"  # You can change this to cpu.
+    device = config["device"]  # You can change this to cpu.
 
     model = get_model(args.model, config, log).to(device)
     log.info(str(model))
@@ -124,6 +126,7 @@ def main():
     optimizer = AdamW(
         [p for p in model.parameters() if p.requires_grad], lr=config["lr"]
     )
+    scheduler = StepLR(optimizer, 1, 0.9)
     best_validation_loss = np.inf
     for epoch in range(epochs):
         model.train()
@@ -141,6 +144,7 @@ def main():
             pbar.set_postfix({"loss": np.mean(train_losses)})
             pbar.update(1)
 
+        pbar.close()
         log.info(f"Average train step loss: {np.mean(train_losses)}")
         wandb.log({"train_loss": np.mean(train_losses)})
 
@@ -151,11 +155,16 @@ def main():
         if not epoch % validate_after_epochs:
             validation_losses = []
             model.eval()
-            for image, label in tqdm(validationds, desc="Validation"):
+            pbar = tqdm(total=len(validationds), desc="Validation")
+            for image, label in validationds:
                 image, label = image.to(device), label.to(device)
                 preds = model(image)
                 step_loss = criterion(preds, label)
                 validation_losses.append(step_loss.detach().cpu().item())
+                pbar.set_postfix({"loss": np.mean(validation_losses)})
+                pbar.update(1)
+
+            pbar.close()
             validation_loss = np.mean(validation_losses)
             log.info(f"Average validation step loss: {validation_loss}")
             wandb.log({"validation_loss": np.mean(validation_losses)})
@@ -165,7 +174,7 @@ def main():
                     model.state_dict(),
                     os.path.join(ckptdir, "best_model.pt"),
                 )
-
+        scheduler.step()
     # Uncomment following line if you use wandb
     if wandb_run_name:
         wandb.finish()

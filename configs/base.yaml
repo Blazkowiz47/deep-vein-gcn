@@ -1,6 +1,6 @@
 batch_size: 32
 epochs: 20
-device: "cpu"
+device: "cuda"
 width: 224
 height: 224
 lr: 0.001

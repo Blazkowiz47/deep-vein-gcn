@@ -1,0 +1,41 @@
+{
+  "os": "Linux-5.15.167.4-microsoft-standard-WSL2-x86_64-with-glibc2.35",
+  "python": "CPython 3.12.7",
+  "startedAt": "2025-01-30T05:02:43.055062Z",
+  "program": "/mnt/d/1Projects/deep-vein-gcn/train.py",
+  "codePath": "train.py",
+  "git": {
+    "remote": "git@github.com:Blazkowiz47/deep-vein-gcn.git",
+    "commit": "e9fefc61d0de8cdc04459c89692a185626d78204"
+  },
+  "email": "sushrutpatwardhan@gmail.com",
+  "root": "/mnt/d/1Projects/deep-vein-gcn",
+  "host": "Blazkowiz47",
+  "executable": "/home/blazkowiz47/miniconda3/envs/torch/bin/python",
+  "codePathLocal": "train.py",
+  "cpu_count": 16,
+  "cpu_count_logical": 32,
+  "gpu": "NVIDIA GeForce RTX 4080 Laptop GPU",
+  "gpu_count": 1,
+  "disk": {
+    "/": {
+      "total": "1081101176832",
+      "used": "65513730048"
+    }
+  },
+  "memory": {
+    "total": "16630226944"
+  },
+  "cpu": {
+    "count": 16,
+    "countLogical": 32
+  },
+  "gpu_nvidia": [
+    {
+      "name": "NVIDIA GeForce RTX 4080 Laptop GPU",
+      "memoryTotal": "12878610432",
+      "architecture": "Ada"
+    }
+  ],
+  "cudaVersion": "12.7"
+}

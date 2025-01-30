@@ -62,6 +62,7 @@ class Fv300Wrapper(Wrapper):
             data = self.train_data
         else:
             data = self.test_data
+
         datalist: List[Any] = []
         for cid, class_name in enumerate(data.keys()):
             for img in data[class_name]:
@@ -83,6 +84,7 @@ class Fv300Wrapper(Wrapper):
             DatasetGenerator(data, self.transform),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
+            pin_memory=True,
         )
 
     def augment(self, image: Any) -> Any:

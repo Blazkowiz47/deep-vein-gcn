@@ -31,14 +31,14 @@ def set_seeds(log: Logger, seed: int):
 
 
 def get_run_name(model: str, dataset: str) -> str:
-    return f"{model}_{dataset}_{datetime.now().strftime('%d-%m-%y-%H:%M:2.2%S')}"
+    return f"{model}_{dataset}_{datetime.now().strftime('%d_%m_%y_%H_%M_2.2%S').replace('.', '_')}"
 
 
 def initialise_dirs(model_name: str):
     """
     Initialises all the required directories.
     """
-    os.makedirs(f"tmp/{model_name}/checkpoints", exist_ok=True)
+    os.makedirs(rf"tmp/{model_name}/checkpoints", exist_ok=True)
 
 
 class DatasetGenerator(Dataset):
