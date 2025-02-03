@@ -1,15 +1,185 @@
-import yaml
-from models import get_model
+import argparse
+import random
+import numpy as np
+from PIL import Image
+from typing import List, Tuple
 import torch
-from utils import get_logger
+import os
+from torch.nn import Module
+from torch.utils.data import DataLoader, Dataset
+from tqdm import tqdm
+import yaml
+from cdatasets import get_dataset
+from models import get_model
+from utils import initialise_dirs, logger, set_seeds, calculate_eer
 
-with open("./configs/base.yaml", "r") as fp:
-    config = yaml.safe_load(fp)
+parser = argparse.ArgumentParser(
+    description="Training Config",
+    add_help=True,
+)
 
-logger = get_logger("test","", "DEBUG")
+parser.add_argument(
+    "-m",
+    "--model",
+    default="deepvein",
+    type=str,
+    help="Model name.",
+)
+
+parser.add_argument(
+    "-c",
+    "--config",
+    default="configs/base.yaml",
+    type=str,
+    help="Train config file.",
+)
+
+parser.add_argument(
+    "-d",
+    "--dataset",
+    default="fv300",
+    type=str,
+    help="""
+    Give a single dataset name or multiple datasets to chain together.
+    eg: -d fv300
+    """,
+)
+
+parser.add_argument(
+    "-ckpt",
+    "--checkpoint",
+    type=str,
+    default=None,
+    help="Load initial weights from partially/pretrained model.",
+)
 
 
-model = get_model("deepvein", config, logger)
-x = torch.randn(6, 3, 224, 224).float()
-y = model(x)
-print("Output of model:", y.shape)
+parser.add_argument(
+    "--logger-level",
+    type=str,
+    default="INFO",
+    help="Logger level",
+)
+
+
+def transform(fname: str) -> torch.Tensor:
+    img = Image.open(fname).resize((224, 224))
+    imgarray = np.array(img)
+    imgarray = (imgarray.squeeze() - imgarray.min()) / (imgarray.max() - imgarray.min())
+    imgarray = np.stack([imgarray, imgarray, imgarray], axis=0)
+
+    return torch.tensor(imgarray).float()
+
+
+def get_scores(model: Module, data: List[Tuple[str, str]], device) -> List[float]:
+    """
+    Get the scores for the pairs.
+    """
+    scores = []
+    with torch.no_grad():
+        for sample1, sample2 in tqdm(data):
+            sample1 = sample1.to(device)
+            sample2 = sample2.to(device)
+            emb1 = model(sample1)
+            emb2 = model(sample2)
+            score = cosine_sim(emb1, emb2)
+            scores.extend(score.detach().cpu().numpy().tolist())
+
+    return scores
+
+
+def driver(args):
+    """
+    Wrapper for the driver.
+    """
+    args = parser.parse_args()
+
+    with open(args.config, "r") as fp:
+        config = yaml.safe_load(fp)
+
+    checkpoint = args.checkpoint
+    dataset = args.dataset
+    model_name = checkpoint.split("/")[-1]
+    checkpoint = os.path.join(checkpoint, "checkpoints", "best_model.pt")
+
+    initialise_dirs(model_name)
+    logfile = rf"tmp/{model_name}/eval_{dataset}.log"
+    log = logger.get_logger(model_name, logfile, args.logger_level)
+
+    set_seeds(log, config["seed"])
+    device = config["device"]  # You can change this to cpu.
+
+    model = get_model(args.model, config, log).to(device)
+    model.load_state_dict(torch.load(checkpoint, weights_only=True))
+    model.eval()
+    model.to(device)
+    log.info(str(model))
+    wrapper = get_dataset(args.dataset, config, log, partition_split=0)
+    _ = wrapper.get_split("validation")
+
+    subjects_samples = wrapper.test_data
+
+    with torch.no_grad():
+        subjects_embeddings = {}
+        for subject in tqdm(subjects_samples, desc="Extracting Embeddings"):
+            i = 0
+            for sample in subjects_samples[subject]:
+                if subject not in subjects_embeddings:
+                    subjects_embeddings[subject] = []
+
+                img = transform(sample).unsqueeze(0).to(device)
+                emb = model(img).detach().cpu()
+                subjects_embeddings[subject].append(emb)
+                i += 1
+                if i == 3:
+                    continue
+
+    cosine_sim = torch.nn.CosineSimilarity(dim=1, eps=1e-6)
+    genuine_scores: List[float] = []
+    imposter_scores: List[float] = []
+
+    for subject in tqdm(subjects_embeddings, desc="Calculating Genuine Scores"):
+        for i, emb1 in enumerate(random.sample(subjects_embeddings[subject], 10)):
+            for j, emb2 in enumerate(random.sample(subjects_embeddings[subject], 10)):
+                if i == j:
+                    continue
+                if emb1.shape[0] != 1:
+                    emb1 = emb1.unsqueeze(0)
+
+                if emb2.shape[0] != 1:
+                    emb2 = emb2.unsqueeze(0)
+                sim = cosine_sim(emb1, emb2).squeeze()
+                genuine_scores.append(sim.item())
+
+    for subject1 in tqdm(subjects_embeddings, desc="Calculating Imposter Scores"):
+        for subject2 in subjects_embeddings:
+            if subject1 != subject2:
+                for emb1 in random.sample(subjects_embeddings[subject1], 10):
+                    for emb2 in random.sample(subjects_embeddings[subject2], 10):
+                        if emb1.shape[0] != 1:
+                            emb1 = emb1.unsqueeze(0)
+
+                        if emb2.shape[0] != 1:
+                            emb2 = emb2.unsqueeze(0)
+                        sim = cosine_sim(emb1, emb2).squeeze()
+                        imposter_scores.append(sim.item())
+
+    print("Saving Scores")
+    os.makedirs(f"tmp/{model_name}/{dataset}", exist_ok=True)
+    np.save(f"tmp/{model_name}/{dataset}/genuine_scores.npy", np.array(genuine_scores))
+    np.save(
+        f"tmp/{model_name}/{dataset}/imposter_scores.npy", np.array(imposter_scores)
+    )
+
+    log.info(f"Dataset: {dataset} Genuine Scores: {len(genuine_scores)}")
+    log.info(f"Dataset: {dataset} Imposter Scores: {len(imposter_scores)}")
+
+    eer, far, frr, _ = calculate_eer(genuine_scores, imposter_scores)
+    log.info(f"Dataset: {dataset} EER: {eer}")
+    np.save(f"tmp/{model_name}/{dataset}/far_scores.npy", far)
+    np.save(f"tmp/{model_name}/{dataset}/frr_scores.npy", frr)
+
+
+if __name__ == "__main__":
+    args = parser.parse_args()
+    driver(args)

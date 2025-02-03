@@ -3,6 +3,7 @@ import random
 from logging import Logger
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
+import albumentations as A
 import numpy as np
 import torch
 from PIL import Image
@@ -88,6 +89,12 @@ class Fv300Wrapper(Wrapper):
         )
 
     def augment(self, image: Any) -> Any:
+        self.augmentations = A.Compose(
+            [
+                A.HorizontalFlip(p=0.5),
+                A.VerticalFlip(p=0.5),
+            ]
+        )
         return image
 
     def transform(self, datapoint: Iterable[Any]) -> Tuple:
@@ -101,10 +108,10 @@ class Fv300Wrapper(Wrapper):
         # Initialise image
         img = Image.open(fname).resize((224, 224))
         imgarray = np.array(img)
-        imgarray = self.augment(imgarray)
-        imgarray = (imgarray.squeeze() - imgarray.min()) / (
-            imgarray.max() - imgarray.min()
-        )
-        imgarray = np.stack([imgarray, imgarray, imgarray], axis=0)
+        imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
 
+        imgarray = self.augment(imgarray)
+        imgarray = (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min())
+
+        imgarray = np.transpose(imgarray, (2, 0, 1))
         return torch.tensor(imgarray).float(), torch.tensor(label).float()

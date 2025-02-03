@@ -1,9 +1,9 @@
 batch_size: 32
-epochs: 20
+epochs: 100
 device: "cuda"
 width: 224
 height: 224
-lr: 0.001
+lr: 0.1
 validate_after_epochs: 1
 seed: 2025
 num_workers: 4
@@ -13,8 +13,8 @@ num_workers: 4
 num_classes: 301 # For training on FV-300
 scale: 64.0
 embedding_size: 512
-margin: 0.3
-
+margin:  1.35 
+beta: 1.0
 
 # Hyper parameters for model
 bias: True

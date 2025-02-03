@@ -8,6 +8,7 @@ from utils.common_functions import (
     image_extensions,
     video_extensions,
 )
+from utils.metrics import calculate_eer
 
 __all__ = [
     "get_logger",
@@ -17,5 +18,5 @@ __all__ = [
     "DatasetGenerator",
     "Wrapper",
     "image_extensions",
-    "video_extensions"
+    "video_extensions", "calculate_eer",
 ]

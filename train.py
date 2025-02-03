@@ -10,7 +10,7 @@ import numpy as np
 import torch
 import yaml
 from torch.optim import AdamW
-from torch.optim.lr_scheduler import StepLR
+from torch.optim.lr_scheduler import CosineAnnealingLR
 from tqdm import tqdm
 
 
@@ -124,9 +124,11 @@ def main():
 
     criterion = get_loss("proposed", config, log)
     optimizer = AdamW(
-        [p for p in model.parameters() if p.requires_grad], lr=config["lr"]
+        [p for p in model.parameters() if p.requires_grad],
+        lr=config["lr"],
+        weight_decay=0.05,
     )
-    scheduler = StepLR(optimizer, 1, 0.9)
+    scheduler = CosineAnnealingLR(optimizer, epochs, 1e-4)
     best_validation_loss = np.inf
     for epoch in range(epochs):
         model.train()
@@ -178,6 +180,9 @@ def main():
     # Uncomment following line if you use wandb
     if wandb_run_name:
         wandb.finish()
+
+    if not len(os.listdir(ckptdir)):
+        os.system(f"rm -rf tmp/{model_name}")
 
 
 if __name__ == "__main__":
