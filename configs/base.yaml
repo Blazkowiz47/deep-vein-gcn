@@ -1,19 +1,19 @@
 batch_size: 32
-epochs: 100
+epochs: 10
 device: "cuda"
 width: 224
 height: 224
-lr: 0.1
+lr: 0.001
 validate_after_epochs: 1
 seed: 2025
-num_workers: 4
+num_workers: 8
 
 
 # Hyper parameters for loss funtion
 num_classes: 301 # For training on FV-300
 scale: 64.0
 embedding_size: 512
-margin:  1.35 
+margin:  0.5
 beta: 1.0
 
 # Hyper parameters for model

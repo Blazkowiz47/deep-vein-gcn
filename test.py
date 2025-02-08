@@ -99,8 +99,8 @@ def driver(args):
 
     checkpoint = args.checkpoint
     dataset = args.dataset
-    model_name = checkpoint.split("/")[-1]
-    checkpoint = os.path.join(checkpoint, "checkpoints", "best_model.pt")
+    model_name = checkpoint
+    checkpoint = os.path.join("./tmp", checkpoint, "checkpoints", "best_model.pt")
 
     initialise_dirs(model_name)
     logfile = rf"tmp/{model_name}/eval_{dataset}.log"
@@ -139,10 +139,9 @@ def driver(args):
     imposter_scores: List[float] = []
 
     for subject in tqdm(subjects_embeddings, desc="Calculating Genuine Scores"):
-        for i, emb1 in enumerate(random.sample(subjects_embeddings[subject], 10)):
-            for j, emb2 in enumerate(random.sample(subjects_embeddings[subject], 10)):
-                if i == j:
-                    continue
+        maxn = min(10, len(subjects_embeddings[subject]))
+        for emb1 in random.sample(subjects_embeddings[subject], maxn):
+            for emb2 in random.sample(subjects_embeddings[subject], maxn):
                 if emb1.shape[0] != 1:
                     emb1 = emb1.unsqueeze(0)
 
@@ -154,8 +153,10 @@ def driver(args):
     for subject1 in tqdm(subjects_embeddings, desc="Calculating Imposter Scores"):
         for subject2 in subjects_embeddings:
             if subject1 != subject2:
-                for emb1 in random.sample(subjects_embeddings[subject1], 10):
-                    for emb2 in random.sample(subjects_embeddings[subject2], 10):
+                maxn1 = min(3, len(subjects_embeddings[subject1]))
+                maxn2 = min(3, len(subjects_embeddings[subject2]))
+                for emb1 in random.sample(subjects_embeddings[subject1], maxn1):
+                    for emb2 in random.sample(subjects_embeddings[subject2], maxn2):
                         if emb1.shape[0] != 1:
                             emb1 = emb1.unsqueeze(0)
 

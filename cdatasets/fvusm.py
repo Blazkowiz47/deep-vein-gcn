@@ -5,6 +5,7 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
 import torch
+from torchvision import transforms as A
 from PIL import Image
 from torch.utils.data import DataLoader
 from utils import DatasetGenerator, Wrapper, image_extensions
@@ -17,6 +18,7 @@ class FvusmWrapper(Wrapper):
         log: Logger,
         **kwargs,
     ):
+        self.name = "fvusm"
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
         self.stat_seed = kwargs.get("stat_seed", 0)
@@ -31,9 +33,18 @@ class FvusmWrapper(Wrapper):
         self.num_classes = None
         self.initialise_db()
 
+        self.augmentations = A.Compose(
+            [
+                A.ToTensor(),
+                A.Resize((224, 224)),
+                A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
+            ]
+        )
+
     def initialise_db(self) -> None:
         for ssplit in ["train", "test"]:
             self._internal_loop(ssplit, self.total_data)
+
         dataset_length = sum([len(v) for v in self.total_data.values()])
         self.num_classes = len(self.total_data)
         self.log.debug(f"Data-length for {self.name} split: {dataset_length}")
@@ -61,6 +72,7 @@ class FvusmWrapper(Wrapper):
             data = self.train_data
         else:
             data = self.test_data
+
         datalist: List[Any] = []
         for cid, class_name in enumerate(data.keys()):
             for img in data[class_name]:
@@ -82,26 +94,26 @@ class FvusmWrapper(Wrapper):
             DatasetGenerator(data, self.transform),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
+            pin_memory=True,
+            shuffle=True,
         )
 
     def augment(self, image: Any) -> Any:
-        return image
+        return self.augmentations(image)
+
     def transform(self, datapoint: Iterable[Any]) -> Tuple:
         fname, lbl = datapoint
         if self.num_classes is None:
             raise ValueError("Num classes not set.")
         # Initialise label
-        label = np.zeros((self.num_classes,))
+        label = torch.zeros(self.num_classes)
         label[lbl] = 1
 
         # Initialise image
-        img = Image.open(fname).resize((224, 224))
+        img = Image.open(fname)
         imgarray = np.array(img)
+        imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
+
         imgarray = self.augment(imgarray)
-        imgarray = (imgarray.squeeze() - imgarray.min()) / (
-            imgarray.max() - imgarray.min()
-        )
-        imgarray = np.stack([imgarray, imgarray, imgarray], axis=0)
 
-        return torch.tensor(imgarray).float(), torch.tensor(label).float()
-
+        return imgarray.float(), label.float()
