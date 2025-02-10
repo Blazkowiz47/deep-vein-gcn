@@ -82,7 +82,6 @@ class SnakeGraphBlock(Module):
         self, params: Dict[str, Any], config: Dict[str, Any], log: Logger, **kwargs
     ) -> None:
         super(SnakeGraphBlock, self).__init__()
-
         self.name = "SnakeGraphBlock"
         self.log = log
 
