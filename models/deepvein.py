@@ -98,55 +98,57 @@ class SnakeGraphBlock(Module):
         self.act = act_layer(config.get("act", "gelu"))
         self.graphers = Sequential(
             *[
-                Grapher(
-                    params["outdim"],
-                    kernel_size=min(
-                        params.get("knn", 9), kwargs["width"] * kwargs["height"]
-                    ),  # Ensures that the 'k' neighbours are not greater than
-                    #     the number of pixels
-                    act=config.get("act", "gelu"),
-                    conv=config.get("conv", "mr"),
-                    norm=config.get("norm", "batch"),
-                    epsilon=config.get("epsilon", 0.2),
-                    drop_path=config.get("drop_path", 0.0),
-                    bias=config.get("bias", True),
-                    r=params["reduce_ratio"],
-                    n=kwargs["width"] * kwargs["height"],
+                Sequential(
+                    Grapher(
+                        params["outdim"],
+                        kernel_size=min(
+                            params.get("knn", 9), kwargs["width"] * kwargs["height"]
+                        ),  # Ensures that the 'k' neighbours are not greater than
+                        #     the number of pixels
+                        act=config.get("act", "gelu"),
+                        conv=config.get("conv", "mr"),
+                        norm=config.get("norm", "batch"),
+                        epsilon=config.get("epsilon", 0.2),
+                        drop_path=config.get("drop_path", 0.0),
+                        bias=config.get("bias", True),
+                        r=params["reduce_ratio"],
+                        n=kwargs["width"] * kwargs["height"],
+                    ),
+                    Conv2d(
+                        params["outdim"],
+                        params["hidden"],
+                        kernel_size=params["ffn_kernel"],
+                        stride=params["ffn_stride"],
+                        padding=math.ceil(params["ffn_kernel"] / 2) - 1,
+                        bias=config.get("bias", True),
+                    ),
+                    BatchNorm2d(params["hidden"]),
+                    act_layer(config.get("act", "gelu")),
+                    Conv2d(
+                        params["hidden"],
+                        params["outdim"],
+                        kernel_size=params["ffn_kernel"],
+                        stride=params["ffn_stride"],
+                        padding=math.ceil(params["ffn_kernel"] / 2) - 1,
+                        bias=config.get("bias", True),
+                    ),
+                    BatchNorm2d(params["outdim"]),
                 )
                 for _ in range(params["graphers"])
             ]
         )
 
-        self.ffn_conv1 = Conv2d(
-            params["outdim"],
-            params["hidden"],
-            kernel_size=params["ffn_kernel"],
-            stride=params["ffn_stride"],
-            padding=math.ceil(params["ffn_kernel"] / 2) - 1,
-            bias=config.get("bias", True),
-        )
-        self.ffn_conv2 = Conv2d(
-            params["hidden"],
-            params["outdim"],
-            kernel_size=params["ffn_kernel"],
-            stride=params["ffn_stride"],
-            padding=math.ceil(params["ffn_kernel"] / 2) - 1,
-            bias=config.get("bias", True),
-        )
-
     def forward(self, x):
         x = self.snakeconv(x)
         x = self.bn1(x)
-        x_skip = self.act(x)
-        x = self.graphers(x_skip) + x_skip
-        x = self.ffn_conv1(x)
-        x = self.ffn_conv2(x)
+        x = self.act(x)
+        x = self.graphers(x)
         return x
 
 
-class DeepVein(Module):
+class Deepvein(Module):
     def __init__(self, config: Dict[str, Any], log: Logger, **kwargs):
-        super(DeepVein, self).__init__()
+        super(Deepvein, self).__init__()
         self.name = "DeepVein"
         self.config = config
         self.log = log

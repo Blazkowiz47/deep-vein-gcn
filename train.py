@@ -9,7 +9,7 @@ import os
 import numpy as np
 import torch
 import yaml
-from torch.optim import SGD, Adam, AdamW
+from torch.optim import AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from tqdm import tqdm
 
@@ -27,17 +27,9 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument(
-    "-m",
-    "--model",
-    default="deepvein",
-    type=str,
-    help="Model name.",
-)
-
-parser.add_argument(
     "-c",
     "--config",
-    default="configs/base.yaml",
+    default="configs/deepvein.yaml",
     type=str,
     help="Train config file.",
 )
@@ -93,7 +85,8 @@ def main():
     with open(args.config, "r") as fp:
         config = yaml.safe_load(fp)
 
-    model_name: str = args.model_name or get_run_name(args.model, args.dataset)
+    model = config["model"]
+    model_name: str = args.model_name or get_run_name(model, args.dataset)
     initialise_dirs(model_name)
     logfile = rf"tmp/{model_name}/train.log"
     ckptdir = rf"tmp/{model_name}/checkpoints"
@@ -121,7 +114,7 @@ def main():
 
     device = config["device"]  # You can change this to cpu.
 
-    model = get_model(args.model, config, log).to(device)
+    model = get_model(model, config, log).to(device)
     wrapper = get_dataset(args.dataset, config, log)
 
     trainds = wrapper.get_split("train")

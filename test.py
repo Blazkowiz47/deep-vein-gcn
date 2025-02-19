@@ -29,7 +29,7 @@ parser.add_argument(
 parser.add_argument(
     "-c",
     "--config",
-    default="configs/base.yaml",
+    default="configs/deepvein.yaml",
     type=str,
     help="Train config file.",
 )
@@ -37,7 +37,7 @@ parser.add_argument(
 parser.add_argument(
     "-d",
     "--dataset",
-    default="fv300",
+    default="fvusm",
     type=str,
     help="""
     Give a single dataset name or multiple datasets to chain together.

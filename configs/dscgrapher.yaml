@@ -1,0 +1,84 @@
+batch_size: 32
+epochs: 10
+device: "cuda"
+width: 224
+height: 224
+lr: 0.001
+validate_after_epochs: 1
+seed: 2025
+num_workers: 8
+
+
+# Hyper parameters for loss funtion
+num_classes: 301 # For training on FV-300
+scale: 64.0
+embedding_size: 512
+margin:  0.5
+beta: 1.0
+
+# Hyper parameters for model
+model: "dscgrapher"
+conv: "mr"
+
+stem:
+  depth: 3
+  indim: 3
+  outdim: 64
+  kernel: 3
+  stride: 2
+  bias: True
+  act: "gelu"
+
+backbone:
+  act: "gelu"
+  conv: "mr"
+  norm: "batch"
+  epsilon: 0.2
+  drop_path: 0.0
+  bias: True
+  kernel_size: 9
+  dilation: 1
+  stochastic: False
+  ffn_kernel: 1
+  ffn_stride: 1
+  depth: 4
+
+  block0:
+    indim: 64
+    hdim: 256
+    outdim: 128
+
+    reduce_ratio: 4
+    graphers: 2
+    shrinker_kernel: 3
+    shrinker_stride: 2
+
+  block1:
+    indim: 128
+    hdim: 512
+    outdim: 256
+
+    reduce_ratio: 2
+    graphers: 2
+    shrinker_kernel: 3
+    shrinker_stride: 2
+
+  block2:
+    indim: 256
+    hdim: 1024
+    outdim: 512
+
+    reduce_ratio: 1
+    graphers: 6
+    shrinker_kernel: 3
+    shrinker_stride: 2
+
+  block3:
+    indim: 512
+    hdim: 2048
+    outdim: 512
+
+    reduce_ratio: 1
+    graphers: 2
+
+

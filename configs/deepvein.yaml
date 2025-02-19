@@ -1,5 +1,5 @@
 batch_size: 32
-epochs: 10
+epochs: 50
 device: "cuda"
 width: 224
 height: 224
@@ -17,6 +17,7 @@ margin:  0.5
 beta: 1.0
 
 # Hyper parameters for model
+model: "deepvein"
 bias: True
 act: "gelu"
 conv: "mr"
