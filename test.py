@@ -2,10 +2,10 @@ import argparse
 import random
 import numpy as np
 from PIL import Image
-from typing import List, Tuple
+from typing import Dict, List, Tuple
 import torch
 import os
-from torch.nn import Module
+from torch.nn import CosineSimilarity, Module
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
 import yaml
@@ -18,21 +18,17 @@ parser = argparse.ArgumentParser(
     add_help=True,
 )
 
-parser.add_argument(
-    "-m",
-    "--model",
-    default="deepvein",
-    type=str,
-    help="Model name.",
-)
 
 parser.add_argument(
     "-c",
     "--config",
-    default="configs/deepvein.yaml",
+    # default="./configs/dscgrapher.yaml",
+    default="./configs/deepvein.yaml",
+    # default="./configs/arcvein.yaml",
     type=str,
     help="Train config file.",
 )
+
 
 parser.add_argument(
     "-d",
@@ -57,7 +53,7 @@ parser.add_argument(
 parser.add_argument(
     "--logger-level",
     type=str,
-    default="INFO",
+    default="ERROR",
     help="Logger level",
 )
 
@@ -71,10 +67,13 @@ def transform(fname: str) -> torch.Tensor:
     return torch.tensor(imgarray).float()
 
 
-def get_scores(model: Module, data: List[Tuple[str, str]], device) -> List[float]:
+def get_scores(
+    model: Module, data: List[Tuple[torch.Tensor, torch.Tensor]], device
+) -> List[float]:
     """
     Get the scores for the pairs.
     """
+    cosine_sim = CosineSimilarity(dim=1, eps=1e-6)
     scores = []
     with torch.no_grad():
         for sample1, sample2 in tqdm(data):
@@ -99,6 +98,7 @@ def driver(args):
 
     checkpoint = args.checkpoint
     dataset = args.dataset
+    model = config["model"]
     model_name = checkpoint
     checkpoint = os.path.join("./tmp", checkpoint, "checkpoints", "best_model.pt")
 
@@ -109,7 +109,7 @@ def driver(args):
     set_seeds(log, config["seed"])
     device = config["device"]  # You can change this to cpu.
 
-    model = get_model(args.model, config, log).to(device)
+    model = get_model(model, config, log).to(device)
     model.load_state_dict(torch.load(checkpoint, weights_only=True))
     model.eval()
     model.to(device)
@@ -120,7 +120,7 @@ def driver(args):
     subjects_samples = wrapper.test_data
 
     with torch.no_grad():
-        subjects_embeddings = {}
+        subjects_embeddings: Dict[str, List[torch.Tensor]] = {}
         for subject in tqdm(subjects_samples, desc="Extracting Embeddings"):
             i = 0
             for sample in subjects_samples[subject]:
@@ -147,6 +147,8 @@ def driver(args):
 
                 if emb2.shape[0] != 1:
                     emb2 = emb2.unsqueeze(0)
+                if (emb1 == emb2).all():
+                    continue
                 sim = cosine_sim(emb1, emb2).squeeze()
                 genuine_scores.append(sim.item())
 
@@ -176,7 +178,7 @@ def driver(args):
     log.info(f"Dataset: {dataset} Imposter Scores: {len(imposter_scores)}")
 
     eer, far, frr, _ = calculate_eer(genuine_scores, imposter_scores)
-    log.info(f"Dataset: {dataset} EER: {eer}")
+    log.error(f"Dataset: {dataset} EER: {eer}")
     np.save(f"tmp/{model_name}/{dataset}/far_scores.npy", far)
     np.save(f"tmp/{model_name}/{dataset}/frr_scores.npy", frr)
 

@@ -196,10 +196,8 @@ class Deepvein(Module):
         for m in self.modules():
             if isinstance(m, Conv2d):
                 nn.init.kaiming_normal_(m.weight)
-                m.weight.requires_grad = True
                 if m.bias is not None:
                     m.bias.data.zero_()
-                    m.bias.requires_grad = True
 
             elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
                 nn.init.constant_(m.weight, 1)

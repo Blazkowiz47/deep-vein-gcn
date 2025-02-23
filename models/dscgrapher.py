@@ -4,7 +4,7 @@ import torch
 
 from logging import Logger
 from typing import Any, Dict, List
-from torch.nn import Conv2d, Module, Sequential
+from torch.nn import Conv2d, Module, Parameter, Sequential
 from torch.nn.functional import adaptive_avg_pool2d
 from torch.nn.modules import BatchNorm2d
 from utils.dscnet.S3_DSConv_pro import DSConv_pro
@@ -31,7 +31,8 @@ class DSConv(Module):
 
         self.name = "DSConv"
         self.log = log
-
+        self.log.debug(f"DSConv: {indims}, {outdims}, {kernel}, {stride}")
+        self.log.debug(f"DSConv: {bias}, {device}")
         self.conv = Conv2d(
             indims,
             outdims,
@@ -96,6 +97,19 @@ class GrapherBlock(Module):
         self.grapherblock = Sequential(
             *self.build_grapher_ffn(config, block_config, **kwargs)
         )
+        self.model_init()
+        self.log.debug("Initialised GrapherBlock")
+
+    def model_init(self):
+        for m in self.modules():
+            if isinstance(m, Conv2d):
+                torch.nn.init.kaiming_normal_(m.weight)
+                if m.bias is not None:
+                    m.bias.data.zero_()
+
+            elif isinstance(m, (torch.nn.BatchNorm2d, torch.nn.GroupNorm)):
+                torch.nn.init.constant_(m.weight, 1)
+                torch.nn.init.constant_(m.bias, 0)
 
     def build_grapher_ffn(
         self, config: Dict[str, Any], block_config: Dict[str, Any], **kwargs
@@ -162,13 +176,44 @@ class Dscgrapher(Module):
         self.config = config
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
+        self.device = config["device"]
 
-        self.stem = Sequential(*self.build_stem(config))
+        self.stem = Sequential(*self.build_stem(config)).to(self.device)
         self.log.debug("Initialised stem")
         self.check_stem()
-        self.backbone = Sequential(*self.build_backbone(config))
+
+        height = config["height"]
+        width = config["width"]
+        for _ in range(config["stem"]["depth"]-1):
+            height = height // 2
+            width = width // 2
+        self.pos_embed = Parameter(
+            torch.zeros(  # pylint: disable=E1101
+                1,
+                config["stem"]["outdim"],
+                height,
+                width,
+            )
+        )
+        self.backbone = Sequential(*self.build_backbone(config)).to(self.device)
         self.check_backbone()
         self.log.debug("Initialised dscgrapher model.")
+
+        self.model_init()
+
+        for param in self.parameters():
+            param.requires_grad = True
+
+    def model_init(self):
+        for m in self.modules():
+            if isinstance(m, Conv2d):
+                torch.nn.init.kaiming_normal_(m.weight)
+                if m.bias is not None:
+                    m.bias.data.zero_()
+
+            elif isinstance(m, (torch.nn.BatchNorm2d, torch.nn.GroupNorm)):
+                torch.nn.init.constant_(m.weight, 1)
+                torch.nn.init.constant_(m.bias, 0)
 
     def build_stem(self, config: Dict[str, Any]) -> List[Module]:
         stem_config = config["stem"]
@@ -193,6 +238,7 @@ class Dscgrapher(Module):
                     kernel,
                     stride=stride if _ + 1 != depth else 1,
                     bias=bias,
+                    device=config["device"],
                     log=self.log,
                 )
             )
@@ -252,21 +298,21 @@ class Dscgrapher(Module):
 
     def check_stem(self):
         self.log.debug("Checking stem")
-        x = torch.randn(2, 3, 224, 224)
+        x = torch.randn(2, 3, 224, 224).to(self.device)
         y = self.stem(x)
         self.log.debug(f"Stem output: {y.shape}")
         self.log.debug("Stem checked")
 
     def check_backbone(self):
         self.log.debug("Checking backbone")
-        x = torch.randn(2, 3, 224, 224)
+        x = torch.randn(2, 3, 224, 224).to(self.device)
         x = self.stem(x)
         y = self.backbone(x)
         self.log.debug(f"Backbone output: {y.shape}")
         self.log.debug("Backbone checked")
 
     def forward(self, x):
-        x = self.stem(x)
+        x = self.stem(x) + self.pos_embed
         x = self.backbone(x)
         x = adaptive_avg_pool2d(x, (1, 1))
         self.log.debug(f"Pooled shape: {x.shape}")

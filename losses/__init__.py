@@ -11,6 +11,13 @@ def get_loss(loss: str, config: Dict[str, Any], log: Logger, **kwargs) -> Module
 
         log.warning(f"Proposed\n{inspect.getsource(Proposed)}")
         return Proposed(config, log, **kwargs)
+
+    if loss == "arcloss":
+        from losses.arcveinloss import ArcCosineLoss
+
+        log.warning(f"ArcCosineLoss\n{inspect.getsource(ArcCosineLoss)}")
+        return ArcCosineLoss(config, log, **kwargs)
+
     if loss == "crossentropy":
         from torch.nn import CrossEntropyLoss
 

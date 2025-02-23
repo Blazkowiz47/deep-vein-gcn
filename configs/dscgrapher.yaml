@@ -1,5 +1,5 @@
 batch_size: 32
-epochs: 10
+epochs: 50
 device: "cuda"
 width: 224
 height: 224
@@ -8,13 +8,17 @@ validate_after_epochs: 1
 seed: 2025
 num_workers: 8
 
+# dataset seed
+stat_seed: 0
 
 # Hyper parameters for loss funtion
+loss: "proposed"
 num_classes: 301 # For training on FV-300
+freeze_centroids: 1
 scale: 64.0
 embedding_size: 512
 margin:  0.5
-beta: 1.0
+beta: 0.3
 
 # Hyper parameters for model
 model: "dscgrapher"

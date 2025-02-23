@@ -11,19 +11,16 @@ class Proposed(Module):
         self.name = "Proposed Loss"
         self.num_classes = config["num_classes"]
         self.device = config["device"]
-        self.weight = Parameter(
-            torch.Tensor(config["embedding_size"], self.num_classes),
-            requires_grad=True,
-        ).to(self.device)
-        self.weight.data.uniform_(-1, 1).renorm_(2, 1, 1)
+        self.centroids = Parameter(
+            torch.randn((config["embedding_size"], self.num_classes)),
+        )
+        self.centroids.data.uniform_(-1, 1).renorm_(2, 1, 1)
         self.scale = torch.tensor(config["scale"]).to(self.device)
         self.margin = torch.tensor(config["margin"]).to(self.device)
         self.beta = torch.tensor(config["beta"]).to(self.device)
         self.l_margin = torch.tensor(0.15).to(self.device)
 
-        self.fc = torch.nn.Linear(config["embedding_size"], self.num_classes).to(
-            self.device
-        )
+        self.fc = torch.nn.Linear(config["embedding_size"], self.num_classes)
         self.model_init()
         # self.l_a = config["l_a"]
         # self.u_a = config["u_a"]
@@ -37,11 +34,13 @@ class Proposed(Module):
     def margin_func(self, embds):
         return torch.norm(embds, p=2, dim=1)
 
-    def forward(self, embds, labels):
+    def forward(self, embds, labels, freeze_centroids=False):
         # xnorm = torch.norm(embds, p=2, dim=1).clamp(self.l_a, self.u_a)
         preds = self.fc(embds)
 
-        wnorm = F.normalize(self.weight, p=2, dim=0)
+        self.centroids.requires_grad = not freeze_centroids
+
+        wnorm = F.normalize(self.centroids, p=2, dim=0)
         emb_norm = F.normalize(embds, p=2, dim=1)
 
         margin = self.margin_func(embds)
@@ -61,9 +60,9 @@ class Proposed(Module):
 
         output = self.scale * output
 
-        loss1 = F.cross_entropy(output, labels, reduction="mean")
+        loss2 = F.cross_entropy(output, labels, reduction="mean")
 
-        loss2 = F.cross_entropy(preds, labels, reduction="mean")
+        loss1 = F.cross_entropy(preds, labels, reduction="mean")
         # self.log.info(f"Loss1: {loss1}, Loss2: {loss2}")
         if torch.isnan(loss1):
             self.log.error("Loss1 is NaN")
@@ -92,5 +91,5 @@ if __name__ == "__main__":
     for i in range(10):
         labels[i, i] = 1
 
-    x = loss(embds, labels)
-    print(x.shape, x)
+    x1, x2 = loss(embds, labels)
+    print(x1.shape, x2.shape)

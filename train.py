@@ -29,9 +29,25 @@ parser = argparse.ArgumentParser(
 parser.add_argument(
     "-c",
     "--config",
-    default="configs/deepvein.yaml",
+    # default="./configs/dscgrapher.yaml",
+    # default="./configs/deepvein.yaml",
+    default="./configs/arcvein.yaml",
     type=str,
     help="Train config file.",
+)
+
+parser.add_argument(
+    "--seed",
+    type=str,
+    required=False,
+    help="Train config file.",
+)
+
+parser.add_argument(
+    "--logger-level",
+    type=str,
+    default="INFO",
+    help="Logger level",
 )
 
 parser.add_argument(
@@ -61,13 +77,6 @@ parser.add_argument(
 )
 
 parser.add_argument(
-    "--logger-level",
-    type=str,
-    default="INFO",
-    help="Logger level",
-)
-
-parser.add_argument(
     "--wandb",
     action="store_true",
     help="Use wandb for logging.",
@@ -84,6 +93,9 @@ def main():
 
     with open(args.config, "r") as fp:
         config = yaml.safe_load(fp)
+
+    if args.seed:
+        config["stat_seed"] = args.seed
 
     model = config["model"]
     model_name: str = args.model_name or get_run_name(model, args.dataset)
@@ -123,9 +135,9 @@ def main():
     if args.continue_model:
         model.load_state_dict(torch.load(args.continue_model))
 
-    criterion = get_loss("proposed", config, log)
+    criterion = get_loss(config["loss"], config, log).to(device)
     params = [p for p in model.parameters() if p.requires_grad]
-    params.extend([p for p in criterion.parameters()])
+    params.extend([p for p in criterion.parameters() if p.requires_grad])
 
     optimizer = AdamW(
         params,
@@ -138,6 +150,7 @@ def main():
 
     for epoch in range(epochs):
         model.train()
+        criterion.train()
         train_losses = []
         step1_train_losses = []
         step2_train_losses = []
@@ -148,7 +161,9 @@ def main():
             optimizer.zero_grad()
             image, label = image.to(device), label.to(device)
             preds = model(image)
-            loss1, loss2 = criterion(preds, label)
+            loss1, loss2 = criterion(
+                preds, label, freeze_centroids=epoch > config["freeze_centroids"]
+            )
             step_loss = loss1 + loss2
             step_loss.backward()
             optimizer.step()
@@ -180,6 +195,7 @@ def main():
             step1_losses = []
             step2_losses = []
             model.eval()
+            criterion.eval()
             pbar = tqdm(validationds, desc="Validation")
             for image, label in pbar:
                 image, label = image.to(device), label.to(device)
@@ -214,6 +230,7 @@ def main():
     if wandb_run_name:
         wandb.finish()
 
+    log.info(f"Training completed for: {model_name}.")
     if not len(os.listdir(ckptdir)):
         os.system(f"rm -rf tmp/{model_name}")
 

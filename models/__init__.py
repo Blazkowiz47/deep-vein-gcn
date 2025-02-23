@@ -18,6 +18,18 @@ def get_model(model: str, config: Dict[str, Any], log: Logger, **kwargs) -> Modu
         return Deepvein(config, log, **kwargs)
 
 
+    if model == "LGFIN":
+        from models.LGFIN import LGFIN 
+
+        return LGFIN(config, log, **kwargs)
+
+
+    if model == "arcvein":
+        from models.arcvein import Arcvein 
+
+        return Arcvein(config, log, **kwargs)
+
+
     ### Donot remove this line as the build generator uses this as a marker
     ### while adding new model.
     raise NotImplementedError(f"Model: {model} not present")
