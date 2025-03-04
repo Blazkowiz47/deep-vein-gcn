@@ -282,14 +282,14 @@ class LFEM(Module):
         return sff
 
 
-class LGFIN(Module):
+class LocalGlobalFeatureInteractionNetwork(Module):
     def __init__(self, config: Dict[str, Any], log: Logger, **kwargs):
-        super(LGFIN, self).__init__()
-        self.name = "LGFIN"
+        super(LocalGlobalFeatureInteractionNetwork, self).__init__()
+        self.name = "LocalGlobalFeatureInteractionNetwork"
         self.config = config
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
-        self.log.debug("Initialised LGFIN model.")
+        self.log.debug("Initialised LocalGlobalFeatureInteractionNetwork model.")
 
         self.dwconv0 = DepthConvBlock(config["dwconv0"], log)
 
@@ -386,11 +386,11 @@ if __name__ == "__main__":
     dcb_out = model(x)
     logger.info(f"DepthConvBlock output:  {dcb_out.shape}")
 
-    logger.info(f"LGFIN input: {x.shape}")
+    logger.info(f"LocalGlobalFeatureInteractionNetwork input: {x.shape}")
 
     with open("./configs/lgim.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    model = LGFIN(config, logger)
+    model = LocalGlobalFeatureInteractionNetwork(config, logger)
     lgfin_out = model(x)
     logger.info(f"LGFIN output:  {lgfin_out.shape}")

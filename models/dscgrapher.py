@@ -162,7 +162,7 @@ class GrapherBlock(Module):
                     BatchNorm2d(block_config["outdim"]),
                 )
             )
-        self.log.debug(f"GrapherBlock: {min(config["kernel_size"], height * width)}")
+        self.log.debug(f"GrapherBlock: {min(config['kernel_size'], height * width)}")
         return blocks
 
     def forward(self, x):
