@@ -1,0 +1,19 @@
+services:
+  deepvein:
+    container_name: deepvein
+    build:
+      dockerfile: ./Dockerfile
+    volumes:
+      - .:/root/code
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu
+                - utility
+                - compute
+
