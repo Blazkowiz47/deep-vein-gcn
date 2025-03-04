@@ -12,14 +12,14 @@ num_workers: 8
 stat_seed: 0
 
 # Hyper parameters for loss funtion
-loss: "cosine"
+loss: "crossentropy"
 num_classes: 301 # For training on FV-300
 freeze_centroids: 30
 lmbda:  0.01
 fine_tune: False
 
 # Hyper parameters for model
-model: "LGFIN"
+model: "lgfin"
 indims: 3
 dwconv0:
   indims: 3
