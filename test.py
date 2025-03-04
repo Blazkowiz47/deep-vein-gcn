@@ -178,7 +178,7 @@ def driver(args):
     log.info(f"Dataset: {dataset} Imposter Scores: {len(imposter_scores)}")
 
     eer, far, frr, _ = calculate_eer(genuine_scores, imposter_scores)
-    log.error(f"Dataset: {dataset} EER: {eer}")
+    log.error(f"{model_name} Dataset: {dataset} EER: {eer}")
     np.save(f"tmp/{model_name}/{dataset}/far_scores.npy", far)
     np.save(f"tmp/{model_name}/{dataset}/frr_scores.npy", frr)
 

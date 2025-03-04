@@ -1,0 +1,50 @@
+batch_size: 32
+epochs: 50
+device: "cuda"
+width: 224
+height: 224
+lr: 0.001
+validate_after_epochs: 1
+seed: 2025
+num_workers: 8
+
+# dataset seed
+stat_seed: 0
+
+# Hyper parameters for loss funtion
+loss: "cosine"
+num_classes: 301 # For training on FV-300
+freeze_centroids: 30
+lmbda:  0.01
+fine_tune: False
+
+# Hyper parameters for model
+model: "LGFIN"
+indims: 3
+dwconv0:
+  indims: 3
+  outdims: 64
+
+block1:
+  indims: 64
+  outdims: 128
+  height: 112
+  width: 112
+
+block2:
+  indims: 128
+  outdims: 256
+  height: 56
+  width: 56
+
+block3:
+  indims: 256
+  outdims: 512
+  height: 28
+  width: 28
+
+outdims: 512
+hdims: 1024
+
+
+

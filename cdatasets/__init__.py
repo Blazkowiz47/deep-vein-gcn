@@ -6,16 +6,22 @@ from utils import Wrapper
 def get_dataset(dataset: str, config: Dict[str, Any], log: Logger, **kwargs) -> Wrapper:
 
 
-    if dataset == "fv300":
-        from cdatasets.fv300 import Fv300Wrapper
+    if dataset == "leaveoneout":
+        from cdatasets.leaveoneout import LeaveoneoutWrapper
 
-        return Fv300Wrapper(config, log, **kwargs)
+        return LeaveoneoutWrapper(config, log, **kwargs)
 
 
     if dataset == "mmcbnu":
         from cdatasets.mmcbnu import MmcbnuWrapper
 
         return MmcbnuWrapper(config, log, **kwargs)
+
+
+    if dataset == "fv300":
+        from cdatasets.fv300 import Fv300Wrapper
+
+        return Fv300Wrapper(config, log, **kwargs)
 
 
     if dataset == "polyu":

@@ -10,6 +10,7 @@ num_workers: 8
 
 # dataset seed
 stat_seed: 0
+leaveoutds: "polyu"
 
 # Hyper parameters for loss funtion
 loss: "proposed"
@@ -28,7 +29,10 @@ stem:
   depth: 3
   indim: 3
   outdim: 64
-  kernel: 3
+  kernels:
+    - 3
+    - 3
+    - 3
   stride: 2
   bias: True
   act: "gelu"

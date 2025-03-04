@@ -19,10 +19,10 @@ def get_loss(loss: str, config: Dict[str, Any], log: Logger, **kwargs) -> Module
         return ArcCosineLoss(config, log, **kwargs)
 
     if loss == "crossentropy":
-        from torch.nn import CrossEntropyLoss
+        from losses.crossentropy import CrossEntropy
 
-        log.warning(f"CrossEntropyLoss\n{inspect.getsource(CrossEntropyLoss)}")
-        return CrossEntropyLoss()
+        log.warning(f"CrossEntropyLoss\n{inspect.getsource(CrossEntropy)}")
+        return CrossEntropy(config, log, **kwargs)
 
     ### Donot remove this line as the build generator uses this as a marker
     ### while adding new model.

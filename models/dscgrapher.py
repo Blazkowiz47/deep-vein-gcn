@@ -184,7 +184,7 @@ class Dscgrapher(Module):
 
         height = config["height"]
         width = config["width"]
-        for _ in range(config["stem"]["depth"]-1):
+        for _ in range(config["stem"]["depth"] - 1):
             height = height // 2
             width = width // 2
         self.pos_embed = Parameter(
@@ -221,7 +221,7 @@ class Dscgrapher(Module):
         indim = stem_config["indim"]
         outdim = stem_config["outdim"]
         depth = stem_config["depth"]
-        kernel = stem_config["kernel"]
+        kernels = stem_config["kernels"]
         stride = stem_config["stride"]
         bias = stem_config["bias"]
         act = stem_config["act"]
@@ -230,7 +230,7 @@ class Dscgrapher(Module):
             outdim = max(4, outdim // 2)
 
         stem = []
-        for _ in range(depth):
+        for _, kernel in enumerate(kernels):
             stem.append(
                 DSConv(
                     indim,

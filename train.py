@@ -53,7 +53,7 @@ parser.add_argument(
 parser.add_argument(
     "-d",
     "--dataset",
-    default="fv300",
+    default="leaveoneout",
     type=str,
     help="""
     Give a single dataset name or multiple datasets to chain together.
@@ -82,6 +82,12 @@ parser.add_argument(
     help="Use wandb for logging.",
 )
 
+parser.add_argument(
+    "--leave",
+    type=str,
+    required=False,
+    help="Name of the dataset to leave out.",
+)
 # You can add any additional arguments if you need here.
 
 
@@ -96,6 +102,8 @@ def main():
 
     if args.seed:
         config["stat_seed"] = args.seed
+    if args.leave:
+        config["leaveoutds"] = args.leave
 
     model = config["model"]
     model_name: str = args.model_name or get_run_name(model, args.dataset)
@@ -103,6 +111,8 @@ def main():
     logfile = rf"tmp/{model_name}/train.log"
     ckptdir = rf"tmp/{model_name}/checkpoints"
     log = logger.get_logger(model_name, logfile, args.logger_level)
+    log.info(f"Training started for: {model_name}.")
+    log.info("Config:")
 
     # Uncomment following line if you use wandb
     wandb_run_name = None
@@ -126,11 +136,17 @@ def main():
 
     device = config["device"]  # You can change this to cpu.
 
-    model = get_model(model, config, log).to(device)
     wrapper = get_dataset(args.dataset, config, log)
 
     trainds = wrapper.get_split("train")
-    validationds = wrapper.get_split("validation")
+    validationds = wrapper.get_split("validation",batch_size=8)
+    if config["num_classes"] != wrapper.num_classes:
+        config["num_classes"] = wrapper.num_classes
+
+    log.info(str(config))
+    model = get_model(model, config, log).to(device)
+    log.info("Model:")
+    log.info(str(model))
 
     if args.continue_model:
         model.load_state_dict(torch.load(args.continue_model))

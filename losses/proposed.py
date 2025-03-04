@@ -36,6 +36,11 @@ class Proposed(Module):
 
     def forward(self, embds, labels, freeze_centroids=False):
         # xnorm = torch.norm(embds, p=2, dim=1).clamp(self.l_a, self.u_a)
+        if len(embds.shape) != 2:
+            embds = embds.view(1, embds.size(0))
+        if len(labels.shape) != 2:
+            labels = labels.view(1, labels.size(0))
+
         preds = self.fc(embds)
 
         self.centroids.requires_grad = not freeze_centroids

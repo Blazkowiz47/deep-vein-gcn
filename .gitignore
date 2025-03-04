@@ -6,3 +6,4 @@ wandb/
 *.log
 *.pt
 *.pth
+data/

@@ -1,29 +1,49 @@
-import os
-import random
 from logging import Logger
+import random
+import os
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 from torchvision import transforms as A
 import numpy as np
-import torch
 from PIL import Image
+import torch
 from torch.utils.data import DataLoader
 from utils import DatasetGenerator, Wrapper, image_extensions
 
 
-class Fv300Wrapper(Wrapper):
+class LeaveoneoutWrapper(Wrapper):
     def __init__(
         self,
         config: Dict[str, Any],
         log: Logger,
         **kwargs,
     ):
-        self.name = "fv300"
+        """
+        This is a demo wrapper.
+        Update the `loop_splitset` method for looping your dataset in a custom manner.
+        By default it fetches data stored in following manner relative to `./data/leaveoneout':
+            ROOT-DIR
+                -> ClassId1
+                    -> train
+                        -> Image1.jpg
+                    -> test
+                        -> Image1.jpeg
+                    -> validation
+                        -> Image1.jpeg
+                ...
+        """
+
+        self.name = "leaveoneout"
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
         self.stat_seed = config.get("stat_seed", 0)
         self.partition_split = kwargs.get("partition_split", 0.8)
-        self.rdir = f"./data/fv300/{self.stat_seed}"
+        self.leaveoutds = config.get("leaveoutds", "vera")
+        self.rdirs: List[str] = []
+
+        for dataset in os.listdir("./data"):
+            if dataset != self.leaveoutds:
+                self.rdirs.append(os.path.join("./data", dataset, str(self.stat_seed)))
 
         self.batch_size = config["batch_size"]
         self.num_workers = config["num_workers"]
@@ -46,9 +66,12 @@ class Fv300Wrapper(Wrapper):
         )
 
     def initialise_db_old(self) -> None:
-        self._internal_loop("test", self.test_data)
-        self._internal_loop("train", self.train_data)
+        for rdir in self.rdirs:
+            self._internal_loop(rdir, "test", self.test_data)
+            self._internal_loop(rdir, "train", self.train_data)
+
         self.num_classes = len(self.train_data)
+        self.log.info(f"Number of classes: {self.num_classes}")
 
     def initialise_db(self) -> None:
         for ssplit in ["train", "test"]:
@@ -64,16 +87,19 @@ class Fv300Wrapper(Wrapper):
             self.train_data[cid] = self.total_data[cid][:partition_index]
             self.test_data[cid] = self.total_data[cid][partition_index:]
 
-    def _internal_loop(self, ssplit: str, prev: Dict[str, List[str]]) -> None:
-        rdir = os.path.join(self.rdir, ssplit)
+    def _internal_loop(
+        self, rdir: str, ssplit: str, prev: Dict[str, List[str]]
+    ) -> None:
+        rdir = os.path.join(rdir, ssplit)
         for cid in os.listdir(rdir):
+            ds = rdir.split("/")[-3]
             if cid not in prev:
-                prev[cid] = []
+                prev[ds + "_" + cid] = []
             cdir = os.path.join(rdir, cid)
 
             for img in os.listdir(cdir):
                 if "." + img.split(".")[-1].lower() in image_extensions:
-                    prev[cid].append(os.path.join(cdir, img))
+                    prev[ds + "_" + cid].append(os.path.join(cdir, img))
 
     def loop_splitset(self, ssplit: str) -> List[Any]:
         if ssplit == "train":
@@ -104,6 +130,7 @@ class Fv300Wrapper(Wrapper):
             batch_size=batch_size or self.batch_size,
             # pin_memory=True,
             shuffle=True,
+            drop_last=True,
         )
 
     def augment(self, image: Any) -> Any:
