@@ -128,7 +128,7 @@ class LeaveoneoutWrapper(Wrapper):
             DatasetGenerator(data, self.transform),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
-            # pin_memory=True,
+            pin_memory=True,
             shuffle=True,
             drop_last=True,
         )
@@ -137,15 +137,13 @@ class LeaveoneoutWrapper(Wrapper):
         return self.augmentations(image)
 
     def transform(self, datapoint: Iterable[Any]) -> Tuple:
-        fname, lbl = datapoint
+        img, lbl = datapoint
         if self.num_classes is None:
             raise ValueError("Num classes not set.")
         # Initialise label
         label = torch.zeros(self.num_classes)
         label[lbl] = 1
 
-        # Initialise image
-        img = Image.open(fname)
         imgarray = np.array(img)
         imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
 

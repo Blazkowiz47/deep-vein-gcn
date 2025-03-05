@@ -100,9 +100,8 @@ class FvusmWrapper(Wrapper):
 
     def augment(self, image: Any) -> Any:
         return self.augmentations(image)
-
     def transform(self, datapoint: Iterable[Any]) -> Tuple:
-        fname, lbl = datapoint
+        img, lbl = datapoint
         if self.num_classes is None:
             raise ValueError("Num classes not set.")
         # Initialise label
@@ -110,10 +109,10 @@ class FvusmWrapper(Wrapper):
         label[lbl] = 1
 
         # Initialise image
-        img = Image.open(fname)
         imgarray = np.array(img)
         imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
 
         imgarray = self.augment(imgarray)
 
         return imgarray.float(), label.float()
+

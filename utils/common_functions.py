@@ -6,6 +6,7 @@ from abc import abstractmethod
 from typing import Any, Callable, Iterable, List, Optional, Tuple
 
 import numpy as np
+from PIL import Image
 import torch
 from torch.utils.data import DataLoader, Dataset
 
@@ -51,7 +52,9 @@ class DatasetGenerator(Dataset):
 
     def __getitem__(self, index) -> Tuple[Any]:
         datapoint = self.data[index]
-        return self.transform(datapoint)
+        img, *_ = datapoint
+        img = Image.open(img)
+        return self.transform((img, *datapoint[1:]))
 
 
 class Wrapper:
