@@ -139,7 +139,7 @@ def main():
     wrapper = get_dataset(args.dataset, config, log)
 
     trainds = wrapper.get_split("train")
-    validationds = wrapper.get_split("validation",batch_size=8)
+    validationds = wrapper.get_split("validation", batch_size=8)
     if config["num_classes"] != wrapper.num_classes:
         config["num_classes"] = wrapper.num_classes
 
@@ -163,85 +163,88 @@ def main():
 
     scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3)
     best_validation_loss = np.inf
-
-    for epoch in range(epochs):
-        model.train()
-        criterion.train()
-        train_losses = []
-        step1_train_losses = []
-        step2_train_losses = []
-        wandblog = {}
-        pbar = tqdm(trainds, desc=f"Epoch {epoch + 1}")
-        i = 0
-        for image, label in pbar:
-            optimizer.zero_grad()
-            image, label = image.to(device), label.to(device)
-            preds = model(image)
-            loss1, loss2 = criterion(
-                preds, label, freeze_centroids=epoch > config["freeze_centroids"]
-            )
-            step_loss = loss1 + loss2
-            step_loss.backward()
-            optimizer.step()
-
-            train_losses.append(step_loss.detach().cpu().item())
-            step1_train_losses.append(loss1.detach().cpu().item())
-            step2_train_losses.append(loss2.detach().cpu().item())
-            pbar.set_postfix({"loss": np.mean(train_losses)})
-            pbar.update(1)
-
-            i += 1
-            if i == 10:
-                continue
-
-        pbar.close()
-        log.info(f"Average train step loss: {np.mean(train_losses)}")
-        wandblog = {
-            "train_loss": np.mean(train_losses),
-            "Step1_loss": np.mean(step1_train_losses),
-            "Step2_loss": np.mean(step2_train_losses),
-        }
-
-        torch.save(
-            model.state_dict(),
-            os.path.join(ckptdir, f"epoch_{epoch}.pt"),
-        )
-        if not epoch % validate_after_epochs:
-            validation_losses = []
-            step1_losses = []
-            step2_losses = []
-            model.eval()
-            criterion.eval()
-            pbar = tqdm(validationds, desc="Validation")
+    try:
+        for epoch in range(epochs):
+            model.train()
+            criterion.train()
+            train_losses = []
+            step1_train_losses = []
+            step2_train_losses = []
+            wandblog = {}
+            pbar = tqdm(trainds, desc=f"Epoch {epoch + 1}")
+            i = 0
             for image, label in pbar:
+                optimizer.zero_grad()
                 image, label = image.to(device), label.to(device)
                 preds = model(image)
-                loss1, loss2 = criterion(preds, label)
+                loss1, loss2 = criterion(
+                    preds, label, freeze_centroids=epoch > config["freeze_centroids"]
+                )
                 step_loss = loss1 + loss2
-                validation_losses.append(step_loss.detach().cpu().item())
-                step1_losses.append(loss1.detach().cpu().item())
-                step2_losses.append(loss2.detach().cpu().item())
-                pbar.set_postfix({"loss": np.mean(validation_losses)})
+                step_loss.backward()
+                optimizer.step()
+
+                train_losses.append(step_loss.detach().cpu().item())
+                step1_train_losses.append(loss1.detach().cpu().item())
+                step2_train_losses.append(loss2.detach().cpu().item())
+                pbar.set_postfix({"loss": np.mean(train_losses)})
+                pbar.update(1)
+
+                i += 1
+                if i == 10:
+                    continue
 
             pbar.close()
-            validation_loss = np.mean(validation_losses)
-            log.info(f"Average validation step loss: {validation_loss}")
+            log.info(f"Average train step loss: {np.mean(train_losses)}")
             wandblog = {
-                **wandblog,
-                "validation_loss": np.mean(validation_losses),
-                "Step1_loss": np.mean(step1_losses),
-                "Step2_loss": np.mean(step2_losses),
+                "train_loss": np.mean(train_losses),
+                "Step1_loss": np.mean(step1_train_losses),
+                "Step2_loss": np.mean(step2_train_losses),
             }
-            if validation_loss < best_validation_loss:
-                best_validation_loss = validation_loss
-                torch.save(
-                    model.state_dict(),
-                    os.path.join(ckptdir, "best_model.pt"),
-                )
-        scheduler.step()
 
-        if wandb_run_name:
-            wandb.log(wandblog)
+            torch.save(
+                model.state_dict(),
+                os.path.join(ckptdir, f"epoch_{epoch}.pt"),
+            )
+            if not epoch % validate_after_epochs:
+                validation_losses = []
+                step1_losses = []
+                step2_losses = []
+                model.eval()
+                criterion.eval()
+                pbar = tqdm(validationds, desc="Validation")
+                for image, label in pbar:
+                    image, label = image.to(device), label.to(device)
+                    preds = model(image)
+                    loss1, loss2 = criterion(preds, label)
+                    step_loss = loss1 + loss2
+                    validation_losses.append(step_loss.detach().cpu().item())
+                    step1_losses.append(loss1.detach().cpu().item())
+                    step2_losses.append(loss2.detach().cpu().item())
+                    pbar.set_postfix({"loss": np.mean(validation_losses)})
+
+                pbar.close()
+                validation_loss = np.mean(validation_losses)
+                log.info(f"Average validation step loss: {validation_loss}")
+                wandblog = {
+                    **wandblog,
+                    "validation_loss": np.mean(validation_losses),
+                    "Step1_loss": np.mean(step1_losses),
+                    "Step2_loss": np.mean(step2_losses),
+                }
+                if validation_loss < best_validation_loss:
+                    best_validation_loss = validation_loss
+                    torch.save(
+                        model.state_dict(),
+                        os.path.join(ckptdir, "best_model.pt"),
+                    )
+            scheduler.step()
+
+            if wandb_run_name:
+                wandb.log(wandblog)
+    except KeyboardInterrupt:
+        pass
+
     # Uncomment following line if you use wandb
     if wandb_run_name:
         wandb.finish()
