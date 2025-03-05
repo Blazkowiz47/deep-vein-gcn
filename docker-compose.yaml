@@ -1,8 +1,11 @@
+version: '3'
 services:
   deepvein:
     container_name: deepvein
+    ipc: host
     build:
       dockerfile: ./Dockerfile
+
     volumes:
       - .:/root/code
 

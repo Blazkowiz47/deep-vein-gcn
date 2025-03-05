@@ -49,7 +49,7 @@ class LeaveoneoutWrapper(Wrapper):
                 self.rdirs.append(os.path.join("./data", dataset, str(self.stat_seed)))
 
         self.batch_size = config["batch_size"]
-        self.num_workers = config["num_workers"]
+        self.num_workers = config.get("num_workers", 4)
         self.total_data: Dict[str, List[str]] = {}
         self.train_data: Dict[str, List[str]] = {}
         self.test_data: Dict[str, List[str]] = {}

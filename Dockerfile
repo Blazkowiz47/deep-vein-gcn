@@ -26,6 +26,7 @@ RUN pip install torch torchvision torchaudio
 RUN pip install fvcore
 RUN pip install einops
 RUN pip install timm
+RUN pip install wandb
 
 # Keep container alive:
 CMD ["tail", "-f", "/dev/null"]
