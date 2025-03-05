@@ -251,7 +251,7 @@ def main():
 
     log.info(f"Training completed for: {model_name}.")
     if not len(os.listdir(ckptdir)):
-        os.system(f"rm -rf tmp/{model_name}")
+        os.system(f"rm -r tmp/{model_name}")
 
 
 if __name__ == "__main__":
