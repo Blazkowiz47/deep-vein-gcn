@@ -135,7 +135,7 @@ class LeaveoneoutWrapper(Wrapper):
             shuffle=True,
             drop_last=True,
             persistent_workers=True,
-            prefetch_factor=8,
+            prefetch_factor=num_workers or self.num_workers,
         )
 
     def augment(self, image: Any) -> Any:
