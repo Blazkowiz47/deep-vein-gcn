@@ -102,8 +102,11 @@ class Fv300Wrapper(Wrapper):
             DatasetGenerator(data, self.transform),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
-            # pin_memory=True,
+            pin_memory=True,
             shuffle=True,
+            drop_last=True,
+            persistent_workers=True,
+            prefetch_factor=num_workers or self.num_workers,
         )
 
     def augment(self, image: Any) -> Any:
