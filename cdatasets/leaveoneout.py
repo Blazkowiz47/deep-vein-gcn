@@ -1,14 +1,17 @@
-from logging import Logger
-import random
 import os
+import random
+from logging import Logger
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-from torchvision import transforms as A
 import numpy as np
-from PIL import Image
 import torch
 from torch.utils.data import DataLoader
+from torchvision import set_image_backend
+from torchvision import transforms as A
+
 from utils import DatasetGenerator, Wrapper, image_extensions
+
+set_image_backend("accimage")  # Faster image loading than PIL
 
 
 class LeaveoneoutWrapper(Wrapper):
@@ -131,6 +134,8 @@ class LeaveoneoutWrapper(Wrapper):
             pin_memory=True,
             shuffle=True,
             drop_last=True,
+            persistent_workers=True,
+            prefetch_factor=8,
         )
 
     def augment(self, image: Any) -> Any:
