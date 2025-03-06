@@ -23,6 +23,8 @@ class Fv300Wrapper(Wrapper):
         self.kwargs: Dict[str, Any] = kwargs
         self.stat_seed = config.get("stat_seed", 0)
         self.partition_split = kwargs.get("partition_split", 0.8)
+        self.height = config.get("height", 224)
+        self.width = config.get("width", 224)
         self.rdir = f"./data/fv300/{self.stat_seed}"
 
         self.batch_size = config["batch_size"]
@@ -31,16 +33,16 @@ class Fv300Wrapper(Wrapper):
         self.train_data: Dict[str, List[str]] = {}
         self.test_data: Dict[str, List[str]] = {}
         self.num_classes = None
-        self.initialise_db() # Prefering old for now
+        self.initialise_db()  # Prefering old for now
         # self.initialise_db_old()
 
         self.augmentations = A.Compose(
             [
                 A.ToTensor(),
-                A.RandomHorizontalFlip(),
-                A.RandomVerticalFlip(),
-                A.RandomAutocontrast(p=0.05),
-                A.Resize((224, 224)),
+                # A.RandomHorizontalFlip(),
+                # A.RandomVerticalFlip(),
+                # A.RandomAutocontrast(p=0.05),
+                A.Resize((self.height, self.width)),
                 A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
             ]
         )

@@ -160,18 +160,18 @@ def main():
     optimizer = AdamW(
         params,
         lr=config["lr"],
-        weight_decay=0.05,
+        # weight_decay=0.05,
     )
 
     # For arcvein only
-    optimizer = SGD(
-        params,
-        lr=config['lr'],
-        
-        nesterov=True,
-        momentum=0.9,
-        weight_decay=5 * 1e-4,
-    )
+    # optimizer = SGD(
+    #     params,
+    #     lr=config['lr'],
+    #
+    #     nesterov=True,
+    #     momentum=0.9,
+    #     weight_decay=5 * 1e-4,
+    # )
 
     # scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3) # disable for arcvein
     best_validation_loss = np.inf

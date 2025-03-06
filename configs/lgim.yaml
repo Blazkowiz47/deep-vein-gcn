@@ -1,9 +1,9 @@
-batch_size: 32
+batch_size: 8
 epochs: 50
 device: "cuda"
-width: 224
-height: 224
-lr: 0.001
+width: 147
+height: 147
+lr: 0.0001
 validate_after_epochs: 1
 seed: 2025
 num_workers: 8
@@ -28,20 +28,20 @@ dwconv0:
 block1:
   indims: 64
   outdims: 128
-  height: 112
-  width: 112
+  height: 73
+  width: 73
 
 block2:
   indims: 128
   outdims: 256
-  height: 56
-  width: 56
+  height: 36
+  width: 36
 
 block3:
   indims: 256
   outdims: 512
-  height: 28
-  width: 28
+  height: 18
+  width: 18
 
 outdims: 512
 hdims: 1024

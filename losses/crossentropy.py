@@ -12,7 +12,7 @@ class CrossEntropy(Module):
 
     def forward(self, preds, labels, **kwargs):
         labels = torch.argmax(labels, dim=1)
-        return self.cross_entropy(preds, labels), torch.tensor(0.0).to(embds.device)
+        return self.cross_entropy(preds, labels), torch.tensor(0.0).to(preds.device)
 
 
 if __name__ == "__main__":

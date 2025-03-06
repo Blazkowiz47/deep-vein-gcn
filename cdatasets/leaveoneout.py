@@ -42,6 +42,8 @@ class LeaveoneoutWrapper(Wrapper):
         self.stat_seed = config.get("stat_seed", 0)
         self.partition_split = kwargs.get("partition_split", 0.8)
         self.leaveoutds = config.get("leaveoutds", "vera")
+        self.height = config.get("height", 224)
+        self.width = config.get("width", 224)
         self.rdirs: List[str] = []
 
         for dataset in os.listdir("./data"):
@@ -63,7 +65,7 @@ class LeaveoneoutWrapper(Wrapper):
                 A.RandomHorizontalFlip(),
                 A.RandomVerticalFlip(),
                 A.RandomAutocontrast(p=0.05),
-                A.Resize((224, 224)),
+                A.Resize((self.height, self.width)),
                 A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
             ]
         )
