@@ -31,8 +31,8 @@ class Fv300Wrapper(Wrapper):
         self.train_data: Dict[str, List[str]] = {}
         self.test_data: Dict[str, List[str]] = {}
         self.num_classes = None
-        # self.initialise_db() # Prefering old for now
-        self.initialise_db_old()
+        self.initialise_db() # Prefering old for now
+        # self.initialise_db_old()
 
         self.augmentations = A.Compose(
             [

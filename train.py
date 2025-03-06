@@ -4,12 +4,13 @@ calls the train pipeline with configs.
 """
 
 import argparse
+from math import nan
 import os
 
 import numpy as np
 import torch
 import yaml
-from torch.optim import AdamW
+from torch.optim import SGD, AdamW
 from torch.optim.lr_scheduler import CosineAnnealingLR
 from tqdm import tqdm
 
@@ -155,14 +156,26 @@ def main():
     params = [p for p in model.parameters() if p.requires_grad]
     params.extend([p for p in criterion.parameters() if p.requires_grad])
 
+    # For proposed
     optimizer = AdamW(
         params,
         lr=config["lr"],
         weight_decay=0.05,
     )
 
-    scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3)
+    # For arcvein only
+    optimizer = SGD(
+        params,
+        lr=config['lr'],
+        
+        nesterov=True,
+        momentum=0.9,
+        weight_decay=5 * 1e-4,
+    )
+
+    # scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3) # disable for arcvein
     best_validation_loss = np.inf
+    loss_is_nan = False
     try:
         for epoch in range(epochs):
             model.train()
@@ -189,12 +202,17 @@ def main():
                 step2_train_losses.append(loss2.detach().cpu().item())
                 pbar.set_postfix({"loss": np.mean(train_losses)})
                 pbar.update(1)
+                if train_losses[-1] == nan:
+                    loss_is_nan = True
+                    break
 
                 i += 1
                 if i == 10:
                     continue
-
             pbar.close()
+            if loss_is_nan:
+                break
+
             log.info(f"Average train step loss: {np.mean(train_losses)}")
             wandblog = {
                 "train_loss": np.mean(train_losses),
@@ -222,8 +240,13 @@ def main():
                     step1_losses.append(loss1.detach().cpu().item())
                     step2_losses.append(loss2.detach().cpu().item())
                     pbar.set_postfix({"loss": np.mean(validation_losses)})
+                    if validation_losses[-1] == nan:
+                        loss_is_nan = True
+                        break
 
                 pbar.close()
+                if loss_is_nan:
+                    break
                 validation_loss = np.mean(validation_losses)
                 log.info(f"Average validation step loss: {validation_loss}")
                 wandblog = {
@@ -238,11 +261,15 @@ def main():
                         model.state_dict(),
                         os.path.join(ckptdir, "best_model.pt"),
                     )
-            scheduler.step()
+            # scheduler.step() # disable for arcvein
+            if not epoch % 30:
+                for group in optimizer.param_groups:
+                    group["lr"] /= 10
 
             if wandb_run_name:
                 wandb.log(wandblog)
     except KeyboardInterrupt:
+        os.system(f"rm -r tmp/{model_name}")
         pass
 
     # Uncomment following line if you use wandb
@@ -250,7 +277,7 @@ def main():
         wandb.finish()
 
     log.info(f"Training completed for: {model_name}.")
-    if not len(os.listdir(ckptdir)):
+    if os.path.exists(ckptdir) and not len(os.listdir(ckptdir)):
         os.system(f"rm -r tmp/{model_name}")
 
 

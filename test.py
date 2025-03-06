@@ -168,6 +168,8 @@ def driver(args):
                         imposter_scores.append(sim.item())
 
     print("Saving Scores")
+    log.error(f"Total genuine scores: {len(genuine_scores)}")
+    log.error(f"Total imposter scores: {len(imposter_scores)}")
     os.makedirs(f"tmp/{model_name}/{dataset}", exist_ok=True)
     np.save(f"tmp/{model_name}/{dataset}/genuine_scores.npy", np.array(genuine_scores))
     np.save(
