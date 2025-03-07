@@ -6,12 +6,6 @@ from torch.nn import Module
 def get_model(model: str, config: Dict[str, Any], log: Logger, **kwargs) -> Module:
 
 
-    if model == "VeinAttNet":
-        from models.veinAttNet import VeinAttNet 
-
-        return VeinAttNet(config, log, **kwargs)
-
-
     if model == "dscgrapher":
         from models.dscgrapher import Dscgrapher 
 
@@ -24,10 +18,22 @@ def get_model(model: str, config: Dict[str, Any], log: Logger, **kwargs) -> Modu
         return Deepvein(config, log, **kwargs)
 
 
-    if model == "lgfin":
-        from models.lgfin import LocalGlobalFeatureInteractionNetwork 
+    if model == "fvit":
+        from models.fvit import Fvit 
 
-        return LocalGlobalFeatureInteractionNetwork(config, log, **kwargs)
+        return Fvit(config, log, **kwargs)
+
+
+    if model == "veinAttNet":
+        from models.veinAttNet import VeinAttNet 
+
+        return VeinAttNet(config, log, **kwargs)
+
+
+    if model == "lgfin":
+        from models.lgfin import Lgfin 
+
+        return Lgfin(config, log, **kwargs)
 
 
     if model == "arcvein":

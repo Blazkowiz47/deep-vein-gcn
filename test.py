@@ -58,8 +58,8 @@ parser.add_argument(
 )
 
 
-def transform(fname: str) -> torch.Tensor:
-    img = Image.open(fname).resize((224, 224))
+def transform(fname: str, size: Tuple[int, int] = (224, 224)) -> torch.Tensor:
+    img = Image.open(fname).resize(size)
     imgarray = np.array(img)
     imgarray = (imgarray.squeeze() - imgarray.min()) / (imgarray.max() - imgarray.min())
     imgarray = np.stack([imgarray, imgarray, imgarray], axis=0)
@@ -109,14 +109,18 @@ def driver(args):
     set_seeds(log, config["seed"])
     device = config["device"]  # You can change this to cpu.
 
+    leaveoutds = get_dataset("leaveoneout", config, log)
+    config["num_classes"] = leaveoutds.num_classes
+
+    wrapper = get_dataset(args.dataset, config, log, partition_split=0)
+    config["leaveoutds"] = args.dataset
+    _ = wrapper.get_split("validation")
+
     model = get_model(model, config, log).to(device)
-    model.load_state_dict(torch.load(checkpoint, weights_only=True))
+    model.load_state_dict(torch.load(checkpoint, weights_only=True), strict=False)
     model.eval()
     model.to(device)
     log.info(str(model))
-    wrapper = get_dataset(args.dataset, config, log, partition_split=0)
-    _ = wrapper.get_split("validation")
-
     subjects_samples = wrapper.test_data
 
     with torch.no_grad():
@@ -126,9 +130,12 @@ def driver(args):
             for sample in subjects_samples[subject]:
                 if subject not in subjects_embeddings:
                     subjects_embeddings[subject] = []
-
-                img = transform(sample).unsqueeze(0).to(device)
-                emb = model(img).detach().cpu()
+                img = (
+                    transform(sample, size=(config["height"], config["width"]))
+                    .unsqueeze(0)
+                    .to(device)
+                )
+                emb = model(img, features=True).detach().cpu()
                 subjects_embeddings[subject].append(emb)
                 i += 1
                 if i == 3:

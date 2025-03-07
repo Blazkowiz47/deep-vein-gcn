@@ -203,7 +203,7 @@ class Deepvein(Module):
                 nn.init.constant_(m.weight, 1)
                 nn.init.constant_(m.bias, 0)
 
-    def forward(self, x):
+    def forward(self, x, **kwargs):
         self.log.debug(f"Input Shape: {x.shape}")
         x = self.stem(x) + self.pos_embed
         self.log.debug(f"Output Shape of Stem: {x.shape}")

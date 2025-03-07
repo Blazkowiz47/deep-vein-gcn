@@ -311,7 +311,7 @@ class Dscgrapher(Module):
         self.log.debug(f"Backbone output: {y.shape}")
         self.log.debug("Backbone checked")
 
-    def forward(self, x):
+    def forward(self, x, **kwargs):
         x = self.stem(x) + self.pos_embed
         x = self.backbone(x)
         x = adaptive_avg_pool2d(x, (1, 1))

@@ -160,7 +160,7 @@ def main():
     optimizer = AdamW(
         params,
         lr=config["lr"],
-        # weight_decay=0.05,
+        weight_decay=0.05,
     )
 
     # For arcvein only
@@ -173,7 +173,7 @@ def main():
     #     weight_decay=5 * 1e-4,
     # )
 
-    # scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3) # disable for arcvein
+    scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3) # disable for arcvein
     best_validation_loss = np.inf
     loss_is_nan = False
     try:
@@ -262,9 +262,9 @@ def main():
                         os.path.join(ckptdir, "best_model.pt"),
                     )
             # scheduler.step() # disable for arcvein
-            if not epoch % 30:
-                for group in optimizer.param_groups:
-                    group["lr"] /= 10
+            # if not epoch % 30:
+            #     for group in optimizer.param_groups:
+            #         group["lr"] /= 10
 
             if wandb_run_name:
                 wandb.log(wandblog)

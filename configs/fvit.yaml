@@ -1,0 +1,22 @@
+batch_size: 64
+epochs: 50
+device: "cuda"
+width: 224
+height: 224
+lr: 0.0001
+validate_after_epochs: 1
+seed: 2025
+num_workers: 8
+
+# dataset seed
+stat_seed: 0
+
+# Hyper parameters for loss funtion
+loss: "crossentropy"
+num_classes: 301 # For training on FV-300
+freeze_centroids: 30
+lmbda:  0.01
+fine_tune: False
+
+# Hyper parameters for model
+model: "fvit"

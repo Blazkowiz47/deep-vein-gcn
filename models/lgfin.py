@@ -282,9 +282,9 @@ class LFEM(Module):
         return sff
 
 
-class LocalGlobalFeatureInteractionNetwork(Module):
+class Lgfin(Module):
     def __init__(self, config: Dict[str, Any], log: Logger, **kwargs):
-        super(LocalGlobalFeatureInteractionNetwork, self).__init__()
+        super(Lgfin, self).__init__()
         self.name = "LocalGlobalFeatureInteractionNetwork"
         self.config = config
         self.log = log
@@ -324,7 +324,7 @@ class LocalGlobalFeatureInteractionNetwork(Module):
         self.fc1 = Linear(config["outdims"], config["hdims"])
         self.fc2 = Linear(config["hdims"], config["num_classes"])
 
-    def forward(self, x):
+    def forward(self, x, **kwargs):
         x = self.dwconv0(x)
 
         # Block 1
@@ -351,6 +351,8 @@ class LocalGlobalFeatureInteractionNetwork(Module):
         x = self.sff(x_l3, x_g3)
         x = self.avg(x)
         x = x.squeeze()
+        if kwargs.get("features", False):
+            return x
         x = self.fc1(x)
         x = self.fc2(x)
         return x
@@ -391,6 +393,6 @@ if __name__ == "__main__":
     with open("./configs/lgim.yaml", "r") as f:
         config = yaml.safe_load(f)
 
-    model = LocalGlobalFeatureInteractionNetwork(config, logger)
+    model = Lgfin(config, logger)
     lgfin_out = model(x)
     logger.info(f"LGFIN output:  {lgfin_out.shape}")

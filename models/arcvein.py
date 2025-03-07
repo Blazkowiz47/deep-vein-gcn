@@ -108,7 +108,7 @@ class Arcvein(Module):
         self.avg = AvgPool2d(7)
         self.model_init()
 
-    def forward(self, x):
+    def forward(self, x,**kwargs):
         """
         Forward pass.
         """

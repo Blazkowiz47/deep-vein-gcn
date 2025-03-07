@@ -51,7 +51,7 @@ class VeinAttNet(Module):
         self.head = LayerNorm(32)
         self.fc = Linear(32, config["num_classes"])
 
-    def forward(self, x):
+    def forward(self, x, **kwargs):
         x = self.backbone(x)
         x = x.view(x.size(0), x.size(1), -1)
         query = self.queryenc(x)
