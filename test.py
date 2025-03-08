@@ -109,11 +109,11 @@ def driver(args):
     set_seeds(log, config["seed"])
     device = config["device"]  # You can change this to cpu.
 
+    config["leaveoutds"] = args.dataset
     leaveoutds = get_dataset("leaveoneout", config, log)
     config["num_classes"] = leaveoutds.num_classes
 
     wrapper = get_dataset(args.dataset, config, log, partition_split=0)
-    config["leaveoutds"] = args.dataset
     _ = wrapper.get_split("validation")
 
     model = get_model(model, config, log).to(device)
