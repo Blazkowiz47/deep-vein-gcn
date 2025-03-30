@@ -39,7 +39,6 @@ class FvusmWrapper(Wrapper):
             [
                 A.ToTensor(),
                 A.Resize((self.height, self.width)),
-                A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
             ]
         )
 
@@ -96,15 +95,13 @@ class FvusmWrapper(Wrapper):
             DatasetGenerator(data, self.transform),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
-            pin_memory=True,
             shuffle=True,
-            drop_last=True,
-            persistent_workers=True,
-            prefetch_factor=num_workers or self.num_workers,
+            prefetch_factor=2,
         )
 
     def augment(self, image: Any) -> Any:
         return self.augmentations(image)
+
     def transform(self, datapoint: Iterable[Any]) -> Tuple:
         img, lbl = datapoint
         if self.num_classes is None:
@@ -115,9 +112,9 @@ class FvusmWrapper(Wrapper):
 
         # Initialise image
         imgarray = np.array(img)
+        imgarray = (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min())
         imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
 
         imgarray = self.augment(imgarray)
 
         return imgarray.float(), label.float()
-

@@ -173,7 +173,7 @@ def main():
     #     weight_decay=5 * 1e-4,
     # )
 
-    scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3) # disable for arcvein
+    scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3)  # disable for arcvein
     best_validation_loss = np.inf
     loss_is_nan = False
     try:
@@ -255,6 +255,7 @@ def main():
                     "Step1_loss": np.mean(step1_losses),
                     "Step2_loss": np.mean(step2_losses),
                 }
+                loss1total = np.mean(step1_losses)
                 if validation_loss < best_validation_loss:
                     best_validation_loss = validation_loss
                     torch.save(

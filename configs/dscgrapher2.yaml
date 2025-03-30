@@ -1,5 +1,5 @@
-batch_size: 32
-epochs: 50
+batch_size: 128
+epochs: 150
 device: "cuda"
 width: 224
 height: 224
@@ -15,11 +15,9 @@ leaveoutds: "polyu"
 # Hyper parameters for loss funtion
 loss: "proposed"
 num_classes: 301 # For training on FV-300
-freeze_centroids: 1
-scale: 64.0
-embedding_size: 512
-margin:  0.5
-beta: 0.3
+freeze_centroids: 30
+embedding_size: 256
+beta: 1.0
 
 # Hyper parameters for model
 model: "dscgrapher"
@@ -30,8 +28,8 @@ stem:
   indim: 3
   outdim: 64
   kernels:
-    - 3
-    - 3
+    - 7
+    - 5
     - 3
   stride: 2
   bias: True
@@ -49,7 +47,7 @@ backbone:
   stochastic: False
   ffn_kernel: 1
   ffn_stride: 1
-  depth: 4
+  depth: 2
 
   block0:
     indim: 64
@@ -57,10 +55,10 @@ backbone:
     outdim: 128
 
     reduce_ratio: 4
-    graphers: 2
+    graphers: 6
     shrinker_kernel: 3
     shrinker_stride: 2
-    neighbour_number: 9
+    neighbour_number: 18
 
   block1:
     indim: 128
@@ -72,25 +70,3 @@ backbone:
     shrinker_kernel: 3
     shrinker_stride: 2
     neighbour_number: 9
-
-  block2:
-    indim: 256
-    hdim: 1024
-    outdim: 512
-
-    reduce_ratio: 1
-    graphers: 6
-    shrinker_kernel: 3
-    shrinker_stride: 2
-    neighbour_number: 9
-
-  block3:
-    indim: 512
-    hdim: 2048
-    outdim: 512
-
-    reduce_ratio: 1
-    graphers: 2
-    neighbour_number: 9
-
-

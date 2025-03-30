@@ -95,6 +95,8 @@ class DSConv_pro(nn.Module):
             output = self.dsc_conv_x(deformed_feature)
         elif self.morph == 1:
             output = self.dsc_conv_y(deformed_feature)
+        else:
+            raise ValueError(f"Invalid morph value: {self.morph}")
 
         # Groupnorm & ReLU
         output = self.gn(output)

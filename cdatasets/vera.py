@@ -39,7 +39,6 @@ class VeraWrapper(Wrapper):
             [
                 A.ToTensor(),
                 A.Resize((self.height, self.width)),
-                A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
             ]
         )
 
@@ -115,6 +114,7 @@ class VeraWrapper(Wrapper):
 
         # Initialise image
         imgarray = np.array(img)
+        imgarray = (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min())
         imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
 
         imgarray = self.augment(imgarray)

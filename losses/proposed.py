@@ -15,15 +15,11 @@ class Proposed(Module):
             torch.randn((config["embedding_size"], self.num_classes)),
         )
         self.centroids.data.uniform_(-1, 1).renorm_(2, 1, 1)
-        self.scale = torch.tensor(config["scale"]).to(self.device)
-        self.margin = torch.tensor(config["margin"]).to(self.device)
+
         self.beta = torch.tensor(config["beta"]).to(self.device)
-        self.l_margin = torch.tensor(0.15).to(self.device)
 
         self.fc = torch.nn.Linear(config["embedding_size"], self.num_classes)
         self.model_init()
-        # self.l_a = config["l_a"]
-        # self.u_a = config["u_a"]
 
     def model_init(self):
         for m in self.modules():
@@ -47,23 +43,10 @@ class Proposed(Module):
 
         wnorm = F.normalize(self.centroids, p=2, dim=0)
         emb_norm = F.normalize(embds, p=2, dim=1)
-
-        margin = self.margin_func(embds)
-        margin = torch.clamp(margin, self.l_margin, self.margin)
-        margin = margin.unsqueeze(1)
-        margin = margin.repeat(1, self.num_classes)
-
         cos_theta = torch.matmul(emb_norm, wnorm)
         cos_theta = cos_theta.clamp(-1, 1)
-        sin_theta = torch.sqrt(1.0 - torch.pow(cos_theta, 2))
 
-        cos_m, sin_m = torch.cos(margin), torch.sin(margin)
-        cos_theta_m = cos_theta * cos_m - sin_theta * sin_m
-
-        one_hot = labels
-        output = (one_hot * cos_theta_m) + ((1.0 - one_hot) * cos_theta)
-
-        output = self.scale * output
+        output = torch.acos(cos_theta)
 
         loss2 = F.cross_entropy(output, labels, reduction="mean")
 

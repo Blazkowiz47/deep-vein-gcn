@@ -19,4 +19,4 @@ lmbda:  0.01
 fine_tune: False
 
 # Hyper parameters for model
-model: "VeinAttNet"
+model: "veinAttNet"

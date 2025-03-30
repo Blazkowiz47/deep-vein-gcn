@@ -9,6 +9,7 @@ from utils.common_functions import (
     video_extensions,
 )
 from utils.metrics import calculate_eer
+from utils.multiprocess_eer import compute_eer_mp
 
 __all__ = [
     "get_logger",
@@ -18,5 +19,7 @@ __all__ = [
     "DatasetGenerator",
     "Wrapper",
     "image_extensions",
-    "video_extensions", "calculate_eer",
+    "video_extensions",
+    "calculate_eer",
+    "compute_eer_mp",
 ]

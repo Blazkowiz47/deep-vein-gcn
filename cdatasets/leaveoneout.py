@@ -47,7 +47,7 @@ class LeaveoneoutWrapper(Wrapper):
         self.rdirs: List[str] = []
 
         for dataset in os.listdir("./data"):
-            if dataset != self.leaveoutds:
+            if dataset != self.leaveoutds and not dataset.startswith('leaveoutds_'):
                 self.rdirs.append(os.path.join("./data", dataset, str(self.stat_seed)))
 
         self.batch_size = config["batch_size"]
@@ -65,8 +65,8 @@ class LeaveoneoutWrapper(Wrapper):
                 A.RandomHorizontalFlip(),
                 A.RandomVerticalFlip(),
                 A.RandomAutocontrast(p=0.05),
+                A.RandomRotation(45),
                 A.Resize((self.height, self.width)),
-                A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
             ]
         )
 
@@ -152,6 +152,7 @@ class LeaveoneoutWrapper(Wrapper):
         label[lbl] = 1
 
         imgarray = np.array(img)
+        imgarray = (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min())
         imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
 
         imgarray = self.augment(imgarray)

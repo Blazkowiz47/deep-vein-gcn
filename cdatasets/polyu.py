@@ -18,7 +18,7 @@ class PolyuWrapper(Wrapper):
         log: Logger,
         **kwargs,
     ):
-        self.name =  "polyu"
+        self.name = "polyu"
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
         self.stat_seed = kwargs.get("stat_seed", 0)
@@ -39,7 +39,6 @@ class PolyuWrapper(Wrapper):
             [
                 A.ToTensor(),
                 A.Resize((self.height, self.width)),
-                A.Normalize(mean=[0.5, 0.5, 0.5], std=[0.5, 0.5, 0.5]),
             ]
         )
 
@@ -104,6 +103,7 @@ class PolyuWrapper(Wrapper):
 
     def augment(self, image: Any) -> Any:
         return self.augmentations(image)
+
     def transform(self, datapoint: Iterable[Any]) -> Tuple:
         img, lbl = datapoint
         if self.num_classes is None:
@@ -114,9 +114,9 @@ class PolyuWrapper(Wrapper):
 
         # Initialise image
         imgarray = np.array(img)
+        imgarray = (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min())
         imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
 
         imgarray = self.augment(imgarray)
 
         return imgarray.float(), label.float()
-

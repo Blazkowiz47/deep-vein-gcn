@@ -20,8 +20,13 @@ RUN npm install -g n
 RUN n stable
 RUN npm install -g tree-sitter-cli
 RUN ln -s /root/.config/nvim/.tmux.conf /root/.tmux.conf
+RUN apt install python3-venv -y
+RUN apt install tmux -y
+RUN echo 'alias ta="tmux attach"' >> /root/.bashrc
+ENV TERM=xterm-256color
 
 # Dependencies
+RUN pip install --upgrade pip
 RUN pip install torch torchvision torchaudio
 RUN pip install fvcore
 RUN pip install einops
@@ -29,5 +34,5 @@ RUN pip install timm
 RUN pip install wandb
 
 # Keep container alive:
-CMD ["tail", "-f", "/dev/null"]
+CMD ["/bin/bash"]
 

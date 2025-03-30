@@ -39,27 +39,31 @@ class VeinAttNet(Module):
             MaxPool2d(3, 2),
             AvgPool2d(3),
         )
-        self.queryenc = Linear(1, 64)
-        self.keyenc = Linear(1, 64)
-        self.valueenc = Linear(1, 64)
+        self.queryenc = Linear(32, 32)
+        self.keyenc = Linear(32, 64)
+        self.valueenc = Linear(32, 32)
         self.attn = MultiheadAttention(
-            64,
+            32,
             4,
             batch_first=True,
+            kdim=64,
         )
-        self.enc = Linear(64, 1)
         self.head = LayerNorm(32)
         self.fc = Linear(32, config["num_classes"])
 
     def forward(self, x, **kwargs):
         x = self.backbone(x)
-        x = x.view(x.size(0), x.size(1), -1)
+        x = x.view(x.size(0), 1, x.size(1))
+        self.log.debug(f"X: {x.shape}")
         query = self.queryenc(x)
         key = self.keyenc(x)
         value = self.valueenc(x)
+        self.log.debug(
+            f"Query shape: {query.shape} | Key shape: {key.shape} | Value shape: {value.shape}"
+        )
         out, _ = self.attn(query, key, value)
-        out = self.enc(out)
-        out = out.view(out.size(0), -1)
+        self.log.debug(f"Attention output shape: {out.shape}")
+        out = out.squeeze()
         out = self.head(out)
         out = self.fc(out)
 

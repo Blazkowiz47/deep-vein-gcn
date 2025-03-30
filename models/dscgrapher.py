@@ -44,14 +44,14 @@ class DSConv(Module):
         self.xdsc = DSConv_pro(
             indims,
             outdims,
-            kernel_size=kernel * kernel,
+            kernel_size=kernel,
             morph=0,
             device=device,
         )
         self.ydsc = DSConv_pro(
             indims,
             outdims,
-            kernel_size=kernel * kernel,
+            kernel_size=kernel,
             morph=1,
             device=device,
         )
@@ -132,6 +132,7 @@ class GrapherBlock(Module):
                         config["epsilon"],
                         block_config["reduce_ratio"],
                         height * width,
+                        neighbour_number=block_config["neighbour_number"],
                     ),
                     Conv2d(
                         block_config["indim"],
@@ -184,9 +185,10 @@ class Dscgrapher(Module):
 
         height = config["height"]
         width = config["width"]
-        for _ in range(config["stem"]["depth"] - 1):
+        for _ in range(config["stem"]["depth"]):
             height = height // 2
             width = width // 2
+
         self.pos_embed = Parameter(
             torch.zeros(  # pylint: disable=E1101
                 1,
@@ -236,7 +238,7 @@ class Dscgrapher(Module):
                     indim,
                     outdim,
                     kernel,
-                    stride=stride if _ + 1 != depth else 1,
+                    stride=stride,
                     bias=bias,
                     device=config["device"],
                     log=self.log,
