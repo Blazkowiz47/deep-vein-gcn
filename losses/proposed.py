@@ -1,6 +1,6 @@
 from logging import getLogger
 import torch
-from torch.nn import Module, Parameter
+from torch.nn import Linear, Module, Parameter
 import torch.nn.functional as F
 
 
@@ -23,7 +23,7 @@ class Proposed(Module):
 
     def model_init(self):
         for m in self.modules():
-            if isinstance(m, torch.nn.Linear):
+            if isinstance(m, Linear):
                 torch.nn.init.kaiming_normal_(m.weight)
                 torch.nn.init.zeros_(m.bias)
 
@@ -38,19 +38,23 @@ class Proposed(Module):
             labels = labels.view(1, labels.size(0))
 
         preds = self.fc(embds)
-
-        self.centroids.requires_grad = not freeze_centroids
-
+        loss1 = F.cross_entropy(preds, labels, reduction="mean")
         wnorm = F.normalize(self.centroids, p=2, dim=0)
         emb_norm = F.normalize(embds, p=2, dim=1)
-        cos_theta = torch.matmul(emb_norm, wnorm)
-        cos_theta = cos_theta.clamp(-1, 1)
+        self.centroids.requires_grad = not freeze_centroids
 
-        output = torch.acos(cos_theta)
+        if freeze_centroids:
+            with torch.no_grad():
+                cos_theta = torch.matmul(emb_norm, wnorm)
+                cos_theta = cos_theta.clamp(-1, 1)
+                output = torch.acos(cos_theta)
+                loss2 = F.cross_entropy(output, labels, reduction="mean")
+        else:
+            cos_theta = torch.matmul(emb_norm, wnorm)
+            cos_theta = cos_theta.clamp(-1, 1)
+            output = torch.acos(cos_theta)
+            loss2 = F.cross_entropy(output, labels, reduction="mean")
 
-        loss2 = F.cross_entropy(output, labels, reduction="mean")
-
-        loss1 = F.cross_entropy(preds, labels, reduction="mean")
         # self.log.info(f"Loss1: {loss1}, Loss2: {loss2}")
         if torch.isnan(loss1):
             self.log.error("Loss1 is NaN")
@@ -59,7 +63,7 @@ class Proposed(Module):
         if torch.isnan(loss2):
             self.log.error("Loss2 is NaN")
             exit(1)
-        return loss1, self.beta * loss2
+        return loss1, self.beta * loss2, preds
 
 
 if __name__ == "__main__":

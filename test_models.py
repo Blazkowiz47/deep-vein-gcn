@@ -1,4 +1,6 @@
 import logging
+from tqdm import tqdm
+import os
 from logging import getLogger, DEBUG, INFO
 import yaml
 
@@ -28,18 +30,24 @@ def main():
         config = yaml.load(f, Loader=yaml.FullLoader)
 
     model = get_model(config["model"], config, log).cuda()
-    model.load_state_dict(
-        torch.load(
-            "./tmp/dscgrapher_leaveoneout_29_03_25_12_22_2_224/checkpoints/best_model.pt",
-            weights_only=True,
-        )
-    )
-    # log.info(str(model))
-    # print(model(torch.rand(3, 3, 224, 224).cuda()).shape)
+    # model.load_state_dict(
+    #     torch.load(
+    #         "./tmp/dscgrapher_leaveoneout_29_03_25_12_22_2_224/checkpoints/best_model.pt",
+    #         weights_only=True,
+    #     )
+    # )
+    for x in tqdm(range(100)):
+        model.train()
+        log.info(str(model))
+        y = model(torch.rand(128, 3, 224, 224).cuda())
+        y = y.mean()
+        y.backward()
+        model.eval()
+        y = model(torch.rand(128, 3, 224, 224).cuda())
 
-    wrapper = get_dataset("fvusm", config, log, partition_split=0)
-    eer, genscores, impscores = compute_eer_mp(model, wrapper, workers=4, device="cuda")
-    print(f"EER: {eer}")
+    # wrapper = get_dataset("fvusm", config, log, partition_split=0)
+    # eer, genscores, impscores = compute_eer_mp(model, wrapper, workers=4, device="cuda")
+    # print(f"EER: {eer}")
 
 
 if __name__ == "__main__":

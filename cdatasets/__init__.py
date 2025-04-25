@@ -11,6 +11,10 @@ def get_dataset(dataset: str, config: Dict[str, Any], log: Logger, **kwargs) -> 
 
         return LeaveoneoutWrapper(config, log, **kwargs)
 
+    if dataset == "leaveoneout2":
+        from cdatasets.leaveoneout2 import Leaveoneout2Wrapper
+
+        return Leaveoneout2Wrapper(config, log, **kwargs)
 
     if dataset == "mmcbnu":
         from cdatasets.mmcbnu import MmcbnuWrapper

@@ -7,7 +7,8 @@ from typing import Dict, List
 from multiprocessing import Process
 
 import numpy as np
-import pandas as pd
+
+# import pandas as pd
 import torch
 from torch.nn import CosineSimilarity
 
@@ -166,7 +167,9 @@ def compute_eer(rdir: str, model_name: str, dataset: str) -> None:
     log.info(f"Dataset: {dataset} Imposter Scores: {len(imposter_scores)}")
 
     eer, far, frr, _ = calculate_eer(genuine_scores, imposter_scores)
-    log.error(f"{model_name} Dataset: {dataset} (G,I) ({len(genuine_scores)},{len(imposter_scores)}) EER: {eer}")
+    log.error(
+        f"{model_name} Dataset: {dataset} (G,I) ({len(genuine_scores)},{len(imposter_scores)}) EER: {eer}"
+    )
     np.save(f"tmp/{model_name}/{dataset}/far_scores.npy", far)
     np.save(f"tmp/{model_name}/{dataset}/frr_scores.npy", frr)
 
@@ -189,13 +192,16 @@ def get_eer_from_matlab_features() -> None:
                 str(seed),
                 dataset,
             )
-            temp.append(Process(
-            target=compute_eer,
-            args=(
-                rdir,
-                f"leaveoutds_veinAttNet_{dataset}_seed_{seed}",
-                dataset,
-            )))
+            temp.append(
+                Process(
+                    target=compute_eer,
+                    args=(
+                        rdir,
+                        f"leaveoutds_veinAttNet_{dataset}_seed_{seed}",
+                        dataset,
+                    ),
+                )
+            )
             # break
             temp[-1].start()
     for p in temp:
@@ -204,4 +210,8 @@ def get_eer_from_matlab_features() -> None:
 
 if __name__ == "__main__":
     # generate_dataset_csv()
-    get_eer_from_matlab_features()
+    # get_eer_from_matlab_features()
+    import itertools
+
+    g = [2, 4, 6, 8]
+    print(list(itertools.product(g, g)))

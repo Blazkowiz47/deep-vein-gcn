@@ -33,7 +33,7 @@ parser.add_argument(
     "--config",
     # default="./configs/dscgrapher.yaml",
     # default="./configs/deepvein.yaml",
-    default="./configs/arcvein.yaml",
+    default="./configs/dscgrapher2.yaml",
     type=str,
     help="Train config file.",
 )
@@ -55,7 +55,7 @@ parser.add_argument(
 parser.add_argument(
     "-d",
     "--dataset",
-    default="leaveoneout",
+    default="leaveoneout2",
     type=str,
     help="""
     Give a single dataset name or multiple datasets to chain together.
@@ -129,14 +129,13 @@ def main(args, config) -> str:
 
     set_seeds(log, config["seed"])
     epochs = config["epochs"]
+    epochs = 200
     validate_after_epochs = config["validate_after_epochs"]
 
     device = config["device"]  # You can change this to cpu.
 
     wrapper = get_dataset(args.dataset, config, log)
 
-    trainds = wrapper.get_split("train")
-    validationds = wrapper.get_split("validation", batch_size=8)
     if config["num_classes"] != wrapper.num_classes:
         config["num_classes"] = wrapper.num_classes
 
@@ -178,7 +177,9 @@ def main(args, config) -> str:
     validation_acc_didnt_increase = early_stop
 
     try:
+        validationds = wrapper.get_split("validation", batch_size=8)
         for epoch in range(epochs):
+            trainds = wrapper.get_split("train")
             model.train()
             criterion.train()
             train_losses = []

@@ -14,7 +14,7 @@ from utils import DatasetGenerator, Wrapper, image_extensions
 set_image_backend("accimage")  # Faster image loading than PIL
 
 
-class LeaveoneoutWrapper(Wrapper):
+class Leaveoneout2Wrapper(Wrapper):
     def __init__(
         self,
         config: Dict[str, Any],
@@ -119,9 +119,13 @@ class LeaveoneoutWrapper(Wrapper):
 
         datalist: List[Any] = []
         for cid, class_name in enumerate(data.keys()):
-            for img in data[class_name]:
+            for img in (
+                data[class_name]
+                if ssplit != "train"
+                else random.sample(data[class_name], self.mintrain_imgs)
+            ):
                 datalist.append((img, cid))
-
+        self.log.info(f'Total iamges in {ssplit}: {len(datalist)}')
         return datalist
 
     def get_split(

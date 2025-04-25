@@ -26,12 +26,13 @@ RUN echo 'alias ta="tmux attach"' >> /root/.bashrc
 ENV TERM=xterm-256color
 
 # Dependencies
-RUN pip install --upgrade pip
-RUN pip install torch torchvision torchaudio
-RUN pip install fvcore
-RUN pip install einops
-RUN pip install timm
-RUN pip install wandb
+RUN pip install --upgrade pip --no-cache-dir
+RUN pip install torch torchvision --no-cache-dir
+RUN pip install fvcore --no-cache-dir
+RUN pip install einops --no-cache-dir
+RUN pip install timm --no-cache-dir
+RUN pip install wandb --no-cache-dir
+RUN pip install torchmetrics --no-cache-dir
 
 # Keep container alive:
 CMD ["/bin/bash"]

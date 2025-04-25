@@ -17,7 +17,7 @@ loss: "proposed"
 num_classes: 301 # For training on FV-300
 freeze_centroids: 30
 embedding_size: 256
-beta: 1.0
+beta: 0.3
 
 # Hyper parameters for model
 model: "dscgrapher"
@@ -28,8 +28,8 @@ stem:
   indim: 3
   outdim: 64
   kernels:
+    - 9
     - 7
-    - 5
     - 3
   stride: 2
   bias: True
@@ -54,8 +54,8 @@ backbone:
     hdim: 256
     outdim: 128
 
-    reduce_ratio: 4
-    graphers: 6
+    reduce_ratio: 1
+    graphers: 4
     shrinker_kernel: 3
     shrinker_stride: 2
     neighbour_number: 18
@@ -65,8 +65,8 @@ backbone:
     hdim: 512
     outdim: 256
 
-    reduce_ratio: 2
-    graphers: 2
+    reduce_ratio: 1
+    graphers: 6
     shrinker_kernel: 3
     shrinker_stride: 2
     neighbour_number: 9

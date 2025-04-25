@@ -26,7 +26,7 @@ parser.add_argument(
     "-c",
     "--config",
     # default="./configs/dscgrapher.yaml",
-    default="./configs/deepvein.yaml",
+    default="./configs/dscgrapher2.yaml",
     # default="./configs/arcvein.yaml",
     type=str,
     help="Train config file.",
@@ -152,14 +152,10 @@ def chunkify(lst: List[int], n: int) -> List[Tuple[int, List[int]]]:
     return [(i, lst[i::n]) for i in range(n)]
 
 
-def parallel_driver(args):
+def parallel_driver(args, config)->float:
     """
     Wrapper for the driver.
     """
-    args = parser.parse_args()
-
-    with open(args.config, "r") as fp:
-        config = yaml.safe_load(fp)
 
     checkpoint = args.checkpoint
     dataset = args.dataset
@@ -241,16 +237,13 @@ def parallel_driver(args):
     log.error(f"{model_name} Dataset: {dataset} EER: {eer}")
     np.save(f"tmp/{model_name}/{dataset}/far_scores.npy", far)
     np.save(f"tmp/{model_name}/{dataset}/frr_scores.npy", frr)
+    return eer
 
 
-def driver(args):
+def driver(args, config):
     """
     Wrapper for the driver.
     """
-    args = parser.parse_args()
-
-    with open(args.config, "r") as fp:
-        config = yaml.safe_load(fp)
 
     checkpoint = args.checkpoint
     dataset = args.dataset
@@ -350,4 +343,8 @@ def driver(args):
 
 if __name__ == "__main__":
     args = parser.parse_args()
-    parallel_driver(args)
+
+    with open(args.config, "r") as fp:
+        config = yaml.safe_load(fp)
+
+    parallel_driver(args, config)

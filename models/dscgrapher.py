@@ -4,7 +4,7 @@ import torch
 
 from logging import Logger
 from typing import Any, Dict, List
-from torch.nn import Conv2d, Module, Parameter, Sequential
+from torch.nn import Conv2d, GroupNorm, LayerNorm, Linear, Module, Parameter, Sequential
 from torch.nn.functional import adaptive_avg_pool2d
 from torch.nn.modules import BatchNorm2d
 from utils.dscnet.S3_DSConv_pro import DSConv_pro
@@ -132,7 +132,7 @@ class GrapherBlock(Module):
                         config["epsilon"],
                         block_config["reduce_ratio"],
                         height * width,
-                        neighbour_number=block_config["neighbour_number"],
+                        relative_pos=True,
                     ),
                     Conv2d(
                         block_config["indim"],
@@ -208,12 +208,12 @@ class Dscgrapher(Module):
 
     def model_init(self):
         for m in self.modules():
-            if isinstance(m, Conv2d):
+            if isinstance(m, (Conv2d, Linear)):
                 torch.nn.init.kaiming_normal_(m.weight)
                 if m.bias is not None:
                     m.bias.data.zero_()
 
-            elif isinstance(m, (torch.nn.BatchNorm2d, torch.nn.GroupNorm)):
+            elif isinstance(m, (BatchNorm2d, GroupNorm,LayerNorm)):
                 torch.nn.init.constant_(m.weight, 1)
                 torch.nn.init.constant_(m.bias, 0)
 

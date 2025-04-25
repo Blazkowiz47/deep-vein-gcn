@@ -180,8 +180,6 @@ class Grapher(nn.Module):
         n: int = 32,
         drop_path: float = 0.0,
         relative_pos: bool = False,
-        max_dilation: float = 0,
-        neighbour_number: int = 9,
     ):
         super(Grapher, self).__init__()
         self.channels = in_channels
