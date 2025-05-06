@@ -1,4 +1,5 @@
 import csv
+import shutil
 from tqdm import tqdm
 import os
 import random
@@ -208,10 +209,248 @@ def get_eer_from_matlab_features() -> None:
         p.join()
 
 
-if __name__ == "__main__":
-    # generate_dataset_csv()
-    # get_eer_from_matlab_features()
-    import itertools
+def check_runs():
+    runs = [
+        "dscgrapher_leaveoneout_03_03_25_18_01_2_219",
+        "arcvein_leaveoneout_06_03_25_10_35_2_223",
+        "lgfin_leaveoneout_06_03_25_13_04_2_236",
+        "fvit_leaveoneout_07_03_25_11_11_2_201",
+        "leaveoutds_veinAttNet_vera_seed_0",
+        "dscgrapher_leaveoneout_24_04_25_02_57_2_253",
+        "dscgrapher_leaveoneout_04_03_25_06_34_2_229",
+        "arcvein_leaveoneout_06_03_25_10_35_2_225",
+        "lgfin_leaveoneout_06_03_25_14_46_2_255",
+        "fvit_leaveoneout_07_03_25_11_11_2_203",
+        "leaveoutds_veinAttNet_vera_seed_1",
+        "dscgrapher_leaveoneout_22_04_25_09_59_2_225",
+        "dscgrapher_leaveoneout_05_03_25_14_05_2_231",
+        "arcvein_leaveoneout_06_03_25_10_35_2_228",
+        "lgfin_leaveoneout_06_03_25_16_30_2_210",
+        "fvit_leaveoneout_07_03_25_11_11_2_207",
+        "leaveoutds_veinAttNet_vera_seed_2",
+        "dscgrapher_leaveoneout_22_04_25_16_23_2_230",
+        "dscgrapher_leaveoneout_05_03_25_23_01_2_233",
+        "arcvein_leaveoneout_06_03_25_10_35_2_235",
+        "lgfin_leaveoneout_06_03_25_18_13_2_247",
+        "fvit_leaveoneout_07_03_25_11_11_2_213",
+        "leaveoutds_veinAttNet_vera_seed_3",
+        "dscgrapher_leaveoneout_22_04_25_22_47_2_249",
+        "dscgrapher_leaveoneout_05_03_25_00_54_2_253",
+        "arcvein_leaveoneout_06_03_25_11_40_2_248",
+        "lgfin_leaveoneout_07_03_25_13_35_2_248",
+        "fvit_leaveoneout_07_03_25_12_54_2_207",
+        "leaveoutds_veinAttNet_polyu_seed_0",
+        "dscgrapher_leaveoneout_23_04_25_20_21_2_231",
+        "dscgrapher_leaveoneout_04_03_25_19_22_2_251",
+        "arcvein_leaveoneout_06_03_25_11_40_2_249",
+        "lgfin_leaveoneout_07_03_25_13_35_2_249",
+        "fvit_leaveoneout_07_03_25_12_54_2_210",
+        "leaveoutds_veinAttNet_polyu_seed_1",
+        "dscgrapher_leaveoneout_21_04_25_07_39_2_217",
+        "dscgrapher_leaveoneout_04_03_25_07_18_2_232",
+        "arcvein_leaveoneout_06_03_25_11_40_2_255",
+        "lgfin_leaveoneout_07_03_25_19_18_2_248",
+        "fvit_leaveoneout_07_03_25_12_54_2_214",
+        "leaveoutds_veinAttNet_polyu_seed_2",
+        "dscgrapher_leaveoneout_21_04_25_14_48_2_203",
+        "dscgrapher_leaveoneout_03_03_25_18_01_2_221",
+        "arcvein_leaveoneout_06_03_25_11_41_2_200",
+        "lgfin_leaveoneout_07_03_25_19_18_2_249",
+        "fvit_leaveoneout_07_03_25_12_54_2_220",
+        "leaveoutds_veinAttNet_polyu_seed_3",
+        "dscgrapher_leaveoneout_21_04_25_21_09_2_255",
+        "dscgrapher_leaveoneout_04_03_25_18_13_2_231",
+        "arcvein_leaveoneout_06_03_25_13_26_2_229",
+        "lgfin_leaveoneout_07_03_25_05_34_2_201",
+        "fvit_leaveoneout_07_03_25_14_18_2_225",
+        "leaveoutds_veinAttNet_mmcbnu_seed_0",
+        "dscgrapher_leaveoneout_23_04_25_14_48_2_203",
+        "dscgrapher_leaveoneout_04_03_25_22_19_2_212",
+        "arcvein_leaveoneout_06_03_25_13_26_2_230",
+        "lgfin_leaveoneout_07_03_25_05_34_2_202",
+        "fvit_leaveoneout_07_03_25_14_18_2_227",
+        "leaveoutds_veinAttNet_mmcbnu_seed_1",
+        "dscgrapher_leaveoneout_19_04_25_21_42_2_259",
+        "dscgrapher_leaveoneout_05_03_25_02_44_2_223",
+        "arcvein_leaveoneout_06_03_25_13_26_2_234",
+        "lgfin_leaveoneout_07_03_25_05_34_2_206",
+        "fvit_leaveoneout_07_03_25_14_18_2_230",
+        "leaveoutds_veinAttNet_mmcbnu_seed_2",
+        "dscgrapher_leaveoneout_20_04_25_08_01_2_244",
+        "dscgrapher_leaveoneout_05_03_25_07_09_2_212",
+        "arcvein_leaveoneout_06_03_25_13_26_2_241",
+        "lgfin_leaveoneout_07_03_25_05_34_2_212",
+        "fvit_leaveoneout_07_03_25_14_18_2_236",
+        "leaveoutds_veinAttNet_mmcbnu_seed_3",
+        "dscgrapher_leaveoneout_20_04_25_13_46_2_236",
+        "dscgrapher_leaveoneout_04_03_25_18_33_2_251",
+        "arcvein_leaveoneout_06_03_25_14_25_2_240",
+        "lgfin_leaveoneout_06_03_25_17_05_2_224",
+        "fvit_leaveoneout_07_03_25_14_47_2_226",
+        "leaveoutds_veinAttNet_fvusm_seed_0",
+        "dscgrapher_leaveoneout_18_04_25_11_49_2_227",
+        "dscgrapher_leaveoneout_04_03_25_22_55_2_257",
+        "arcvein_leaveoneout_06_03_25_14_25_2_242",
+        "lgfin_leaveoneout_06_03_25_17_05_2_224",
+        "fvit_leaveoneout_07_03_25_14_47_2_228",
+        "leaveoutds_veinAttNet_fvusm_seed_1",
+        "dscgrapher_leaveoneout_18_04_25_18_13_2_209",
+        "dscgrapher_leaveoneout_05_03_25_03_18_2_232",
+        "arcvein_leaveoneout_06_03_25_14_25_2_246",
+        "lgfin_leaveoneout_06_03_25_17_05_2_227",
+        "fvit_leaveoneout_07_03_25_14_47_2_232",
+        "leaveoutds_veinAttNet_fvusm_seed_2",
+        "dscgrapher_leaveoneout_19_04_25_02_38_2_246",
+        "dscgrapher_leaveoneout_05_03_25_07_40_2_224",
+        "arcvein_leaveoneout_06_03_25_14_25_2_252",
+        "lgfin_leaveoneout_06_03_25_17_05_2_233",
+        "fvit_leaveoneout_07_03_25_14_47_2_238",
+        "leaveoutds_veinAttNet_fvusm_seed_3",
+        "dscgrapher_leaveoneout_19_04_25_10_40_2_239",
+        "dscgrapher_leaveoneout_05_03_25_13_51_2_243",
+        "arcvein_leaveoneout_06_03_25_15_22_2_228",
+        "lgfin_leaveoneout_06_03_25_15_53_2_211",
+        "fvit_leaveoneout_07_03_25_15_13_2_222",
+        "leaveoutds_veinAttNet_fv300_seed_0",
+        "dscgrapher_leaveoneout_24_04_25_09_59_2_251",
+        "dscgrapher_leaveoneout_05_03_25_14_37_2_211",
+        "arcvein_leaveoneout_06_03_25_15_22_2_229",
+        "lgfin_leaveoneout_06_03_25_15_53_2_212",
+        "fvit_leaveoneout_07_03_25_15_13_2_224",
+        "leaveoutds_veinAttNet_fv300_seed_1",
+        "dscgrapher_leaveoneout_23_04_25_07_20_2_231",
+        "dscgrapher_leaveoneout_05_03_25_15_22_2_245",
+        "arcvein_leaveoneout_06_03_25_15_22_2_233",
+        "lgfin_leaveoneout_06_03_25_15_53_2_217",
+        "fvit_leaveoneout_07_03_25_15_13_2_228",
+        "leaveoutds_veinAttNet_fv300_seed_2",
+        "dscgrapher_leaveoneout_23_04_25_09_27_2_255",
+        "dscgrapher_leaveoneout_05_03_25_16_07_2_245",
+        "arcvein_leaveoneout_06_03_25_15_22_2_240",
+        "lgfin_leaveoneout_06_03_25_15_53_2_223",
+        "fvit_leaveoneout_07_03_25_15_13_2_234",
+        "leaveoutds_veinAttNet_fv300_seed_3",
+        "dscgrapher_leaveoneout_23_04_25_11_31_2_247",
+        # stem ablation
+        "dscgrapher_leaveoneout_04_04_25_11_21_2_236",
+        "dscgrapher_leaveoneout_04_04_25_14_58_2_255",
+        "dscgrapher_leaveoneout_04_04_25_19_22_2_231",
+        "dscgrapher_leaveoneout_05_04_25_00_07_2_209",
+        "dscgrapher_leaveoneout_05_04_25_05_46_2_242",
+        "dscgrapher_leaveoneout_05_04_25_10_56_2_246",
+        "dscgrapher_leaveoneout_05_04_25_15_15_2_257",
+        "dscgrapher_leaveoneout_05_04_25_20_09_2_210",
+        # backbone ablation
+        "dscgrapher_leaveoneout_07_04_25_15_36_2_241",
+        "dscgrapher_leaveoneout_07_04_25_20_06_2_225",
+        "dscgrapher_leaveoneout_08_04_25_00_48_2_253",
+        "dscgrapher_leaveoneout_08_04_25_06_16_2_246",
+        "dscgrapher_leaveoneout_08_04_25_17_14_2_237",
+        "dscgrapher_leaveoneout_09_04_25_01_47_2_255",
+        "dscgrapher_leaveoneout_09_04_25_10_49_2_216",
+        "dscgrapher_leaveoneout_09_04_25_17_59_2_227",
+        "dscgrapher_leaveoneout_10_04_25_04_14_2_211",
+        "dscgrapher_leaveoneout_10_04_25_13_05_2_208",
+        "dscgrapher_leaveoneout_10_04_25_23_14_2_243",
+        "dscgrapher_leaveoneout_11_04_25_10_02_2_222",
+        "dscgrapher_leaveoneout_11_04_25_20_38_2_247",
+        "dscgrapher_leaveoneout_12_04_25_02_38_2_247",
+        "dscgrapher_leaveoneout_12_04_25_09_01_2_224",
+        "dscgrapher_leaveoneout_12_04_25_16_03_2_224",
+    ]
+    avoid = [
+        "dscgrapher_leaveoneout_03_03_25_18_01_2_219",
+        "dscgrapher_leaveoneout_04_03_25_06_34_2_229",
+        "dscgrapher_leaveoneout_05_03_25_14_05_2_231",
+        "dscgrapher_leaveoneout_05_03_25_23_01_2_233",
+        "dscgrapher_leaveoneout_05_03_25_00_54_2_253",
+        "dscgrapher_leaveoneout_04_03_25_19_22_2_251",
+        "dscgrapher_leaveoneout_04_03_25_07_18_2_232",
+        "dscgrapher_leaveoneout_03_03_25_18_01_2_221",
+        "dscgrapher_leaveoneout_04_03_25_18_13_2_231",
+        "dscgrapher_leaveoneout_04_03_25_22_19_2_212",
+        "dscgrapher_leaveoneout_05_03_25_02_44_2_223",
+        "dscgrapher_leaveoneout_05_03_25_07_09_2_212",
+        "dscgrapher_leaveoneout_04_03_25_18_33_2_251",
+        "dscgrapher_leaveoneout_04_03_25_22_55_2_257",
+        "dscgrapher_leaveoneout_05_03_25_03_18_2_232",
+        "dscgrapher_leaveoneout_05_03_25_07_40_2_224",
+        "dscgrapher_leaveoneout_05_03_25_13_51_2_243",
+        "dscgrapher_leaveoneout_05_03_25_14_37_2_211",
+        "dscgrapher_leaveoneout_05_03_25_15_22_2_245",
+        "dscgrapher_leaveoneout_05_03_25_16_07_2_245",
+    ]
+    print(len(runs), len(avoid))
+    exit()
+    for run in tqdm(runs):
+        if run in avoid:
+            continue
+        os.system(f"cp -r tmp/{run} final_runs/{run}")
 
-    g = [2, 4, 6, 8]
-    print(list(itertools.product(g, g)))
+
+def copy_enhanced_fvusm():
+    rdir = "/mnt/cluster/nbl-users/Shreyas-Sushrut-Raghu/fingervein-datasetes/statistical_experiments/fvusm"
+    odir = "/mnt/cluster/nbl-users/Shreyas-Sushrut-Raghu/fingervein-datasetes/statistical_experiments/enhanced_fvusm"
+    edir = "/mnt/cluster/nbl-users/Shreyas-Sushrut-Raghu/fingervein-datasetes/Published_database_FV-USM_Dec2013/Enhanced"
+    for seed in range(5):
+        for cid in ["test", "train"]:
+            trdir = pjoin(rdir, str(seed), cid)
+            for subjectid in tqdm(os.listdir(trdir)):
+                for filename in os.listdir(pjoin(trdir, subjectid)):
+                    if filename.endswith(".jpg"):
+                        os.makedirs(
+                            pjoin(odir, str(seed), cid, subjectid), exist_ok=True
+                        )
+                        if "test" in filename:
+                            shutil.copy(
+                                pjoin(edir, "test", subjectid, filename.split("_")[-1]),
+                                pjoin(odir, str(seed), cid, subjectid, filename),
+                            )
+                        else:
+                            shutil.copy(
+                                pjoin(
+                                    edir, "train", subjectid, filename.split("_")[-1]
+                                ),
+                                pjoin(odir, str(seed), cid, subjectid, filename),
+                            )
+
+
+def clean_final_runs():
+    for run in tqdm(os.listdir("final_runs")):
+        files = list(os.listdir(pjoin("final_runs", run)))
+        for file in files:
+            if file == "checkpoints":
+                for chkpts in os.listdir(pjoin("final_runs", run, file)):
+                    if "best" in chkpts:
+                        os.system(
+                            f"cp final_runs/{run}/{file}/{chkpts} final_runs/{run}/{chkpts}"
+                        )
+                os.system(f"rm -rf final_runs/{run}/{file}")
+            else:
+                os.system(f"rm -rf final_runs/{run}/{file}")
+
+
+def check_final_runs():
+    for run in tqdm(os.listdir("final_runs")):
+        files = list(os.listdir(pjoin("final_runs", run)))
+        if len(files) == 1 and "best" in files[0]:
+            continue
+        else:
+            print(run)
+
+
+def clean_tmp_runs():
+    final_runs = list(os.listdir("final_runs"))
+    for run in tqdm(os.listdir("tmp")):
+        if run in final_runs:
+            continue
+        else:
+            os.system(f"sudo rm -rf tmp/{run}")
+
+
+if __name__ == "__main__":
+    # check_runs()
+    # clean_final_runs()
+    # copy_enhanced_fvusm()
+    # check_final_runs()
+    clean_tmp_runs()

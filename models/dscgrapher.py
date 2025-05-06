@@ -213,7 +213,7 @@ class Dscgrapher(Module):
                 if m.bias is not None:
                     m.bias.data.zero_()
 
-            elif isinstance(m, (BatchNorm2d, GroupNorm,LayerNorm)):
+            elif isinstance(m, (BatchNorm2d, GroupNorm, LayerNorm)):
                 torch.nn.init.constant_(m.weight, 1)
                 torch.nn.init.constant_(m.bias, 0)
 
@@ -318,5 +318,5 @@ class Dscgrapher(Module):
         x = self.backbone(x)
         x = adaptive_avg_pool2d(x, (1, 1))
         self.log.debug(f"Pooled shape: {x.shape}")
-        x = x.squeeze()
+        x = x.squeeze(2).squeeze(2)
         return x
