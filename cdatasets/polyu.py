@@ -22,7 +22,7 @@ class PolyuWrapper(Wrapper):
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
         self.stat_seed = kwargs.get("stat_seed", 0)
-        self.partition_split = kwargs.get("partition_split", 0.8)
+        self.partition_split = kwargs.get("partition_split", 0)
         self.height = config.get("height", 224)
         self.width = config.get("width", 224)
         self.rdir = f"./data/polyu/{self.stat_seed}"
@@ -94,10 +94,7 @@ class PolyuWrapper(Wrapper):
             DatasetGenerator(data, self.transform),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
-            pin_memory=True,
             shuffle=True,
-            drop_last=True,
-            persistent_workers=True,
             prefetch_factor=num_workers or self.num_workers,
         )
 

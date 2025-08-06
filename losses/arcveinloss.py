@@ -21,8 +21,8 @@ class ArcCosineLoss(Module):
         self.fc = Linear(512, config["num_classes"])
         self.centroids = Parameter(torch.randn((config["num_classes"], 512)))
 
-    def forward(self, pred, label, freeze_centroids=False):
-        sfmx = self.fc(pred)
+    def forward(self, embds, label, freeze_centroids=False):
+        sfmx = self.fc(embds)
         sfmx = self.softmax(sfmx)
         label = torch.argmax(label, dim=1)
         ls = self.ls(sfmx, label)
@@ -30,13 +30,13 @@ class ArcCosineLoss(Module):
         if self.fine_tune:
             return ls, sfmx
 
-        npred = pred / torch.sqrt(torch.sum(pred**2, dim=1, keepdim=True))
+        nembds = embds / torch.sqrt(torch.sum(embds**2, dim=1, keepdim=True))
         self.centroids.requires_grad = not freeze_centroids
         ncent = self.centroids / torch.sqrt(
             torch.sum(self.centroids**2, dim=1, keepdim=True)
         )
         ncent = ncent.transpose(0, 1)
-        lac = torch.matmul(npred, ncent)
+        lac = torch.matmul(nembds, ncent)
         lac = torch.acos(lac)
         lac = torch.sum(lac)
         return ls, self.lmbda * lac

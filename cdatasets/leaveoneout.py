@@ -3,6 +3,7 @@ import random
 from logging import Logger
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
+from PIL import Image
 import numpy as np
 import torch
 from torch.utils.data import DataLoader
@@ -46,7 +47,7 @@ class LeaveoneoutWrapper(Wrapper):
         self.width = config.get("width", 224)
         self.rdirs: List[str] = []
 
-        for dataset in os.listdir("./data"):
+        for dataset in ["fvusm", "fv300", "mmcbnu", "polyu", "vera"]:
             if dataset != self.leaveoutds and not dataset.startswith("leaveoutds_"):
                 self.rdirs.append(os.path.join("./data", dataset, str(self.stat_seed)))
 
@@ -129,36 +130,40 @@ class LeaveoneoutWrapper(Wrapper):
         split: str,
         batch_size: Optional[int] = None,
         num_workers: Optional[int] = None,
+        **kwargs: Any,
     ) -> DataLoader:
         batch_size = batch_size or self.batch_size
         self.log.debug("Looping through %s split." % split)
         data = self.loop_splitset(split)
         self.log.debug("Data-length for %s split: %d" % (split, len(data)))
         return DataLoader(
-            DatasetGenerator(data, self.transform),
+            DatasetGenerator(data, self.transform, **kwargs),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
-            pin_memory=True,
             shuffle=True,
-            persistent_workers=True,
             prefetch_factor=num_workers or self.num_workers,
         )
 
     def augment(self, image: Any) -> Any:
         return self.augmentations(image)
 
-    def transform(self, datapoint: Iterable[Any]) -> Tuple:
-        img, lbl = datapoint
+    def transform(self, datapoint: Iterable[Any], **kwargs) -> Tuple:
+        imgfname, lbl = datapoint
         if self.num_classes is None:
             raise ValueError("Num classes not set.")
         # Initialise label
+        img = Image.open(imgfname)
         label = torch.zeros(self.num_classes)
         label[lbl] = 1
 
         imgarray = np.array(img)
-        imgarray = (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min())
+        # imgarray = (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min() + 1e-6)
+        imgarray = imgarray / 255.0
         imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
 
         imgarray = self.augment(imgarray)
+        
+        if kwargs.get("return_filename"):
+            return imgarray.float(), label.float(), imgfname
 
         return imgarray.float(), label.float()

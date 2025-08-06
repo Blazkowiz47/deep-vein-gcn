@@ -92,59 +92,53 @@ def get_scores(
 
 def get_genuine_scores_batched(
     subjects_chunk: Tuple[int, List[int]],
-    subjects_embeddings: Dict[int, List[torch.Tensor]],
+    subjects_embeddings: Dict[int, torch.Tensor],
     log: Logger,
 ) -> List[float]:
     results: List[float] = []
     cosine_sim = CosineSimilarity(dim=1, eps=1e-6)
     _, subjects = subjects_chunk
-    for subject in subjects:
-        maxn = min(10, len(subjects_embeddings[subject]))
-        x = list(range(len(subjects_embeddings[subject])))
-        for emb1id in random.sample(x, maxn):
-            for emb2id in random.sample(x, maxn):
-                if emb1id == emb2id:
-                    continue
-                emb1 = subjects_embeddings[subject][emb1id]
-                emb2 = subjects_embeddings[subject][emb2id]
-                if emb1.shape[0] != 1:
-                    emb1 = emb1.unsqueeze(0)
 
-                if emb2.shape[0] != 1:
-                    emb2 = emb2.unsqueeze(0)
-                sim = cosine_sim(emb1, emb2).squeeze()
-                results.append(sim.item())
+    for subject in subjects:
+        embeddings = subjects_embeddings[subject].cuda()
+        for id1 in range(embeddings.shape[0]):
+            emb1 = embeddings[id1 : id1 + 1, :].cuda()
+            sims = cosine_sim(emb1, embeddings).squeeze()
+            sims = sims.detach().cpu()
+            for id2, sim in enumerate(sims):
+                if id1 != id2:
+                    results.append(sim.item())
+            del emb1
+        embeddings = embeddings.detach().cpu()
+
     return results
 
 
 def get_imposter_scores_batched(
     subjects_chunk: Tuple[int, List[int]],
-    subjects_embeddings: Dict[int, List[torch.Tensor]],
+    subjects_embeddings: Dict[int, torch.Tensor],
     log: Logger,
 ) -> List[float]:
     results: List[float] = []
     cosine_sim = CosineSimilarity(dim=1, eps=1e-6)
     _, subjects = subjects_chunk
-    for subject1 in subjects:
-        for subject2 in subjects_embeddings:
-            if subject1 != subject2:
-                maxn1 = min(3, len(subjects_embeddings[subject1]))
-                maxn2 = min(3, len(subjects_embeddings[subject2]))
-                for emb1id in random.sample(
-                    list(range(len(subjects_embeddings[subject1]))), maxn1
-                ):
-                    for emb2id in random.sample(
-                        list(range(len(subjects_embeddings[subject2]))), maxn2
-                    ):
-                        emb1 = subjects_embeddings[subject1][emb1id]
-                        emb2 = subjects_embeddings[subject2][emb2id]
-                        if emb1.shape[0] != 1:
-                            emb1 = emb1.unsqueeze(0)
 
-                        if emb2.shape[0] != 1:
-                            emb2 = emb2.unsqueeze(0)
-                        sim = cosine_sim(emb1, emb2).squeeze()
+    for subject1 in subjects:
+        subjects_embeddings[subject1] = subjects_embeddings[subject1].cuda()
+        for subject2 in subjects_embeddings:
+            subjects_embeddings[subject2] = subjects_embeddings[subject2].cuda()
+            for id1 in range(subjects_embeddings[subject1].shape[0]):
+                if subject1 != subject2:
+                    emb1 = subjects_embeddings[subject1][id1 : id1 + 1, :].cuda()
+                    sims = cosine_sim(emb1, subjects_embeddings[subject2]).squeeze()
+                    sims = sims.detach().cpu()
+                    for sim in sims:
                         results.append(sim.item())
+                    del emb1
+            subjects_embeddings[subject2] = subjects_embeddings[subject2].detach().cpu()
+
+        subjects_embeddings[subject1] = subjects_embeddings[subject1].detach().cpu()
+
     return results
 
 
@@ -152,14 +146,19 @@ def chunkify(lst: List[int], n: int) -> List[Tuple[int, List[int]]]:
     return [(i, lst[i::n]) for i in range(n)]
 
 
-def parallel_driver(args, config)->float:
+def parallel_driver(args, config) -> float:
     """
     Wrapper for the driver.
     """
 
-    checkpoint = args.checkpoint
     dataset = args.dataset
     model = config["model"]
+
+    if model == "veinAttNet":
+        checkpoint = "_".join(args.checkpoint.split("_")[1:])
+        args.checkpoint = args.checkpoint.split("_")[0]
+    else:
+        checkpoint = args.checkpoint
     model_name = checkpoint
     checkpoint = os.path.join("./tmp", checkpoint, "checkpoints", "best_model.pt")
 
@@ -175,170 +174,101 @@ def parallel_driver(args, config)->float:
     config["num_classes"] = leaveoutds.num_classes
 
     wrapper = get_dataset(args.dataset, config, log, partition_split=0)
-    testds = wrapper.get_split("test")
+    testds = wrapper.get_split("test", batch_size=16)
 
-    model = get_model(model, config, log).to(device)
-    model.load_state_dict(torch.load(checkpoint, weights_only=True), strict=False)
-    model.eval()
-    model.to(device)
-    log.info(str(model))
+    # subject_embeddings: Dict[int, torch.Tensor] = {}
+    # raw_subject_embeddings: Dict[int, List[torch.Tensor]] = {}
+    # if model != "veinAttNet":
+    #     model = get_model(model, config, log).to(device)
+    #     model.load_state_dict(torch.load(checkpoint, weights_only=True), strict=False)
+    #     model.eval()
+    #     model.to(device)
+    #     log.info(str(model))
+    #
+    #     with torch.no_grad():
+    #         for images, labels in tqdm(testds, desc="Fetching Embeddings"):
+    #             feats = model(images.to(device)).detach().cpu()
+    #             labels = labels.argmax(dim=1).numpy().tolist()
+    #             for feat, label in zip(feats, labels):
+    #                 if label not in raw_subject_embeddings:
+    #                     raw_subject_embeddings[label] = []
+    #
+    #                 raw_subject_embeddings[label].append(feat.squeeze().unsqueeze(0))
+    #
+    # else:
+    #     path = os.path.join("./features/leaveout_" + args.checkpoint, args.dataset)
+    #     for sid, subject in tqdm(
+    #         enumerate(os.listdir(path)), desc="Fetching Embeddings"
+    #     ):
+    #         raw_subject_embeddings[sid] = []
+    #         for fname in os.listdir(os.path.join(path, subject)):
+    #             if fname.endswith(".txt"):
+    #                 raw_subject_embeddings[sid].append(
+    #                     torch.tensor(np.loadtxt(os.path.join(path, subject, fname)))
+    #                     .squeeze()
+    #                     .unsqueeze(0)
+    #                 )
+    #
+    # for subject in raw_subject_embeddings:
+    #     subject_embeddings[subject] = torch.cat(raw_subject_embeddings[subject], dim=0)
+    #
+    # genuine_scores: List[float] = []
+    # imposter_scores: List[float] = []
+    # log.error(f"Total subjects: {len(subject_embeddings)}")
+    #
+    # with Pool(workers := 8) as p:
+    #     partial_func = partial(
+    #         get_genuine_scores_batched,
+    #         subjects_embeddings=subject_embeddings,
+    #         log=wrapper.log,
+    #     )
+    #     chunkified_genuine_scores = list(
+    #         p.map(
+    #             partial_func,
+    #             chunkifiedsubjects := chunkify(
+    #                 list(subject_embeddings.keys()), workers
+    #             ),
+    #         )
+    #     )
+    #     for cs in chunkified_genuine_scores:
+    #         genuine_scores.extend(cs)
+    #
+    #     log.error(f"Total genuine scores: {len(genuine_scores)}")
+    #     partial_func = partial(
+    #         get_imposter_scores_batched,
+    #         subjects_embeddings=subject_embeddings,
+    #         log=wrapper.log,
+    #     )
+    #
+    #     chunkified_imposter_scores = list(
+    #         p.map(
+    #             partial_func,
+    #             chunkifiedsubjects,
+    #         )
+    #     )
+    #     for cs in chunkified_imposter_scores:
+    #         imposter_scores.extend(cs)
+    #     log.error(f"Total imposter scores: {len(imposter_scores)}")
+    #
+    # print("Saving Scores")
+    # os.makedirs(f"tmp/{model_name}/{dataset}", exist_ok=True)
+    # np.save(f"tmp/{model_name}/{dataset}/genuine_scores.npy", np.array(genuine_scores))
+    # np.save(
+    #     f"tmp/{model_name}/{dataset}/imposter_scores.npy", np.array(imposter_scores)
+    # )
 
-    with torch.no_grad():
-        subject_embeddings: Dict[int, List[torch.Tensor]] = {}
-        for images, labels in tqdm(testds, desc="Fetching Embeddings", position=0):
-            preds = model(images.to(device)).detach().cpu()
-            labels = labels.argmax(dim=1).numpy().tolist()
-            for pred, label in zip(preds, labels):
-                if label not in subject_embeddings:
-                    subject_embeddings[label] = []
+    genuine_scores = np.load(f"tmp/{model_name}/{dataset}/genuine_scores.npy")
+    imposter_scores = np.load(f"tmp/{model_name}/{dataset}/imposter_scores.npy")
 
-                subject_embeddings[label].append(pred.squeeze().unsqueeze(0))
-
-    genuine_scores: List[float] = []
-    imposter_scores: List[float] = []
-
-    with Pool(workers := 8) as p:
-        partial_func = partial(
-            get_genuine_scores_batched,
-            subjects_embeddings=subject_embeddings,
-            log=wrapper.log,
-        )
-        chunkified_genuine_scores = p.map(
-            partial_func,
-            chunkifiedsubjects := chunkify(list(subject_embeddings.keys()), workers),
-        )
-        for cs in chunkified_genuine_scores:
-            genuine_scores.extend(cs)
-        partial_func = partial(
-            get_imposter_scores_batched,
-            subjects_embeddings=subject_embeddings,
-            log=wrapper.log,
-        )
-        chunkified_imposter_scores = p.map(
-            partial_func,
-            chunkifiedsubjects,
-        )
-        for cs in chunkified_imposter_scores:
-            imposter_scores.extend(cs)
-
-    print("Saving Scores")
     log.error(f"Total genuine scores: {len(genuine_scores)}")
     log.error(f"Total imposter scores: {len(imposter_scores)}")
-    os.makedirs(f"tmp/{model_name}/{dataset}", exist_ok=True)
-    np.save(f"tmp/{model_name}/{dataset}/genuine_scores.npy", np.array(genuine_scores))
-    np.save(
-        f"tmp/{model_name}/{dataset}/imposter_scores.npy", np.array(imposter_scores)
-    )
 
-    log.info(f"Dataset: {dataset} Genuine Scores: {len(genuine_scores)}")
-    log.info(f"Dataset: {dataset} Imposter Scores: {len(imposter_scores)}")
-
+    torch.cuda.empty_cache()
     eer, far, frr, _ = calculate_eer(genuine_scores, imposter_scores)
     log.error(f"{model_name} Dataset: {dataset} EER: {eer}")
     np.save(f"tmp/{model_name}/{dataset}/far_scores.npy", far)
     np.save(f"tmp/{model_name}/{dataset}/frr_scores.npy", frr)
     return eer
-
-
-def driver(args, config):
-    """
-    Wrapper for the driver.
-    """
-
-    checkpoint = args.checkpoint
-    dataset = args.dataset
-    model = config["model"]
-    model_name = checkpoint
-    checkpoint = os.path.join("./tmp", checkpoint, "checkpoints", "best_model.pt")
-
-    initialise_dirs(model_name)
-    logfile = rf"tmp/{model_name}/eval_{dataset}.log"
-    log = logger.get_logger(model_name, logfile, args.logger_level)
-
-    set_seeds(log, config["seed"])
-    device = config["device"]  # You can change this to cpu.
-
-    config["leaveoutds"] = args.dataset
-    leaveoutds = get_dataset("leaveoneout", config, log)
-    config["num_classes"] = leaveoutds.num_classes
-
-    wrapper = get_dataset(args.dataset, config, log, partition_split=0)
-    _ = wrapper.get_split("validation")
-
-    model = get_model(model, config, log).to(device)
-    model.load_state_dict(torch.load(checkpoint, weights_only=True), strict=False)
-    model.eval()
-    model.to(device)
-    log.info(str(model))
-    subjects_samples = wrapper.test_data
-
-    with torch.no_grad():
-        subjects_embeddings: Dict[str, List[torch.Tensor]] = {}
-        for subject in tqdm(subjects_samples, desc="Extracting Embeddings"):
-            i = 0
-            for sample in subjects_samples[subject]:
-                if subject not in subjects_embeddings:
-                    subjects_embeddings[subject] = []
-                img = (
-                    transform(sample, size=(config["height"], config["width"]))
-                    .unsqueeze(0)
-                    .to(device)
-                )
-                emb = model(img, features=True).detach().cpu()
-                subjects_embeddings[subject].append(emb)
-                i += 1
-                if i == 3:
-                    continue
-
-    cosine_sim = CosineSimilarity(dim=1, eps=1e-6)
-    genuine_scores: List[float] = []
-    imposter_scores: List[float] = []
-
-    for subject in tqdm(subjects_embeddings, desc="Calculating Genuine Scores"):
-        maxn = min(10, len(subjects_embeddings[subject]))
-        for emb1 in random.sample(subjects_embeddings[subject], maxn):
-            for emb2 in random.sample(subjects_embeddings[subject], maxn):
-                if emb1.shape[0] != 1:
-                    emb1 = emb1.unsqueeze(0)
-
-                if emb2.shape[0] != 1:
-                    emb2 = emb2.unsqueeze(0)
-                if (emb1 == emb2).all():
-                    continue
-                sim = cosine_sim(emb1, emb2).squeeze()
-                genuine_scores.append(sim.item())
-
-    for subject1 in tqdm(subjects_embeddings, desc="Calculating Imposter Scores"):
-        for subject2 in subjects_embeddings:
-            if subject1 != subject2:
-                maxn1 = min(3, len(subjects_embeddings[subject1]))
-                maxn2 = min(3, len(subjects_embeddings[subject2]))
-                for emb1 in random.sample(subjects_embeddings[subject1], maxn1):
-                    for emb2 in random.sample(subjects_embeddings[subject2], maxn2):
-                        if emb1.shape[0] != 1:
-                            emb1 = emb1.unsqueeze(0)
-
-                        if emb2.shape[0] != 1:
-                            emb2 = emb2.unsqueeze(0)
-                        sim = cosine_sim(emb1, emb2).squeeze()
-                        imposter_scores.append(sim.item())
-
-    print("Saving Scores")
-    log.error(f"Total genuine scores: {len(genuine_scores)}")
-    log.error(f"Total imposter scores: {len(imposter_scores)}")
-    os.makedirs(f"tmp/{model_name}/{dataset}", exist_ok=True)
-    np.save(f"tmp/{model_name}/{dataset}/genuine_scores.npy", np.array(genuine_scores))
-    np.save(
-        f"tmp/{model_name}/{dataset}/imposter_scores.npy", np.array(imposter_scores)
-    )
-
-    log.info(f"Dataset: {dataset} Genuine Scores: {len(genuine_scores)}")
-    log.info(f"Dataset: {dataset} Imposter Scores: {len(imposter_scores)}")
-
-    eer, far, frr, _ = calculate_eer(genuine_scores, imposter_scores)
-    log.error(f"{model_name} Dataset: {dataset} EER: {eer}")
-    np.save(f"tmp/{model_name}/{dataset}/far_scores.npy", far)
-    np.save(f"tmp/{model_name}/{dataset}/frr_scores.npy", frr)
 
 
 if __name__ == "__main__":

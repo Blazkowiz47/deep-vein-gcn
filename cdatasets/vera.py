@@ -22,7 +22,7 @@ class VeraWrapper(Wrapper):
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
         self.stat_seed = kwargs.get("stat_seed", 0)
-        self.partition_split = kwargs.get("partition_split", 0.8)
+        self.partition_split = kwargs.get("partition_split", 0)
         self.height = config.get("height", 224)
         self.width = config.get("width", 224)
         self.rdir = f"./data/vera/{self.stat_seed}"
@@ -45,6 +45,7 @@ class VeraWrapper(Wrapper):
     def initialise_db(self) -> None:
         for ssplit in ["train", "test"]:
             self._internal_loop(ssplit, self.total_data)
+
         dataset_length = sum([len(v) for v in self.total_data.values()])
         self.num_classes = len(self.total_data)
         self.log.debug(f"Data-length for {self.name} split: {dataset_length}")
@@ -94,10 +95,7 @@ class VeraWrapper(Wrapper):
             DatasetGenerator(data, self.transform),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
-            pin_memory=True,
             shuffle=True,
-            drop_last=True,
-            persistent_workers=True,
             prefetch_factor=num_workers or self.num_workers,
         )
 

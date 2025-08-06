@@ -44,18 +44,17 @@ def initialise_dirs(model_name: str):
 
 
 class DatasetGenerator(Dataset):
-    def __init__(self, data: List[Any], transform: Callable) -> None:
+    def __init__(self, data: List[Any], transform: Callable, **kwargs) -> None:
         self.data = data
         self.transform = transform
+        self.kwargs = kwargs
 
     def __len__(self) -> int:
         return len(self.data)
 
     def __getitem__(self, index) -> Tuple[Any]:
         datapoint = self.data[index]
-        img, *_ = datapoint
-        img = Image.open(img)
-        return self.transform((img, *datapoint[1:]))
+        return self.transform(datapoint, **self.kwargs)
 
 
 class Wrapper:
@@ -88,6 +87,7 @@ class Wrapper:
         split: str,
         batch_size: Optional[int] = None,
         num_workers: Optional[int] = None,
+        **kwargs: Any,
     ) -> DataLoader:
         """
         Generates the given split.
@@ -97,7 +97,7 @@ class Wrapper:
         data = self.loop_splitset(split)
         self.log.debug(f"Total files: {len(data)}")
         return DataLoader(
-            DatasetGenerator(data, self.transform),
+            DatasetGenerator(data, self.transform, **kwargs),
             num_workers=num_workers or self.num_workers,
             batch_size=batch_size or self.batch_size,
         )

@@ -47,12 +47,12 @@ class Proposed(Module):
             with torch.no_grad():
                 cos_theta = torch.matmul(emb_norm, wnorm)
                 cos_theta = cos_theta.clamp(-1, 1)
-                output = torch.acos(cos_theta)
+                output = torch.pi - torch.acos(cos_theta)
                 loss2 = F.cross_entropy(output, labels, reduction="mean")
         else:
             cos_theta = torch.matmul(emb_norm, wnorm)
             cos_theta = cos_theta.clamp(-1, 1)
-            output = torch.acos(cos_theta)
+            output = torch.pi - torch.acos(cos_theta)
             loss2 = F.cross_entropy(output, labels, reduction="mean")
 
         # self.log.info(f"Loss1: {loss1}, Loss2: {loss2}")

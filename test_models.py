@@ -10,7 +10,7 @@ from utils import compute_eer_mp
 import torch
 import math
 
-logging.basicConfig(level=INFO)
+logging.basicConfig(level=DEBUG)
 log = getLogger()
 
 
@@ -29,21 +29,26 @@ def main():
     with open(config_file, "r") as f:
         config = yaml.load(f, Loader=yaml.FullLoader)
 
-    model = get_model(config["model"], config, log).cuda()
+    model = get_model(config["model"], config, log)
+    pytorch_total_params = sum(p.numel() for p in model.parameters())
+    print(f"Total params: {pytorch_total_params}")
+    pytorch_total_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+    print(f"Total learnable params: {pytorch_total_params}")
+    # model = model.cuda()
     # model.load_state_dict(
     #     torch.load(
     #         "./tmp/dscgrapher_leaveoneout_29_03_25_12_22_2_224/checkpoints/best_model.pt",
     #         weights_only=True,
     #     )
     # )
-    for x in tqdm(range(100)):
-        model.train()
-        log.info(str(model))
-        y = model(torch.rand(128, 3, 224, 224).cuda())
-        y = y.mean()
-        y.backward()
-        model.eval()
-        y = model(torch.rand(128, 3, 224, 224).cuda())
+    # for x in tqdm(range(100)):
+    #     model.train()
+    #     log.info(str(model))
+    #     y = model(torch.rand(128, 3, 224, 224).cuda())
+    #     y = y.mean()
+    #     y.backward()
+    #     model.eval()
+    #     y = model(torch.rand(128, 3, 224, 224).cuda())
 
     # wrapper = get_dataset("fvusm", config, log, partition_split=0)
     # eer, genscores, impscores = compute_eer_mp(model, wrapper, workers=4, device="cuda")

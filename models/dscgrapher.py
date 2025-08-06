@@ -1,11 +1,20 @@
 import math
+from functools import partial
 
 import torch
 
 from logging import Logger
 from typing import Any, Dict, List
-from torch.nn import Conv2d, GroupNorm, LayerNorm, Linear, Module, Parameter, Sequential
-from torch.nn.functional import adaptive_avg_pool2d
+from torch.nn import (
+    Conv2d,
+    GroupNorm,
+    LayerNorm,
+    Linear,
+    Module,
+    Parameter,
+    Sequential,
+    AdaptiveAvgPool2d,
+)
 from torch.nn.modules import BatchNorm2d
 from utils.dscnet.S3_DSConv_pro import DSConv_pro
 from utils.gcn_lib.torch_nn import act_layer
@@ -77,7 +86,9 @@ class DSConv(Module):
 
         self.log.debug("DSConv")
         self.log.debug(f"Conv: {c.shape}, X: {x.shape}, Y: {y.shape}")
-        return self.enc(torch.cat([c, x, y], dim=1))
+        res = self.enc(torch.cat([c, x, y], dim=1))
+        self.log.debug(f"Res: {res.shape}")
+        return res
 
 
 class GrapherBlock(Module):
@@ -167,7 +178,9 @@ class GrapherBlock(Module):
         return blocks
 
     def forward(self, x):
-        return self.grapherblock(x)
+        res = self.grapherblock(x)
+        self.log.debug(f"Grapher block output: {res.shape}")
+        return res
 
 
 class Dscgrapher(Module):
@@ -273,6 +286,7 @@ class Dscgrapher(Module):
             height = height // 2
             width = width // 2
 
+        backbone.append(AdaptiveAvgPool2d((1, 1)))
         return backbone
 
     def build_head(self, config: Dict[str, Any]) -> List[Module]:
@@ -316,7 +330,6 @@ class Dscgrapher(Module):
     def forward(self, x, **kwargs):
         x = self.stem(x) + self.pos_embed
         x = self.backbone(x)
-        x = adaptive_avg_pool2d(x, (1, 1))
         self.log.debug(f"Pooled shape: {x.shape}")
         x = x.squeeze(2).squeeze(2)
         return x
