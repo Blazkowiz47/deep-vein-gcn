@@ -17,7 +17,7 @@ log = getLogger()
 def ablate_stem(config: Dict[str, Any]) -> None:
     print(config["stem"])
 
-    eers = [
+    eers = [  # noqa: F841
         12.335111777762416,
         12.445330657719536,
         11.835769737849018,
@@ -292,7 +292,7 @@ def test():
         "dscgrapher_leaveoneout_12_04_25_09_01_2_224",
         "dscgrapher_leaveoneout_12_04_25_16_03_2_224",
     ]
-    eers = [
+    eers = [  # noqa: F841
         11.09448459829322,
         10.98850805391412,
         12.506120584898667,
