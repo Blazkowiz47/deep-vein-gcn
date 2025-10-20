@@ -6,7 +6,7 @@ height: 224
 lr: 0.001
 validate_after_epochs: 1
 seed: 2025
-num_workers: 8
+num_workers: 2
 
 # dataset seed
 stat_seed: 0

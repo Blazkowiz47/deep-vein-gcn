@@ -216,25 +216,43 @@ def fetch_results(config):
 
 
 def ablate_loss(config):
-    runs = {}
-    print(config["loss"])
-    for loss in ["mse", "crossentropy", "focalloss"]:
-        config["loss"] = loss
+    # runs = {}
+    # print(config["loss"])
+    # for loss in ["nll"]:
+    #     config["loss"] = loss
+    #     args = argparse.Namespace(
+    #         config="./configs/dscgrapher2.yaml",
+    #         seed=0,
+    #         leave="fvusm",
+    #         wandb=True,
+    #         dataset="leaveoneout",
+    #         model_name=None,
+    #         logger_level="INFO",
+    #         continue_model=None,
+    #     )
+    #     run_name = main(args, config)
+    #     runs[loss] = run_name
+
+    # with open("ablation_results_loss.json", "a") as fp:
+    #     json.dump(runs, fp)
+
+    with open("ablation_results_loss.json", "r") as fp:
+        runs = json.load(fp)
+
+    loss_results = {}
+    for loss_name, ckpt in runs.items():
         args = argparse.Namespace(
             config="./configs/dscgrapher2.yaml",
-            seed=0,
-            leave="fvusm",
-            wandb=True,
-            dataset="leaveoneout",
-            model_name=None,
-            logger_level="INFO",
+            checkpoint=ckpt,
+            dataset="fvusm",
+            logger_level="ERROR",
             continue_model=None,
         )
-        run_name = main(args, config)
-        runs[loss] = run_name
+        eer = parallel_driver(args, config)
+        loss_results[loss_name] = eer
 
-    with open("ablation_results_loss.json", "w+") as fp:
-        json.dump(runs, fp)
+    with open("ablation_results_loss_eers.json", "w") as fp:
+        json.dump(loss_results, fp)
 
 
 def driver() -> None:

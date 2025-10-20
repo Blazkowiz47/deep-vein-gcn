@@ -31,7 +31,6 @@ class Proposed(Module):
         return torch.norm(embds, p=2, dim=1)
 
     def forward(self, embds, labels, freeze_centroids=False):
-        # xnorm = torch.norm(embds, p=2, dim=1).clamp(self.l_a, self.u_a)
         if len(embds.shape) != 2:
             embds = embds.view(1, embds.size(0))
         if len(labels.shape) != 2:
@@ -55,7 +54,6 @@ class Proposed(Module):
             output = torch.pi - torch.acos(cos_theta)
             loss2 = F.cross_entropy(output, labels, reduction="mean")
 
-        # self.log.info(f"Loss1: {loss1}, Loss2: {loss2}")
         if torch.isnan(loss1):
             self.log.error("Loss1 is NaN")
             exit(1)

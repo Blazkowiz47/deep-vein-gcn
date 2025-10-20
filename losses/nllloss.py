@@ -1,32 +1,32 @@
 from logging import getLogger
 import torch
-from torch.nn import CrossEntropyLoss, Linear, Module
+from torch.nn import NLLLoss, Linear, Module
 
 
-class CrossEntropy(Module):
+class NllLoss(Module):
     def __init__(self, config, log, **kwargs):
-        super(CrossEntropy, self).__init__()
+        super(NllLoss, self).__init__()
         self.log = log
-        self.name = "CrossEntropy"
+        self.name = "NllLoss"
         self.num_classes = config["num_classes"]
         self.fc = Linear(config["embedding_size"], self.num_classes)
-        self.cross_entropy = CrossEntropyLoss()
+        self.nll_loss = NLLLoss()
 
     def forward(self, embds, labels, **kwargs):
         logits = self.fc(embds)
         labels = torch.argmax(labels, dim=1)
         return (
-            self.cross_entropy(logits, labels),
+            self.nll_loss(logits, labels),
             torch.tensor(0.0).to(embds.device),
             logits,
         )
 
 
 if __name__ == "__main__":
-    config = {}
-    log = getLogger("CrossEntropy")
+    config = {"num_classes": 301, "embedding_size": 301}
+    log = getLogger("NllLoss")
     log.setLevel("DEBUG")
-    loss = CrossEntropy(config, log)
+    loss = NllLoss(config, log)
     embds = torch.randn(10, 301)
     labels = torch.zeros(10, 301)
     for i in range(10):
@@ -42,5 +42,5 @@ if __name__ == "__main__":
     targets = torch.tensor([0, 3])  # Ground truth is class 0
 
     # Compute loss
-    loss = CrossEntropyLoss()(logits, targets)
+    loss = NllLoss()(logits, targets)
     print(loss.item())  # Output: 0.0 (or very close)

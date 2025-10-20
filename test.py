@@ -176,86 +176,86 @@ def parallel_driver(args, config) -> float:
     wrapper = get_dataset(args.dataset, config, log, partition_split=0)
     testds = wrapper.get_split("test", batch_size=16)
 
-    # subject_embeddings: Dict[int, torch.Tensor] = {}
-    # raw_subject_embeddings: Dict[int, List[torch.Tensor]] = {}
-    # if model != "veinAttNet":
-    #     model = get_model(model, config, log).to(device)
-    #     model.load_state_dict(torch.load(checkpoint, weights_only=True), strict=False)
-    #     model.eval()
-    #     model.to(device)
-    #     log.info(str(model))
-    #
-    #     with torch.no_grad():
-    #         for images, labels in tqdm(testds, desc="Fetching Embeddings"):
-    #             feats = model(images.to(device)).detach().cpu()
-    #             labels = labels.argmax(dim=1).numpy().tolist()
-    #             for feat, label in zip(feats, labels):
-    #                 if label not in raw_subject_embeddings:
-    #                     raw_subject_embeddings[label] = []
-    #
-    #                 raw_subject_embeddings[label].append(feat.squeeze().unsqueeze(0))
-    #
-    # else:
-    #     path = os.path.join("./features/leaveout_" + args.checkpoint, args.dataset)
-    #     for sid, subject in tqdm(
-    #         enumerate(os.listdir(path)), desc="Fetching Embeddings"
-    #     ):
-    #         raw_subject_embeddings[sid] = []
-    #         for fname in os.listdir(os.path.join(path, subject)):
-    #             if fname.endswith(".txt"):
-    #                 raw_subject_embeddings[sid].append(
-    #                     torch.tensor(np.loadtxt(os.path.join(path, subject, fname)))
-    #                     .squeeze()
-    #                     .unsqueeze(0)
-    #                 )
-    #
-    # for subject in raw_subject_embeddings:
-    #     subject_embeddings[subject] = torch.cat(raw_subject_embeddings[subject], dim=0)
-    #
-    # genuine_scores: List[float] = []
-    # imposter_scores: List[float] = []
-    # log.error(f"Total subjects: {len(subject_embeddings)}")
-    #
-    # with Pool(workers := 8) as p:
-    #     partial_func = partial(
-    #         get_genuine_scores_batched,
-    #         subjects_embeddings=subject_embeddings,
-    #         log=wrapper.log,
-    #     )
-    #     chunkified_genuine_scores = list(
-    #         p.map(
-    #             partial_func,
-    #             chunkifiedsubjects := chunkify(
-    #                 list(subject_embeddings.keys()), workers
-    #             ),
-    #         )
-    #     )
-    #     for cs in chunkified_genuine_scores:
-    #         genuine_scores.extend(cs)
-    #
-    #     log.error(f"Total genuine scores: {len(genuine_scores)}")
-    #     partial_func = partial(
-    #         get_imposter_scores_batched,
-    #         subjects_embeddings=subject_embeddings,
-    #         log=wrapper.log,
-    #     )
-    #
-    #     chunkified_imposter_scores = list(
-    #         p.map(
-    #             partial_func,
-    #             chunkifiedsubjects,
-    #         )
-    #     )
-    #     for cs in chunkified_imposter_scores:
-    #         imposter_scores.extend(cs)
-    #     log.error(f"Total imposter scores: {len(imposter_scores)}")
-    #
-    # print("Saving Scores")
-    # os.makedirs(f"tmp/{model_name}/{dataset}", exist_ok=True)
-    # np.save(f"tmp/{model_name}/{dataset}/genuine_scores.npy", np.array(genuine_scores))
-    # np.save(
-    #     f"tmp/{model_name}/{dataset}/imposter_scores.npy", np.array(imposter_scores)
-    # )
+    subject_embeddings: Dict[int, torch.Tensor] = {}
+    raw_subject_embeddings: Dict[int, List[torch.Tensor]] = {}
+    if model != "veinAttNet":
+        model = get_model(model, config, log).to(device)
+        model.load_state_dict(torch.load(checkpoint, weights_only=True), strict=False)
+        model.eval()
+        model.to(device)
+        log.info(str(model))
+
+        with torch.no_grad():
+            for images, labels in tqdm(testds, desc="Fetching Embeddings"):
+                feats = model(images.to(device)).detach().cpu()
+                labels = labels.argmax(dim=1).numpy().tolist()
+                for feat, label in zip(feats, labels):
+                    if label not in raw_subject_embeddings:
+                        raw_subject_embeddings[label] = []
+
+                    raw_subject_embeddings[label].append(feat.squeeze().unsqueeze(0))
+
+    else:
+        path = os.path.join("./features/leaveout_" + args.checkpoint, args.dataset)
+        for sid, subject in tqdm(
+            enumerate(os.listdir(path)), desc="Fetching Embeddings"
+        ):
+            raw_subject_embeddings[sid] = []
+            for fname in os.listdir(os.path.join(path, subject)):
+                if fname.endswith(".txt"):
+                    raw_subject_embeddings[sid].append(
+                        torch.tensor(np.loadtxt(os.path.join(path, subject, fname)))
+                        .squeeze()
+                        .unsqueeze(0)
+                    )
+
+    for subject in raw_subject_embeddings:
+        subject_embeddings[subject] = torch.cat(raw_subject_embeddings[subject], dim=0)
+
+    genuine_scores: List[float] = []
+    imposter_scores: List[float] = []
+    log.error(f"Total subjects: {len(subject_embeddings)}")
+
+    with Pool(workers := 8) as p:
+        partial_func = partial(
+            get_genuine_scores_batched,
+            subjects_embeddings=subject_embeddings,
+            log=wrapper.log,
+        )
+        chunkified_genuine_scores = list(
+            p.map(
+                partial_func,
+                chunkifiedsubjects := chunkify(
+                    list(subject_embeddings.keys()), workers
+                ),
+            )
+        )
+        for cs in chunkified_genuine_scores:
+            genuine_scores.extend(cs)
+
+        log.error(f"Total genuine scores: {len(genuine_scores)}")
+        partial_func = partial(
+            get_imposter_scores_batched,
+            subjects_embeddings=subject_embeddings,
+            log=wrapper.log,
+        )
+
+        chunkified_imposter_scores = list(
+            p.map(
+                partial_func,
+                chunkifiedsubjects,
+            )
+        )
+        for cs in chunkified_imposter_scores:
+            imposter_scores.extend(cs)
+        log.error(f"Total imposter scores: {len(imposter_scores)}")
+
+    print("Saving Scores")
+    os.makedirs(f"tmp/{model_name}/{dataset}", exist_ok=True)
+    np.save(f"tmp/{model_name}/{dataset}/genuine_scores.npy", np.array(genuine_scores))
+    np.save(
+        f"tmp/{model_name}/{dataset}/imposter_scores.npy", np.array(imposter_scores)
+    )
 
     genuine_scores = np.load(f"tmp/{model_name}/{dataset}/genuine_scores.npy")
     imposter_scores = np.load(f"tmp/{model_name}/{dataset}/imposter_scores.npy")

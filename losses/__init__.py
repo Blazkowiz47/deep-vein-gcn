@@ -30,6 +30,12 @@ def get_loss(loss: str, config: Dict[str, Any], log: Logger, **kwargs) -> Module
         log.warning(f"Mse\n{inspect.getsource(Mse)}")
         return Mse(config, log, **kwargs)
 
+    if loss == "nll":
+        from losses.nllloss import NllLoss
+
+        log.warning(f"NllLoss\n{inspect.getsource(NllLoss)}")
+        return NllLoss(config, log, **kwargs)
+
     if loss == "focalloss":
         from losses.focalloss import FocalLoss
 
