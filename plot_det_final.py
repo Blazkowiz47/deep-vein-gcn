@@ -99,6 +99,196 @@ def norminv(p: float | np.ndarray) -> float | np.ndarray:
     return x
 
 
+def plot_det_curve_from_scores(
+    far: NDArray,
+    frr: NDArray,
+    label: str = "Curve",
+    min_pct: float = 0.01,
+    max_pct: float = 50.0,
+    figname: str = "det_curve.png",
+) -> None:
+    """
+    Plot a single DET curve from FAR and FRR scores (in percent 0-100).
+
+    - If arrays are 2D, they are treated as multiple seeds and the function plots
+      the mean FRR with ±1 std shading. FAR is assumed identical across seeds; if not,
+      FRR arrays are aligned to the first seed's FAR via 1D linear interpolation.
+    - Axes are on the DET scale using the inverse normal CDF (norm.ppf), with
+      ticks at specific percentages and labels shown as percents.
+
+    Returns the matplotlib Axes used.
+    """
+    # Prepare axes
+    fig, ax = plt.subplots(figsize=(8, 8))
+
+    # Normalize input shapes
+    far_arr = np.asarray(far)
+    frr_arr = np.asarray(frr)
+
+    if far_arr.ndim == 1:
+        far_list = [far_arr.reshape(-1)]
+        frr_list = [frr_arr.reshape(-1)]
+    elif far_arr.ndim == 2:
+        far_list = [row.reshape(-1) for row in np.asarray(far_arr)]
+        frr_list = [row.reshape(-1) for row in np.asarray(frr_arr)]
+    else:
+        raise ValueError("far and frr must be 1D or 2D arrays")
+
+    # Canonical FAR grid and alignment
+    x_far = far_list[0]
+    aligned_frrs: list[np.ndarray] = []
+    for seed_far, seed_frr in zip(far_list, frr_list):
+        if seed_far.shape != x_far.shape or not np.allclose(
+            seed_far, x_far, rtol=1e-6, atol=1e-9
+        ):
+            aligned = np.interp(x_far, seed_far, seed_frr)
+            aligned_frrs.append(aligned)
+        else:
+            aligned_frrs.append(seed_frr)
+
+    frr_stack = np.vstack(aligned_frrs)
+    mean_frr = np.mean(frr_stack, axis=0)
+    std_frr = np.std(frr_stack, axis=0) if frr_stack.shape[0] > 1 else None
+
+    # DET transform using inverse normal CDF (norminv)
+    eps = 1e-6
+    x_pct = np.clip(x_far, min_pct, max_pct)
+    y_pct = np.clip(mean_frr, min_pct, max_pct)
+    x_det = norminv(np.clip(x_pct / 100.0, eps, 1 - eps))
+    y_det = norminv(np.clip(y_pct / 100.0, eps, 1 - eps))
+
+    # Plot mean line
+    sns.lineplot(x=x_det, y=y_det, label=label, ax=ax, linewidth=2)
+
+    # Std shading if available
+    if std_frr is not None:
+        lower_pct = np.clip(mean_frr - std_frr, min_pct, max_pct)
+        upper_pct = np.clip(mean_frr + std_frr, min_pct, max_pct)
+        lower_det = norminv(np.clip(lower_pct / 100.0, eps, 1 - eps))
+        upper_det = norminv(np.clip(upper_pct / 100.0, eps, 1 - eps))
+        ax.fill_between(x_det, lower_det, upper_det, alpha=0.2)
+
+    # Axes styling: ticks at fixed percent levels, square aspect
+    ticks = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 40]
+    ticks_labels = ["0.1", "0.2", "0.5", "1", "2", "5", "10", "20", "40"]
+    det_ticks = norminv(np.clip(np.array(ticks) / 100.0, 1e-6, 1 - 1e-6))
+    ax.set_aspect("equal", adjustable="box")
+    ax.set_xticks(det_ticks)
+    ax.set_yticks(det_ticks)
+    ax.set_xticklabels(ticks_labels)
+    ax.set_yticklabels(ticks_labels)
+
+    det_lims = norminv(np.clip(np.array([min_pct, max_pct]) / 100.0, 1e-6, 1 - 1e-6))
+    ax.set_xlim(det_lims[0], det_lims[1])
+    ax.set_ylim(det_lims[0], det_lims[1])
+    ax.grid(True, which="major", linestyle="--", linewidth=0.6, alpha=0.6)
+
+    ax.set_xlabel("False Match Rate (FMR)")
+    ax.set_ylabel("False Non-Match Rate (FNMR)")
+    ax.legend()
+    plt.savefig(figname)
+    plt.close()
+
+def plot_det_curves_per_dataset(
+    scores_dict: Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]],
+):
+    """
+    For each dataset and method, assume FAR is identical across seeds.
+    Plot the mean FRR across seeds against FAR and fill ±1 std.
+    """
+
+    sns.set_theme(style="whitegrid")
+    logger = getLogger()
+
+    for dataset, methods in scores_dict.items():
+        plt.figure(figsize=(3.5, 3.5))
+        logger.info(f"Plotting DET curves for dataset: {dataset}")
+
+        for method, seeds in methods.items():
+            logger.debug(f"Processing method: {method}")
+            far_list = []
+            frr_list = []
+            for seed, (far_scores, frr_scores) in seeds.items():
+                far_arr = np.asarray(far_scores).reshape(-1)
+                frr_arr = np.asarray(frr_scores).reshape(-1)
+                far_list.append(far_arr)
+                frr_list.append(frr_arr)
+
+            if not far_list or not frr_list:
+                continue
+
+            # Use the first FAR as the canonical x-axis
+            x_far = far_list[0]
+
+            # Align all FRR arrays to the same FAR if needed
+            aligned_frrs = []
+            for idx, (far_arr, frr_arr) in enumerate(zip(far_list, frr_list)):
+                if far_arr.shape != x_far.shape or not np.allclose(
+                    far_arr, x_far, rtol=1e-6, atol=1e-9
+                ):
+                    print(f"Aligning seed {idx} for method {method}")
+                    try:
+                        aligned = np.interp(x_far, far_arr, frr_arr)
+                        aligned_frrs.append(aligned)
+                    except Exception:
+                        logger.warning(
+                            f"Could not align seed index {idx} for method {method}; skipping this seed."
+                        )
+                        continue
+                else:
+                    aligned_frrs.append(frr_arr)
+
+            if len(aligned_frrs) == 0:
+                continue
+
+            frr_stack = np.vstack(aligned_frrs)
+            mean_frr = np.mean(frr_stack, axis=0)
+            std_frr = np.std(frr_stack, axis=0) if frr_stack.shape[0] > 1 else None
+
+            # DET transform using inverse normal CDF (norminv)
+            min_pct, max_pct = 0.01, 50.0
+            eps = 1e-6
+            x_pct = np.clip(x_far, min_pct, max_pct)
+            y_pct = np.clip(mean_frr, min_pct, max_pct)
+
+            x_det = norminv(np.clip(x_pct / 100.0, eps, 1 - eps))
+            y_det = norminv(np.clip(y_pct / 100.0, eps, 1 - eps))
+
+            # Plot with seaborn styling in DET space
+            label = f"{method if method != 'snakegraph2' else 'Proposed'}"
+            sns.lineplot(x=x_det, y=y_det, label=label, linewidth=2)
+            if std_frr is not None:
+                lower_pct = np.clip(mean_frr - std_frr, min_pct, max_pct)
+                upper_pct = np.clip(mean_frr + std_frr, min_pct, max_pct)
+                lower_det = norminv(np.clip(lower_pct / 100.0, eps, 1 - eps))
+                upper_det = norminv(np.clip(upper_pct / 100.0, eps, 1 - eps))
+                plt.fill_between(x_det, lower_det, upper_det, alpha=0.2)
+
+        # DET axes with ticks at percentage levels
+        ticks = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 40]
+        ticks_labels = ["0.1", "0.2", "0.5", "1", "2", "5", "10", "20", "40"]
+        ax = plt.gca()
+        ax.set_aspect("equal", adjustable="box")
+        det_ticks = norminv(np.clip(np.array(ticks) / 100.0, 1e-6, 1 - 1e-6))
+        ax.set_xticks(det_ticks)
+        ax.set_yticks(det_ticks)
+        ax.set_xticklabels(ticks_labels, fontsize=8)
+        ax.set_yticklabels(ticks_labels, fontsize=8)
+        det_lims = norminv(
+            np.clip(np.array([min_pct, max_pct]) / 100.0, 1e-6, 1 - 1e-6)
+        )
+        x_det_lims = norminv(np.clip(np.array([min_pct, 48.0]) / 100.0, 1e-6, 1 - 1e-6))
+        plt.xlim(x_det_lims[0], x_det_lims[1])
+        plt.ylim(det_lims[0], det_lims[1])
+        plt.grid(True, which="major", linestyle="--", linewidth=0.6, alpha=0.6)
+        plt.xlabel("False Match Rate (FMR) (%)", fontsize=10)
+        plt.ylabel("False Non-Match Rate (FNMR) (%)", fontsize=10)
+        plt.legend(loc="lower left")
+        plt.tight_layout()
+        plt.savefig(f"plots/det_curves_{dataset}.png")
+        plt.close()
+
+
 def get_eers_auc_roc() -> Dict[
     str, Dict[str, Dict[int, Tuple[float, float, float, float]]]
 ]:
@@ -389,105 +579,6 @@ def plot_roc_curves_per_dataset(
         plt.close()
 
 
-def plot_det_curves_per_dataset(
-    scores_dict: Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]],
-):
-    """
-    For each dataset and method, assume FAR is identical across seeds.
-    Plot the mean FRR across seeds against FAR and fill ±1 std.
-    """
-
-    sns.set_theme(style="whitegrid")
-    logger = getLogger()
-
-    for dataset, methods in scores_dict.items():
-        plt.figure(figsize=(3.5, 3.5))
-        logger.info(f"Plotting DET curves for dataset: {dataset}")
-
-        for method, seeds in methods.items():
-            logger.debug(f"Processing method: {method}")
-            far_list = []
-            frr_list = []
-            for seed, (far_scores, frr_scores) in seeds.items():
-                far_arr = np.asarray(far_scores).reshape(-1)
-                frr_arr = np.asarray(frr_scores).reshape(-1)
-                far_list.append(far_arr)
-                frr_list.append(frr_arr)
-
-            if not far_list or not frr_list:
-                continue
-
-            # Use the first FAR as the canonical x-axis
-            x_far = far_list[0]
-
-            # Align all FRR arrays to the same FAR if needed
-            aligned_frrs = []
-            for idx, (far_arr, frr_arr) in enumerate(zip(far_list, frr_list)):
-                if far_arr.shape != x_far.shape or not np.allclose(
-                    far_arr, x_far, rtol=1e-6, atol=1e-9
-                ):
-                    print(f"Aligning seed {idx} for method {method}")
-                    try:
-                        aligned = np.interp(x_far, far_arr, frr_arr)
-                        aligned_frrs.append(aligned)
-                    except Exception:
-                        logger.warning(
-                            f"Could not align seed index {idx} for method {method}; skipping this seed."
-                        )
-                        continue
-                else:
-                    aligned_frrs.append(frr_arr)
-
-            if len(aligned_frrs) == 0:
-                continue
-
-            frr_stack = np.vstack(aligned_frrs)
-            mean_frr = np.mean(frr_stack, axis=0)
-            std_frr = np.std(frr_stack, axis=0) if frr_stack.shape[0] > 1 else None
-
-            # DET transform using inverse normal CDF (norminv)
-            min_pct, max_pct = 0.01, 50.0
-            eps = 1e-6
-            x_pct = np.clip(x_far, min_pct, max_pct)
-            y_pct = np.clip(mean_frr, min_pct, max_pct)
-
-            x_det = norminv(np.clip(x_pct / 100.0, eps, 1 - eps))
-            y_det = norminv(np.clip(y_pct / 100.0, eps, 1 - eps))
-
-            # Plot with seaborn styling in DET space
-            label = f"{method if method != 'snakegraph2' else 'Proposed'}"
-            sns.lineplot(x=x_det, y=y_det, label=label, linewidth=2)
-            if std_frr is not None:
-                lower_pct = np.clip(mean_frr - std_frr, min_pct, max_pct)
-                upper_pct = np.clip(mean_frr + std_frr, min_pct, max_pct)
-                lower_det = norminv(np.clip(lower_pct / 100.0, eps, 1 - eps))
-                upper_det = norminv(np.clip(upper_pct / 100.0, eps, 1 - eps))
-                plt.fill_between(x_det, lower_det, upper_det, alpha=0.2)
-
-        # DET axes with ticks at percentage levels
-        ticks = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 40]
-        ticks_labels = ["0.1", "0.2", "0.5", "1", "2", "5", "10", "20", "40"]
-        ax = plt.gca()
-        ax.set_aspect("equal", adjustable="box")
-        det_ticks = norminv(np.clip(np.array(ticks) / 100.0, 1e-6, 1 - 1e-6))
-        ax.set_xticks(det_ticks)
-        ax.set_yticks(det_ticks)
-        ax.set_xticklabels(ticks_labels, fontsize=8)
-        ax.set_yticklabels(ticks_labels, fontsize=8)
-        det_lims = norminv(
-            np.clip(np.array([min_pct, max_pct]) / 100.0, 1e-6, 1 - 1e-6)
-        )
-        x_det_lims = norminv(np.clip(np.array([min_pct, 48.0]) / 100.0, 1e-6, 1 - 1e-6))
-        plt.xlim(x_det_lims[0], x_det_lims[1])
-        plt.ylim(det_lims[0], det_lims[1])
-        plt.grid(True, which="major", linestyle="--", linewidth=0.6, alpha=0.6)
-        plt.xlabel("False Match Rate (FMR) (%)", fontsize=10)
-        plt.ylabel("False Non-Match Rate (FNMR) (%)", fontsize=10)
-        plt.legend(loc="lower left")
-        plt.tight_layout()
-        plt.savefig(f"plots/det_curves_{dataset}.png")
-        plt.close()
-
 
 def plot_ablation():
     kernels_set = [
@@ -563,101 +654,6 @@ def plot_ablation():
     plt.ylabel("Number of first sequential GrapherBlocks", fontsize=14)
     plt.tight_layout()
     plt.savefig("plots/backbone_numberofgraphers.png")
-
-
-def plot_det_curve_from_scores(
-    far: NDArray,
-    frr: NDArray,
-    label: str = "Curve",
-    ax: plt.Axes | None = None,
-    min_pct: float = 0.01,
-    max_pct: float = 50.0,
-    figname: str = "det_curve.png",
-) -> plt.Axes:
-    """
-    Plot a single DET curve from FAR and FRR scores (in percent 0-100).
-
-    - If arrays are 2D, they are treated as multiple seeds and the function plots
-      the mean FRR with ±1 std shading. FAR is assumed identical across seeds; if not,
-      FRR arrays are aligned to the first seed's FAR via 1D linear interpolation.
-    - Axes are on the DET scale using the inverse normal CDF (norm.ppf), with
-      ticks at specific percentages and labels shown as percents.
-
-    Returns the matplotlib Axes used.
-    """
-    # Prepare axes
-    if ax is None:
-        _, ax = plt.subplots(figsize=(8, 8))
-
-    # Normalize input shapes
-    far_arr = np.asarray(far)
-    frr_arr = np.asarray(frr)
-
-    if far_arr.ndim == 1:
-        far_list = [far_arr.reshape(-1)]
-        frr_list = [frr_arr.reshape(-1)]
-    elif far_arr.ndim == 2:
-        far_list = [row.reshape(-1) for row in np.asarray(far_arr)]
-        frr_list = [row.reshape(-1) for row in np.asarray(frr_arr)]
-    else:
-        raise ValueError("far and frr must be 1D or 2D arrays")
-
-    # Canonical FAR grid and alignment
-    x_far = far_list[0]
-    aligned_frrs: list[np.ndarray] = []
-    for seed_far, seed_frr in zip(far_list, frr_list):
-        if seed_far.shape != x_far.shape or not np.allclose(
-            seed_far, x_far, rtol=1e-6, atol=1e-9
-        ):
-            aligned = np.interp(x_far, seed_far, seed_frr)
-            aligned_frrs.append(aligned)
-        else:
-            aligned_frrs.append(seed_frr)
-
-    frr_stack = np.vstack(aligned_frrs)
-    mean_frr = np.mean(frr_stack, axis=0)
-    std_frr = np.std(frr_stack, axis=0) if frr_stack.shape[0] > 1 else None
-
-    # DET transform using inverse normal CDF (norminv)
-    eps = 1e-6
-    x_pct = np.clip(x_far, min_pct, max_pct)
-    y_pct = np.clip(mean_frr, min_pct, max_pct)
-    x_det = norminv(np.clip(x_pct / 100.0, eps, 1 - eps))
-    y_det = norminv(np.clip(y_pct / 100.0, eps, 1 - eps))
-
-    # Plot mean line
-    sns.lineplot(x=x_det, y=y_det, label=label, ax=ax, linewidth=2)
-
-    # Std shading if available
-    if std_frr is not None:
-        lower_pct = np.clip(mean_frr - std_frr, min_pct, max_pct)
-        upper_pct = np.clip(mean_frr + std_frr, min_pct, max_pct)
-        lower_det = norminv(np.clip(lower_pct / 100.0, eps, 1 - eps))
-        upper_det = norminv(np.clip(upper_pct / 100.0, eps, 1 - eps))
-        ax.fill_between(x_det, lower_det, upper_det, alpha=0.2)
-
-    # Axes styling: ticks at fixed percent levels, square aspect
-    ticks = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 40]
-    ticks_labels = ["0.1", "0.2", "0.5", "1", "2", "5", "10", "20", "40"]
-    det_ticks = norminv(np.clip(np.array(ticks) / 100.0, 1e-6, 1 - 1e-6))
-    ax.set_aspect("equal", adjustable="box")
-    ax.set_xticks(det_ticks)
-    ax.set_yticks(det_ticks)
-    ax.set_xticklabels(ticks_labels)
-    ax.set_yticklabels(ticks_labels)
-
-    det_lims = norminv(np.clip(np.array([min_pct, max_pct]) / 100.0, 1e-6, 1 - 1e-6))
-    ax.set_xlim(det_lims[0], det_lims[1])
-    ax.set_ylim(det_lims[0], det_lims[1])
-    ax.grid(True, which="major", linestyle="--", linewidth=0.6, alpha=0.6)
-
-    ax.set_xlabel("False Match Rate (FMR)")
-    ax.set_ylabel("False Non-Match Rate (FNMR)")
-    ax.legend()
-    plt.savefig(figname)
-    plt.close()
-
-    return ax
 
 
 if __name__ == "__main__":

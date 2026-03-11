@@ -10,3 +10,6 @@ data/
 features/
 *.zip
 final_runs/
+*.mat
+*.tar
+*.tar.gz
