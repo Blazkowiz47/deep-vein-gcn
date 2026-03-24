@@ -216,39 +216,47 @@ def parallel_driver(args, config) -> float:
     imposter_scores: List[float] = []
     log.error(f"Total subjects: {len(subject_embeddings)}")
 
-    with Pool(workers := 8) as p:
-        partial_func = partial(
-            get_genuine_scores_batched,
-            subjects_embeddings=subject_embeddings,
-            log=wrapper.log,
+    # with Pool(workers := 8) as p:
+    workers = 8
+    # partial_func = partial(
+    #     get_genuine_scores_batched,
+    #     subjects_embeddings=subject_embeddings,
+    #     log=wrapper.log,
+    # )
+    chunkifiedsubjects = chunkify(list(subject_embeddings.keys()), workers)
+    for chunk in tqdm(chunkifiedsubjects):
+        genuine_scores.extend(
+            get_genuine_scores_batched(chunk, subject_embeddings, wrapper.log)
         )
-        chunkified_genuine_scores = list(
-            p.map(
-                partial_func,
-                chunkifiedsubjects := chunkify(
-                    list(subject_embeddings.keys()), workers
-                ),
-            )
-        )
-        for cs in chunkified_genuine_scores:
-            genuine_scores.extend(cs)
-
-        log.error(f"Total genuine scores: {len(genuine_scores)}")
-        partial_func = partial(
-            get_imposter_scores_batched,
-            subjects_embeddings=subject_embeddings,
-            log=wrapper.log,
+        imposter_scores.extend(
+            get_imposter_scores_batched(chunk, subject_embeddings, wrapper.log)
         )
 
-        chunkified_imposter_scores = list(
-            p.map(
-                partial_func,
-                chunkifiedsubjects,
-            )
-        )
-        for cs in chunkified_imposter_scores:
-            imposter_scores.extend(cs)
-        log.error(f"Total imposter scores: {len(imposter_scores)}")
+    # chunkified_genuine_scores = list(
+    #     p.map(
+    #         partial_func,
+    #         chunkifiedsubjects,
+    #     )
+    # )
+    # for cs in chunkified_genuine_scores:
+    #     genuine_scores.extend(cs)
+
+    log.error(f"Total genuine scores: {len(genuine_scores)}")
+    # partial_func = partial(
+    #     get_imposter_scores_batched,
+    #     subjects_embeddings=subject_embeddings,
+    #     log=wrapper.log,
+    # )
+
+    # chunkified_imposter_scores = list(
+    #     p.map(
+    #         partial_func,
+    #         chunkifiedsubjects,
+    #     )
+    # )
+    # for cs in chunkified_imposter_scores:
+    #     imposter_scores.extend(cs)
+    log.error(f"Total imposter scores: {len(imposter_scores)}")
 
     print("Saving Scores")
     os.makedirs(f"tmp/{model_name}/{dataset}", exist_ok=True)

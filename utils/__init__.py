@@ -10,6 +10,7 @@ from utils.common_functions import (
 )
 from utils.metrics import calculate_eer
 from utils.multiprocess_eer import compute_eer_mp
+from utils.quality import compute_quality_components, get_grayscale_channel
 
 __all__ = [
     "get_logger",
@@ -22,4 +23,6 @@ __all__ = [
     "video_extensions",
     "calculate_eer",
     "compute_eer_mp",
+    "compute_quality_components",
+    "get_grayscale_channel",
 ]

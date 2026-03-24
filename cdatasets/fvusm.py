@@ -5,10 +5,64 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
 import torch
+import torch.nn.functional as F
 from torchvision import transforms as A
 from PIL import Image
 from torch.utils.data import DataLoader
 from utils import DatasetGenerator, Wrapper, image_extensions
+
+
+def build_kernel(kernel_values: list[list[float]], dtype: torch.dtype) -> torch.Tensor:
+    return torch.tensor(kernel_values, dtype=dtype).view(1, 1, 3, 3)
+
+
+def apply_input_mode(grayscale: torch.Tensor, mode: str | None) -> torch.Tensor:
+    grayscale = grayscale.unsqueeze(0).unsqueeze(0)
+    dtype = grayscale.dtype
+    sobel_x = build_kernel(
+        [[-1.0, 0.0, 1.0], [-2.0, 0.0, 2.0], [-1.0, 0.0, 1.0]],
+        dtype,
+    )
+    sobel_y = build_kernel(
+        [[-1.0, -2.0, -1.0], [0.0, 0.0, 0.0], [1.0, 2.0, 1.0]],
+        dtype,
+    )
+    diag_r_x = build_kernel(
+        [[0.0, -1.0, -2.0], [1.0, 0.0, -1.0], [2.0, 1.0, 0.0]],
+        dtype,
+    )
+    diag_r_y = build_kernel(
+        [[-2.0, -1.0, 0.0], [-1.0, 0.0, 1.0], [0.0, 1.0, 2.0]],
+        dtype,
+    )
+    diag_l_x = build_kernel(
+        [[0.0, 1.0, 2.0], [-1.0, 0.0, 1.0], [-2.0, -1.0, 0.0]],
+        dtype,
+    )
+    diag_l_y = build_kernel(
+        [[2.0, 1.0, 0.0], [1.0, 0.0, -1.0], [0.0, -1.0, -2.0]],
+        dtype,
+    )
+
+    grad_x = F.conv2d(grayscale, sobel_x, padding=1)
+    grad_y = F.conv2d(grayscale, sobel_y, padding=1)
+    diag_r_resp_x = F.conv2d(grayscale, diag_r_x, padding=1)
+    diag_r_resp_y = F.conv2d(grayscale, diag_r_y, padding=1)
+    diag_l_resp_x = F.conv2d(grayscale, diag_l_x, padding=1)
+    diag_l_resp_y = F.conv2d(grayscale, diag_l_y, padding=1)
+
+    if mode is None:
+        stacked = torch.cat((grayscale, grayscale, grayscale), dim=1)
+    elif mode == "xy":
+        stacked = torch.cat((grayscale, grad_x, grad_y), dim=1)
+    elif mode == "dr":
+        stacked = torch.cat((grayscale, diag_r_resp_x, diag_r_resp_y), dim=1)
+    elif mode == "dl":
+        stacked = torch.cat((grayscale, diag_l_resp_x, diag_l_resp_y), dim=1)
+    else:
+        raise ValueError(f"Unsupported input mode: {mode}")
+
+    return stacked.squeeze(0)
 
 
 class FvusmWrapper(Wrapper):
@@ -25,20 +79,20 @@ class FvusmWrapper(Wrapper):
         self.partition_split = kwargs.get("partition_split", 0)
         self.height = config.get("height", 224)
         self.width = config.get("width", 224)
+        self.mode = config.get("mode")
         self.rdir = f"./data/fvusm/{self.stat_seed}"
 
         self.batch_size = config["batch_size"]
         self.num_workers = config["num_workers"]
-        self.total_data: Dict[str, List[str]] = {}
-        self.train_data: Dict[str, List[str]] = {}
-        self.test_data: Dict[str, List[str]] = {}
+        self.total_data: Dict[str, List[Any]] = {}
+        self.train_data: Dict[str, List[Any]] = {}
+        self.test_data: Dict[str, List[Any]] = {}
         self.num_classes = None
         self.initialise_db()
 
         self.augmentations = A.Compose(
             [
                 A.ToTensor(),
-                A.Resize((self.height, self.width)),
             ]
         )
 
@@ -57,7 +111,7 @@ class FvusmWrapper(Wrapper):
             self.train_data[cid] = self.total_data[cid][:partition_index]
             self.test_data[cid] = self.total_data[cid][partition_index:]
 
-    def _internal_loop(self, ssplit: str, prev: Dict[str, List[str]]) -> None:
+    def _internal_loop(self, ssplit: str, prev: Dict[str, List[Any]]) -> None:
         rdir = os.path.join(self.rdir, ssplit)
         for cid in os.listdir(rdir):
             if cid not in prev:
@@ -66,7 +120,9 @@ class FvusmWrapper(Wrapper):
 
             for img in os.listdir(cdir):
                 if "." + img.split(".")[-1].lower() in image_extensions:
-                    prev[cid].append(os.path.join(cdir, img))
+                    with Image.open(os.path.join(cdir, img)) as image:
+                        prev[cid].append(np.array(image))
+                    # prev[cid].append(os.path.join(cdir, img))
 
     def loop_splitset(self, ssplit: str) -> List[Any]:
         if ssplit == "train":
@@ -103,8 +159,9 @@ class FvusmWrapper(Wrapper):
         return self.augmentations(image)
 
     def transform(self, datapoint: Iterable[Any]) -> Tuple:
-        imgfname, lbl = datapoint
-        img = Image.open(imgfname)
+        img, lbl = datapoint
+        if isinstance(img, str):
+            img = np.array(Image.open(img))
         if self.num_classes is None:
             raise ValueError("Num classes not set.")
         # Initialise label
@@ -113,9 +170,16 @@ class FvusmWrapper(Wrapper):
 
         # Initialise image
         imgarray = np.array(img)
-        imgarray = (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min())
-        imgarray = np.stack([imgarray, imgarray, imgarray], axis=2)
-
-        imgarray = self.augment(imgarray)
+        grayscale = torch.tensor(
+            (imgarray - imgarray.min()) / (imgarray.max() - imgarray.min()),
+            dtype=torch.float32,
+        )
+        imgarray = apply_input_mode(grayscale, self.mode)
+        imgarray = F.interpolate(
+            imgarray.unsqueeze(0),
+            size=(self.height, self.width),
+            mode="bilinear",
+            align_corners=False,
+        ).squeeze(0)
 
         return imgarray.float(), label.float()

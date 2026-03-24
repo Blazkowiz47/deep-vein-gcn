@@ -1,4 +1,5 @@
 import argparse
+import copy
 import itertools
 import json
 import logging
@@ -215,32 +216,44 @@ def fetch_results(config):
         json.dump(run_maps, fp)
 
 
-def ablate_loss(config):
-    # runs = {}
-    # print(config["loss"])
-    # for loss in ["nll"]:
-    #     config["loss"] = loss
-    #     args = argparse.Namespace(
-    #         config="./configs/dscgrapher2.yaml",
-    #         seed=0,
-    #         leave="fvusm",
-    #         wandb=True,
-    #         dataset="leaveoneout",
-    #         model_name=None,
-    #         logger_level="INFO",
-    #         continue_model=None,
-    #     )
-    #     run_name = main(args, config)
-    #     runs[loss] = run_name
-
-    # with open("ablation_results_loss.json", "a") as fp:
-    #     json.dump(runs, fp)
-
-    with open("ablation_results_loss.json", "r") as fp:
+def ablate_input(config):
+    with open("./ablation/ablation_results_inputs.json", "r") as fp:
         runs = json.load(fp)
 
+    for loss in ["proposed"]:
+        if loss in runs:
+            continue
+
+        local_config = copy.deepcopy(config)
+        local_config["loss"] = loss
+
+        args = argparse.Namespace(
+            config="./configs/dscgrapher2.yaml",
+            seed=0,
+            leave="fvusm",
+            wandb=True,
+            dataset="leaveoneout",
+            model_name=None,
+            logger_level="INFO",
+            continue_model=None,
+        )
+        run_name = main(args, local_config)
+        runs[loss] = run_name
+
+        with open("ablation_results_inputs.json", "w") as fp:
+            json.dump(runs, fp)
+
     loss_results = {}
+    with open("ablation_results_inputs_eers.json", "r") as fp:
+        loss_results = json.load(fp)
+
     for loss_name, ckpt in runs.items():
+        if loss_name in loss_results:
+            continue
+
+        local_config = copy.deepcopy(config)
+        local_config["loss"] = loss_name
+
         args = argparse.Namespace(
             config="./configs/dscgrapher2.yaml",
             checkpoint=ckpt,
@@ -248,7 +261,71 @@ def ablate_loss(config):
             logger_level="ERROR",
             continue_model=None,
         )
-        eer = parallel_driver(args, config)
+        eer = parallel_driver(args, local_config)
+        loss_results[loss_name] = eer
+
+    with open("ablation_results_inputs_eers.json", "w") as fp:
+        json.dump(loss_results, fp)
+
+
+def ablate_loss(config):
+    with open("ablation_results_loss.json", "r") as fp:
+        runs = json.load(fp)
+
+    for loss in ["arcface", "cosface", "proposed2"]:
+        if loss in runs:
+            continue
+
+        local_config = copy.deepcopy(config)
+        local_config["loss"] = loss
+        if loss == "arcface":
+            local_config["scale"] = 64.0
+            local_config["margin"] = 0.5
+        elif loss == "cosface":
+            local_config["scale"] = 64.0
+            local_config["margin"] = 0.35
+
+        args = argparse.Namespace(
+            config="./configs/dscgrapher2.yaml",
+            seed=0,
+            leave="fvusm",
+            wandb=True,
+            dataset="leaveoneout",
+            model_name=None,
+            logger_level="INFO",
+            continue_model=None,
+        )
+        run_name = main(args, local_config)
+        runs[loss] = run_name
+
+        with open("ablation_results_loss.json", "w") as fp:
+            json.dump(runs, fp)
+
+    loss_results = {}
+    with open("ablation_results_loss_eers.json", "r") as fp:
+        loss_results = json.load(fp)
+
+    for loss_name, ckpt in runs.items():
+        if loss_name in loss_results:
+            continue
+
+        local_config = copy.deepcopy(config)
+        local_config["loss"] = loss_name
+        if loss_name == "arcface":
+            local_config["scale"] = 64.0
+            local_config["margin"] = 0.5
+        elif loss_name == "cosface":
+            local_config["scale"] = 64.0
+            local_config["margin"] = 0.35
+
+        args = argparse.Namespace(
+            config="./configs/dscgrapher2.yaml",
+            checkpoint=ckpt,
+            dataset="fvusm",
+            logger_level="ERROR",
+            continue_model=None,
+        )
+        eer = parallel_driver(args, local_config)
         loss_results[loss_name] = eer
 
     with open("ablation_results_loss_eers.json", "w") as fp:

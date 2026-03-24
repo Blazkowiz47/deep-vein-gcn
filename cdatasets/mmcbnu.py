@@ -29,9 +29,9 @@ class MmcbnuWrapper(Wrapper):
 
         self.batch_size = config["batch_size"]
         self.num_workers = config["num_workers"]
-        self.total_data: Dict[str, List[str]] = {}
-        self.train_data: Dict[str, List[str]] = {}
-        self.test_data: Dict[str, List[str]] = {}
+        self.total_data: Dict[str, List[Any]] = {}
+        self.train_data: Dict[str, List[Any]] = {}
+        self.test_data: Dict[str, List[Any]] = {}
         self.num_classes = None
         self.initialise_db()
 
@@ -56,7 +56,7 @@ class MmcbnuWrapper(Wrapper):
             self.train_data[cid] = self.total_data[cid][:partition_index]
             self.test_data[cid] = self.total_data[cid][partition_index:]
 
-    def _internal_loop(self, ssplit: str, prev: Dict[str, List[str]]) -> None:
+    def _internal_loop(self, ssplit: str, prev: Dict[str, List[Any]]) -> None:
         rdir = os.path.join(self.rdir, ssplit)
         for cid in os.listdir(rdir):
             if cid not in prev:
@@ -65,7 +65,8 @@ class MmcbnuWrapper(Wrapper):
 
             for img in os.listdir(cdir):
                 if "." + img.split(".")[-1].lower() in image_extensions:
-                    prev[cid].append(os.path.join(cdir, img))
+                    with Image.open(os.path.join(cdir, img)) as image:
+                        prev[cid].append(np.array(image))
 
     def loop_splitset(self, ssplit: str) -> List[Any]:
         if ssplit == "train":

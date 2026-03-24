@@ -152,7 +152,8 @@ def main(args, config) -> str:
     params = [p for p in model.parameters() if p.requires_grad]
     params.extend([p for p in criterion.parameters() if p.requires_grad])
 
-    metric = MulticlassAccuracy(num_classes=config["num_classes"]).cuda()
+    train_metric = MulticlassAccuracy(num_classes=config["num_classes"]).to(device)
+    val_metric = MulticlassAccuracy(num_classes=config["num_classes"]).to(device)
     # For proposed
     optimizer = AdamW(
         params,
@@ -181,6 +182,7 @@ def main(args, config) -> str:
         for epoch in range(epochs):
             model.train()
             criterion.train()
+            train_metric.reset()
             train_losses = []
             step1_train_losses = []
             step2_train_losses = []
@@ -192,9 +194,12 @@ def main(args, config) -> str:
                 image, label = image.to(device), label.to(device)
                 preds = model(image)
                 loss1, loss2, preds = criterion(
-                    preds, label, freeze_centroids=epoch > config["freeze_centroids"]
+                    preds,
+                    label,
+                    freeze_centroids=epoch > config["freeze_centroids"],
+                    image_batch=image,
                 )
-                metric.update(preds.softmax(dim=1), label.argmax(dim=1))
+                train_metric.update(preds.softmax(dim=1), label.argmax(dim=1))
                 step_loss = loss1 + loss2
                 step_loss.backward()
                 optimizer.step()
@@ -215,11 +220,13 @@ def main(args, config) -> str:
             if loss_is_nan:
                 break
 
+            train_acc = train_metric.compute().detach().cpu().item()
             log.info(f"Average train step loss: {np.mean(train_losses)}")
+            log.info(f"Train accuracy: {train_acc}")
             wandblog = {
                 "train_loss": np.mean(train_losses),
                 "train_Step1_loss": np.mean(step1_train_losses),
-                "train_acc": metric.compute().detach().cpu().item(),
+                "train_acc": train_acc,
                 "train_Step2_loss": np.mean(step2_train_losses),
             }
 
@@ -231,16 +238,21 @@ def main(args, config) -> str:
                 validation_losses = []
                 step1_losses = []
                 step2_losses = []
+                val_metric.reset()
                 model.eval()
                 criterion.eval()
                 pbar = tqdm(validationds, desc="Validation")
                 for image, label in pbar:
                     image, label = image.to(device), label.to(device)
                     preds = model(image)
-                    loss1, loss2, preds = criterion(preds, label)
+                    loss1, loss2, preds = criterion(
+                        preds,
+                        label,
+                        image_batch=image,
+                    )
                     step_loss = loss1 + loss2
                     validation_losses.append(step_loss.detach().cpu().item())
-                    metric.update(preds.softmax(dim=1), label.argmax(dim=1))
+                    val_metric.update(preds.softmax(dim=1), label.argmax(dim=1))
                     step1_losses.append(loss1.detach().cpu().item())
                     step2_losses.append(loss2.detach().cpu().item())
                     pbar.set_postfix({"loss": np.mean(validation_losses)})
@@ -253,7 +265,8 @@ def main(args, config) -> str:
                     break
                 validation_loss = np.mean(validation_losses)
                 log.info(f"Average validation step loss: {validation_loss}")
-                validation_acc = metric.compute().detach().cpu().item()
+                validation_acc = val_metric.compute().detach().cpu().item()
+                log.info(f"Validation accuracy: {validation_acc}")
                 wandblog = {
                     **wandblog,
                     "validation_loss": np.mean(validation_losses),

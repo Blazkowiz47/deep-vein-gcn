@@ -12,6 +12,11 @@ def get_loss(loss: str, config: Dict[str, Any], log: Logger, **kwargs) -> Module
         log.warning(f"Proposed\n{inspect.getsource(Proposed)}")
         return Proposed(config, log, **kwargs)
 
+    if loss == "qualityawareproposed":
+        from losses.qualityawareproposed import QualityAwareProposed
+
+        log.warning(f"Quality aware Proposed\n{inspect.getsource(QualityAwareProposed)}")
+        return QualityAwareProposed(config, log, **kwargs)
     if loss == "arcveinloss":
         from losses.arcveinloss import ArcCosineLoss
 
@@ -23,6 +28,36 @@ def get_loss(loss: str, config: Dict[str, Any], log: Logger, **kwargs) -> Module
 
         log.warning(f"CrossEntropyLoss\n{inspect.getsource(CrossEntropy)}")
         return CrossEntropy(config, log, **kwargs)
+
+    if loss == "arcface":
+        from losses.arcface import ArcFace
+
+        log.warning(f"ArcFace\n{inspect.getsource(ArcFace)}")
+        return ArcFace(config, log, **kwargs)
+
+    if loss == "cosface":
+        from losses.cosface import CosFace
+
+        log.warning(f"CosFace\n{inspect.getsource(CosFace)}")
+        return CosFace(config, log, **kwargs)
+
+    if loss in {"adaface_q", "adafaceq"}:
+        from losses.adaface_q import AdaFaceQ
+
+        log.warning(f"AdaFaceQ\n{inspect.getsource(AdaFaceQ)}")
+        return AdaFaceQ(config, log, **kwargs)
+
+    if loss == "adaface":
+        from losses.adaface import AdaFace
+
+        log.warning(f"AdaFace\n{inspect.getsource(AdaFace)}")
+        return AdaFace(config, log, **kwargs)
+
+    if loss == "magface":
+        from losses.magface import MagFace
+
+        log.warning(f"MagFace\n{inspect.getsource(MagFace)}")
+        return MagFace(config, log, **kwargs)
 
     if loss == "mse":
         from losses.mse import Mse

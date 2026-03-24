@@ -21,7 +21,7 @@ class ArcCosineLoss(Module):
         self.fc = Linear(512, config["num_classes"])
         self.centroids = Parameter(torch.randn((config["num_classes"], 512)))
 
-    def forward(self, embds, label, freeze_centroids=False):
+    def forward(self, embds, label, freeze_centroids=False, **kwargs):
         sfmx = self.fc(embds)
         sfmx = self.softmax(sfmx)
         label = torch.argmax(label, dim=1)
