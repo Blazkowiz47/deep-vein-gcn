@@ -8,6 +8,7 @@ from typing import Any, Dict, List
 from torch.nn import (
     Conv2d,
     GroupNorm,
+    Identity,
     LayerNorm,
     Linear,
     Module,
@@ -105,6 +106,7 @@ class GrapherBlock(Module):
         """
         self.name = "Grapherblock"
         self.log = log
+        self.switch_gcn = block_config["switch_gcn"]
         self.grapherblock = Sequential(
             *self.build_grapher_ffn(config, block_config, **kwargs)
         )
@@ -131,7 +133,9 @@ class GrapherBlock(Module):
         for _ in range(block_config["graphers"]):
             blocks.append(
                 Sequential(
-                    Grapher(
+                    Identity()
+                    if self.switch_gcn
+                    else Grapher(
                         block_config["indim"],
                         min(config["kernel_size"], height * width),
                         config["dilation"],
@@ -191,6 +195,8 @@ class Dscgrapher(Module):
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
         self.device = config["device"]
+        self.switch_gcn = config.get("switch_gcn", False)
+        self.switch_dsc = config.get("switch_dsc", False)
 
         self.stem = Sequential(*self.build_stem(config)).to(self.device)
         self.log.debug("Initialised stem")
@@ -246,17 +252,31 @@ class Dscgrapher(Module):
 
         stem = []
         for _, kernel in enumerate(kernels):
-            stem.append(
-                DSConv(
-                    indim,
-                    outdim,
-                    kernel,
-                    stride=stride,
-                    bias=bias,
-                    device=config["device"],
-                    log=self.log,
+            if self.switch_dsc:
+                stem.append(
+                    Conv2d(
+                        indim,
+                        outdim,
+                        kernel,
+                        stride=stride,
+                        padding=math.ceil(kernel / 2) - 1,
+                        bias=bias,
+                        device=config["device"],
+                    )
                 )
-            )
+
+            else:
+                stem.append(
+                    DSConv(
+                        indim,
+                        outdim,
+                        kernel,
+                        stride=stride,
+                        bias=bias,
+                        device=config["device"],
+                        log=self.log,
+                    )
+                )
             stem.append(BatchNorm2d(outdim))
             if _ + 1 != depth:
                 stem.append(act_layer(act))
@@ -278,6 +298,7 @@ class Dscgrapher(Module):
         backbone = []
         for blocknum in range(depth):
             block_config = backbone_config[f"block{blocknum}"]
+            block_config["switch_gcn"] = self.switch_gcn
             backbone.append(
                 GrapherBlock(
                     self.log, backbone_config, block_config, height=height, width=width

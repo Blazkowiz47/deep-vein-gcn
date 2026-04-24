@@ -1,0 +1,6 @@
+vera: radon mean=0.1211, std=0.0279 | gradient mean=0.1429, std=0.0438
+polyu: radon mean=0.0722, std=0.0106 | gradient mean=0.4605, std=0.0718
+mmcbnu: radon mean=0.1051, std=0.0370 | gradient mean=0.5398, std=0.1050
+fvusm: radon mean=0.1158, std=0.0231 | gradient mean=0.2928, std=0.0688
+fv300: radon mean=0.1074, std=0.0264 | gradient mean=0.3675, std=0.0879
+

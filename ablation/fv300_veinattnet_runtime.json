@@ -1,0 +1,16 @@
+{
+  "method": "VeinAttNet",
+  "dataset": "fv300",
+  "seed": 0,
+  "batch_size": 1,
+  "feature_layer": "layernorm",
+  "params": 90362,
+  "cpu": {
+    "latency_ms": 11.240784999999999,
+    "throughput_samples_per_s": 88.9617584537023
+  },
+  "gpu": {
+    "latency_ms": 10.629115,
+    "throughput_samples_per_s": 94.081209959625042
+  }
+}

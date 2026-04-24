@@ -4,8 +4,6 @@ from utils import Wrapper
 
 
 def get_dataset(dataset: str, config: Dict[str, Any], log: Logger, **kwargs) -> Wrapper:
-
-
     if dataset == "leaveoneout":
         from cdatasets.leaveoneout import LeaveoneoutWrapper
 

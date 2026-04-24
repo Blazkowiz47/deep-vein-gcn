@@ -1,0 +1,17 @@
+{
+  "path": "data/polyu/0/test/10/18_2_f1_1.bmp",
+  "config": "black_s345",
+  "sigmas": [
+    3,
+    4,
+    5
+  ],
+  "black_ridges": true,
+  "vessel_mean": 0.004343569278717041,
+  "vessel_std": 0.03590059280395508,
+  "vessel_max": 0.6472801566123962,
+  "vessel_nonzero_frac": 0.65594482421875,
+  "entropy_mean": 0.483510285615921,
+  "entropy_std": 0.6242560744285583,
+  "score": 22.65625
+}

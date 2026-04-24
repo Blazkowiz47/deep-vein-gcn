@@ -1,0 +1,17 @@
+{
+  "path": "data/fv300/0/test/1/1.bmp",
+  "config": "black_s234",
+  "sigmas": [
+    2,
+    3,
+    4
+  ],
+  "black_ridges": true,
+  "vessel_mean": 0.0009627321269363165,
+  "vessel_std": 0.009402028284966946,
+  "vessel_max": 0.5647607445716858,
+  "vessel_nonzero_frac": 0.62933349609375,
+  "entropy_mean": 0.2533198893070221,
+  "entropy_std": 0.3671152889728546,
+  "score": 11.9375
+}

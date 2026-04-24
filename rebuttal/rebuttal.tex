@@ -1,0 +1,271 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{enumitem}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE Rebuttal Notes and Additional Experimental Evidence}
+\end{center}
+
+\section*{Points 1 and 11: Open-set Clarification and Threshold-Based Operating Points}
+
+\paragraph{Reviewer request (Point 1).}
+\emph{True open-set verification experiment with non-enrolled identities. Your current leave-one-dataset-out protocol evaluates unseen test identities, but all probe identities appear to come from the enrolled test population. Reviewer 2 and Reviewer 3 are effectively asking for a stricter protocol where some probe subjects are not enrolled at all and must be rejected using a fixed threshold.}
+
+\paragraph{Reviewer request (Point 11).}
+\emph{Threshold-based operating-point evaluation. Reviewer 2 asked for false acceptance at specific false rejection operating points. Since the manuscript currently reports mainly AUC and EER, add thresholded operating points. Report TAR @ FAR=1\%, TAR @ FAR=0.1\% if stable, FRR/FMR under a fixed threshold, and unknown acceptance rate for non-enrolled probes.}
+
+\paragraph{Response.}
+We agree that the manuscript should distinguish two related but different notions of open-set evaluation. The current leave-one-dataset-out protocol is already \emph{subject-disjoint open-set} with respect to training identities: the test set belongs to the held-out dataset, and none of its identities are seen during training. The stricter \emph{enrollment-based unknown-rejection} setting requested by the reviewers is a stronger gallery/probe protocol and should be described separately from the existing cross-dataset subject-disjoint evaluation.
+
+To directly address the reviewer concern on thresholded operating points, we now report threshold-dependent verification metrics derived from the saved FAR/FRR curves, namely TAR at FAR$=0.1\%$, FAR$=1\%$, and FAR$=10\%$, in addition to AUC and EER. We provide these results for both the half-subject and full-subject settings, now including the completed VeinAttNet runs.
+
+\begin{table*}[ht!]
+    \centering
+    \scriptsize
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        $Train \rightarrow Test$ Dataset & Algorithm & AUC (\%) & EER (\%) & TAR@FAR$=0.1\%$ (\%) & TAR@FAR$=1\%$ (\%) & TAR@FAR$=10\%$ (\%) \\
+        \hline
+        $BCDE \rightarrow A$ & MCP & 99.80 & 0.89 & 40.19 & 99.47 & \textbf{100.00} \\
+         & RLT & 99.78 & 0.95 & 30.00 & 99.24 & \textbf{100.00} \\
+         & WLD & \textbf{99.82} & \textbf{0.84} & 43.82 & \textbf{99.59} & 100.00 \\
+         & ArcVein & 89.39 (82.64--96.14) & 19.49 (11.45--27.54) & 6.67 (0.00--16.88) & 22.81 (2.86--42.77) & 61.22 (35.63--86.81) \\
+         & LGFIN & 85.52 (83.95--87.08) & 23.35 (22.54--24.15) & 4.23 (0.00--8.51) & 15.12 (6.50--23.74) & 50.09 (41.24--58.95) \\
+         & FV-ViT & 89.72 (88.31--91.13) & 17.74 (16.16--19.33) & 0.95 (0.00--2.12) & 6.34 (3.56--9.12) & 58.68 (51.23--66.13) \\
+         & VeinAttNet & 97.83 (95.75--99.91) & 6.56 (2.64--10.48) & 21.55 (0.00--54.93) & 50.87 (12.87--88.86) & 96.75 (91.84--100.00) \\
+         & Proposed Method & 99.47 (99.19--99.75) & 3.49 (2.47--4.51) & 58.11 (42.09--74.13) & 85.03 (76.76--93.30) & 99.80 (99.53--100.00) \\
+        \hline
+        $ACDE \rightarrow B$ & MCP & 92.90 & 12.31 & 0.04 & 3.29 & 77.65 \\
+         & RLT & 90.31 & 13.76 & 0.00 & 0.04 & 57.20 \\
+         & WLD & 87.76 & 16.98 & 0.00 & 0.06 & 37.44 \\
+         & ArcVein & 91.71 (86.06--97.37) & 15.61 (8.81--22.41) & 0.99 (0.00--2.30) & 18.34 (5.65--31.02) & 72.04 (48.42--95.66) \\
+         & LGFIN & 92.48 (91.94--93.02) & 15.34 (14.66--16.02) & 5.26 (1.47--9.06) & 26.98 (25.83--28.13) & 75.30 (72.60--77.99) \\
+         & FV-ViT & 89.70 (87.28--92.12) & 18.03 (15.65--20.41) & 1.94 (0.82--3.06) & 14.97 (7.27--22.68) & 64.48 (54.60--74.36) \\
+         & VeinAttNet & 99.06 (98.74--99.39) & 4.35 (3.82--4.88) & \textbf{39.09} (27.25--50.92) & \textbf{78.50} (69.77--87.22) & 98.79 (98.37--99.21) \\
+         & Proposed Method & \textbf{99.12} (98.86--99.38) & \textbf{3.99} (3.29--4.70) & 28.13 (19.96--36.30) & 74.71 (67.50--81.91) & \textbf{99.51} (99.18--99.84) \\
+        \hline
+        $ABDE \rightarrow C$ & MCP & 87.01 & 18.93 & 0.01 & 0.55 & 35.11 \\
+         & RLT & 79.40 & 25.14 & 0.00 & 0.00 & 4.91 \\
+         & WLD & 83.07 & 22.87 & 0.00 & 0.08 & 20.58 \\
+         & ArcVein & 87.51 (84.43--90.58) & 20.22 (16.79--23.64) & 2.02 (0.00--4.36) & 7.84 (3.90--11.78) & 52.75 (41.61--63.90) \\
+         & LGFIN & 87.73 (85.09--90.38) & 19.55 (16.73--22.37) & 1.01 (0.00--3.20) & 5.72 (0.00--15.54) & 57.81 (51.20--64.42) \\
+         & FV-ViT & 89.66 (88.43--90.89) & 18.24 (17.19--19.28) & 2.23 (0.95--3.51) & 15.78 (8.26--23.30) & 65.69 (61.22--70.17) \\
+         & VeinAttNet & 86.79 (85.37--88.22) & 22.20 (20.14--24.26) & 8.01 (5.92--10.10) & 15.23 (11.25--19.21) & 49.21 (46.92--51.50) \\
+         & Proposed Method & \textbf{97.72} (97.28--98.17) & \textbf{7.48} (6.70--8.25) & \textbf{13.71} (3.69--23.72) & \textbf{53.52} (47.25--59.79) & \textbf{95.47} (93.72--97.21) \\
+        \hline
+        $ABCE \rightarrow D$ & MCP & 95.77 & 9.90 & 3.83 & 21.88 & 90.35 \\
+         & RLT & 88.17 & 16.51 & 0.00 & 0.07 & 34.81 \\
+         & WLD & 89.72 & 15.60 & 0.00 & 0.86 & 48.95 \\
+         & ArcVein & 83.78 (82.07--85.48) & 24.18 (22.21--26.14) & 1.43 (0.00--5.53) & 5.44 (1.23--9.66) & 46.83 (38.51--55.15) \\
+         & LGFIN & 93.95 (92.23--95.66) & 13.41 (11.36--15.45) & 15.41 (10.38--20.43) & 32.25 (18.67--45.83) & 79.50 (71.57--87.43) \\
+         & FV-ViT & 87.65 (85.36--89.93) & 20.32 (18.21--22.42) & 0.67 (0.00--1.73) & 11.18 (2.88--19.48) & 59.39 (52.00--66.78) \\
+         & VeinAttNet & 97.90 (97.34--98.47) & 7.72 (6.71--8.72) & 24.96 (0.00--52.09) & 67.50 (58.20--76.79) & 94.53 (93.02--96.05) \\
+         & Proposed Method & \textbf{98.67} (98.32--99.02) & \textbf{5.34} (4.40--6.29) & \textbf{25.65} (11.73--39.56) & \textbf{67.68} (60.38--74.98) & \textbf{98.39} (97.81--98.97) \\
+        \hline
+        $ABCD \rightarrow E$ & MCP & 72.21 & 33.19 & \textbf{0.00} & 0.04 & 11.14 \\
+         & RLT & 59.21 & 44.43 & 0.00 & 0.00 & 1.11 \\
+         & WLD & 69.67 & 35.45 & 0.00 & 0.02 & 8.51 \\
+         & ArcVein & 71.51 (69.25--73.77) & 33.66 (31.29--36.04) & \textbf{0.00} (0.00--0.00) & 0.38 (0.05--0.71) & 18.16 (15.53--20.79) \\
+         & LGFIN & 75.88 (74.57--77.20) & 32.29 (31.43--33.14) & \textbf{0.00} (0.00--0.00) & 9.23 (0.00--20.97) & 32.59 (23.47--41.70) \\
+         & FV-ViT & 74.34 (72.58--76.09) & 32.09 (28.61--35.57) & \textbf{0.00} (0.00--0.00) & 4.10 (0.00--8.95) & 30.29 (23.60--36.98) \\
+         & VeinAttNet & 89.73 (88.62--90.83) & 18.19 (17.04--19.35) & \textbf{0.00} (0.00--0.00) & 13.49 (0.63--26.36) & 67.34 (56.41--78.27) \\
+         & Proposed Method & \textbf{91.32} (87.69--94.95) & \textbf{16.64} (13.57--19.71) & \textbf{0.00} (0.00--0.00) & \textbf{13.70} (0.00--31.29) & \textbf{66.40} (45.03--87.76) \\
+        \hline
+    \end{tabular}}
+    \caption{Half-subject threshold-based operating-point results.}
+    \label{tab:rebuttal_half_thresholds}
+\end{table*}
+
+\begin{table*}[ht!]
+    \centering
+    \scriptsize
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        $Train \rightarrow Test$ Dataset & Algorithm & AUC (\%) & EER (\%) & TAR@FAR$=0.1\%$ (\%) & TAR@FAR$=1\%$ (\%) & TAR@FAR$=10\%$ (\%) \\
+        \hline
+        $BCDE \rightarrow A$ & MCP & 99.80 & 0.89 & 40.19 & 99.47 & \textbf{100.00} \\
+         & RLT & 99.78 & 0.95 & 30.00 & 99.24 & \textbf{100.00} \\
+         & WLD & \textbf{99.82} & \textbf{0.84} & 43.82 & \textbf{99.59} & 100.00 \\
+         & ArcVein & 89.76 (83.11--96.41) & 19.39 (10.82--27.96) & 6.62 (1.16--12.08) & 24.78 (5.85--43.72) & 63.68 (39.45--87.92) \\
+         & LGFIN & 85.64 (84.31--86.98) & 23.02 (22.30--23.73) & 3.28 (1.05--5.51) & 14.66 (6.00--23.33) & 50.07 (42.59--57.55) \\
+         & FV-ViT & 89.86 (88.50--91.22) & 17.37 (15.85--18.89) & 1.04 (0.00--2.11) & 6.70 (3.57--9.82) & 59.05 (51.71--66.39) \\
+         & VeinAttNet & 98.10 (96.36--99.85) & 6.20 (2.52--9.87) & 20.74 (0.00--51.02) & 56.08 (21.05--91.12) & 97.46 (93.70--100.00) \\
+         & Proposed Method & 99.53 (99.31--99.74) & 3.17 (2.13--4.22) & \textbf{53.51} (43.47--63.55) & 87.34 (80.89--93.79) & 99.86 (99.67--100.00) \\
+        \hline
+        $ACDE \rightarrow B$ & MCP & 92.90 & 12.31 & 0.04 & 3.29 & 77.65 \\
+         & RLT & 90.31 & 13.76 & 0.00 & 0.04 & 57.20 \\
+         & WLD & 87.76 & 16.98 & 0.00 & 0.06 & 37.44 \\
+         & ArcVein & 91.73 (86.42--97.05) & 15.48 (9.10--21.85) & 1.49 (0.04--2.94) & 16.01 (5.77--26.25) & 72.07 (49.33--94.80) \\
+         & LGFIN & 92.55 (91.90--93.20) & 15.12 (14.28--15.96) & 5.31 (3.32--7.29) & 25.07 (22.95--27.19) & 75.64 (72.47--78.80) \\
+         & FV-ViT & 89.87 (87.55--92.20) & 17.74 (15.40--20.08) & 1.86 (0.78--2.95) & 13.15 (7.54--18.76) & 65.36 (55.78--74.93) \\
+         & VeinAttNet & \textbf{99.21} (98.92--99.50) & 4.06 (3.34--4.79) & \textbf{46.04} (32.62--59.47) & \textbf{82.79} (76.00--89.58) & 98.89 (98.50--99.29) \\
+         & Proposed Method & 99.17 (98.88--99.45) & \textbf{3.91} (3.02--4.80) & 29.60 (27.53--31.67) & 76.93 (69.48--84.39) & \textbf{99.53} (99.13--99.94) \\
+        \hline
+        $ABDE \rightarrow C$ & MCP & 87.01 & 18.93 & 0.01 & 0.55 & 35.11 \\
+         & RLT & 79.40 & 25.14 & 0.00 & 0.00 & 4.91 \\
+         & WLD & 83.07 & 22.87 & 0.00 & 0.08 & 20.58 \\
+         & ArcVein & 88.09 (84.75--91.42) & 19.74 (15.90--23.58) & 1.55 (0.11--2.98) & 8.65 (5.87--11.42) & 55.14 (42.20--68.08) \\
+         & LGFIN & 87.75 (85.77--89.72) & 19.77 (17.72--21.82) & 0.56 (0.00--1.99) & 5.10 (0.00--12.95) & 57.47 (52.05--62.90) \\
+         & FV-ViT & 88.77 (87.45--90.08) & 19.03 (17.79--20.26) & 1.17 (0.00--2.43) & 11.88 (6.77--16.98) & 62.87 (58.04--67.69) \\
+         & VeinAttNet & 86.92 (85.25--88.59) & 22.02 (19.67--24.38) & 6.07 (2.52--9.62) & 15.45 (10.92--19.98) & 50.11 (45.21--55.00) \\
+         & Proposed Method & \textbf{97.78} (97.30--98.26) & \textbf{7.44} (6.51--8.38) & \textbf{16.84} (7.18--26.49) & \textbf{55.77} (50.67--60.87) & \textbf{95.39} (93.58--97.21) \\
+        \hline
+        $ABCE \rightarrow D$ & MCP & 95.77 & 9.90 & 3.83 & 21.88 & 90.35 \\
+         & RLT & 88.17 & 16.51 & 0.00 & 0.07 & 34.81 \\
+         & WLD & 89.72 & 15.60 & 0.00 & 0.86 & 48.95 \\
+         & ArcVein & 84.16 (81.10--87.22) & 23.86 (20.44--27.28) & 0.56 (0.00--1.62) & 6.58 (3.28--9.87) & 49.39 (40.30--58.48) \\
+         & LGFIN & 93.65 (91.84--95.46) & 13.65 (11.49--15.82) & 13.83 (10.69--16.97) & 28.08 (19.72--36.44) & 78.93 (71.26--86.61) \\
+         & FV-ViT & 88.55 (86.32--90.79) & 19.27 (17.31--21.24) & 2.22 (0.00--4.90) & 12.93 (5.79--20.08) & 62.52 (55.10--69.94) \\
+         & VeinAttNet & 97.54 (96.98--98.10) & 8.20 (7.10--9.29) & 17.31 (0.00--38.14) & 57.91 (49.43--66.40) & 93.67 (91.66--95.69) \\
+         & Proposed Method & \textbf{98.80} (98.43--99.17) & \textbf{5.21} (4.37--6.04) & \textbf{29.96} (15.66--44.27) & \textbf{72.22} (63.14--81.31) & \textbf{98.34} (97.69--98.99) \\
+        \hline
+        $ABCD \rightarrow E$ & MCP & 72.21 & 33.19 & \textbf{0.00} & 0.04 & 11.14 \\
+         & RLT & 59.21 & 44.43 & 0.00 & 0.00 & 1.11 \\
+         & WLD & 69.67 & 35.45 & 0.00 & 0.02 & 8.51 \\
+         & ArcVein & 69.52 (66.73--72.30) & 35.57 (33.86--37.29) & \textbf{0.00} (0.00--0.00) & 1.11 (0.66--1.57) & 17.31 (15.56--19.05) \\
+         & LGFIN & 74.72 (73.06--76.37) & 33.09 (31.79--34.39) & \textbf{0.00} (0.00--0.00) & 5.70 (0.00--14.47) & 31.52 (23.60--39.44) \\
+         & FV-ViT & 73.12 (70.51--75.74) & 33.07 (29.82--36.31) & \textbf{0.00} (0.00--0.00) & 3.99 (0.01--7.96) & 31.17 (26.60--35.73) \\
+         & VeinAttNet & 88.41 (87.57--89.26) & 19.90 (18.19--21.62) & \textbf{0.00} (0.00--0.00) & \textbf{18.28} (7.72--28.84) & 60.95 (56.15--65.75) \\
+         & Proposed Method & \textbf{89.98} (86.89--93.06) & \textbf{18.43} (15.72--21.13) & \textbf{0.00} (0.00--0.00) & 15.84 (2.82--28.87) & \textbf{64.67} (51.49--77.85) \\
+        \hline
+    \end{tabular}}
+    \caption{Full-subject threshold-based operating-point results.}
+    \label{tab:rebuttal_full_thresholds}
+\end{table*}
+
+\section*{Point 3: Loss Comparison Against Strong Angular-Margin Baselines}
+
+\paragraph{Reviewer request (Point 3).}
+\emph{Loss comparison against strong angular-margin baselines. Your current loss discussion introduces the Centroid Angular Hybrid Loss, but the reviewers want direct comparison against ArcFace / CosFace / SphereFace-type strong baselines, not just weaker alternatives. This comparison is essential.}
+
+\paragraph{Response.}
+We agree that stronger angular-margin losses should be included explicitly. Using the same $ABDE \rightarrow C$ protocol (FV-USM as the held-out dataset), we evaluated ArcFace, MagFace, and AdaFace. Ignoring the exploratory AdaFace$_0$ variant as requested, the proposed Centroid Angular Hybrid (CAH) loss obtains the lowest mean EER among the evaluated strong margin-based alternatives.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        Loss Function & Mean EER (\%) \\
+        \hline
+        ArcFace & 7.83 \\
+        MagFace & 8.20 \\
+        AdaFace & 8.22 \\
+        Proposed CAH Loss & 7.44 \\
+        \hline
+    \end{tabular}
+    \caption{Loss ablation on the $ABDE \rightarrow C$ protocol. Lower EER is better.}
+    \label{tab:rebuttal_loss_ablation}
+\end{table}
+
+These results support the claim that the proposed loss is not simply competitive with weaker objectives, but also remains stronger than recent angular-margin alternatives under the same evaluation setting.
+
+\section*{Point 5: Component Ablation Isolating DSConv and Graph Modelling}
+
+\paragraph{Reviewer request (Point 5).}
+\emph{Component ablation isolating DSConv and graph modelling. Reviewer 3's main criticism is that the architecture looks like a straightforward combination of existing pieces. To answer that, you need ablations that isolate the contribution of each part. Your current manuscript motivates DSConv and Grapher blocks, but the reviewers want stronger evidence that each is needed.}
+
+\paragraph{Response.}
+We agree that the individual contributions of the stem and graph modules should be isolated more explicitly. We therefore report a component-level ablation under the same $ABDE \rightarrow C$ protocol. The table below compares: (i) a standard-convolution stem without graph modelling, (ii) a DSConv stem without graph modelling, (iii) a standard-convolution stem with the graph backbone, and (iv) the full model combining DSConv and graph modelling.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        Variant & Mean EER (\%) \\
+        \hline
+        Standard stem + no graph & 13.59 \\
+        DSConv stem + no graph & 10.96 \\
+        Standard stem + graph backbone & 11.64 \\
+        Full model (DSConv + graph backbone) & 7.44 \\
+        \hline
+    \end{tabular}
+    \caption{Component ablation on the $ABDE \rightarrow C$ protocol. Lower EER is better.}
+    \label{tab:rebuttal_component_ablation}
+\end{table}
+
+The trend is clear: removing both components gives the worst result, DSConv alone gives a large improvement, graph modelling alone also helps, and the full model yields the best performance. This supports the claim that the proposed architecture is not merely a cosmetic combination of modules; rather, both DSConv and graph reasoning contribute materially and synergistically.
+
+\section*{Points 8 and 9: BCDE$\rightarrow$A Anomaly and VERA Performance Drop}
+
+\paragraph{Reviewer request (Point 8).}
+\emph{Analysis of the BCDE$\rightarrow$A anomaly where handcrafted methods beat many deep models. Table 5 in the manuscript shows MCP / RLT / WLD doing unexpectedly well on some cases, while the text says the proposed method consistently outperforms handcrafted and deep methods. That contradiction is one reason the reviewers lost confidence.}
+
+\paragraph{Reviewer request (Point 9).}
+\emph{Analysis of the VERA performance drop. Reviewer 2 asked for discussion of why the VERA case is much weaker. The paper itself notes that VERA is the most difficult and lowest-quality dataset.}
+
+\paragraph{Response.}
+To address both points, we analysed dataset quality using the handcrafted quality measures implemented in \texttt{vein\_quality\_assessment.py}. The intent of these measures is not to claim a calibrated universal quality scale, but to provide consistent descriptive evidence about sharpness, structure continuity, and local contrast across the datasets used in our experiments.
+
+For a grayscale image $I$ over pixel domain $\Omega$, the four measures used in the rebuttal are:
+\begin{align}
+Q_{\text{grad}}(I) &= \frac{1}{|\Omega|}\sum_{p \in \Omega} \sqrt{G_x(p)^2 + G_y(p)^2}, \\
+Q_{\text{coh}}(I) &= \frac{1}{B}\sum_{b=1}^{B}
+\left(
+\frac{\sqrt{(j_{11}^{(b)}-j_{22}^{(b)})^2 + 4(j_{12}^{(b)})^2}}
+{j_{11}^{(b)} + j_{22}^{(b)} + \varepsilon}
+\right)^2, \\
+Q_{\text{lap}}(I) &= \mathrm{Var}(\Delta I), \\
+Q_{\text{con}}(I) &= \frac{1}{B}\sum_{b=1}^{B} \sigma_b,
+\end{align}
+where $G_x$ and $G_y$ are Sobel derivatives, $(j_{11}^{(b)},j_{22}^{(b)},j_{12}^{(b)})$ are block-wise structure-tensor moments, $\Delta I$ is the Laplacian response, and $\sigma_b$ is the standard deviation inside block $b$. In all four cases, larger values indicate better local structure visibility or contrast.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|l|c|c|c|c|c|}
+        \hline
+        Dataset & Gradient & Grad. Coherence & Laplacian & Contrast & Images/Subject \\
+        \hline
+        FV-300 & 0.0687 & 0.3675 & 0.0609 & 0.0311 & 89.57 \\
+        MMCBNU & 0.0781 & 0.5398 & 0.0026 & 0.0392 & 10.00 \\
+        FV-USM & 0.0312 & 0.2928 & 0.0009 & 0.0137 & 12.00 \\
+        PolyU & 0.0478 & 0.4605 & 0.0017 & 0.0249 & 5.84 \\
+        VERA & 0.0476 & 0.1429 & 0.0074 & 0.0196 & 2.00 \\
+        \hline
+    \end{tabular}
+    \caption{Mean handcrafted quality indicators across datasets. Higher is better for all four quality metrics.}
+    \label{tab:rebuttal_quality}
+\end{table}
+
+This table helps explain both reviewer concerns. First, the $BCDE \rightarrow A$ split corresponds to FV-300, which is a relatively clean and well-controlled dataset and also has far more images per identity than the other datasets. In such a setting, handcrafted vessel-enhancement and template-matching methods remain very competitive, because the vein patterns are already sharp and high-contrast. Therefore, the observation that MCP/WLD can outperform several deep baselines on this split is not inconsistent with the rest of the cross-dataset story; rather, it means that the manuscript should use the more precise claim of \emph{strong overall generalisation} instead of implying dominance over every handcrafted baseline on every split.
+
+Second, the VERA drop is consistent with both the dataset composition and the quality analysis. VERA has the lowest gradient-coherence score among all datasets and only two images per subject, which means each identity is substantially under-represented. This combination makes $ABCD \rightarrow E$ the most difficult setting: image quality is weaker, the open-sensor acquisition is more variable, and the per-subject evidence is minimal. Therefore, the reduced performance on VERA is expected and does not indicate a protocol inconsistency; instead, it reflects a genuine low-quality, low-sample, high-shift test condition.
+
+\section*{Point 12: Runtime and Deployment Cost Experiment}
+
+\paragraph{Reviewer request (Point 12).}
+\emph{Runtime and deployment cost experiment. Reviewer 2 explicitly asked for inference time and computational trade-offs. The manuscript gives parameter count and hardware, but not speed.}
+
+\paragraph{Response.}
+We agree that deployment-oriented efficiency should be reported explicitly. Following the reviewer's suggestion, we benchmarked the learned methods on a common setting using the held-out FV-300 checkpoint for each method, a dummy input of batch size $1$, and repeated forward passes on both CPU and GPU. We report parameter count as a model-size proxy, FLOPs as a compute proxy, and mean single-image latency and throughput under the same benchmarking script for all methods. We omit MCP/RLT/WLD because they are handcrafted pipelines rather than neural checkpoints, and we omit VeinAttNet here because its evaluation pipeline is implemented separately in MATLAB.
+
+\begin{table*}[ht!]
+    \centering
+    \scriptsize
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|c|c|c|c|c|c|}
+        \hline
+        Method & Params (M) & FLOPs (G) & CPU Lat. (ms) & CPU Thr. (img/s) & GPU Lat. (ms) & GPU Thr. (img/s) \\
+        \hline
+        ArcVein & 7.83 & 2.45 & 7.09 & 141.10 & \textbf{0.94} & \textbf{1067.42} \\
+        LGFIN & 6.79 & 7.51 & 45.48 & 21.99 & 3.84 & 260.42 \\
+        FV-ViT & \textbf{0.36} & \textbf{0.03} & \textbf{5.02} & \textbf{199.37} & 1.74 & 574.79 \\
+        VeinAttNet & \textbf{0.09} & n/a & 11.24 & 88.96 & 10.63 & 94.08 \\
+        Proposed Method & 4.76 & 5.07 & 55.82 & 17.92 & 13.00 & 76.94 \\
+        \hline
+    \end{tabular}}
+    \caption{Runtime and computational-cost comparison on FV-300 using batch size $1$. Lower latency is better; higher throughput is better.}
+    \label{tab:rebuttal_runtime}
+\end{table*}
+
+These measurements clarify the deployment trade-off. VeinAttNet has the smallest parameter count among the learned baselines we measured, while FV-ViT is the fastest on CPU and ArcVein achieves the fastest GPU latency and throughput in this benchmark. We report \texttt{n/a} for VeinAttNet FLOPs because its deployed checkpoint is stored as a MATLAB network object rather than a PyTorch module, so the same FLOP tooling used for the other methods is not directly applicable. The proposed method is not the cheapest model computationally, but it remains smaller than ArcVein and LGFIN while delivering the strongest cross-dataset recognition performance in the main experiments. We will add this efficiency discussion to the revised manuscript so that the accuracy--cost trade-off is transparent.
+
+\end{document}

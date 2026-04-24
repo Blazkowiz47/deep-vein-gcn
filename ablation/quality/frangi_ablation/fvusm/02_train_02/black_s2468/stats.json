@@ -1,0 +1,18 @@
+{
+  "path": "data/fvusm/0/test/vein001_1/train_02.jpg",
+  "config": "black_s2468",
+  "sigmas": [
+    2,
+    4,
+    6,
+    8
+  ],
+  "black_ridges": true,
+  "vessel_mean": 0.005899795331060886,
+  "vessel_std": 0.013984225690364838,
+  "vessel_max": 0.7203232645988464,
+  "vessel_nonzero_frac": 0.689361572265625,
+  "entropy_mean": 1.4624656438827515,
+  "entropy_std": 0.3599911630153656,
+  "score": 67.65625
+}

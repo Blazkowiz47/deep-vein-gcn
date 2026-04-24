@@ -13,8 +13,8 @@ class AdaFace(Module):
         self.name = "AdaFace"
         self.num_classes = config["num_classes"]
         self.embedding_size = config["embedding_size"]
-        self.margin = config.get("margin", 0.4)
-        self.h = config.get("h", config.get("adaface_h", 0.333))
+        self.margin = config.get("margin", 0.3)
+        self.h = config.get("h", config.get("adaface_h", 0.1))
         self.scale = config.get("scale", 64.0)
         self.t_alpha = config.get("t_alpha", config.get("adaface_t_alpha", 0.01))
         self.eps = 1e-3
@@ -22,8 +22,8 @@ class AdaFace(Module):
         self.kernel = Parameter(torch.empty(self.embedding_size, self.num_classes))
         self.kernel.data.uniform_(-1, 1).renorm_(2, 1, 1e-5).mul_(1e5)
 
-        self.register_buffer("batch_mean", torch.tensor(20.0))
-        self.register_buffer("batch_std", torch.tensor(100.0))
+        self.register_buffer("batch_mean", torch.tensor(0.0))
+        self.register_buffer("batch_std", torch.tensor(0.0))
 
     def forward(self, embds, labels, **kwargs):
         """Compute AdaFace logits with norm-based adaptive margins."""

@@ -1,0 +1,19 @@
+{
+  "path": "data/vera/0/test/001_R/001_R_1.png",
+  "config": "white_s12345",
+  "sigmas": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "black_ridges": false,
+  "vessel_mean": 0.031216053292155266,
+  "vessel_std": 0.06528940796852112,
+  "vessel_max": 0.8513962030410767,
+  "vessel_nonzero_frac": 0.67132568359375,
+  "entropy_mean": 2.546046257019043,
+  "entropy_std": 0.5956646203994751,
+  "score": 117.6875
+}

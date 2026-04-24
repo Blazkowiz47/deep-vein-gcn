@@ -12,6 +12,8 @@ from train import main as train_main
 DEFAULT_CONFIG = Path("configs/dscgrapher2.yaml")
 RESULTS_PATH = Path("./ablation/ablation_input_loss_runs.jsonl")
 EERS_PATH = Path("./ablation/ablation_input_loss_eers.jsonl")
+DATASET = "fvusm"
+STAT_SEEDS = [0, 1, 2, 3, 4]
 LOSS_MAP = {
     "arcface": "arcface",
     "adaface": "adaface",
@@ -21,7 +23,7 @@ LOSS_MAP = {
     "qualityaware": "qualityawareproposed",
     "crossentropy": "crossentropy",
 }
-MODES = [None]
+MODE = None
 
 
 def load_config(config_path: Path) -> dict:
@@ -54,18 +56,18 @@ def get_run_name_from_record(record) -> str:
     return record
 
 
-def build_variant_config(config: dict, loss_name: str, mode: str | None) -> dict:
+def build_variant_config(config: dict, loss_name: str) -> dict:
     local_config = copy.deepcopy(config)
     local_config["loss"] = LOSS_MAP[loss_name]
-    local_config["mode"] = mode
+    local_config["mode"] = MODE
     return local_config
 
 
-def build_train_args(config_path: Path, dataset: str, seed: int, wandb: bool):
+def build_train_args(config_path: Path, stat_seed: int, wandb: bool):
     return argparse.Namespace(
         config=str(config_path),
-        seed=seed,
-        leave=dataset,
+        seed=stat_seed,
+        leave=DATASET,
         wandb=wandb,
         dataset="leaveoneout",
         model_name=None,
@@ -74,11 +76,11 @@ def build_train_args(config_path: Path, dataset: str, seed: int, wandb: bool):
     )
 
 
-def build_eval_args(config_path: Path, dataset: str, checkpoint: str):
+def build_eval_args(config_path: Path, checkpoint: str):
     return argparse.Namespace(
         config=str(config_path),
         checkpoint=checkpoint,
-        dataset=dataset,
+        dataset=DATASET,
         logger_level="ERROR",
         continue_model=None,
     )
@@ -88,25 +90,28 @@ def mode_key(mode: str | None) -> str:
     return "none" if mode is None else mode
 
 
-def run_variant(args, mode: str | None) -> None:
+def run_variant(args, stat_seed: int) -> None:
     config_path = Path(args.config).resolve()
     base_config = load_config(config_path)
-    variant_config = build_variant_config(base_config, args.loss, mode)
-    variant_config["seed"] = args.seed
-    variant_config["stat_seed"] = args.seed
+    variant_config = build_variant_config(base_config, args.loss)
+    variant_config["seed"] = stat_seed
+    variant_config["stat_seed"] = stat_seed
 
-    run_key = f"{args.dataset}:{args.seed}:{args.loss}:{mode_key(mode)}"
+    run_key = f"{DATASET}:{stat_seed}:{args.loss}:{mode_key(MODE)}"
     runs = load_jsonl(RESULTS_PATH)
     if run_key in runs and not args.retrain:
         run_name = get_run_name_from_record(runs[run_key])
         print(f"Using existing run: {run_key} -> {run_name}")
     else:
-        train_args = build_train_args(config_path, args.dataset, args.seed, args.wandb)
+        train_args = build_train_args(config_path, stat_seed, args.wandb)
         run_name = train_main(train_args, variant_config)
         append_jsonl(
             RESULTS_PATH,
             run_key,
-                run_name,
+            {
+                "run_name": run_name,
+                "wandb_run_name": run_name if args.wandb else None,
+            },
         )
         print(f"Saved run: {run_key} -> {run_name}")
 
@@ -118,7 +123,7 @@ def run_variant(args, mode: str | None) -> None:
         print(f"Existing EER: {run_key} -> {eers[run_key]}")
         return
 
-    eval_args = build_eval_args(config_path, args.dataset, run_name)
+    eval_args = build_eval_args(config_path, run_name)
     eer = parallel_driver(eval_args, variant_config)
     append_jsonl(EERS_PATH, run_key, eer)
     print(f"Saved EER: {run_key} -> {eer}")
@@ -135,18 +140,7 @@ def parse_args():
         "--loss",
         required=True,
         choices=sorted(LOSS_MAP.keys()),
-        help="Loss to run across all input modes.",
-    )
-    parser.add_argument(
-        "--dataset",
-        default="fvusm",
-        help="Held-out dataset for leave-one-out training and evaluation.",
-    )
-    parser.add_argument(
-        "--seed",
-        type=int,
-        default=0,
-        help="Statistical seed / folder index.",
+        help="Loss to run for FVUSM leave-one-out across stat_seed 0..4.",
     )
     parser.add_argument(
         "--wandb",
@@ -173,9 +167,9 @@ def parse_args():
 
 def main():
     args = parse_args()
-    for mode in MODES:
-        print(f"Running loss={args.loss} mode={mode_key(mode)}")
-        run_variant(args, mode)
+    for stat_seed in STAT_SEEDS:
+        print(f"Running loss={args.loss} dataset={DATASET} stat_seed={stat_seed}")
+        run_variant(args, stat_seed)
 
 
 if __name__ == "__main__":

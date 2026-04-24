@@ -1,0 +1,17 @@
+{
+  "path": "data/mmcbnu/0/test/001_L_Fore/01.bmp",
+  "config": "black_s345",
+  "sigmas": [
+    3,
+    4,
+    5
+  ],
+  "black_ridges": true,
+  "vessel_mean": 0.05262262374162674,
+  "vessel_std": 0.10079091787338257,
+  "vessel_max": 0.863021969795227,
+  "vessel_nonzero_frac": 0.570343017578125,
+  "entropy_mean": 2.7391397953033447,
+  "entropy_std": 0.7838088870048523,
+  "score": 126.5
+}

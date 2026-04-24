@@ -1,0 +1,17 @@
+{
+  "path": "data/fvusm/0/test/vein001_1/test_06.jpg",
+  "config": "white_s234",
+  "sigmas": [
+    2,
+    3,
+    4
+  ],
+  "black_ridges": false,
+  "vessel_mean": 0.007830644026398659,
+  "vessel_std": 0.02767154574394226,
+  "vessel_max": 0.7774024605751038,
+  "vessel_nonzero_frac": 0.577239990234375,
+  "entropy_mean": 1.4598748683929443,
+  "entropy_std": 0.5252573490142822,
+  "score": 67.6875
+}

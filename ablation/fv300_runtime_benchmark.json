@@ -1,0 +1,66 @@
+{
+  "arcvein": {
+    "label": "ArcVein",
+    "dataset": "fv300",
+    "seed": 0,
+    "batch_size": 1,
+    "params": 7831314.0,
+    "flops": 2447068800.0,
+    "cpu": {
+      "latency_ms": 7.086924760005786,
+      "throughput_samples_per_s": 141.1049268708736
+    },
+    "gpu": {
+      "latency_ms": 0.9368398449805682,
+      "throughput_samples_per_s": 1067.4183056557995
+    }
+  },
+  "lgfin": {
+    "label": "LGFIN",
+    "dataset": "fv300",
+    "seed": 0,
+    "batch_size": 1,
+    "params": 6794654.0,
+    "flops": 7513761662.0,
+    "cpu": {
+      "latency_ms": 45.48042196500319,
+      "throughput_samples_per_s": 21.987482894716585
+    },
+    "gpu": {
+      "latency_ms": 3.8400093099699006,
+      "throughput_samples_per_s": 260.4160352954557
+    }
+  },
+  "fv-vit": {
+    "label": "FV-ViT",
+    "dataset": "fv300",
+    "seed": 0,
+    "batch_size": 1,
+    "params": 356099.0,
+    "flops": 34508720.0,
+    "cpu": {
+      "latency_ms": 5.015708469982201,
+      "throughput_samples_per_s": 199.37362906651325
+    },
+    "gpu": {
+      "latency_ms": 1.7397756400168873,
+      "throughput_samples_per_s": 574.7867581306596
+    }
+  },
+  "snakegraph2": {
+    "label": "Proposed Method",
+    "dataset": "fv300",
+    "seed": 0,
+    "batch_size": 1,
+    "params": 4759296.0,
+    "flops": 5066362368.0,
+    "cpu": {
+      "latency_ms": 55.81779449501482,
+      "throughput_samples_per_s": 17.91543376170679
+    },
+    "gpu": {
+      "latency_ms": 12.997246355007519,
+      "throughput_samples_per_s": 76.93937413248497
+    }
+  }
+}

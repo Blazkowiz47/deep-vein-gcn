@@ -14,6 +14,12 @@ from utils import set_seeds
 import seaborn as sns
 
 
+PROTOCOL_SUFFIX = {
+    "half": ("far_half_scores.npy", "frr_half_scores.npy"),
+    "full": ("far_full_scores.npy", "frr_full_scores.npy"),
+}
+
+
 def norminv(p: float | np.ndarray) -> float | np.ndarray:
     """
     Inverse CDF (quantile) of the standard normal distribution.
@@ -191,6 +197,7 @@ def plot_det_curve_from_scores(
 
 def plot_det_curves_per_dataset(
     scores_dict: Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]],
+    protocol: str,
 ):
     """
     For each dataset and method, assume FAR is identical across seeds.
@@ -285,7 +292,7 @@ def plot_det_curves_per_dataset(
         plt.ylabel("False Non-Match Rate (FNMR) (%)", fontsize=10)
         plt.legend(loc="lower left")
         plt.tight_layout()
-        plt.savefig(f"plots/det_curves_{dataset}.png")
+        plt.savefig(f"plots/det_curves_{dataset}_{protocol}.png")
         plt.close()
 
 
@@ -389,11 +396,31 @@ def get_eers_auc_roc() -> Dict[
     return scores_dict
 
 
-def get_scores_dict() -> Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]]:
+def get_score_paths(
+    dataset: str,
+    method: str,
+    run_name: str,
+    protocol: str,
+) -> Tuple[str, str]:
+    if protocol not in PROTOCOL_SUFFIX:
+        raise ValueError(
+            f"Unsupported protocol '{protocol}'. Expected one of {tuple(PROTOCOL_SUFFIX)}."
+        )
+
+    far_name, frr_name = PROTOCOL_SUFFIX[protocol]
+    if method in {"mcp", "rlt", "wld"}:
+        return f"tmp/{method}/{dataset}/far_scores.npy", f"tmp/{method}/{dataset}/frr_scores.npy"
+
+    return f"tmp/{run_name}/{dataset}/{far_name}", f"tmp/{run_name}/{dataset}/{frr_name}"
+
+
+def get_scores_dict(
+    protocol: str,
+) -> Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]]:
     scores_dict = {}
     for dataset, data in final_runs.items():
         scores_dict[dataset] = {}
-        print("Loading dataset:", dataset)
+        print(f"Loading dataset: {dataset} ({protocol})")
         for method, runs in data.items():
             scores_dict[dataset][method] = {}
             print("\tLoading scores for method:", method)
@@ -419,7 +446,9 @@ def get_scores_dict() -> Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]
                 #     genuine_scores, imposter_scores
                 # )
 
-                far_score_file = f"tmp/{run_name}/{dataset}/far_scores.npy"
+                far_score_file, frr_score_file = get_score_paths(
+                    dataset, method, run_name, protocol
+                )
                 if not os.path.exists(far_score_file):
                     print(
                         f"File {far_score_file} does not exist, skipping run {run_name}."
@@ -428,7 +457,6 @@ def get_scores_dict() -> Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]
 
                 far_scores = np.load(far_score_file)
 
-                frr_score_file = f"tmp/{run_name}/{dataset}/frr_scores.npy"
                 if not os.path.exists(frr_score_file):
                     print(
                         f"File {frr_score_file} does not exist, skipping run {run_name}."
@@ -472,7 +500,9 @@ def get_scores_dict() -> Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]
             #     genuine_scores, imposter_scores
             # )
 
-            far_score_file = f"tmp/{method}/{dataset}/far_scores.npy"
+            far_score_file, frr_score_file = get_score_paths(
+                dataset, method, method, protocol
+            )
             if not os.path.exists(far_score_file):
                 print(
                     f"File {far_score_file} does not exist, skipping method {method}."
@@ -481,7 +511,6 @@ def get_scores_dict() -> Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]
 
             far_scores = np.load(far_score_file)
 
-            frr_score_file = f"tmp/{method}/{dataset}/frr_scores.npy"
             if not os.path.exists(frr_score_file):
                 print(
                     f"File {frr_score_file} does not exist, skipping method {method}."
@@ -497,6 +526,7 @@ def get_scores_dict() -> Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]
 
 def plot_roc_curves_per_dataset(
     scores_dict: Dict[str, Dict[str, Dict[int, Tuple[NDArray, NDArray]]]],
+    protocol: str,
 ):
     """
     For each dataset and method, assume FAR is identical across seeds.
@@ -575,7 +605,7 @@ def plot_roc_curves_per_dataset(
         plt.ylabel("True Match Rate (TMR) (%)", fontsize=10)
         plt.legend(loc="lower right")
         plt.tight_layout()
-        plt.savefig(f"plots/roc_curves_{dataset}.png")
+        plt.savefig(f"plots/roc_curves_{dataset}_{protocol}.png")
         plt.close()
 
 
@@ -659,11 +689,9 @@ def plot_ablation():
 if __name__ == "__main__":
     log = getLogger()
     set_seeds(log, 2025)
-    print("Starting to populate scores dictionary...")
-    scores_dict = get_scores_dict()
-    # print("Scores dictionary has been populated.")
-    # # Use scores_dict for further processing or plotting.
-    # plot_det_curves_per_dataset(scores_dict)
-    # plot_roc_curves_per_dataset(scores_dict)
+    for protocol in ["half", "full"]:
+        print(f"Starting to populate scores dictionary for {protocol}...")
+        scores_dict = get_scores_dict(protocol)
+        plot_det_curves_per_dataset(scores_dict, protocol)
+        plot_roc_curves_per_dataset(scores_dict, protocol)
     # get_eers_auc_roc()
-    plot_ablation()

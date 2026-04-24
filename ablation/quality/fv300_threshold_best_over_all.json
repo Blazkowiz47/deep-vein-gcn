@@ -1,0 +1,18 @@
+{
+  "resize_s345": {
+    "num_thresholds_fv300_best_over_all": 0,
+    "first_threshold_if_any": null
+  },
+  "resize_clahe_s345": {
+    "num_thresholds_fv300_best_over_all": 0,
+    "first_threshold_if_any": null
+  },
+  "native_s345": {
+    "num_thresholds_fv300_best_over_all": 0,
+    "first_threshold_if_any": null
+  },
+  "native_clahe_s345": {
+    "num_thresholds_fv300_best_over_all": 0,
+    "first_threshold_if_any": null
+  }
+}

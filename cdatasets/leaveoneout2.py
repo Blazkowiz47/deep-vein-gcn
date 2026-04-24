@@ -5,7 +5,6 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 
 import numpy as np
 import torch
-from PIL import Image
 from torch.utils.data import DataLoader
 from torchvision import set_image_backend
 from torchvision import transforms as A
@@ -53,9 +52,9 @@ class Leaveoneout2Wrapper(Wrapper):
 
         self.batch_size = config["batch_size"]
         self.num_workers = config.get("num_workers", 4)
-        self.total_data: Dict[str, List[Any]] = {}
-        self.train_data: Dict[str, List[Any]] = {}
-        self.test_data: Dict[str, List[Any]] = {}
+        self.total_data: Dict[str, List[str]] = {}
+        self.train_data: Dict[str, List[str]] = {}
+        self.test_data: Dict[str, List[str]] = {}
         self.num_classes = None
         self.mintrain_imgs = 90
         # self.initialise_db() # Prefering old for now
@@ -95,7 +94,7 @@ class Leaveoneout2Wrapper(Wrapper):
             self.test_data[cid] = self.total_data[cid][partition_index:]
 
     def _internal_loop(
-        self, rdir: str, ssplit: str, prev: Dict[str, List[Any]]
+        self, rdir: str, ssplit: str, prev: Dict[str, List[str]]
     ) -> None:
         rdir = os.path.join(rdir, ssplit)
         for cid in os.listdir(rdir):
@@ -106,8 +105,7 @@ class Leaveoneout2Wrapper(Wrapper):
             imgs = 0
             for img in os.listdir(cdir):
                 if "." + img.split(".")[-1].lower() in image_extensions:
-                    with Image.open(os.path.join(cdir, img)) as image:
-                        prev[ds + "_" + cid].append(np.array(image))
+                    prev[ds + "_" + cid].append(os.path.join(cdir, img))
                     imgs += 1
 
             if ssplit == "train" and self.mintrain_imgs > imgs:

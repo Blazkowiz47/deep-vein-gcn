@@ -29,9 +29,9 @@ class VeraWrapper(Wrapper):
 
         self.batch_size = config["batch_size"]
         self.num_workers = config["num_workers"]
-        self.total_data: Dict[str, List[Any]] = {}
-        self.train_data: Dict[str, List[Any]] = {}
-        self.test_data: Dict[str, List[Any]] = {}
+        self.total_data: Dict[str, List[str]] = {}
+        self.train_data: Dict[str, List[str]] = {}
+        self.test_data: Dict[str, List[str]] = {}
         self.num_classes = None
         self.initialise_db()
 
@@ -57,7 +57,7 @@ class VeraWrapper(Wrapper):
             self.train_data[cid] = self.total_data[cid][:partition_index]
             self.test_data[cid] = self.total_data[cid][partition_index:]
 
-    def _internal_loop(self, ssplit: str, prev: Dict[str, List[Any]]) -> None:
+    def _internal_loop(self, ssplit: str, prev: Dict[str, List[str]]) -> None:
         rdir = os.path.join(self.rdir, ssplit)
         for cid in os.listdir(rdir):
             if cid not in prev:
@@ -66,8 +66,7 @@ class VeraWrapper(Wrapper):
 
             for img in os.listdir(cdir):
                 if "." + img.split(".")[-1].lower() in image_extensions:
-                    with Image.open(os.path.join(cdir, img)) as image:
-                        prev[cid].append(np.array(image))
+                    prev[cid].append(os.path.join(cdir, img))
 
     def loop_splitset(self, ssplit: str) -> List[Any]:
         if ssplit == "train":
@@ -104,7 +103,8 @@ class VeraWrapper(Wrapper):
         return self.augmentations(image)
 
     def transform(self, datapoint: Iterable[Any]) -> Tuple:
-        img, lbl = datapoint
+        imgfname, lbl = datapoint
+        img = Image.open(imgfname)
         if self.num_classes is None:
             raise ValueError("Num classes not set.")
         # Initialise label

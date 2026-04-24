@@ -242,23 +242,24 @@ def main(args, config) -> str:
                 model.eval()
                 criterion.eval()
                 pbar = tqdm(validationds, desc="Validation")
-                for image, label in pbar:
-                    image, label = image.to(device), label.to(device)
-                    preds = model(image)
-                    loss1, loss2, preds = criterion(
-                        preds,
-                        label,
-                        image_batch=image,
-                    )
-                    step_loss = loss1 + loss2
-                    validation_losses.append(step_loss.detach().cpu().item())
-                    val_metric.update(preds.softmax(dim=1), label.argmax(dim=1))
-                    step1_losses.append(loss1.detach().cpu().item())
-                    step2_losses.append(loss2.detach().cpu().item())
-                    pbar.set_postfix({"loss": np.mean(validation_losses)})
-                    if validation_losses[-1] == nan:
-                        loss_is_nan = True
-                        break
+                with torch.no_grad():
+                    for image, label in pbar:
+                        image, label = image.to(device), label.to(device)
+                        preds = model(image)
+                        loss1, loss2, preds = criterion(
+                            preds,
+                            label,
+                            image_batch=image,
+                        )
+                        step_loss = loss1 + loss2
+                        validation_losses.append(step_loss.detach().cpu().item())
+                        val_metric.update(preds.softmax(dim=1), label.argmax(dim=1))
+                        step1_losses.append(loss1.detach().cpu().item())
+                        step2_losses.append(loss2.detach().cpu().item())
+                        pbar.set_postfix({"loss": np.mean(validation_losses)})
+                        if validation_losses[-1] == nan:
+                            loss_is_nan = True
+                            break
 
                 pbar.close()
                 if loss_is_nan:

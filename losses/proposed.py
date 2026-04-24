@@ -17,9 +17,8 @@ class Proposed(Module):
         self.centroids.data.uniform_(-1, 1).renorm_(2, 1, 1)
 
         self.beta = torch.tensor(config["beta"]).to(self.device)
-        self.margin = config.get("margin", 0.1)
-        self.soft_hinge_temperature = config.get("soft_hinge_temperature", 0.1)
-        self.fc = Linear(config["embedding_size"], self.num_classes)
+
+        self.fc = torch.nn.Linear(config["embedding_size"], self.num_classes)
         self.model_init()
 
     def model_init(self):
@@ -32,62 +31,28 @@ class Proposed(Module):
         return torch.norm(embds, p=2, dim=1)
 
     def forward(self, embds, labels, freeze_centroids=False, **kwargs):
-        """Compute classification and centroid-regularization losses.
-
-        Args:
-            embds: Batch embeddings of shape [B, D].
-            labels: One-hot labels of shape [B, C].
-            freeze_centroids: If True, keep centroid weights fixed for loss2.
-
-        Math:
-            targets = argmax(labels, dim=1)
-            preds = fc(embds)
-            loss1 = CE(preds, targets)
-
-            emb_norm = normalize(embds)
-            cent_norm = normalize(centroids)
-            cos_theta = emb_norm @ cent_norm
-
-            target_sim = cos_theta[b, targets[b]]
-            hard_neg = tau * logsumexp(non_target_sim / tau)
-            attraction = 1 - target_sim
-            repulsion = softplus(hard_neg - target_sim + margin)
-            loss2 = mean(attraction + repulsion)
-
-            total = loss1 + beta * loss2
-
-        Returns:
-            A tuple of:
-            - loss1: Cross-entropy on a standard linear classifier head.
-            - beta * loss2: Smooth attraction/repulsion penalty against
-              normalized class centroids.
-            - preds: Class logits from the classifier head.
-        """
         if len(embds.shape) != 2:
             embds = embds.view(1, embds.size(0))
         if len(labels.shape) != 2:
             labels = labels.view(1, labels.size(0))
 
-        targets = labels.argmax(dim=1)
         preds = self.fc(embds)
-        loss1 = F.cross_entropy(preds, targets, reduction="mean")
-
-        centroids = self.centroids.detach() if freeze_centroids else self.centroids
-        wnorm = F.normalize(centroids, p=2, dim=0)
+        loss1 = F.cross_entropy(preds, labels, reduction="mean")
+        wnorm = F.normalize(self.centroids, p=2, dim=0)
         emb_norm = F.normalize(embds, p=2, dim=1)
-        cos_theta = torch.matmul(emb_norm, wnorm).clamp(-1, 1)
-        target_sim = cos_theta.gather(1, targets.unsqueeze(1)).squeeze(1)
-        neg_sim = cos_theta.masked_fill(
-            F.one_hot(targets, self.num_classes).bool(),
-            float("-inf"),
-        )
-        hard_neg = self.soft_hinge_temperature * torch.logsumexp(
-            neg_sim / self.soft_hinge_temperature,
-            dim=1,
-        )
-        attraction = 1.0 - target_sim
-        repulsion = F.softplus(hard_neg - target_sim + self.margin)
-        loss2 = (attraction + repulsion).mean()
+        self.centroids.requires_grad = not freeze_centroids
+
+        if freeze_centroids:
+            with torch.no_grad():
+                cos_theta = torch.matmul(emb_norm, wnorm)
+                cos_theta = cos_theta.clamp(-1, 1)
+                output = torch.pi - torch.acos(cos_theta)
+                loss2 = F.cross_entropy(output, labels, reduction="mean")
+        else:
+            cos_theta = torch.matmul(emb_norm, wnorm)
+            cos_theta = cos_theta.clamp(-1, 1)
+            output = torch.pi - torch.acos(cos_theta)
+            loss2 = F.cross_entropy(output, labels, reduction="mean")
 
         if torch.isnan(loss1):
             self.log.error("Loss1 is NaN")
