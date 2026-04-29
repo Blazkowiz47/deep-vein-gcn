@@ -1,0 +1,4802 @@
+[
+  {
+    "subject_id": "092_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9686763286590576,
+    "impostor_topk_mean": 0.6163129329681396,
+    "margin": 0.352363395690918,
+    "rank": 1
+  },
+  {
+    "subject_id": "084_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9563040137290955,
+    "impostor_topk_mean": 0.6330581963062286,
+    "margin": 0.32324581742286684,
+    "rank": 2
+  },
+  {
+    "subject_id": "005_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9141140580177307,
+    "impostor_topk_mean": 0.5957448750734329,
+    "margin": 0.31836918294429783,
+    "rank": 3
+  },
+  {
+    "subject_id": "030_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9278602004051208,
+    "impostor_topk_mean": 0.6143875360488892,
+    "margin": 0.31347266435623167,
+    "rank": 4
+  },
+  {
+    "subject_id": "084_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9501597881317139,
+    "impostor_topk_mean": 0.639535915851593,
+    "margin": 0.3106238722801209,
+    "rank": 5
+  },
+  {
+    "subject_id": "065_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9527866840362549,
+    "impostor_topk_mean": 0.6485074818134308,
+    "margin": 0.3042792022228241,
+    "rank": 6
+  },
+  {
+    "subject_id": "066_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9343652725219727,
+    "impostor_topk_mean": 0.6344150125980377,
+    "margin": 0.299950259923935,
+    "rank": 7
+  },
+  {
+    "subject_id": "042_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9195944666862488,
+    "impostor_topk_mean": 0.6198314905166626,
+    "margin": 0.29976297616958614,
+    "rank": 8
+  },
+  {
+    "subject_id": "054_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8869123458862305,
+    "impostor_topk_mean": 0.5874284207820892,
+    "margin": 0.29948392510414124,
+    "rank": 9
+  },
+  {
+    "subject_id": "047_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8942299485206604,
+    "impostor_topk_mean": 0.6014798641204834,
+    "margin": 0.292750084400177,
+    "rank": 10
+  },
+  {
+    "subject_id": "049_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9337249994277954,
+    "impostor_topk_mean": 0.6429095447063446,
+    "margin": 0.29081545472145076,
+    "rank": 11
+  },
+  {
+    "subject_id": "081_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9669650793075562,
+    "impostor_topk_mean": 0.6766970038414002,
+    "margin": 0.29026807546615596,
+    "rank": 12
+  },
+  {
+    "subject_id": "069_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9140565395355225,
+    "impostor_topk_mean": 0.6277242004871368,
+    "margin": 0.2863323390483856,
+    "rank": 13
+  },
+  {
+    "subject_id": "076_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9224101305007935,
+    "impostor_topk_mean": 0.6364569127559662,
+    "margin": 0.2859532177448273,
+    "rank": 14
+  },
+  {
+    "subject_id": "005_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9386237263679504,
+    "impostor_topk_mean": 0.6540805697441101,
+    "margin": 0.28454315662384033,
+    "rank": 15
+  },
+  {
+    "subject_id": "091_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8890441060066223,
+    "impostor_topk_mean": 0.6054637134075165,
+    "margin": 0.28358039259910583,
+    "rank": 16
+  },
+  {
+    "subject_id": "070_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8876778483390808,
+    "impostor_topk_mean": 0.6079028367996215,
+    "margin": 0.2797750115394593,
+    "rank": 17
+  },
+  {
+    "subject_id": "099_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9185539484024048,
+    "impostor_topk_mean": 0.6406332671642303,
+    "margin": 0.2779206812381745,
+    "rank": 18
+  },
+  {
+    "subject_id": "081_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9595164060592651,
+    "impostor_topk_mean": 0.6845546424388885,
+    "margin": 0.2749617636203766,
+    "rank": 19
+  },
+  {
+    "subject_id": "044_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9376280307769775,
+    "impostor_topk_mean": 0.6641558170318603,
+    "margin": 0.2734722137451172,
+    "rank": 20
+  },
+  {
+    "subject_id": "095_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.909318208694458,
+    "impostor_topk_mean": 0.636987155675888,
+    "margin": 0.27233105301856997,
+    "rank": 21
+  },
+  {
+    "subject_id": "083_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9113538265228271,
+    "impostor_topk_mean": 0.6410433888435364,
+    "margin": 0.27031043767929075,
+    "rank": 22
+  },
+  {
+    "subject_id": "049_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9085285663604736,
+    "impostor_topk_mean": 0.6482142686843873,
+    "margin": 0.2603142976760864,
+    "rank": 23
+  },
+  {
+    "subject_id": "044_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9248995184898376,
+    "impostor_topk_mean": 0.6650751888751983,
+    "margin": 0.2598243296146393,
+    "rank": 24
+  },
+  {
+    "subject_id": "082_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9327090978622437,
+    "impostor_topk_mean": 0.6738937377929688,
+    "margin": 0.25881536006927486,
+    "rank": 25
+  },
+  {
+    "subject_id": "099_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9017660617828369,
+    "impostor_topk_mean": 0.6450977325439453,
+    "margin": 0.2566683292388916,
+    "rank": 26
+  },
+  {
+    "subject_id": "064_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8912275433540344,
+    "impostor_topk_mean": 0.6361935079097748,
+    "margin": 0.2550340354442596,
+    "rank": 27
+  },
+  {
+    "subject_id": "087_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7931824326515198,
+    "impostor_topk_mean": 0.544483408331871,
+    "margin": 0.24869902431964874,
+    "rank": 28
+  },
+  {
+    "subject_id": "004_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9214016199111938,
+    "impostor_topk_mean": 0.6731101453304291,
+    "margin": 0.24829147458076473,
+    "rank": 29
+  },
+  {
+    "subject_id": "086_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9557154178619385,
+    "impostor_topk_mean": 0.7076929271221161,
+    "margin": 0.2480224907398224,
+    "rank": 30
+  },
+  {
+    "subject_id": "074_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9626824259757996,
+    "impostor_topk_mean": 0.7147460997104644,
+    "margin": 0.24793632626533513,
+    "rank": 31
+  },
+  {
+    "subject_id": "016_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8710507154464722,
+    "impostor_topk_mean": 0.6259528040885926,
+    "margin": 0.24509791135787962,
+    "rank": 32
+  },
+  {
+    "subject_id": "063_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9458622336387634,
+    "impostor_topk_mean": 0.70133136510849,
+    "margin": 0.2445308685302734,
+    "rank": 33
+  },
+  {
+    "subject_id": "056_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8844653367996216,
+    "impostor_topk_mean": 0.6401273965835571,
+    "margin": 0.24433794021606448,
+    "rank": 34
+  },
+  {
+    "subject_id": "086_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9298657774925232,
+    "impostor_topk_mean": 0.686005461215973,
+    "margin": 0.24386031627655025,
+    "rank": 35
+  },
+  {
+    "subject_id": "055_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9318056106567383,
+    "impostor_topk_mean": 0.6887180149555207,
+    "margin": 0.24308759570121763,
+    "rank": 36
+  },
+  {
+    "subject_id": "091_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9408420324325562,
+    "impostor_topk_mean": 0.6982687175273895,
+    "margin": 0.24257331490516665,
+    "rank": 37
+  },
+  {
+    "subject_id": "097_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9455905556678772,
+    "impostor_topk_mean": 0.7034018516540528,
+    "margin": 0.24218870401382442,
+    "rank": 38
+  },
+  {
+    "subject_id": "079_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8579376339912415,
+    "impostor_topk_mean": 0.6174092829227448,
+    "margin": 0.24052835106849668,
+    "rank": 39
+  },
+  {
+    "subject_id": "083_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8758705258369446,
+    "impostor_topk_mean": 0.6387294590473175,
+    "margin": 0.2371410667896271,
+    "rank": 40
+  },
+  {
+    "subject_id": "065_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.90480637550354,
+    "impostor_topk_mean": 0.6680155038833618,
+    "margin": 0.2367908716201782,
+    "rank": 41
+  },
+  {
+    "subject_id": "064_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9206097722053528,
+    "impostor_topk_mean": 0.684175431728363,
+    "margin": 0.23643434047698975,
+    "rank": 42
+  },
+  {
+    "subject_id": "056_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9512652158737183,
+    "impostor_topk_mean": 0.7154081463813782,
+    "margin": 0.2358570694923401,
+    "rank": 43
+  },
+  {
+    "subject_id": "016_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.944110095500946,
+    "impostor_topk_mean": 0.7093235969543457,
+    "margin": 0.2347864985466004,
+    "rank": 44
+  },
+  {
+    "subject_id": "077_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8888453841209412,
+    "impostor_topk_mean": 0.6579501211643219,
+    "margin": 0.23089526295661922,
+    "rank": 45
+  },
+  {
+    "subject_id": "002_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8860321640968323,
+    "impostor_topk_mean": 0.6555943250656128,
+    "margin": 0.2304378390312195,
+    "rank": 46
+  },
+  {
+    "subject_id": "091_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9322535991668701,
+    "impostor_topk_mean": 0.7029519379138947,
+    "margin": 0.22930166125297546,
+    "rank": 47
+  },
+  {
+    "subject_id": "026_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9064224362373352,
+    "impostor_topk_mean": 0.6771960496902466,
+    "margin": 0.2292263865470886,
+    "rank": 48
+  },
+  {
+    "subject_id": "098_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.851841926574707,
+    "impostor_topk_mean": 0.6231976270675659,
+    "margin": 0.22864429950714116,
+    "rank": 49
+  },
+  {
+    "subject_id": "086_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.921008825302124,
+    "impostor_topk_mean": 0.6945978999137878,
+    "margin": 0.22641092538833618,
+    "rank": 50
+  },
+  {
+    "subject_id": "030_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9157070517539978,
+    "impostor_topk_mean": 0.6915160834789276,
+    "margin": 0.22419096827507023,
+    "rank": 51
+  },
+  {
+    "subject_id": "044_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.959187924861908,
+    "impostor_topk_mean": 0.7359939634799957,
+    "margin": 0.22319396138191228,
+    "rank": 52
+  },
+  {
+    "subject_id": "029_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9329656958580017,
+    "impostor_topk_mean": 0.7101880192756653,
+    "margin": 0.22277767658233638,
+    "rank": 53
+  },
+  {
+    "subject_id": "076_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.963349461555481,
+    "impostor_topk_mean": 0.7417746245861053,
+    "margin": 0.22157483696937563,
+    "rank": 54
+  },
+  {
+    "subject_id": "004_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9405145645141602,
+    "impostor_topk_mean": 0.7198132336139679,
+    "margin": 0.22070133090019228,
+    "rank": 55
+  },
+  {
+    "subject_id": "091_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9306640028953552,
+    "impostor_topk_mean": 0.7103947222232818,
+    "margin": 0.2202692806720734,
+    "rank": 56
+  },
+  {
+    "subject_id": "097_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9409557580947876,
+    "impostor_topk_mean": 0.7214030444622039,
+    "margin": 0.21955271363258366,
+    "rank": 57
+  },
+  {
+    "subject_id": "098_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9080856442451477,
+    "impostor_topk_mean": 0.6895537376403809,
+    "margin": 0.21853190660476685,
+    "rank": 58
+  },
+  {
+    "subject_id": "035_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8670138716697693,
+    "impostor_topk_mean": 0.6487976372241974,
+    "margin": 0.21821623444557192,
+    "rank": 59
+  },
+  {
+    "subject_id": "004_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9396193623542786,
+    "impostor_topk_mean": 0.7214062809944153,
+    "margin": 0.21821308135986328,
+    "rank": 60
+  },
+  {
+    "subject_id": "081_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9520441889762878,
+    "impostor_topk_mean": 0.7338415265083313,
+    "margin": 0.2182026624679565,
+    "rank": 61
+  },
+  {
+    "subject_id": "079_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.901557981967926,
+    "impostor_topk_mean": 0.6849372804164886,
+    "margin": 0.21662070155143742,
+    "rank": 62
+  },
+  {
+    "subject_id": "064_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8870753645896912,
+    "impostor_topk_mean": 0.6705504834651947,
+    "margin": 0.21652488112449642,
+    "rank": 63
+  },
+  {
+    "subject_id": "087_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8449903726577759,
+    "impostor_topk_mean": 0.6294520556926727,
+    "margin": 0.21553831696510317,
+    "rank": 64
+  },
+  {
+    "subject_id": "089_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8648045659065247,
+    "impostor_topk_mean": 0.6497314691543579,
+    "margin": 0.2150730967521668,
+    "rank": 65
+  },
+  {
+    "subject_id": "083_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8509238362312317,
+    "impostor_topk_mean": 0.6360276222229004,
+    "margin": 0.21489621400833125,
+    "rank": 66
+  },
+  {
+    "subject_id": "050_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9222530722618103,
+    "impostor_topk_mean": 0.7077783823013306,
+    "margin": 0.2144746899604797,
+    "rank": 67
+  },
+  {
+    "subject_id": "012_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9465623497962952,
+    "impostor_topk_mean": 0.7322780072689057,
+    "margin": 0.21428434252738948,
+    "rank": 68
+  },
+  {
+    "subject_id": "023_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8935796022415161,
+    "impostor_topk_mean": 0.6795261561870575,
+    "margin": 0.21405344605445864,
+    "rank": 69
+  },
+  {
+    "subject_id": "086_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8725782632827759,
+    "impostor_topk_mean": 0.6588377892971039,
+    "margin": 0.21374047398567197,
+    "rank": 70
+  },
+  {
+    "subject_id": "092_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9478045701980591,
+    "impostor_topk_mean": 0.7344706654548645,
+    "margin": 0.21333390474319458,
+    "rank": 71
+  },
+  {
+    "subject_id": "049_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9094103574752808,
+    "impostor_topk_mean": 0.6967937409877777,
+    "margin": 0.21261661648750307,
+    "rank": 72
+  },
+  {
+    "subject_id": "028_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9518784284591675,
+    "impostor_topk_mean": 0.7424847602844238,
+    "margin": 0.2093936681747437,
+    "rank": 73
+  },
+  {
+    "subject_id": "063_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8956307172775269,
+    "impostor_topk_mean": 0.6883106529712677,
+    "margin": 0.20732006430625916,
+    "rank": 74
+  },
+  {
+    "subject_id": "002_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9152374267578125,
+    "impostor_topk_mean": 0.7082030951976777,
+    "margin": 0.20703433156013484,
+    "rank": 75
+  },
+  {
+    "subject_id": "066_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.896410346031189,
+    "impostor_topk_mean": 0.6899974167346954,
+    "margin": 0.20641292929649357,
+    "rank": 76
+  },
+  {
+    "subject_id": "042_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8663187026977539,
+    "impostor_topk_mean": 0.6600561618804932,
+    "margin": 0.2062625408172607,
+    "rank": 77
+  },
+  {
+    "subject_id": "096_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9030635356903076,
+    "impostor_topk_mean": 0.6973005652427673,
+    "margin": 0.20576297044754033,
+    "rank": 78
+  },
+  {
+    "subject_id": "095_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9041685461997986,
+    "impostor_topk_mean": 0.6988126277923584,
+    "margin": 0.20535591840744016,
+    "rank": 79
+  },
+  {
+    "subject_id": "058_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9429796934127808,
+    "impostor_topk_mean": 0.7380294620990753,
+    "margin": 0.2049502313137055,
+    "rank": 80
+  },
+  {
+    "subject_id": "004_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8982042074203491,
+    "impostor_topk_mean": 0.6942360103130341,
+    "margin": 0.20396819710731506,
+    "rank": 81
+  },
+  {
+    "subject_id": "031_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9035367965698242,
+    "impostor_topk_mean": 0.7006962716579437,
+    "margin": 0.20284052491188054,
+    "rank": 82
+  },
+  {
+    "subject_id": "015_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9534949660301208,
+    "impostor_topk_mean": 0.7521146476268769,
+    "margin": 0.201380318403244,
+    "rank": 83
+  },
+  {
+    "subject_id": "023_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9277947545051575,
+    "impostor_topk_mean": 0.7276747465133667,
+    "margin": 0.20012000799179075,
+    "rank": 84
+  },
+  {
+    "subject_id": "066_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8962373733520508,
+    "impostor_topk_mean": 0.6963436067104339,
+    "margin": 0.19989376664161684,
+    "rank": 85
+  },
+  {
+    "subject_id": "081_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9432565569877625,
+    "impostor_topk_mean": 0.7444205224514008,
+    "margin": 0.19883603453636167,
+    "rank": 86
+  },
+  {
+    "subject_id": "087_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9218457341194153,
+    "impostor_topk_mean": 0.7252796828746796,
+    "margin": 0.1965660512447357,
+    "rank": 87
+  },
+  {
+    "subject_id": "028_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8938665390014648,
+    "impostor_topk_mean": 0.6974121391773224,
+    "margin": 0.19645439982414248,
+    "rank": 88
+  },
+  {
+    "subject_id": "050_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8757516741752625,
+    "impostor_topk_mean": 0.680159991979599,
+    "margin": 0.19559168219566347,
+    "rank": 89
+  },
+  {
+    "subject_id": "036_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8510830998420715,
+    "impostor_topk_mean": 0.6557494819164276,
+    "margin": 0.19533361792564397,
+    "rank": 90
+  },
+  {
+    "subject_id": "021_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9003477096557617,
+    "impostor_topk_mean": 0.7052576541900635,
+    "margin": 0.19509005546569824,
+    "rank": 91
+  },
+  {
+    "subject_id": "019_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9164380431175232,
+    "impostor_topk_mean": 0.7214717626571655,
+    "margin": 0.1949662804603577,
+    "rank": 92
+  },
+  {
+    "subject_id": "069_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8163080811500549,
+    "impostor_topk_mean": 0.6214770972728729,
+    "margin": 0.194830983877182,
+    "rank": 93
+  },
+  {
+    "subject_id": "020_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8989925980567932,
+    "impostor_topk_mean": 0.7055495381355286,
+    "margin": 0.19344305992126465,
+    "rank": 94
+  },
+  {
+    "subject_id": "062_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8872880935668945,
+    "impostor_topk_mean": 0.695184725522995,
+    "margin": 0.1921033680438995,
+    "rank": 95
+  },
+  {
+    "subject_id": "044_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9286298155784607,
+    "impostor_topk_mean": 0.7366954743862152,
+    "margin": 0.1919343411922455,
+    "rank": 96
+  },
+  {
+    "subject_id": "018_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8527052402496338,
+    "impostor_topk_mean": 0.6608070075511933,
+    "margin": 0.19189823269844053,
+    "rank": 97
+  },
+  {
+    "subject_id": "069_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9129894971847534,
+    "impostor_topk_mean": 0.722972959280014,
+    "margin": 0.19001653790473938,
+    "rank": 98
+  },
+  {
+    "subject_id": "056_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.816622257232666,
+    "impostor_topk_mean": 0.6267378211021424,
+    "margin": 0.18988443613052364,
+    "rank": 99
+  },
+  {
+    "subject_id": "027_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9284698367118835,
+    "impostor_topk_mean": 0.7387414932250976,
+    "margin": 0.1897283434867859,
+    "rank": 100
+  },
+  {
+    "subject_id": "028_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9184238910675049,
+    "impostor_topk_mean": 0.728999662399292,
+    "margin": 0.18942422866821285,
+    "rank": 101
+  },
+  {
+    "subject_id": "032_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8947439193725586,
+    "impostor_topk_mean": 0.7060356140136719,
+    "margin": 0.18870830535888672,
+    "rank": 102
+  },
+  {
+    "subject_id": "033_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8856578469276428,
+    "impostor_topk_mean": 0.6975208103656769,
+    "margin": 0.1881370365619659,
+    "rank": 103
+  },
+  {
+    "subject_id": "024_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9512768387794495,
+    "impostor_topk_mean": 0.7640323102474212,
+    "margin": 0.18724452853202822,
+    "rank": 104
+  },
+  {
+    "subject_id": "018_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9575440883636475,
+    "impostor_topk_mean": 0.7708234190940857,
+    "margin": 0.18672066926956177,
+    "rank": 105
+  },
+  {
+    "subject_id": "081_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9467065334320068,
+    "impostor_topk_mean": 0.7604221045970917,
+    "margin": 0.18628442883491514,
+    "rank": 106
+  },
+  {
+    "subject_id": "030_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8844863176345825,
+    "impostor_topk_mean": 0.698455947637558,
+    "margin": 0.1860303699970245,
+    "rank": 107
+  },
+  {
+    "subject_id": "020_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.856447696685791,
+    "impostor_topk_mean": 0.6712140560150146,
+    "margin": 0.1852336406707764,
+    "rank": 108
+  },
+  {
+    "subject_id": "090_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.919950544834137,
+    "impostor_topk_mean": 0.7349461555480957,
+    "margin": 0.18500438928604124,
+    "rank": 109
+  },
+  {
+    "subject_id": "047_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9144148230552673,
+    "impostor_topk_mean": 0.7305294692516326,
+    "margin": 0.1838853538036347,
+    "rank": 110
+  },
+  {
+    "subject_id": "082_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8739553689956665,
+    "impostor_topk_mean": 0.6907311320304871,
+    "margin": 0.18322423696517942,
+    "rank": 111
+  },
+  {
+    "subject_id": "066_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9498246908187866,
+    "impostor_topk_mean": 0.7666744112968444,
+    "margin": 0.18315027952194218,
+    "rank": 112
+  },
+  {
+    "subject_id": "035_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9026808142662048,
+    "impostor_topk_mean": 0.7195752203464508,
+    "margin": 0.183105593919754,
+    "rank": 113
+  },
+  {
+    "subject_id": "080_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9322856664657593,
+    "impostor_topk_mean": 0.7494033336639404,
+    "margin": 0.18288233280181887,
+    "rank": 114
+  },
+  {
+    "subject_id": "044_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9446598291397095,
+    "impostor_topk_mean": 0.7619802534580231,
+    "margin": 0.18267957568168636,
+    "rank": 115
+  },
+  {
+    "subject_id": "082_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8880152106285095,
+    "impostor_topk_mean": 0.7057529151439667,
+    "margin": 0.18226229548454287,
+    "rank": 116
+  },
+  {
+    "subject_id": "055_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9222554564476013,
+    "impostor_topk_mean": 0.7403232038021088,
+    "margin": 0.1819322526454925,
+    "rank": 117
+  },
+  {
+    "subject_id": "044_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8923185467720032,
+    "impostor_topk_mean": 0.7104358911514282,
+    "margin": 0.18188265562057493,
+    "rank": 118
+  },
+  {
+    "subject_id": "020_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.877211332321167,
+    "impostor_topk_mean": 0.6959010422229767,
+    "margin": 0.18131029009819033,
+    "rank": 119
+  },
+  {
+    "subject_id": "011_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9333112835884094,
+    "impostor_topk_mean": 0.7522644877433777,
+    "margin": 0.1810467958450317,
+    "rank": 120
+  },
+  {
+    "subject_id": "086_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9412100911140442,
+    "impostor_topk_mean": 0.7602734267711639,
+    "margin": 0.18093666434288025,
+    "rank": 121
+  },
+  {
+    "subject_id": "081_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8957901000976562,
+    "impostor_topk_mean": 0.7159523010253906,
+    "margin": 0.1798377990722656,
+    "rank": 122
+  },
+  {
+    "subject_id": "027_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9199212193489075,
+    "impostor_topk_mean": 0.7402459144592285,
+    "margin": 0.17967530488967898,
+    "rank": 123
+  },
+  {
+    "subject_id": "082_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.916748583316803,
+    "impostor_topk_mean": 0.7374337077140808,
+    "margin": 0.1793148756027222,
+    "rank": 124
+  },
+  {
+    "subject_id": "076_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9692434668540955,
+    "impostor_topk_mean": 0.7901096224784852,
+    "margin": 0.1791338443756103,
+    "rank": 125
+  },
+  {
+    "subject_id": "093_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9565321803092957,
+    "impostor_topk_mean": 0.7774422407150269,
+    "margin": 0.17908993959426878,
+    "rank": 126
+  },
+  {
+    "subject_id": "021_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9332066178321838,
+    "impostor_topk_mean": 0.7545012474060059,
+    "margin": 0.17870537042617796,
+    "rank": 127
+  },
+  {
+    "subject_id": "030_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8890917301177979,
+    "impostor_topk_mean": 0.7104486703872681,
+    "margin": 0.17864305973052974,
+    "rank": 128
+  },
+  {
+    "subject_id": "041_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9296455979347229,
+    "impostor_topk_mean": 0.7513019382953644,
+    "margin": 0.1783436596393585,
+    "rank": 129
+  },
+  {
+    "subject_id": "079_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8984545469284058,
+    "impostor_topk_mean": 0.720209413766861,
+    "margin": 0.17824513316154478,
+    "rank": 130
+  },
+  {
+    "subject_id": "099_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8393723964691162,
+    "impostor_topk_mean": 0.6615337908267975,
+    "margin": 0.17783860564231868,
+    "rank": 131
+  },
+  {
+    "subject_id": "084_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8831518292427063,
+    "impostor_topk_mean": 0.7053316831588745,
+    "margin": 0.1778201460838318,
+    "rank": 132
+  },
+  {
+    "subject_id": "100_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8813517093658447,
+    "impostor_topk_mean": 0.7038627028465271,
+    "margin": 0.17748900651931765,
+    "rank": 133
+  },
+  {
+    "subject_id": "005_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9333570599555969,
+    "impostor_topk_mean": 0.7560975909233093,
+    "margin": 0.17725946903228762,
+    "rank": 134
+  },
+  {
+    "subject_id": "032_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9607291221618652,
+    "impostor_topk_mean": 0.783474737405777,
+    "margin": 0.17725438475608823,
+    "rank": 135
+  },
+  {
+    "subject_id": "030_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8452969789505005,
+    "impostor_topk_mean": 0.668065994977951,
+    "margin": 0.17723098397254944,
+    "rank": 136
+  },
+  {
+    "subject_id": "061_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9168179631233215,
+    "impostor_topk_mean": 0.7403557419776916,
+    "margin": 0.17646222114562993,
+    "rank": 137
+  },
+  {
+    "subject_id": "087_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9301299452781677,
+    "impostor_topk_mean": 0.7548980414867401,
+    "margin": 0.1752319037914276,
+    "rank": 138
+  },
+  {
+    "subject_id": "017_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9014805555343628,
+    "impostor_topk_mean": 0.7266572415828705,
+    "margin": 0.1748233139514923,
+    "rank": 139
+  },
+  {
+    "subject_id": "058_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9028637409210205,
+    "impostor_topk_mean": 0.7285805225372315,
+    "margin": 0.17428321838378902,
+    "rank": 140
+  },
+  {
+    "subject_id": "076_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9576677083969116,
+    "impostor_topk_mean": 0.7843268156051636,
+    "margin": 0.17334089279174802,
+    "rank": 141
+  },
+  {
+    "subject_id": "019_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8969281315803528,
+    "impostor_topk_mean": 0.7241587996482849,
+    "margin": 0.1727693319320679,
+    "rank": 142
+  },
+  {
+    "subject_id": "095_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.96221524477005,
+    "impostor_topk_mean": 0.7895407378673553,
+    "margin": 0.1726745069026947,
+    "rank": 143
+  },
+  {
+    "subject_id": "066_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9422826766967773,
+    "impostor_topk_mean": 0.7696479082107544,
+    "margin": 0.172634768486023,
+    "rank": 144
+  },
+  {
+    "subject_id": "029_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9377570152282715,
+    "impostor_topk_mean": 0.7651617348194122,
+    "margin": 0.1725952804088593,
+    "rank": 145
+  },
+  {
+    "subject_id": "007_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9360616207122803,
+    "impostor_topk_mean": 0.7659136116504669,
+    "margin": 0.17014800906181338,
+    "rank": 146
+  },
+  {
+    "subject_id": "012_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.926647424697876,
+    "impostor_topk_mean": 0.7566528439521789,
+    "margin": 0.16999458074569707,
+    "rank": 147
+  },
+  {
+    "subject_id": "075_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9293721318244934,
+    "impostor_topk_mean": 0.7593880474567414,
+    "margin": 0.16998408436775203,
+    "rank": 148
+  },
+  {
+    "subject_id": "012_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8847086429595947,
+    "impostor_topk_mean": 0.7149840950965881,
+    "margin": 0.16972454786300661,
+    "rank": 149
+  },
+  {
+    "subject_id": "036_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.959995687007904,
+    "impostor_topk_mean": 0.7904726743698121,
+    "margin": 0.169523012638092,
+    "rank": 150
+  },
+  {
+    "subject_id": "084_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8521407842636108,
+    "impostor_topk_mean": 0.6828257203102112,
+    "margin": 0.16931506395339968,
+    "rank": 151
+  },
+  {
+    "subject_id": "076_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9491312503814697,
+    "impostor_topk_mean": 0.7799501895904541,
+    "margin": 0.16918106079101558,
+    "rank": 152
+  },
+  {
+    "subject_id": "060_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9346781969070435,
+    "impostor_topk_mean": 0.7658332884311676,
+    "margin": 0.16884490847587585,
+    "rank": 153
+  },
+  {
+    "subject_id": "096_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9189386963844299,
+    "impostor_topk_mean": 0.7508497714996338,
+    "margin": 0.1680889248847961,
+    "rank": 154
+  },
+  {
+    "subject_id": "079_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9602224826812744,
+    "impostor_topk_mean": 0.7930513739585876,
+    "margin": 0.1671711087226868,
+    "rank": 155
+  },
+  {
+    "subject_id": "097_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9683989882469177,
+    "impostor_topk_mean": 0.8016898036003113,
+    "margin": 0.16670918464660645,
+    "rank": 156
+  },
+  {
+    "subject_id": "031_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9392061829566956,
+    "impostor_topk_mean": 0.7725860238075256,
+    "margin": 0.16662015914916994,
+    "rank": 157
+  },
+  {
+    "subject_id": "024_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8506969809532166,
+    "impostor_topk_mean": 0.6846422255039215,
+    "margin": 0.16605475544929504,
+    "rank": 158
+  },
+  {
+    "subject_id": "074_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8244063258171082,
+    "impostor_topk_mean": 0.658502072095871,
+    "margin": 0.16590425372123718,
+    "rank": 159
+  },
+  {
+    "subject_id": "095_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9040151834487915,
+    "impostor_topk_mean": 0.7386853218078613,
+    "margin": 0.16532986164093022,
+    "rank": 160
+  },
+  {
+    "subject_id": "053_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8158242106437683,
+    "impostor_topk_mean": 0.6505857169628143,
+    "margin": 0.165238493680954,
+    "rank": 161
+  },
+  {
+    "subject_id": "002_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.7470828294754028,
+    "impostor_topk_mean": 0.5819495707750321,
+    "margin": 0.16513325870037077,
+    "rank": 162
+  },
+  {
+    "subject_id": "069_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9297467470169067,
+    "impostor_topk_mean": 0.7659739196300507,
+    "margin": 0.16377282738685606,
+    "rank": 163
+  },
+  {
+    "subject_id": "039_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9279425740242004,
+    "impostor_topk_mean": 0.7642047345638275,
+    "margin": 0.1637378394603729,
+    "rank": 164
+  },
+  {
+    "subject_id": "052_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8065321445465088,
+    "impostor_topk_mean": 0.6431465148925781,
+    "margin": 0.16338562965393066,
+    "rank": 165
+  },
+  {
+    "subject_id": "026_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9469984173774719,
+    "impostor_topk_mean": 0.7838007867336273,
+    "margin": 0.16319763064384463,
+    "rank": 166
+  },
+  {
+    "subject_id": "033_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8683072328567505,
+    "impostor_topk_mean": 0.7054272532463074,
+    "margin": 0.1628799796104431,
+    "rank": 167
+  },
+  {
+    "subject_id": "074_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9547681212425232,
+    "impostor_topk_mean": 0.7922548174858093,
+    "margin": 0.1625133037567139,
+    "rank": 168
+  },
+  {
+    "subject_id": "070_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9420649409294128,
+    "impostor_topk_mean": 0.7806227624416351,
+    "margin": 0.16144217848777775,
+    "rank": 169
+  },
+  {
+    "subject_id": "072_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8959240317344666,
+    "impostor_topk_mean": 0.734894585609436,
+    "margin": 0.16102944612503056,
+    "rank": 170
+  },
+  {
+    "subject_id": "018_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9459076523780823,
+    "impostor_topk_mean": 0.7849576234817505,
+    "margin": 0.1609500288963318,
+    "rank": 171
+  },
+  {
+    "subject_id": "099_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8871200680732727,
+    "impostor_topk_mean": 0.7261726379394531,
+    "margin": 0.16094743013381962,
+    "rank": 172
+  },
+  {
+    "subject_id": "100_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9130449295043945,
+    "impostor_topk_mean": 0.7522233724594116,
+    "margin": 0.1608215570449829,
+    "rank": 173
+  },
+  {
+    "subject_id": "028_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9111260175704956,
+    "impostor_topk_mean": 0.7506175398826599,
+    "margin": 0.16050847768783572,
+    "rank": 174
+  },
+  {
+    "subject_id": "003_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9569060206413269,
+    "impostor_topk_mean": 0.7964239776134491,
+    "margin": 0.16048204302787783,
+    "rank": 175
+  },
+  {
+    "subject_id": "037_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9189777970314026,
+    "impostor_topk_mean": 0.7585558235645294,
+    "margin": 0.16042197346687315,
+    "rank": 176
+  },
+  {
+    "subject_id": "002_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9089555740356445,
+    "impostor_topk_mean": 0.7488869369029999,
+    "margin": 0.16006863713264463,
+    "rank": 177
+  },
+  {
+    "subject_id": "073_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9246822595596313,
+    "impostor_topk_mean": 0.7650630712509155,
+    "margin": 0.1596191883087158,
+    "rank": 178
+  },
+  {
+    "subject_id": "037_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.900425910949707,
+    "impostor_topk_mean": 0.7412753283977509,
+    "margin": 0.15915058255195613,
+    "rank": 179
+  },
+  {
+    "subject_id": "043_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9444676637649536,
+    "impostor_topk_mean": 0.7854850769042969,
+    "margin": 0.1589825868606567,
+    "rank": 180
+  },
+  {
+    "subject_id": "042_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.901188850402832,
+    "impostor_topk_mean": 0.7429160416126251,
+    "margin": 0.1582728087902069,
+    "rank": 181
+  },
+  {
+    "subject_id": "004_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9128817319869995,
+    "impostor_topk_mean": 0.7546945512294769,
+    "margin": 0.15818718075752258,
+    "rank": 182
+  },
+  {
+    "subject_id": "079_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9209386110305786,
+    "impostor_topk_mean": 0.762974089384079,
+    "margin": 0.15796452164649966,
+    "rank": 183
+  },
+  {
+    "subject_id": "083_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.817202091217041,
+    "impostor_topk_mean": 0.6597931087017059,
+    "margin": 0.15740898251533508,
+    "rank": 184
+  },
+  {
+    "subject_id": "018_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.912777304649353,
+    "impostor_topk_mean": 0.7556606829166412,
+    "margin": 0.1571166217327118,
+    "rank": 185
+  },
+  {
+    "subject_id": "042_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9304624199867249,
+    "impostor_topk_mean": 0.7741758584976196,
+    "margin": 0.15628656148910525,
+    "rank": 186
+  },
+  {
+    "subject_id": "056_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8628250360488892,
+    "impostor_topk_mean": 0.7066180944442749,
+    "margin": 0.15620694160461424,
+    "rank": 187
+  },
+  {
+    "subject_id": "026_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9008879661560059,
+    "impostor_topk_mean": 0.7446973145008087,
+    "margin": 0.1561906516551972,
+    "rank": 188
+  },
+  {
+    "subject_id": "024_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9324615597724915,
+    "impostor_topk_mean": 0.7765638887882232,
+    "margin": 0.1558976709842682,
+    "rank": 189
+  },
+  {
+    "subject_id": "036_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8665449619293213,
+    "impostor_topk_mean": 0.7106480717658996,
+    "margin": 0.15589689016342168,
+    "rank": 190
+  },
+  {
+    "subject_id": "014_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8940744996070862,
+    "impostor_topk_mean": 0.738416063785553,
+    "margin": 0.15565843582153316,
+    "rank": 191
+  },
+  {
+    "subject_id": "054_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9003334641456604,
+    "impostor_topk_mean": 0.7448431193828583,
+    "margin": 0.1554903447628021,
+    "rank": 192
+  },
+  {
+    "subject_id": "091_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.962996780872345,
+    "impostor_topk_mean": 0.8077726483345031,
+    "margin": 0.15522413253784184,
+    "rank": 193
+  },
+  {
+    "subject_id": "017_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9609223008155823,
+    "impostor_topk_mean": 0.806121575832367,
+    "margin": 0.1548007249832153,
+    "rank": 194
+  },
+  {
+    "subject_id": "005_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.906406581401825,
+    "impostor_topk_mean": 0.7517417252063752,
+    "margin": 0.15466485619544978,
+    "rank": 195
+  },
+  {
+    "subject_id": "090_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8580802083015442,
+    "impostor_topk_mean": 0.7034154176712036,
+    "margin": 0.15466479063034055,
+    "rank": 196
+  },
+  {
+    "subject_id": "016_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9420077800750732,
+    "impostor_topk_mean": 0.7877833902835846,
+    "margin": 0.15422438979148867,
+    "rank": 197
+  },
+  {
+    "subject_id": "026_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7369199395179749,
+    "impostor_topk_mean": 0.5827798664569854,
+    "margin": 0.15414007306098942,
+    "rank": 198
+  },
+  {
+    "subject_id": "055_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9597368240356445,
+    "impostor_topk_mean": 0.805670154094696,
+    "margin": 0.15406666994094853,
+    "rank": 199
+  },
+  {
+    "subject_id": "061_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.898510217666626,
+    "impostor_topk_mean": 0.7447294592857361,
+    "margin": 0.1537807583808899,
+    "rank": 200
+  },
+  {
+    "subject_id": "052_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9598596096038818,
+    "impostor_topk_mean": 0.806109619140625,
+    "margin": 0.15374999046325688,
+    "rank": 201
+  },
+  {
+    "subject_id": "099_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9002929925918579,
+    "impostor_topk_mean": 0.7466911196708679,
+    "margin": 0.15360187292099003,
+    "rank": 202
+  },
+  {
+    "subject_id": "034_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9431212544441223,
+    "impostor_topk_mean": 0.7896244525909424,
+    "margin": 0.15349680185317993,
+    "rank": 203
+  },
+  {
+    "subject_id": "047_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8789710402488708,
+    "impostor_topk_mean": 0.7255814909934998,
+    "margin": 0.15338954925537107,
+    "rank": 204
+  },
+  {
+    "subject_id": "073_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.901319146156311,
+    "impostor_topk_mean": 0.74803786277771,
+    "margin": 0.15328128337860103,
+    "rank": 205
+  },
+  {
+    "subject_id": "056_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9502445459365845,
+    "impostor_topk_mean": 0.7972100913524628,
+    "margin": 0.15303445458412168,
+    "rank": 206
+  },
+  {
+    "subject_id": "074_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9283512830734253,
+    "impostor_topk_mean": 0.7754411995410919,
+    "margin": 0.15291008353233337,
+    "rank": 207
+  },
+  {
+    "subject_id": "008_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.937457263469696,
+    "impostor_topk_mean": 0.7846337378025054,
+    "margin": 0.1528235256671906,
+    "rank": 208
+  },
+  {
+    "subject_id": "064_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9061845541000366,
+    "impostor_topk_mean": 0.7536162793636322,
+    "margin": 0.15256827473640444,
+    "rank": 209
+  },
+  {
+    "subject_id": "066_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9666418433189392,
+    "impostor_topk_mean": 0.8141230702400207,
+    "margin": 0.15251877307891848,
+    "rank": 210
+  },
+  {
+    "subject_id": "021_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9346739053726196,
+    "impostor_topk_mean": 0.7821597874164581,
+    "margin": 0.15251411795616154,
+    "rank": 211
+  },
+  {
+    "subject_id": "045_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9339399337768555,
+    "impostor_topk_mean": 0.7816141366958618,
+    "margin": 0.1523257970809937,
+    "rank": 212
+  },
+  {
+    "subject_id": "003_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8496829271316528,
+    "impostor_topk_mean": 0.6980354070663453,
+    "margin": 0.15164752006530757,
+    "rank": 213
+  },
+  {
+    "subject_id": "088_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8955431580543518,
+    "impostor_topk_mean": 0.7445071041584015,
+    "margin": 0.15103605389595032,
+    "rank": 214
+  },
+  {
+    "subject_id": "045_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8686320781707764,
+    "impostor_topk_mean": 0.7180181443691254,
+    "margin": 0.150613933801651,
+    "rank": 215
+  },
+  {
+    "subject_id": "042_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9172430038452148,
+    "impostor_topk_mean": 0.766815859079361,
+    "margin": 0.15042714476585384,
+    "rank": 216
+  },
+  {
+    "subject_id": "039_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9359049201011658,
+    "impostor_topk_mean": 0.7855839371681214,
+    "margin": 0.1503209829330444,
+    "rank": 217
+  },
+  {
+    "subject_id": "033_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9203133583068848,
+    "impostor_topk_mean": 0.7703864574432373,
+    "margin": 0.14992690086364746,
+    "rank": 218
+  },
+  {
+    "subject_id": "070_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9544233679771423,
+    "impostor_topk_mean": 0.8051623702049255,
+    "margin": 0.1492609977722168,
+    "rank": 219
+  },
+  {
+    "subject_id": "003_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9659140706062317,
+    "impostor_topk_mean": 0.8168444275856018,
+    "margin": 0.14906964302062986,
+    "rank": 220
+  },
+  {
+    "subject_id": "038_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9258831739425659,
+    "impostor_topk_mean": 0.7768362939357758,
+    "margin": 0.14904688000679012,
+    "rank": 221
+  },
+  {
+    "subject_id": "082_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9623959064483643,
+    "impostor_topk_mean": 0.813449102640152,
+    "margin": 0.14894680380821224,
+    "rank": 222
+  },
+  {
+    "subject_id": "032_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.915117621421814,
+    "impostor_topk_mean": 0.7666472554206848,
+    "margin": 0.14847036600112917,
+    "rank": 223
+  },
+  {
+    "subject_id": "090_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9621958136558533,
+    "impostor_topk_mean": 0.8137937843799591,
+    "margin": 0.1484020292758942,
+    "rank": 224
+  },
+  {
+    "subject_id": "065_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9144926071166992,
+    "impostor_topk_mean": 0.7661647737026215,
+    "margin": 0.14832783341407774,
+    "rank": 225
+  },
+  {
+    "subject_id": "052_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8493916988372803,
+    "impostor_topk_mean": 0.7020836412906647,
+    "margin": 0.14730805754661558,
+    "rank": 226
+  },
+  {
+    "subject_id": "052_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.92011958360672,
+    "impostor_topk_mean": 0.7728505671024323,
+    "margin": 0.1472690165042877,
+    "rank": 227
+  },
+  {
+    "subject_id": "055_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9057968854904175,
+    "impostor_topk_mean": 0.7587770283222198,
+    "margin": 0.14701985716819765,
+    "rank": 228
+  },
+  {
+    "subject_id": "042_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9072691202163696,
+    "impostor_topk_mean": 0.7604234695434571,
+    "margin": 0.14684565067291255,
+    "rank": 229
+  },
+  {
+    "subject_id": "043_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9484319686889648,
+    "impostor_topk_mean": 0.8019013345241547,
+    "margin": 0.14653063416481016,
+    "rank": 230
+  },
+  {
+    "subject_id": "057_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8400179743766785,
+    "impostor_topk_mean": 0.693493789434433,
+    "margin": 0.1465241849422455,
+    "rank": 231
+  },
+  {
+    "subject_id": "016_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9072456955909729,
+    "impostor_topk_mean": 0.7608881294727325,
+    "margin": 0.14635756611824036,
+    "rank": 232
+  },
+  {
+    "subject_id": "092_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9036305546760559,
+    "impostor_topk_mean": 0.7576310098171234,
+    "margin": 0.14599954485893252,
+    "rank": 233
+  },
+  {
+    "subject_id": "015_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9478480219841003,
+    "impostor_topk_mean": 0.8019350409507752,
+    "margin": 0.14591298103332517,
+    "rank": 234
+  },
+  {
+    "subject_id": "029_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9185784459114075,
+    "impostor_topk_mean": 0.7728125572204589,
+    "margin": 0.14576588869094853,
+    "rank": 235
+  },
+  {
+    "subject_id": "010_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8666105270385742,
+    "impostor_topk_mean": 0.7209850311279297,
+    "margin": 0.14562549591064455,
+    "rank": 236
+  },
+  {
+    "subject_id": "008_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9311943650245667,
+    "impostor_topk_mean": 0.7856076836585999,
+    "margin": 0.14558668136596675,
+    "rank": 237
+  },
+  {
+    "subject_id": "017_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8807139992713928,
+    "impostor_topk_mean": 0.7351621568202973,
+    "margin": 0.14555184245109554,
+    "rank": 238
+  },
+  {
+    "subject_id": "001_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9268516302108765,
+    "impostor_topk_mean": 0.7814614057540894,
+    "margin": 0.14539022445678706,
+    "rank": 239
+  },
+  {
+    "subject_id": "061_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9367207288742065,
+    "impostor_topk_mean": 0.7917182326316834,
+    "margin": 0.14500249624252315,
+    "rank": 240
+  },
+  {
+    "subject_id": "090_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8976326584815979,
+    "impostor_topk_mean": 0.7527046859264374,
+    "margin": 0.14492797255516054,
+    "rank": 241
+  },
+  {
+    "subject_id": "005_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.977413535118103,
+    "impostor_topk_mean": 0.8326721072196961,
+    "margin": 0.14474142789840694,
+    "rank": 242
+  },
+  {
+    "subject_id": "100_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9323421716690063,
+    "impostor_topk_mean": 0.7905173659324646,
+    "margin": 0.14182480573654177,
+    "rank": 243
+  },
+  {
+    "subject_id": "045_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9225825667381287,
+    "impostor_topk_mean": 0.7811520874500275,
+    "margin": 0.14143047928810115,
+    "rank": 244
+  },
+  {
+    "subject_id": "045_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9410823583602905,
+    "impostor_topk_mean": 0.7996727883815765,
+    "margin": 0.141409569978714,
+    "rank": 245
+  },
+  {
+    "subject_id": "054_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.963441789150238,
+    "impostor_topk_mean": 0.8226635098457337,
+    "margin": 0.14077827930450437,
+    "rank": 246
+  },
+  {
+    "subject_id": "060_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.919743001461029,
+    "impostor_topk_mean": 0.7790959417819977,
+    "margin": 0.14064705967903135,
+    "rank": 247
+  },
+  {
+    "subject_id": "048_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9290422797203064,
+    "impostor_topk_mean": 0.7889279901981354,
+    "margin": 0.14011428952217098,
+    "rank": 248
+  },
+  {
+    "subject_id": "016_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.935517430305481,
+    "impostor_topk_mean": 0.7954974055290223,
+    "margin": 0.1400200247764587,
+    "rank": 249
+  },
+  {
+    "subject_id": "049_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9187308549880981,
+    "impostor_topk_mean": 0.7796136379241944,
+    "margin": 0.1391172170639038,
+    "rank": 250
+  },
+  {
+    "subject_id": "019_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7949875593185425,
+    "impostor_topk_mean": 0.6563311457633972,
+    "margin": 0.13865641355514524,
+    "rank": 251
+  },
+  {
+    "subject_id": "060_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9208314418792725,
+    "impostor_topk_mean": 0.7826931238174438,
+    "margin": 0.13813831806182864,
+    "rank": 252
+  },
+  {
+    "subject_id": "036_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9520542621612549,
+    "impostor_topk_mean": 0.814096212387085,
+    "margin": 0.13795804977416992,
+    "rank": 253
+  },
+  {
+    "subject_id": "057_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8837693333625793,
+    "impostor_topk_mean": 0.7458239555358886,
+    "margin": 0.1379453778266907,
+    "rank": 254
+  },
+  {
+    "subject_id": "069_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8655843734741211,
+    "impostor_topk_mean": 0.7278540432453156,
+    "margin": 0.13773033022880554,
+    "rank": 255
+  },
+  {
+    "subject_id": "078_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8524941205978394,
+    "impostor_topk_mean": 0.7147685527801514,
+    "margin": 0.13772556781768797,
+    "rank": 256
+  },
+  {
+    "subject_id": "092_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.957594633102417,
+    "impostor_topk_mean": 0.8200606048107147,
+    "margin": 0.13753402829170225,
+    "rank": 257
+  },
+  {
+    "subject_id": "035_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.892206072807312,
+    "impostor_topk_mean": 0.7550564289093018,
+    "margin": 0.1371496438980102,
+    "rank": 258
+  },
+  {
+    "subject_id": "078_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9052746295928955,
+    "impostor_topk_mean": 0.7685019493103027,
+    "margin": 0.13677268028259282,
+    "rank": 259
+  },
+  {
+    "subject_id": "071_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.941483736038208,
+    "impostor_topk_mean": 0.804854416847229,
+    "margin": 0.13662931919097898,
+    "rank": 260
+  },
+  {
+    "subject_id": "073_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8366568088531494,
+    "impostor_topk_mean": 0.7002755343914032,
+    "margin": 0.1363812744617462,
+    "rank": 261
+  },
+  {
+    "subject_id": "064_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9341707229614258,
+    "impostor_topk_mean": 0.7978782296180725,
+    "margin": 0.13629249334335325,
+    "rank": 262
+  },
+  {
+    "subject_id": "071_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8979546427726746,
+    "impostor_topk_mean": 0.7618208527565002,
+    "margin": 0.13613379001617432,
+    "rank": 263
+  },
+  {
+    "subject_id": "039_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.939660370349884,
+    "impostor_topk_mean": 0.8037754952907562,
+    "margin": 0.13588487505912783,
+    "rank": 264
+  },
+  {
+    "subject_id": "100_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.900700032711029,
+    "impostor_topk_mean": 0.7648687899112702,
+    "margin": 0.1358312427997589,
+    "rank": 265
+  },
+  {
+    "subject_id": "075_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9249047040939331,
+    "impostor_topk_mean": 0.7894802749156952,
+    "margin": 0.13542442917823794,
+    "rank": 266
+  },
+  {
+    "subject_id": "088_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9719962477684021,
+    "impostor_topk_mean": 0.8375144839286804,
+    "margin": 0.13448176383972166,
+    "rank": 267
+  },
+  {
+    "subject_id": "100_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9271693825721741,
+    "impostor_topk_mean": 0.7935354232788085,
+    "margin": 0.13363395929336552,
+    "rank": 268
+  },
+  {
+    "subject_id": "029_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9236901998519897,
+    "impostor_topk_mean": 0.7900574624538421,
+    "margin": 0.13363273739814763,
+    "rank": 269
+  },
+  {
+    "subject_id": "062_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9372462630271912,
+    "impostor_topk_mean": 0.8040460407733917,
+    "margin": 0.13320022225379946,
+    "rank": 270
+  },
+  {
+    "subject_id": "087_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8761684894561768,
+    "impostor_topk_mean": 0.7437374711036682,
+    "margin": 0.1324310183525086,
+    "rank": 271
+  },
+  {
+    "subject_id": "096_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9279247522354126,
+    "impostor_topk_mean": 0.7963339507579803,
+    "margin": 0.1315908014774323,
+    "rank": 272
+  },
+  {
+    "subject_id": "006_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8743852972984314,
+    "impostor_topk_mean": 0.7432697117328644,
+    "margin": 0.13111558556556702,
+    "rank": 273
+  },
+  {
+    "subject_id": "095_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9100275635719299,
+    "impostor_topk_mean": 0.7789930522441864,
+    "margin": 0.13103451132774357,
+    "rank": 274
+  },
+  {
+    "subject_id": "051_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9467549920082092,
+    "impostor_topk_mean": 0.8159381151199341,
+    "margin": 0.13081687688827515,
+    "rank": 275
+  },
+  {
+    "subject_id": "022_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9565304517745972,
+    "impostor_topk_mean": 0.826210904121399,
+    "margin": 0.1303195476531982,
+    "rank": 276
+  },
+  {
+    "subject_id": "035_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9570183753967285,
+    "impostor_topk_mean": 0.8268864214420318,
+    "margin": 0.13013195395469668,
+    "rank": 277
+  },
+  {
+    "subject_id": "030_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8580729961395264,
+    "impostor_topk_mean": 0.7279982030391693,
+    "margin": 0.13007479310035708,
+    "rank": 278
+  },
+  {
+    "subject_id": "065_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.933899462223053,
+    "impostor_topk_mean": 0.8039809167385101,
+    "margin": 0.12991854548454285,
+    "rank": 279
+  },
+  {
+    "subject_id": "073_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8772071599960327,
+    "impostor_topk_mean": 0.7478569209575653,
+    "margin": 0.12935023903846743,
+    "rank": 280
+  },
+  {
+    "subject_id": "051_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8591406941413879,
+    "impostor_topk_mean": 0.7300986647605896,
+    "margin": 0.12904202938079834,
+    "rank": 281
+  },
+  {
+    "subject_id": "048_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9608849287033081,
+    "impostor_topk_mean": 0.8318586409091949,
+    "margin": 0.12902628779411318,
+    "rank": 282
+  },
+  {
+    "subject_id": "012_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8826974630355835,
+    "impostor_topk_mean": 0.7539025902748108,
+    "margin": 0.12879487276077273,
+    "rank": 283
+  },
+  {
+    "subject_id": "022_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.878511369228363,
+    "impostor_topk_mean": 0.7497218370437622,
+    "margin": 0.12878953218460087,
+    "rank": 284
+  },
+  {
+    "subject_id": "051_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.903454601764679,
+    "impostor_topk_mean": 0.7748996913433075,
+    "margin": 0.12855491042137146,
+    "rank": 285
+  },
+  {
+    "subject_id": "058_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9347941279411316,
+    "impostor_topk_mean": 0.8064095973968506,
+    "margin": 0.128384530544281,
+    "rank": 286
+  },
+  {
+    "subject_id": "027_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.904531717300415,
+    "impostor_topk_mean": 0.7761787652969361,
+    "margin": 0.12835295200347896,
+    "rank": 287
+  },
+  {
+    "subject_id": "051_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9261881709098816,
+    "impostor_topk_mean": 0.7983215570449829,
+    "margin": 0.12786661386489873,
+    "rank": 288
+  },
+  {
+    "subject_id": "076_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9354014992713928,
+    "impostor_topk_mean": 0.8076440870761872,
+    "margin": 0.12775741219520564,
+    "rank": 289
+  },
+  {
+    "subject_id": "041_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9056175351142883,
+    "impostor_topk_mean": 0.778386014699936,
+    "margin": 0.12723152041435237,
+    "rank": 290
+  },
+  {
+    "subject_id": "075_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9471198320388794,
+    "impostor_topk_mean": 0.8202076554298401,
+    "margin": 0.1269121766090393,
+    "rank": 291
+  },
+  {
+    "subject_id": "072_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8739987015724182,
+    "impostor_topk_mean": 0.7473145604133606,
+    "margin": 0.12668414115905757,
+    "rank": 292
+  },
+  {
+    "subject_id": "040_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.854706883430481,
+    "impostor_topk_mean": 0.728267502784729,
+    "margin": 0.126439380645752,
+    "rank": 293
+  },
+  {
+    "subject_id": "041_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9192532896995544,
+    "impostor_topk_mean": 0.7929270148277283,
+    "margin": 0.12632627487182613,
+    "rank": 294
+  },
+  {
+    "subject_id": "078_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8805115818977356,
+    "impostor_topk_mean": 0.7542105555534363,
+    "margin": 0.1263010263442993,
+    "rank": 295
+  },
+  {
+    "subject_id": "059_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9491249918937683,
+    "impostor_topk_mean": 0.8228747367858886,
+    "margin": 0.12625025510787968,
+    "rank": 296
+  },
+  {
+    "subject_id": "043_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9066399335861206,
+    "impostor_topk_mean": 0.78051198720932,
+    "margin": 0.12612794637680058,
+    "rank": 297
+  },
+  {
+    "subject_id": "031_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9386095404624939,
+    "impostor_topk_mean": 0.8125016093254089,
+    "margin": 0.12610793113708496,
+    "rank": 298
+  },
+  {
+    "subject_id": "086_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9399462938308716,
+    "impostor_topk_mean": 0.813863343000412,
+    "margin": 0.12608295083045962,
+    "rank": 299
+  },
+  {
+    "subject_id": "062_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9867594242095947,
+    "impostor_topk_mean": 0.861018717288971,
+    "margin": 0.12574070692062378,
+    "rank": 300
+  },
+  {
+    "subject_id": "084_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.717472493648529,
+    "impostor_topk_mean": 0.591760516166687,
+    "margin": 0.12571197748184204,
+    "rank": 301
+  },
+  {
+    "subject_id": "040_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9413769841194153,
+    "impostor_topk_mean": 0.8159144639968872,
+    "margin": 0.12546252012252812,
+    "rank": 302
+  },
+  {
+    "subject_id": "092_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9463936686515808,
+    "impostor_topk_mean": 0.8217995941638947,
+    "margin": 0.12459407448768611,
+    "rank": 303
+  },
+  {
+    "subject_id": "092_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9078484177589417,
+    "impostor_topk_mean": 0.7834363043308258,
+    "margin": 0.12441211342811587,
+    "rank": 304
+  },
+  {
+    "subject_id": "084_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8728342652320862,
+    "impostor_topk_mean": 0.7490870773792266,
+    "margin": 0.12374718785285954,
+    "rank": 305
+  },
+  {
+    "subject_id": "052_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9699492454528809,
+    "impostor_topk_mean": 0.846281760931015,
+    "margin": 0.12366748452186582,
+    "rank": 306
+  },
+  {
+    "subject_id": "100_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.881292998790741,
+    "impostor_topk_mean": 0.7577258706092834,
+    "margin": 0.12356712818145754,
+    "rank": 307
+  },
+  {
+    "subject_id": "010_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8505477905273438,
+    "impostor_topk_mean": 0.7270628392696381,
+    "margin": 0.12348495125770564,
+    "rank": 308
+  },
+  {
+    "subject_id": "058_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8699517250061035,
+    "impostor_topk_mean": 0.7466940701007843,
+    "margin": 0.12325765490531926,
+    "rank": 309
+  },
+  {
+    "subject_id": "094_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9262444972991943,
+    "impostor_topk_mean": 0.8032468438148499,
+    "margin": 0.12299765348434444,
+    "rank": 310
+  },
+  {
+    "subject_id": "077_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9243166446685791,
+    "impostor_topk_mean": 0.8013805866241455,
+    "margin": 0.12293605804443364,
+    "rank": 311
+  },
+  {
+    "subject_id": "059_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8349859714508057,
+    "impostor_topk_mean": 0.7120759665966034,
+    "margin": 0.12291000485420223,
+    "rank": 312
+  },
+  {
+    "subject_id": "090_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9622113704681396,
+    "impostor_topk_mean": 0.839670467376709,
+    "margin": 0.12254090309143062,
+    "rank": 313
+  },
+  {
+    "subject_id": "097_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9128979444503784,
+    "impostor_topk_mean": 0.7908505260944366,
+    "margin": 0.1220474183559418,
+    "rank": 314
+  },
+  {
+    "subject_id": "053_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9222151041030884,
+    "impostor_topk_mean": 0.800191479921341,
+    "margin": 0.12202362418174739,
+    "rank": 315
+  },
+  {
+    "subject_id": "032_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9006349444389343,
+    "impostor_topk_mean": 0.7788316965103149,
+    "margin": 0.12180324792861941,
+    "rank": 316
+  },
+  {
+    "subject_id": "097_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9741529822349548,
+    "impostor_topk_mean": 0.8529055058956146,
+    "margin": 0.12124747633934019,
+    "rank": 317
+  },
+  {
+    "subject_id": "098_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9404401183128357,
+    "impostor_topk_mean": 0.819428288936615,
+    "margin": 0.12101182937622068,
+    "rank": 318
+  },
+  {
+    "subject_id": "024_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8732396364212036,
+    "impostor_topk_mean": 0.7523455619812012,
+    "margin": 0.12089407444000244,
+    "rank": 319
+  },
+  {
+    "subject_id": "028_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8228841423988342,
+    "impostor_topk_mean": 0.702009516954422,
+    "margin": 0.12087462544441219,
+    "rank": 320
+  },
+  {
+    "subject_id": "032_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8584715127944946,
+    "impostor_topk_mean": 0.7377366423606873,
+    "margin": 0.12073487043380737,
+    "rank": 321
+  },
+  {
+    "subject_id": "072_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8683046102523804,
+    "impostor_topk_mean": 0.7477267920970917,
+    "margin": 0.12057781815528867,
+    "rank": 322
+  },
+  {
+    "subject_id": "007_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9635770320892334,
+    "impostor_topk_mean": 0.8431753516197205,
+    "margin": 0.12040168046951294,
+    "rank": 323
+  },
+  {
+    "subject_id": "096_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9256236553192139,
+    "impostor_topk_mean": 0.8057982206344605,
+    "margin": 0.11982543468475337,
+    "rank": 324
+  },
+  {
+    "subject_id": "001_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9104053974151611,
+    "impostor_topk_mean": 0.7905799925327301,
+    "margin": 0.11982540488243099,
+    "rank": 325
+  },
+  {
+    "subject_id": "037_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9176024794578552,
+    "impostor_topk_mean": 0.7978518545627594,
+    "margin": 0.1197506248950958,
+    "rank": 326
+  },
+  {
+    "subject_id": "080_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9581563472747803,
+    "impostor_topk_mean": 0.8384697735309601,
+    "margin": 0.11968657374382019,
+    "rank": 327
+  },
+  {
+    "subject_id": "045_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9129774570465088,
+    "impostor_topk_mean": 0.7934801518917084,
+    "margin": 0.11949730515480039,
+    "rank": 328
+  },
+  {
+    "subject_id": "025_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9546952843666077,
+    "impostor_topk_mean": 0.8352550566196442,
+    "margin": 0.1194402277469635,
+    "rank": 329
+  },
+  {
+    "subject_id": "057_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9008008241653442,
+    "impostor_topk_mean": 0.7815381109714508,
+    "margin": 0.11926271319389348,
+    "rank": 330
+  },
+  {
+    "subject_id": "065_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8756241798400879,
+    "impostor_topk_mean": 0.7569718837738038,
+    "margin": 0.11865229606628414,
+    "rank": 331
+  },
+  {
+    "subject_id": "039_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9118971228599548,
+    "impostor_topk_mean": 0.793316388130188,
+    "margin": 0.11858073472976682,
+    "rank": 332
+  },
+  {
+    "subject_id": "014_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8723922967910767,
+    "impostor_topk_mean": 0.754292243719101,
+    "margin": 0.11810005307197569,
+    "rank": 333
+  },
+  {
+    "subject_id": "036_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9722424149513245,
+    "impostor_topk_mean": 0.8545604825019837,
+    "margin": 0.11768193244934078,
+    "rank": 334
+  },
+  {
+    "subject_id": "010_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8648527264595032,
+    "impostor_topk_mean": 0.7475999891757965,
+    "margin": 0.11725273728370667,
+    "rank": 335
+  },
+  {
+    "subject_id": "093_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9416393041610718,
+    "impostor_topk_mean": 0.8252273440361023,
+    "margin": 0.11641196012496946,
+    "rank": 336
+  },
+  {
+    "subject_id": "080_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9196994304656982,
+    "impostor_topk_mean": 0.8037487864494324,
+    "margin": 0.11595064401626587,
+    "rank": 337
+  },
+  {
+    "subject_id": "043_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9070180058479309,
+    "impostor_topk_mean": 0.7912206828594208,
+    "margin": 0.11579732298851009,
+    "rank": 338
+  },
+  {
+    "subject_id": "033_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9231647253036499,
+    "impostor_topk_mean": 0.8075904786586762,
+    "margin": 0.11557424664497373,
+    "rank": 339
+  },
+  {
+    "subject_id": "028_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8661021590232849,
+    "impostor_topk_mean": 0.7505392909049988,
+    "margin": 0.11556286811828609,
+    "rank": 340
+  },
+  {
+    "subject_id": "048_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9113500714302063,
+    "impostor_topk_mean": 0.7959826111793518,
+    "margin": 0.11536746025085454,
+    "rank": 341
+  },
+  {
+    "subject_id": "040_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9307937622070312,
+    "impostor_topk_mean": 0.8154669225215911,
+    "margin": 0.11532683968544011,
+    "rank": 342
+  },
+  {
+    "subject_id": "002_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9234335422515869,
+    "impostor_topk_mean": 0.8083756744861603,
+    "margin": 0.11505786776542659,
+    "rank": 343
+  },
+  {
+    "subject_id": "005_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8352220058441162,
+    "impostor_topk_mean": 0.7205276429653168,
+    "margin": 0.11469436287879942,
+    "rank": 344
+  },
+  {
+    "subject_id": "024_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.881305456161499,
+    "impostor_topk_mean": 0.7666122257709503,
+    "margin": 0.11469323039054868,
+    "rank": 345
+  },
+  {
+    "subject_id": "008_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7666751146316528,
+    "impostor_topk_mean": 0.6521085202693939,
+    "margin": 0.11456659436225891,
+    "rank": 346
+  },
+  {
+    "subject_id": "043_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9618733525276184,
+    "impostor_topk_mean": 0.8475022614002228,
+    "margin": 0.11437109112739563,
+    "rank": 347
+  },
+  {
+    "subject_id": "009_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8363627195358276,
+    "impostor_topk_mean": 0.7220068633556366,
+    "margin": 0.11435585618019106,
+    "rank": 348
+  },
+  {
+    "subject_id": "094_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9285434484481812,
+    "impostor_topk_mean": 0.8142393290996551,
+    "margin": 0.11430411934852602,
+    "rank": 349
+  },
+  {
+    "subject_id": "027_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8632453680038452,
+    "impostor_topk_mean": 0.7490646779537201,
+    "margin": 0.1141806900501251,
+    "rank": 350
+  },
+  {
+    "subject_id": "075_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8368934392929077,
+    "impostor_topk_mean": 0.7228013932704925,
+    "margin": 0.11409204602241518,
+    "rank": 351
+  },
+  {
+    "subject_id": "072_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8967247009277344,
+    "impostor_topk_mean": 0.7827743351459503,
+    "margin": 0.11395036578178408,
+    "rank": 352
+  },
+  {
+    "subject_id": "049_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8840608596801758,
+    "impostor_topk_mean": 0.7701240599155426,
+    "margin": 0.11393679976463322,
+    "rank": 353
+  },
+  {
+    "subject_id": "072_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.949126124382019,
+    "impostor_topk_mean": 0.8359809517860413,
+    "margin": 0.11314517259597778,
+    "rank": 354
+  },
+  {
+    "subject_id": "016_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8498165607452393,
+    "impostor_topk_mean": 0.7367618441581726,
+    "margin": 0.11305471658706667,
+    "rank": 355
+  },
+  {
+    "subject_id": "018_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8306464552879333,
+    "impostor_topk_mean": 0.7181864082813263,
+    "margin": 0.11246004700660706,
+    "rank": 356
+  },
+  {
+    "subject_id": "019_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8603939414024353,
+    "impostor_topk_mean": 0.7482059955596924,
+    "margin": 0.11218794584274294,
+    "rank": 357
+  },
+  {
+    "subject_id": "056_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9120450615882874,
+    "impostor_topk_mean": 0.7999559998512268,
+    "margin": 0.11208906173706057,
+    "rank": 358
+  },
+  {
+    "subject_id": "067_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.922672688961029,
+    "impostor_topk_mean": 0.8110791385173798,
+    "margin": 0.11159355044364927,
+    "rank": 359
+  },
+  {
+    "subject_id": "009_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8978303670883179,
+    "impostor_topk_mean": 0.786628657579422,
+    "margin": 0.11120170950889585,
+    "rank": 360
+  },
+  {
+    "subject_id": "022_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9164609909057617,
+    "impostor_topk_mean": 0.805282586812973,
+    "margin": 0.11117840409278867,
+    "rank": 361
+  },
+  {
+    "subject_id": "033_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.826431930065155,
+    "impostor_topk_mean": 0.7156938552856446,
+    "margin": 0.11073807477951048,
+    "rank": 362
+  },
+  {
+    "subject_id": "019_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8723303079605103,
+    "impostor_topk_mean": 0.7622727036476136,
+    "margin": 0.11005760431289668,
+    "rank": 363
+  },
+  {
+    "subject_id": "071_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8009575009346008,
+    "impostor_topk_mean": 0.6911398530006408,
+    "margin": 0.10981764793395998,
+    "rank": 364
+  },
+  {
+    "subject_id": "038_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8329169154167175,
+    "impostor_topk_mean": 0.7231142938137054,
+    "margin": 0.10980262160301213,
+    "rank": 365
+  },
+  {
+    "subject_id": "074_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8593418598175049,
+    "impostor_topk_mean": 0.749585074186325,
+    "margin": 0.10975678563117985,
+    "rank": 366
+  },
+  {
+    "subject_id": "029_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.949923038482666,
+    "impostor_topk_mean": 0.84021155834198,
+    "margin": 0.10971148014068599,
+    "rank": 367
+  },
+  {
+    "subject_id": "098_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9431644678115845,
+    "impostor_topk_mean": 0.8338159918785095,
+    "margin": 0.10934847593307495,
+    "rank": 368
+  },
+  {
+    "subject_id": "080_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9502782225608826,
+    "impostor_topk_mean": 0.8412619292736053,
+    "margin": 0.10901629328727724,
+    "rank": 369
+  },
+  {
+    "subject_id": "041_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9429044127464294,
+    "impostor_topk_mean": 0.834470534324646,
+    "margin": 0.10843387842178343,
+    "rank": 370
+  },
+  {
+    "subject_id": "027_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8925156593322754,
+    "impostor_topk_mean": 0.7842574715614319,
+    "margin": 0.1082581877708435,
+    "rank": 371
+  },
+  {
+    "subject_id": "004_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9512172937393188,
+    "impostor_topk_mean": 0.8433007597923279,
+    "margin": 0.10791653394699097,
+    "rank": 372
+  },
+  {
+    "subject_id": "065_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9410657286643982,
+    "impostor_topk_mean": 0.8333022832870484,
+    "margin": 0.10776344537734983,
+    "rank": 373
+  },
+  {
+    "subject_id": "057_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9241786599159241,
+    "impostor_topk_mean": 0.816746836900711,
+    "margin": 0.10743182301521303,
+    "rank": 374
+  },
+  {
+    "subject_id": "017_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9352724552154541,
+    "impostor_topk_mean": 0.8279102683067322,
+    "margin": 0.1073621869087219,
+    "rank": 375
+  },
+  {
+    "subject_id": "053_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8538828492164612,
+    "impostor_topk_mean": 0.7465360522270202,
+    "margin": 0.10734679698944094,
+    "rank": 376
+  },
+  {
+    "subject_id": "027_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9043794274330139,
+    "impostor_topk_mean": 0.7980636537075043,
+    "margin": 0.1063157737255096,
+    "rank": 377
+  },
+  {
+    "subject_id": "085_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9478477239608765,
+    "impostor_topk_mean": 0.8419834733009338,
+    "margin": 0.10586425065994265,
+    "rank": 378
+  },
+  {
+    "subject_id": "096_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8566787838935852,
+    "impostor_topk_mean": 0.751339441537857,
+    "margin": 0.10533934235572817,
+    "rank": 379
+  },
+  {
+    "subject_id": "057_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8903465270996094,
+    "impostor_topk_mean": 0.7850145518779754,
+    "margin": 0.10533197522163396,
+    "rank": 380
+  },
+  {
+    "subject_id": "009_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9074837565422058,
+    "impostor_topk_mean": 0.8023538231849671,
+    "margin": 0.10512993335723875,
+    "rank": 381
+  },
+  {
+    "subject_id": "046_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8917273879051208,
+    "impostor_topk_mean": 0.786910605430603,
+    "margin": 0.10481678247451787,
+    "rank": 382
+  },
+  {
+    "subject_id": "039_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9078184962272644,
+    "impostor_topk_mean": 0.803313672542572,
+    "margin": 0.10450482368469238,
+    "rank": 383
+  },
+  {
+    "subject_id": "050_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8987061977386475,
+    "impostor_topk_mean": 0.7943626165390014,
+    "margin": 0.10434358119964604,
+    "rank": 384
+  },
+  {
+    "subject_id": "019_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8824896812438965,
+    "impostor_topk_mean": 0.7782953977584839,
+    "margin": 0.1041942834854126,
+    "rank": 385
+  },
+  {
+    "subject_id": "078_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9425102472305298,
+    "impostor_topk_mean": 0.838342696428299,
+    "margin": 0.10416755080223083,
+    "rank": 386
+  },
+  {
+    "subject_id": "075_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8691131472587585,
+    "impostor_topk_mean": 0.7649992346763611,
+    "margin": 0.10411391258239744,
+    "rank": 387
+  },
+  {
+    "subject_id": "026_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8440792560577393,
+    "impostor_topk_mean": 0.7402256071567536,
+    "margin": 0.1038536489009857,
+    "rank": 388
+  },
+  {
+    "subject_id": "006_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9577673077583313,
+    "impostor_topk_mean": 0.853950023651123,
+    "margin": 0.10381728410720825,
+    "rank": 389
+  },
+  {
+    "subject_id": "075_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8603955507278442,
+    "impostor_topk_mean": 0.7566924154758453,
+    "margin": 0.10370313525199892,
+    "rank": 390
+  },
+  {
+    "subject_id": "055_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9102538228034973,
+    "impostor_topk_mean": 0.8067229390144348,
+    "margin": 0.1035308837890625,
+    "rank": 391
+  },
+  {
+    "subject_id": "094_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9182413816452026,
+    "impostor_topk_mean": 0.8151392877101898,
+    "margin": 0.1031020939350128,
+    "rank": 392
+  },
+  {
+    "subject_id": "087_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8927901387214661,
+    "impostor_topk_mean": 0.7900017619132995,
+    "margin": 0.10278837680816655,
+    "rank": 393
+  },
+  {
+    "subject_id": "011_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9130709171295166,
+    "impostor_topk_mean": 0.8103635966777801,
+    "margin": 0.10270732045173647,
+    "rank": 394
+  },
+  {
+    "subject_id": "063_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9422109127044678,
+    "impostor_topk_mean": 0.8396040439605713,
+    "margin": 0.10260686874389646,
+    "rank": 395
+  },
+  {
+    "subject_id": "048_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9680384397506714,
+    "impostor_topk_mean": 0.8658821940422058,
+    "margin": 0.1021562457084656,
+    "rank": 396
+  },
+  {
+    "subject_id": "053_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7666696906089783,
+    "impostor_topk_mean": 0.6649855434894562,
+    "margin": 0.10168414711952212,
+    "rank": 397
+  },
+  {
+    "subject_id": "089_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9139010310173035,
+    "impostor_topk_mean": 0.8122554779052734,
+    "margin": 0.10164555311203005,
+    "rank": 398
+  },
+  {
+    "subject_id": "008_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8683944940567017,
+    "impostor_topk_mean": 0.7670073330402374,
+    "margin": 0.10138716101646428,
+    "rank": 399
+  },
+  {
+    "subject_id": "031_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7648176550865173,
+    "impostor_topk_mean": 0.6635877788066864,
+    "margin": 0.10122987627983093,
+    "rank": 400
+  },
+  {
+    "subject_id": "054_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9238981604576111,
+    "impostor_topk_mean": 0.823630952835083,
+    "margin": 0.10026720762252805,
+    "rank": 401
+  },
+  {
+    "subject_id": "080_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8812829852104187,
+    "impostor_topk_mean": 0.7814091742038727,
+    "margin": 0.09987381100654602,
+    "rank": 402
+  },
+  {
+    "subject_id": "067_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8598743677139282,
+    "impostor_topk_mean": 0.7600051045417786,
+    "margin": 0.09986926317214961,
+    "rank": 403
+  },
+  {
+    "subject_id": "037_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8189281225204468,
+    "impostor_topk_mean": 0.7192370772361756,
+    "margin": 0.0996910452842712,
+    "rank": 404
+  },
+  {
+    "subject_id": "068_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8720971941947937,
+    "impostor_topk_mean": 0.77242711186409,
+    "margin": 0.09967008233070374,
+    "rank": 405
+  },
+  {
+    "subject_id": "038_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9189150333404541,
+    "impostor_topk_mean": 0.8193772077560425,
+    "margin": 0.0995378255844116,
+    "rank": 406
+  },
+  {
+    "subject_id": "046_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.898390531539917,
+    "impostor_topk_mean": 0.8005997121334076,
+    "margin": 0.09779081940650936,
+    "rank": 407
+  },
+  {
+    "subject_id": "011_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9329878687858582,
+    "impostor_topk_mean": 0.8352212131023407,
+    "margin": 0.0977666556835175,
+    "rank": 408
+  },
+  {
+    "subject_id": "067_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8992152810096741,
+    "impostor_topk_mean": 0.8014691948890686,
+    "margin": 0.09774608612060542,
+    "rank": 409
+  },
+  {
+    "subject_id": "013_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9294934868812561,
+    "impostor_topk_mean": 0.8317549467086792,
+    "margin": 0.09773854017257688,
+    "rank": 410
+  },
+  {
+    "subject_id": "050_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9092826247215271,
+    "impostor_topk_mean": 0.8115475058555603,
+    "margin": 0.09773511886596675,
+    "rank": 411
+  },
+  {
+    "subject_id": "021_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7969000935554504,
+    "impostor_topk_mean": 0.6992904305458069,
+    "margin": 0.09760966300964358,
+    "rank": 412
+  },
+  {
+    "subject_id": "038_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9598854184150696,
+    "impostor_topk_mean": 0.8623704195022583,
+    "margin": 0.09751499891281123,
+    "rank": 413
+  },
+  {
+    "subject_id": "078_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.961277186870575,
+    "impostor_topk_mean": 0.8638993322849273,
+    "margin": 0.09737785458564763,
+    "rank": 414
+  },
+  {
+    "subject_id": "008_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8917765021324158,
+    "impostor_topk_mean": 0.7945067048072815,
+    "margin": 0.0972697973251343,
+    "rank": 415
+  },
+  {
+    "subject_id": "078_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8766644597053528,
+    "impostor_topk_mean": 0.7794997036457062,
+    "margin": 0.09716475605964658,
+    "rank": 416
+  },
+  {
+    "subject_id": "091_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9586539268493652,
+    "impostor_topk_mean": 0.8618267238140106,
+    "margin": 0.09682720303535464,
+    "rank": 417
+  },
+  {
+    "subject_id": "088_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9265425205230713,
+    "impostor_topk_mean": 0.829970759153366,
+    "margin": 0.09657176136970524,
+    "rank": 418
+  },
+  {
+    "subject_id": "062_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8695356845855713,
+    "impostor_topk_mean": 0.7730112075805664,
+    "margin": 0.09652447700500488,
+    "rank": 419
+  },
+  {
+    "subject_id": "037_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8480610251426697,
+    "impostor_topk_mean": 0.7516278386116028,
+    "margin": 0.09643318653106692,
+    "rank": 420
+  },
+  {
+    "subject_id": "025_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8754129409790039,
+    "impostor_topk_mean": 0.7790828883647919,
+    "margin": 0.09633005261421201,
+    "rank": 421
+  },
+  {
+    "subject_id": "040_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8628238439559937,
+    "impostor_topk_mean": 0.767242431640625,
+    "margin": 0.09558141231536865,
+    "rank": 422
+  },
+  {
+    "subject_id": "020_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8756701350212097,
+    "impostor_topk_mean": 0.780152189731598,
+    "margin": 0.09551794528961177,
+    "rank": 423
+  },
+  {
+    "subject_id": "034_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9388887882232666,
+    "impostor_topk_mean": 0.8438536286354065,
+    "margin": 0.09503515958786013,
+    "rank": 424
+  },
+  {
+    "subject_id": "071_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9212610125541687,
+    "impostor_topk_mean": 0.8270845174789428,
+    "margin": 0.09417649507522585,
+    "rank": 425
+  },
+  {
+    "subject_id": "011_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9659512042999268,
+    "impostor_topk_mean": 0.8720952570438385,
+    "margin": 0.09385594725608826,
+    "rank": 426
+  },
+  {
+    "subject_id": "050_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8893071413040161,
+    "impostor_topk_mean": 0.7959157407283783,
+    "margin": 0.09339140057563777,
+    "rank": 427
+  },
+  {
+    "subject_id": "060_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9094557762145996,
+    "impostor_topk_mean": 0.8160864412784576,
+    "margin": 0.09336933493614197,
+    "rank": 428
+  },
+  {
+    "subject_id": "007_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9821367263793945,
+    "impostor_topk_mean": 0.8889234304428101,
+    "margin": 0.09321329593658445,
+    "rank": 429
+  },
+  {
+    "subject_id": "014_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7755971550941467,
+    "impostor_topk_mean": 0.6827713370323181,
+    "margin": 0.09282581806182866,
+    "rank": 430
+  },
+  {
+    "subject_id": "001_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.921142041683197,
+    "impostor_topk_mean": 0.8310730278491973,
+    "margin": 0.09006901383399968,
+    "rank": 431
+  },
+  {
+    "subject_id": "095_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7957054376602173,
+    "impostor_topk_mean": 0.7057136833667755,
+    "margin": 0.08999175429344175,
+    "rank": 432
+  },
+  {
+    "subject_id": "037_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8560541868209839,
+    "impostor_topk_mean": 0.766534948348999,
+    "margin": 0.08951923847198484,
+    "rank": 433
+  },
+  {
+    "subject_id": "094_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.931797981262207,
+    "impostor_topk_mean": 0.8423079311847687,
+    "margin": 0.08949005007743838,
+    "rank": 434
+  },
+  {
+    "subject_id": "085_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8742209672927856,
+    "impostor_topk_mean": 0.7847496867179871,
+    "margin": 0.08947128057479858,
+    "rank": 435
+  },
+  {
+    "subject_id": "079_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9023115634918213,
+    "impostor_topk_mean": 0.8129100918769836,
+    "margin": 0.08940147161483769,
+    "rank": 436
+  },
+  {
+    "subject_id": "061_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8854108452796936,
+    "impostor_topk_mean": 0.7960650026798248,
+    "margin": 0.08934584259986877,
+    "rank": 437
+  },
+  {
+    "subject_id": "031_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8447707891464233,
+    "impostor_topk_mean": 0.7556343138217926,
+    "margin": 0.08913647532463076,
+    "rank": 438
+  },
+  {
+    "subject_id": "012_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8626829981803894,
+    "impostor_topk_mean": 0.7737692654132843,
+    "margin": 0.08891373276710512,
+    "rank": 439
+  },
+  {
+    "subject_id": "099_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9372833967208862,
+    "impostor_topk_mean": 0.8486147701740265,
+    "margin": 0.0886686265468597,
+    "rank": 440
+  },
+  {
+    "subject_id": "014_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8362970352172852,
+    "impostor_topk_mean": 0.7476733803749085,
+    "margin": 0.08862365484237666,
+    "rank": 441
+  },
+  {
+    "subject_id": "003_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9364324808120728,
+    "impostor_topk_mean": 0.8485364377498626,
+    "margin": 0.0878960430622101,
+    "rank": 442
+  },
+  {
+    "subject_id": "010_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.936830461025238,
+    "impostor_topk_mean": 0.8491044342517853,
+    "margin": 0.08772602677345276,
+    "rank": 443
+  },
+  {
+    "subject_id": "070_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9114845395088196,
+    "impostor_topk_mean": 0.8238216698169708,
+    "margin": 0.08766286969184878,
+    "rank": 444
+  },
+  {
+    "subject_id": "073_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8848349452018738,
+    "impostor_topk_mean": 0.797474604845047,
+    "margin": 0.08736034035682683,
+    "rank": 445
+  },
+  {
+    "subject_id": "039_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9400448203086853,
+    "impostor_topk_mean": 0.8526857852935791,
+    "margin": 0.08735903501510622,
+    "rank": 446
+  },
+  {
+    "subject_id": "047_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8281053304672241,
+    "impostor_topk_mean": 0.7410067796707154,
+    "margin": 0.08709855079650874,
+    "rank": 447
+  },
+  {
+    "subject_id": "088_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9290470480918884,
+    "impostor_topk_mean": 0.842047119140625,
+    "margin": 0.0869999289512634,
+    "rank": 448
+  },
+  {
+    "subject_id": "022_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9066770076751709,
+    "impostor_topk_mean": 0.8197326779365539,
+    "margin": 0.08694432973861699,
+    "rank": 449
+  },
+  {
+    "subject_id": "032_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8728029131889343,
+    "impostor_topk_mean": 0.7858749687671661,
+    "margin": 0.08692794442176821,
+    "rank": 450
+  },
+  {
+    "subject_id": "023_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9207900166511536,
+    "impostor_topk_mean": 0.8339435815811157,
+    "margin": 0.08684643507003786,
+    "rank": 451
+  },
+  {
+    "subject_id": "003_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8801727294921875,
+    "impostor_topk_mean": 0.7933519601821899,
+    "margin": 0.0868207693099976,
+    "rank": 452
+  },
+  {
+    "subject_id": "047_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8193829655647278,
+    "impostor_topk_mean": 0.7336405873298645,
+    "margin": 0.0857423782348633,
+    "rank": 453
+  },
+  {
+    "subject_id": "001_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8424723148345947,
+    "impostor_topk_mean": 0.756832605600357,
+    "margin": 0.0856397092342377,
+    "rank": 454
+  },
+  {
+    "subject_id": "085_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9023676514625549,
+    "impostor_topk_mean": 0.8168903887271881,
+    "margin": 0.08547726273536682,
+    "rank": 455
+  },
+  {
+    "subject_id": "048_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.874448835849762,
+    "impostor_topk_mean": 0.7892213761806488,
+    "margin": 0.08522745966911316,
+    "rank": 456
+  },
+  {
+    "subject_id": "035_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9312171339988708,
+    "impostor_topk_mean": 0.8461245417594909,
+    "margin": 0.08509259223937993,
+    "rank": 457
+  },
+  {
+    "subject_id": "071_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9221016764640808,
+    "impostor_topk_mean": 0.8380435585975647,
+    "margin": 0.08405811786651607,
+    "rank": 458
+  },
+  {
+    "subject_id": "015_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8963614702224731,
+    "impostor_topk_mean": 0.8127608597278595,
+    "margin": 0.08360061049461365,
+    "rank": 459
+  },
+  {
+    "subject_id": "023_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8978998064994812,
+    "impostor_topk_mean": 0.8144208252429962,
+    "margin": 0.08347898125648501,
+    "rank": 460
+  },
+  {
+    "subject_id": "041_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.871769368648529,
+    "impostor_topk_mean": 0.7886631906032562,
+    "margin": 0.08310617804527287,
+    "rank": 461
+  },
+  {
+    "subject_id": "021_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.7946492433547974,
+    "impostor_topk_mean": 0.7117192685604096,
+    "margin": 0.0829299747943878,
+    "rank": 462
+  },
+  {
+    "subject_id": "090_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9250310063362122,
+    "impostor_topk_mean": 0.8448613822460175,
+    "margin": 0.08016962409019468,
+    "rank": 463
+  },
+  {
+    "subject_id": "088_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9019311666488647,
+    "impostor_topk_mean": 0.822362732887268,
+    "margin": 0.07956843376159672,
+    "rank": 464
+  },
+  {
+    "subject_id": "017_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7405598163604736,
+    "impostor_topk_mean": 0.66156165599823,
+    "margin": 0.07899816036224361,
+    "rank": 465
+  },
+  {
+    "subject_id": "046_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9400765299797058,
+    "impostor_topk_mean": 0.8612247467041015,
+    "margin": 0.07885178327560427,
+    "rank": 466
+  },
+  {
+    "subject_id": "063_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9313282370567322,
+    "impostor_topk_mean": 0.8525930523872376,
+    "margin": 0.07873518466949458,
+    "rank": 467
+  },
+  {
+    "subject_id": "080_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7515200972557068,
+    "impostor_topk_mean": 0.6732152819633483,
+    "margin": 0.07830481529235844,
+    "rank": 468
+  },
+  {
+    "subject_id": "026_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8930521011352539,
+    "impostor_topk_mean": 0.8149494647979736,
+    "margin": 0.07810263633728032,
+    "rank": 469
+  },
+  {
+    "subject_id": "007_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9079753160476685,
+    "impostor_topk_mean": 0.8298811376094818,
+    "margin": 0.07809417843818667,
+    "rank": 470
+  },
+  {
+    "subject_id": "020_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8703485131263733,
+    "impostor_topk_mean": 0.7931004285812377,
+    "margin": 0.07724808454513554,
+    "rank": 471
+  },
+  {
+    "subject_id": "062_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8508028388023376,
+    "impostor_topk_mean": 0.7737738251686096,
+    "margin": 0.07702901363372805,
+    "rank": 472
+  },
+  {
+    "subject_id": "034_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8605611324310303,
+    "impostor_topk_mean": 0.7840003848075867,
+    "margin": 0.07656074762344356,
+    "rank": 473
+  },
+  {
+    "subject_id": "051_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.869657039642334,
+    "impostor_topk_mean": 0.7931532561779022,
+    "margin": 0.07650378346443176,
+    "rank": 474
+  },
+  {
+    "subject_id": "001_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9022530317306519,
+    "impostor_topk_mean": 0.8258361637592315,
+    "margin": 0.07641686797142033,
+    "rank": 475
+  },
+  {
+    "subject_id": "015_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8899502158164978,
+    "impostor_topk_mean": 0.8137496590614319,
+    "margin": 0.07620055675506587,
+    "rank": 476
+  },
+  {
+    "subject_id": "068_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7895967364311218,
+    "impostor_topk_mean": 0.7135278224945069,
+    "margin": 0.07606891393661497,
+    "rank": 477
+  },
+  {
+    "subject_id": "046_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8769879937171936,
+    "impostor_topk_mean": 0.8011977851390839,
+    "margin": 0.0757902085781097,
+    "rank": 478
+  },
+  {
+    "subject_id": "085_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8626377582550049,
+    "impostor_topk_mean": 0.7874110162258148,
+    "margin": 0.07522674202919011,
+    "rank": 479
+  },
+  {
+    "subject_id": "041_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8893559575080872,
+    "impostor_topk_mean": 0.8144994080066681,
+    "margin": 0.07485654950141907,
+    "rank": 480
+  },
+  {
+    "subject_id": "046_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9542646408081055,
+    "impostor_topk_mean": 0.8798320472240448,
+    "margin": 0.07443259358406062,
+    "rank": 481
+  },
+  {
+    "subject_id": "046_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.899961531162262,
+    "impostor_topk_mean": 0.8264261305332183,
+    "margin": 0.07353540062904362,
+    "rank": 482
+  },
+  {
+    "subject_id": "013_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8838924169540405,
+    "impostor_topk_mean": 0.8110955834388733,
+    "margin": 0.07279683351516719,
+    "rank": 483
+  },
+  {
+    "subject_id": "068_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8825007677078247,
+    "impostor_topk_mean": 0.8097805738449096,
+    "margin": 0.07272019386291506,
+    "rank": 484
+  },
+  {
+    "subject_id": "025_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.860811173915863,
+    "impostor_topk_mean": 0.788124966621399,
+    "margin": 0.07268620729446407,
+    "rank": 485
+  },
+  {
+    "subject_id": "036_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7952854633331299,
+    "impostor_topk_mean": 0.7226269006729126,
+    "margin": 0.07265856266021731,
+    "rank": 486
+  },
+  {
+    "subject_id": "063_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8556363582611084,
+    "impostor_topk_mean": 0.7840373337268829,
+    "margin": 0.07159902453422551,
+    "rank": 487
+  },
+  {
+    "subject_id": "001_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9193675518035889,
+    "impostor_topk_mean": 0.8478796482086182,
+    "margin": 0.0714879035949707,
+    "rank": 488
+  },
+  {
+    "subject_id": "022_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.866070032119751,
+    "impostor_topk_mean": 0.7947666943073273,
+    "margin": 0.0713033378124237,
+    "rank": 489
+  },
+  {
+    "subject_id": "082_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6854154467582703,
+    "impostor_topk_mean": 0.6143974661827087,
+    "margin": 0.07101798057556152,
+    "rank": 490
+  },
+  {
+    "subject_id": "050_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8815683722496033,
+    "impostor_topk_mean": 0.8106551766395569,
+    "margin": 0.07091319561004639,
+    "rank": 491
+  },
+  {
+    "subject_id": "064_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7743969559669495,
+    "impostor_topk_mean": 0.7035338640213012,
+    "margin": 0.07086309194564822,
+    "rank": 492
+  },
+  {
+    "subject_id": "011_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9597200751304626,
+    "impostor_topk_mean": 0.8890653789043427,
+    "margin": 0.07065469622611997,
+    "rank": 493
+  },
+  {
+    "subject_id": "045_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9318247437477112,
+    "impostor_topk_mean": 0.8612275779247284,
+    "margin": 0.07059716582298281,
+    "rank": 494
+  },
+  {
+    "subject_id": "009_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9635545611381531,
+    "impostor_topk_mean": 0.8933616757392884,
+    "margin": 0.0701928853988647,
+    "rank": 495
+  },
+  {
+    "subject_id": "054_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9100333452224731,
+    "impostor_topk_mean": 0.8412289440631866,
+    "margin": 0.06880440115928654,
+    "rank": 496
+  },
+  {
+    "subject_id": "031_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8189796209335327,
+    "impostor_topk_mean": 0.7502850949764251,
+    "margin": 0.06869452595710757,
+    "rank": 497
+  },
+  {
+    "subject_id": "067_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8437268733978271,
+    "impostor_topk_mean": 0.775354015827179,
+    "margin": 0.06837285757064815,
+    "rank": 498
+  },
+  {
+    "subject_id": "029_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9122763872146606,
+    "impostor_topk_mean": 0.8450131177902221,
+    "margin": 0.0672632694244385,
+    "rank": 499
+  },
+  {
+    "subject_id": "061_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8985766172409058,
+    "impostor_topk_mean": 0.8319135844707489,
+    "margin": 0.06666303277015684,
+    "rank": 500
+  },
+  {
+    "subject_id": "038_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8767457008361816,
+    "impostor_topk_mean": 0.8108377456665039,
+    "margin": 0.06590795516967773,
+    "rank": 501
+  },
+  {
+    "subject_id": "077_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.6595537066459656,
+    "impostor_topk_mean": 0.5940641522407532,
+    "margin": 0.06548955440521242,
+    "rank": 502
+  },
+  {
+    "subject_id": "012_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7935245037078857,
+    "impostor_topk_mean": 0.7290507376194,
+    "margin": 0.06447376608848576,
+    "rank": 503
+  },
+  {
+    "subject_id": "007_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9548303484916687,
+    "impostor_topk_mean": 0.8920300722122192,
+    "margin": 0.06280027627944951,
+    "rank": 504
+  },
+  {
+    "subject_id": "040_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9388508200645447,
+    "impostor_topk_mean": 0.8760899603366852,
+    "margin": 0.0627608597278595,
+    "rank": 505
+  },
+  {
+    "subject_id": "063_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8492130637168884,
+    "impostor_topk_mean": 0.7871213674545288,
+    "margin": 0.062091696262359664,
+    "rank": 506
+  },
+  {
+    "subject_id": "093_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8676667213439941,
+    "impostor_topk_mean": 0.8064419031143188,
+    "margin": 0.06122481822967529,
+    "rank": 507
+  },
+  {
+    "subject_id": "068_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8402040004730225,
+    "impostor_topk_mean": 0.7790412366390228,
+    "margin": 0.061162763833999656,
+    "rank": 508
+  },
+  {
+    "subject_id": "085_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.905326783657074,
+    "impostor_topk_mean": 0.8454238653182984,
+    "margin": 0.05990291833877559,
+    "rank": 509
+  },
+  {
+    "subject_id": "002_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8871450424194336,
+    "impostor_topk_mean": 0.8283032536506653,
+    "margin": 0.05884178876876833,
+    "rank": 510
+  },
+  {
+    "subject_id": "097_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8153520226478577,
+    "impostor_topk_mean": 0.7570173621177674,
+    "margin": 0.05833466053009029,
+    "rank": 511
+  },
+  {
+    "subject_id": "049_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8380205035209656,
+    "impostor_topk_mean": 0.7800020039081573,
+    "margin": 0.05801849961280825,
+    "rank": 512
+  },
+  {
+    "subject_id": "096_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8398300409317017,
+    "impostor_topk_mean": 0.7824266433715821,
+    "margin": 0.057403397560119584,
+    "rank": 513
+  },
+  {
+    "subject_id": "022_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9218302965164185,
+    "impostor_topk_mean": 0.865542197227478,
+    "margin": 0.05628809928894041,
+    "rank": 514
+  },
+  {
+    "subject_id": "089_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8878037929534912,
+    "impostor_topk_mean": 0.8318790674209595,
+    "margin": 0.055924725532531694,
+    "rank": 515
+  },
+  {
+    "subject_id": "089_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.809686005115509,
+    "impostor_topk_mean": 0.7539810836315155,
+    "margin": 0.05570492148399353,
+    "rank": 516
+  },
+  {
+    "subject_id": "094_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8707584142684937,
+    "impostor_topk_mean": 0.816377329826355,
+    "margin": 0.05438108444213863,
+    "rank": 517
+  },
+  {
+    "subject_id": "013_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9001672267913818,
+    "impostor_topk_mean": 0.8460154712200165,
+    "margin": 0.05415175557136531,
+    "rank": 518
+  },
+  {
+    "subject_id": "040_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8293991684913635,
+    "impostor_topk_mean": 0.7761967658996582,
+    "margin": 0.05320240259170528,
+    "rank": 519
+  },
+  {
+    "subject_id": "023_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.9154408574104309,
+    "impostor_topk_mean": 0.8622474908828736,
+    "margin": 0.05319336652755735,
+    "rank": 520
+  },
+  {
+    "subject_id": "088_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8339295387268066,
+    "impostor_topk_mean": 0.7818077981472016,
+    "margin": 0.05212174057960506,
+    "rank": 521
+  },
+  {
+    "subject_id": "033_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7498688697814941,
+    "impostor_topk_mean": 0.6995011031627655,
+    "margin": 0.05036776661872866,
+    "rank": 522
+  },
+  {
+    "subject_id": "014_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.614594578742981,
+    "impostor_topk_mean": 0.5642640471458436,
+    "margin": 0.05033053159713741,
+    "rank": 523
+  },
+  {
+    "subject_id": "006_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8590778112411499,
+    "impostor_topk_mean": 0.8092475175857544,
+    "margin": 0.049830293655395486,
+    "rank": 524
+  },
+  {
+    "subject_id": "071_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8620923161506653,
+    "impostor_topk_mean": 0.8126112341880798,
+    "margin": 0.049481081962585494,
+    "rank": 525
+  },
+  {
+    "subject_id": "055_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8970340490341187,
+    "impostor_topk_mean": 0.8486186683177948,
+    "margin": 0.0484153807163239,
+    "rank": 526
+  },
+  {
+    "subject_id": "072_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8981425762176514,
+    "impostor_topk_mean": 0.8517212808132172,
+    "margin": 0.04642129540443418,
+    "rank": 527
+  },
+  {
+    "subject_id": "024_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8109567165374756,
+    "impostor_topk_mean": 0.7650544881820679,
+    "margin": 0.04590222835540769,
+    "rank": 528
+  },
+  {
+    "subject_id": "003_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7245336771011353,
+    "impostor_topk_mean": 0.6789457678794861,
+    "margin": 0.045587909221649126,
+    "rank": 529
+  },
+  {
+    "subject_id": "057_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8526750206947327,
+    "impostor_topk_mean": 0.8071327865123749,
+    "margin": 0.04554223418235781,
+    "rank": 530
+  },
+  {
+    "subject_id": "006_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8699229955673218,
+    "impostor_topk_mean": 0.8249681890010834,
+    "margin": 0.0449548065662384,
+    "rank": 531
+  },
+  {
+    "subject_id": "073_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8066803216934204,
+    "impostor_topk_mean": 0.7617277204990387,
+    "margin": 0.044952601194381714,
+    "rank": 532
+  },
+  {
+    "subject_id": "083_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8535465002059937,
+    "impostor_topk_mean": 0.809228140115738,
+    "margin": 0.04431836009025569,
+    "rank": 533
+  },
+  {
+    "subject_id": "094_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9344805479049683,
+    "impostor_topk_mean": 0.8903009355068207,
+    "margin": 0.044179612398147605,
+    "rank": 534
+  },
+  {
+    "subject_id": "085_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.9112699031829834,
+    "impostor_topk_mean": 0.8671634137630463,
+    "margin": 0.04410648941993711,
+    "rank": 535
+  },
+  {
+    "subject_id": "093_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.9130932092666626,
+    "impostor_topk_mean": 0.8693983435630799,
+    "margin": 0.04369486570358272,
+    "rank": 536
+  },
+  {
+    "subject_id": "006_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8979994654655457,
+    "impostor_topk_mean": 0.855109965801239,
+    "margin": 0.04288949966430666,
+    "rank": 537
+  },
+  {
+    "subject_id": "011_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8743113875389099,
+    "impostor_topk_mean": 0.8318191111087799,
+    "margin": 0.04249227643012998,
+    "rank": 538
+  },
+  {
+    "subject_id": "067_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8024681210517883,
+    "impostor_topk_mean": 0.760193508863449,
+    "margin": 0.04227461218833928,
+    "rank": 539
+  },
+  {
+    "subject_id": "052_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8902690410614014,
+    "impostor_topk_mean": 0.8481888771057129,
+    "margin": 0.04208016395568848,
+    "rank": 540
+  },
+  {
+    "subject_id": "067_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8709563612937927,
+    "impostor_topk_mean": 0.8300578713417053,
+    "margin": 0.04089848995208745,
+    "rank": 541
+  },
+  {
+    "subject_id": "023_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8719072341918945,
+    "impostor_topk_mean": 0.8343594193458557,
+    "margin": 0.03754781484603886,
+    "rank": 542
+  },
+  {
+    "subject_id": "035_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8444181084632874,
+    "impostor_topk_mean": 0.8089762210845948,
+    "margin": 0.03544188737869258,
+    "rank": 543
+  },
+  {
+    "subject_id": "013_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8510962724685669,
+    "impostor_topk_mean": 0.8192575931549072,
+    "margin": 0.03183867931365969,
+    "rank": 544
+  },
+  {
+    "subject_id": "010_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8637869358062744,
+    "impostor_topk_mean": 0.8323561906814575,
+    "margin": 0.03143074512481692,
+    "rank": 545
+  },
+  {
+    "subject_id": "014_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7356135845184326,
+    "impostor_topk_mean": 0.7043541014194489,
+    "margin": 0.03125948309898374,
+    "rank": 546
+  },
+  {
+    "subject_id": "051_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8077523112297058,
+    "impostor_topk_mean": 0.7771741509437561,
+    "margin": 0.03057816028594973,
+    "rank": 547
+  },
+  {
+    "subject_id": "009_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8868687152862549,
+    "impostor_topk_mean": 0.8601240277290344,
+    "margin": 0.02674468755722048,
+    "rank": 548
+  },
+  {
+    "subject_id": "034_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8385316729545593,
+    "impostor_topk_mean": 0.8121438503265381,
+    "margin": 0.026387822628021196,
+    "rank": 549
+  },
+  {
+    "subject_id": "025_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8566556572914124,
+    "impostor_topk_mean": 0.831729245185852,
+    "margin": 0.024926412105560347,
+    "rank": 550
+  },
+  {
+    "subject_id": "058_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8780723810195923,
+    "impostor_topk_mean": 0.8536918342113495,
+    "margin": 0.024380546808242753,
+    "rank": 551
+  },
+  {
+    "subject_id": "047_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8269966840744019,
+    "impostor_topk_mean": 0.8043761014938354,
+    "margin": 0.02262058258056643,
+    "rank": 552
+  },
+  {
+    "subject_id": "034_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8444717526435852,
+    "impostor_topk_mean": 0.8227621018886566,
+    "margin": 0.02170965075492859,
+    "rank": 553
+  },
+  {
+    "subject_id": "068_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7919472455978394,
+    "impostor_topk_mean": 0.7779041111469269,
+    "margin": 0.014043134450912431,
+    "rank": 554
+  },
+  {
+    "subject_id": "059_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7859697341918945,
+    "impostor_topk_mean": 0.7722037494182586,
+    "margin": 0.013765984773635886,
+    "rank": 555
+  },
+  {
+    "subject_id": "059_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8041016459465027,
+    "impostor_topk_mean": 0.7916308760643005,
+    "margin": 0.012470769882202193,
+    "rank": 556
+  },
+  {
+    "subject_id": "053_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7643640041351318,
+    "impostor_topk_mean": 0.7521331489086152,
+    "margin": 0.01223085522651668,
+    "rank": 557
+  },
+  {
+    "subject_id": "006_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8724311590194702,
+    "impostor_topk_mean": 0.861632788181305,
+    "margin": 0.010798370838165261,
+    "rank": 558
+  },
+  {
+    "subject_id": "013_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.82193922996521,
+    "impostor_topk_mean": 0.8121032834053039,
+    "margin": 0.00983594655990605,
+    "rank": 559
+  },
+  {
+    "subject_id": "013_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.772220253944397,
+    "impostor_topk_mean": 0.762601900100708,
+    "margin": 0.00961835384368892,
+    "rank": 560
+  },
+  {
+    "subject_id": "060_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8227713108062744,
+    "impostor_topk_mean": 0.814410924911499,
+    "margin": 0.00836038589477539,
+    "rank": 561
+  },
+  {
+    "subject_id": "038_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8453013896942139,
+    "impostor_topk_mean": 0.8376579403877258,
+    "margin": 0.0076434493064880815,
+    "rank": 562
+  },
+  {
+    "subject_id": "070_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.7156730890274048,
+    "impostor_topk_mean": 0.708169549703598,
+    "margin": 0.007503539323806763,
+    "rank": 563
+  },
+  {
+    "subject_id": "061_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8298933506011963,
+    "impostor_topk_mean": 0.8239250004291534,
+    "margin": 0.005968350172042891,
+    "rank": 564
+  },
+  {
+    "subject_id": "058_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8307974338531494,
+    "impostor_topk_mean": 0.8254731118679046,
+    "margin": 0.005324321985244795,
+    "rank": 565
+  },
+  {
+    "subject_id": "025_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8294515013694763,
+    "impostor_topk_mean": 0.8245031714439393,
+    "margin": 0.004948329925537065,
+    "rank": 566
+  },
+  {
+    "subject_id": "098_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7674388289451599,
+    "impostor_topk_mean": 0.7658132791519165,
+    "margin": 0.0016255497932433638,
+    "rank": 567
+  },
+  {
+    "subject_id": "008_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6687923669815063,
+    "impostor_topk_mean": 0.6682212650775909,
+    "margin": 0.0005711019039154053,
+    "rank": 568
+  },
+  {
+    "subject_id": "062_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.8094945549964905,
+    "impostor_topk_mean": 0.8103571534156799,
+    "margin": -0.0008625984191894531,
+    "rank": 569
+  },
+  {
+    "subject_id": "053_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.6857518553733826,
+    "impostor_topk_mean": 0.6868841648101807,
+    "margin": -0.0011323094367980957,
+    "rank": 570
+  },
+  {
+    "subject_id": "077_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7272095680236816,
+    "impostor_topk_mean": 0.7284425735473633,
+    "margin": -0.0012330055236816628,
+    "rank": 571
+  },
+  {
+    "subject_id": "093_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7481109499931335,
+    "impostor_topk_mean": 0.7498193144798279,
+    "margin": -0.0017083644866943137,
+    "rank": 572
+  },
+  {
+    "subject_id": "021_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.8158391118049622,
+    "impostor_topk_mean": 0.8190098345279694,
+    "margin": -0.0031707227230072244,
+    "rank": 573
+  },
+  {
+    "subject_id": "025_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.686617374420166,
+    "impostor_topk_mean": 0.6955534636974334,
+    "margin": -0.008936089277267412,
+    "rank": 574
+  },
+  {
+    "subject_id": "034_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.8123578429222107,
+    "impostor_topk_mean": 0.8221295714378357,
+    "margin": -0.009771728515625022,
+    "rank": 575
+  },
+  {
+    "subject_id": "070_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7807587385177612,
+    "impostor_topk_mean": 0.7909678757190705,
+    "margin": -0.010209137201309226,
+    "rank": 576
+  },
+  {
+    "subject_id": "093_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7604464888572693,
+    "impostor_topk_mean": 0.7778974771499634,
+    "margin": -0.017450988292694092,
+    "rank": 577
+  },
+  {
+    "subject_id": "074_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7831956744194031,
+    "impostor_topk_mean": 0.8024865627288819,
+    "margin": -0.019290888309478782,
+    "rank": 578
+  },
+  {
+    "subject_id": "054_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7868301272392273,
+    "impostor_topk_mean": 0.8066564559936523,
+    "margin": -0.019826328754425027,
+    "rank": 579
+  },
+  {
+    "subject_id": "069_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.7584871053695679,
+    "impostor_topk_mean": 0.7824421644210815,
+    "margin": -0.023955059051513627,
+    "rank": 580
+  },
+  {
+    "subject_id": "059_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.7947247624397278,
+    "impostor_topk_mean": 0.8191024243831635,
+    "margin": -0.024377661943435713,
+    "rank": 581
+  },
+  {
+    "subject_id": "068_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7553116083145142,
+    "impostor_topk_mean": 0.7823560953140258,
+    "margin": -0.027044486999511674,
+    "rank": 582
+  },
+  {
+    "subject_id": "010_R_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.6802286505699158,
+    "impostor_topk_mean": 0.7172465741634368,
+    "margin": -0.037017923593521074,
+    "rank": 583
+  },
+  {
+    "subject_id": "017_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6561768651008606,
+    "impostor_topk_mean": 0.6968673825263977,
+    "margin": -0.04069051742553709,
+    "rank": 584
+  },
+  {
+    "subject_id": "007_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.7773398756980896,
+    "impostor_topk_mean": 0.8263658285140991,
+    "margin": -0.04902595281600952,
+    "rank": 585
+  },
+  {
+    "subject_id": "015_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7437710165977478,
+    "impostor_topk_mean": 0.7956939995288849,
+    "margin": -0.05192298293113706,
+    "rank": 586
+  },
+  {
+    "subject_id": "020_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6777532696723938,
+    "impostor_topk_mean": 0.7356921851634979,
+    "margin": -0.05793891549110408,
+    "rank": 587
+  },
+  {
+    "subject_id": "018_L_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.7355993390083313,
+    "impostor_topk_mean": 0.7955630421638489,
+    "margin": -0.05996370315551758,
+    "rank": 588
+  },
+  {
+    "subject_id": "043_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7189587950706482,
+    "impostor_topk_mean": 0.7803257048130036,
+    "margin": -0.06136690974235537,
+    "rank": 589
+  },
+  {
+    "subject_id": "048_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7161909341812134,
+    "impostor_topk_mean": 0.7881315469741821,
+    "margin": -0.0719406127929687,
+    "rank": 590
+  },
+  {
+    "subject_id": "015_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6579990983009338,
+    "impostor_topk_mean": 0.7406014621257782,
+    "margin": -0.08260236382484432,
+    "rank": 591
+  },
+  {
+    "subject_id": "009_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6563753485679626,
+    "impostor_topk_mean": 0.7397524237632751,
+    "margin": -0.08337707519531246,
+    "rank": 592
+  },
+  {
+    "subject_id": "059_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6972092986106873,
+    "impostor_topk_mean": 0.7884588301181793,
+    "margin": -0.09124953150749204,
+    "rank": 593
+  },
+  {
+    "subject_id": "060_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6841849684715271,
+    "impostor_topk_mean": 0.7769699096679688,
+    "margin": -0.09278494119644165,
+    "rank": 594
+  },
+  {
+    "subject_id": "077_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.6416777968406677,
+    "impostor_topk_mean": 0.7369219303131104,
+    "margin": -0.09524413347244265,
+    "rank": 595
+  },
+  {
+    "subject_id": "089_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.7069754600524902,
+    "impostor_topk_mean": 0.8024282872676849,
+    "margin": -0.09545282721519466,
+    "rank": 596
+  },
+  {
+    "subject_id": "083_R_Fore",
+    "num_images": 10,
+    "genuine_mean": 0.44216758012771606,
+    "impostor_topk_mean": 0.5736731648445129,
+    "margin": -0.13150558471679685,
+    "rank": 597
+  },
+  {
+    "subject_id": "098_R_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.5933075547218323,
+    "impostor_topk_mean": 0.7485713541507721,
+    "margin": -0.15526379942893986,
+    "rank": 598
+  },
+  {
+    "subject_id": "089_L_Middle",
+    "num_images": 10,
+    "genuine_mean": 0.6308495998382568,
+    "impostor_topk_mean": 0.7977516233921051,
+    "margin": -0.1669020235538483,
+    "rank": 599
+  },
+  {
+    "subject_id": "077_L_Ring",
+    "num_images": 10,
+    "genuine_mean": 0.4381645917892456,
+    "impostor_topk_mean": 0.6573059558868408,
+    "margin": -0.21914136409759521,
+    "rank": 600
+  }
+]

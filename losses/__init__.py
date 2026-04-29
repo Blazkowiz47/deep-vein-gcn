@@ -15,7 +15,9 @@ def get_loss(loss: str, config: Dict[str, Any], log: Logger, **kwargs) -> Module
     if loss == "qualityawareproposed":
         from losses.qualityawareproposed import QualityAwareProposed
 
-        log.warning(f"Quality aware Proposed\n{inspect.getsource(QualityAwareProposed)}")
+        log.warning(
+            f"Quality aware Proposed\n{inspect.getsource(QualityAwareProposed)}"
+        )
         return QualityAwareProposed(config, log, **kwargs)
     if loss == "arcveinloss":
         from losses.arcveinloss import ArcCosineLoss
@@ -76,6 +78,13 @@ def get_loss(loss: str, config: Dict[str, Any], log: Logger, **kwargs) -> Module
 
         log.warning(f"FocalLoss\n{inspect.getsource(FocalLoss)}")
         return FocalLoss(config, log, **kwargs)
+
+    if loss == "triplet":
+        from losses.triplet import Triplet
+
+        log.warning(f"TripletLoss\n{inspect.getsource(Triplet)}")
+        return Triplet(config, log, **kwargs)
+
     ### Donot remove this line as the build generator uses this as a marker
     ### while adding new model.
     raise NotImplementedError(f"Loss: {loss} not present")

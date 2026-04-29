@@ -1,0 +1,62 @@
+{
+  "test": "two-sided exact paired sign-flip permutation test",
+  "alpha": 0.05,
+  "splits": {
+    "full": {
+      "records": [
+        {
+          "split": "full",
+          "comparison_key": "arcvein_seed_level",
+          "comparison": "Proposed vs ArcVein",
+          "level": "seed",
+          "metric_key": "eer",
+          "metric": "EER",
+          "n_pairs": 20,
+          "mean_delta_pp": 15.174291925735792,
+          "median_delta_pp": 16.256584986552035,
+          "p_value": 1.9073486328125e-06,
+          "holm_p_value": 7.62939453125e-06
+        },
+        {
+          "split": "full",
+          "comparison_key": "lgfin_seed_level",
+          "comparison": "Proposed vs LGFIN",
+          "level": "seed",
+          "metric_key": "eer",
+          "metric": "EER",
+          "n_pairs": 19,
+          "mean_delta_pp": 13.331743406446792,
+          "median_delta_pp": 11.983768794607894,
+          "p_value": 3.814697265625e-06,
+          "holm_p_value": 7.62939453125e-06
+        },
+        {
+          "split": "full",
+          "comparison_key": "fv-vit_seed_level",
+          "comparison": "Proposed vs FV-ViT",
+          "level": "seed",
+          "metric_key": "eer",
+          "metric": "EER",
+          "n_pairs": 20,
+          "mean_delta_pp": 13.66316787829862,
+          "median_delta_pp": 13.699740254890951,
+          "p_value": 1.9073486328125e-06,
+          "holm_p_value": 7.62939453125e-06
+        },
+        {
+          "split": "full",
+          "comparison_key": "veinAttNet_seed_level",
+          "comparison": "Proposed vs VeinAttNet",
+          "level": "seed",
+          "metric_key": "eer",
+          "metric": "EER",
+          "n_pairs": 20,
+          "mean_delta_pp": 4.444312874727845,
+          "median_delta_pp": 2.8003259155378095,
+          "p_value": 9.5367431640625e-05,
+          "holm_p_value": 9.5367431640625e-05
+        }
+      ]
+    }
+  }
+}

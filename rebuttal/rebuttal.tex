@@ -168,6 +168,32 @@ We agree that stronger angular-margin losses should be included explicitly. Usin
 
 These results support the claim that the proposed loss is not simply competitive with weaker objectives, but also remains stronger than recent angular-margin alternatives under the same evaluation setting.
 
+\section*{Point 4: Beta Sensitivity for the Proposed Loss}
+
+\paragraph{Reviewer request (Point 4).}
+\emph{Beta sensitivity study for the proposed loss. Reviewer 2 explicitly asked for the effect of the balancing parameter $\beta$. Since $\beta$ appears in the loss formulation, this is a direct missing experiment.}
+
+\paragraph{Response.}
+We agree that the sensitivity of the balancing parameter $\beta$ should be made explicit. We therefore ran a focused ablation on the same $ABDE \rightarrow C$ protocol used for the other loss studies, varying the contribution of the angular component while keeping the rest of the training setup fixed. The results are reported below. For reference, the default setting used in the main model is $\beta = 0.3$.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $\beta$ & EER (\%) \\
+        \hline
+        0.1 & 9.07 \\
+        0.3 (default) & \textbf{7.44} \\
+        0.5 & 10.60 \\
+        0.9 & 11.57 \\
+        \hline
+    \end{tabular}
+    \caption{Sensitivity of the proposed loss to the balancing factor $\beta$ on the $ABDE \rightarrow C$ protocol. Lower EER is better.}
+    \label{tab:rebuttal_beta_ablation}
+\end{table}
+
+This trend is consistent with the intended role of $\beta$: when the angular term is weighted too weakly, the loss does not fully exploit the added angular supervision, and when it is weighted too strongly, optimisation becomes less stable and verification performance degrades. The intermediate default setting $\beta = 0.3$ gives the best result among the tested values, which supports the choice used in the main experiments.
+
 \section*{Point 5: Component Ablation Isolating DSConv and Graph Modelling}
 
 \paragraph{Reviewer request (Point 5).}
@@ -193,6 +219,32 @@ We agree that the individual contributions of the stem and graph modules should 
 \end{table}
 
 The trend is clear: removing both components gives the worst result, DSConv alone gives a large improvement, graph modelling alone also helps, and the full model yields the best performance. This supports the claim that the proposed architecture is not merely a cosmetic combination of modules; rather, both DSConv and graph reasoning contribute materially and synergistically.
+
+\section*{Point 7: Statistical Significance Testing}
+
+\paragraph{Reviewer request (Point 7).}
+\emph{Statistical significance testing. Reviewer 2 asked for significance testing between the proposed and second-best method. Since the paper already reports mean and 95\% CI over seeds but not formal pairwise significance, add this.}
+
+\paragraph{Response.}
+We agree that the confidence intervals in the main tables do not replace a formal pairwise significance analysis. We therefore added paired significance testing on the \emph{full-subject EER} results using two-sided exact sign-flip permutation tests over the matched leave-one-dataset-out runs. For the learned baselines, the pairing is performed across the available seed-matched runs from the five leave-out protocols. Because lower EER is better, a positive mean $\Delta$EER indicates an average reduction in EER in favour of the proposed method. Holm correction was applied across the reported pairwise comparisons.
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline
+        Comparison & $n$ & Mean $\Delta$EER (pp) & Holm-adjusted $p$ & Significant \\
+        \hline
+        Proposed vs ArcVein & 20 & 15.17 & $7.63 \times 10^{-6}$ & Yes \\
+        Proposed vs LGFIN & 19 & 13.33 & $7.63 \times 10^{-6}$ & Yes \\
+        Proposed vs FV-ViT & 20 & 13.66 & $7.63 \times 10^{-6}$ & Yes \\
+        Proposed vs VeinAttNet & 20 & 4.44 & $9.54 \times 10^{-5}$ & Yes \\
+        \hline
+    \end{tabular}
+    \caption{Paired significance testing on full-subject EER. Positive mean $\Delta$EER indicates that the proposed method lowers EER relative to the comparator.}
+    \label{tab:rebuttal_significance}
+\end{table}
+
+All four pairwise comparisons are statistically significant after Holm correction, which strengthens the claim that the proposed method is not only better on mean performance, but also consistently better across matched leave-one-dataset-out runs. The LGFIN comparison uses $n=19$ rather than $20$ because one matched seed is missing in the cached full-subject LGFIN results, so the test was computed on the common runs only.
 
 \section*{Points 8 and 9: BCDE$\rightarrow$A Anomaly and VERA Performance Drop}
 
@@ -267,5 +319,16 @@ We agree that deployment-oriented efficiency should be reported explicitly. Foll
 \end{table*}
 
 These measurements clarify the deployment trade-off. VeinAttNet has the smallest parameter count among the learned baselines we measured, while FV-ViT is the fastest on CPU and ArcVein achieves the fastest GPU latency and throughput in this benchmark. We report \texttt{n/a} for VeinAttNet FLOPs because its deployed checkpoint is stored as a MATLAB network object rather than a PyTorch module, so the same FLOP tooling used for the other methods is not directly applicable. The proposed method is not the cheapest model computationally, but it remains smaller than ArcVein and LGFIN while delivering the strongest cross-dataset recognition performance in the main experiments. We will add this efficiency discussion to the revised manuscript so that the accuracy--cost trade-off is transparent.
+
+\section*{Implementation Details and Latency}
+
+\paragraph{Architecture and loss.}
+The proposed \textit{OpenVeinNet} is implemented in PyTorch (\texttt{v2.8.0+cu128}). Input finger-vein ROIs are read as grayscale images, scaled to $[0,1]$, replicated to three channels, and resized to $224\times224$. In the leave-one-dataset-out setting, the training set is formed by pooling identities from the four non-held-out datasets, while the held-out dataset is used only for evaluation. The encoder consists of a three-block DSConv stem with kernel sizes $\{9,7,3\}$ and stride $2$, giving a channel progression of $16 \rightarrow 32 \rightarrow 64$, followed by a learnable positional embedding of size $1 \times 64 \times 28 \times 28$. The backbone then applies two Grapher stages with $4$ and $6$ internal Grapher units, hidden/output dimensions $(256,128)$ and $(512,256)$, and graph kernel size $9$, followed by adaptive average pooling to produce a $256$-dimensional embedding. During training, this embedding is supervised by the proposed Centroid Angular Hybrid (CAH) loss, which combines a standard classifier cross-entropy term with a $\beta$-weighted angular cross-entropy term computed against a learned centroid matrix; the default setting used throughout the main experiments is $\beta=0.3$.
+
+\paragraph{Training setup.}
+The released training configuration optimises the model end to end for $150$ epochs using AdamW with learning rate $1\times10^{-3}$, weight decay $1\times10^{-3}$, batch size $128$, and validation after every epoch. The data pipeline applies random horizontal and vertical flips, random autocontrast ($p=0.05$), and random rotations up to $45^\circ$ on the resized ROI tensors. The CAH loss introduces an additional linear classifier and centroid bank during training, but inference uses only the $256$-dimensional embeddings extracted by the DscGrapher encoder, which are compared by cosine similarity for verification. The inference network itself contains approximately $4.76$ million trainable parameters.
+
+\paragraph{Latency and computational cost.}
+Using the same benchmarking protocol as in Point~12, namely batch size $1$ with $20$ warm-up and $200$ timed forward passes, the proposed model requires approximately $5.07$ GFLOPs per $224\times224$ image. On the held-out FV-300 checkpoint, the mean forward-pass latency is $55.82$ ms on CPU and $13.00$ ms on an NVIDIA L40S GPU, corresponding to $17.92$ and $76.94$ images/s respectively. These measurements refer to the inference-time encoder forward pass, not the training-only loss heads. The resulting cost is higher than that of the lightest baselines, but it remains within a practical real-time GPU regime while delivering the strongest cross-dataset recognition performance among the learned methods evaluated in this work.
 
 \end{document}

@@ -1,0 +1,3938 @@
+[
+  {
+    "subject_id": "vein052_1",
+    "num_images": 12,
+    "genuine_mean": 0.9508994817733765,
+    "impostor_topk_mean": 0.6423066208759943,
+    "margin": 0.30859286089738214,
+    "rank": 1
+  },
+  {
+    "subject_id": "vein104_2",
+    "num_images": 12,
+    "genuine_mean": 0.880102813243866,
+    "impostor_topk_mean": 0.6277651538451513,
+    "margin": 0.25233765939871466,
+    "rank": 2
+  },
+  {
+    "subject_id": "vein085_3",
+    "num_images": 12,
+    "genuine_mean": 0.9481469988822937,
+    "impostor_topk_mean": 0.7172054449717203,
+    "margin": 0.23094155391057336,
+    "rank": 3
+  },
+  {
+    "subject_id": "vein104_1",
+    "num_images": 12,
+    "genuine_mean": 0.9236894845962524,
+    "impostor_topk_mean": 0.6962089588244756,
+    "margin": 0.2274805257717768,
+    "rank": 4
+  },
+  {
+    "subject_id": "vein051_1",
+    "num_images": 12,
+    "genuine_mean": 0.9565607905387878,
+    "impostor_topk_mean": 0.7343867421150208,
+    "margin": 0.2221740484237671,
+    "rank": 5
+  },
+  {
+    "subject_id": "vein053_1",
+    "num_images": 12,
+    "genuine_mean": 0.9345279932022095,
+    "impostor_topk_mean": 0.715085302790006,
+    "margin": 0.21944269041220343,
+    "rank": 6
+  },
+  {
+    "subject_id": "vein053_3",
+    "num_images": 12,
+    "genuine_mean": 0.9180922508239746,
+    "impostor_topk_mean": 0.7018973529338837,
+    "margin": 0.21619489789009094,
+    "rank": 7
+  },
+  {
+    "subject_id": "vein053_4",
+    "num_images": 12,
+    "genuine_mean": 0.9317395687103271,
+    "impostor_topk_mean": 0.7314214954773585,
+    "margin": 0.20031807323296869,
+    "rank": 8
+  },
+  {
+    "subject_id": "vein042_2",
+    "num_images": 12,
+    "genuine_mean": 0.9699377417564392,
+    "impostor_topk_mean": 0.7700293759504954,
+    "margin": 0.19990836580594384,
+    "rank": 9
+  },
+  {
+    "subject_id": "vein031_2",
+    "num_images": 12,
+    "genuine_mean": 0.9077039361000061,
+    "impostor_topk_mean": 0.7085390239953995,
+    "margin": 0.19916491210460663,
+    "rank": 10
+  },
+  {
+    "subject_id": "vein036_1",
+    "num_images": 12,
+    "genuine_mean": 0.8993055820465088,
+    "impostor_topk_mean": 0.7040346562862396,
+    "margin": 0.19527092576026917,
+    "rank": 11
+  },
+  {
+    "subject_id": "vein101_2",
+    "num_images": 12,
+    "genuine_mean": 0.9137987494468689,
+    "impostor_topk_mean": 0.7198533515135447,
+    "margin": 0.19394539793332422,
+    "rank": 12
+  },
+  {
+    "subject_id": "vein072_4",
+    "num_images": 12,
+    "genuine_mean": 0.9239200949668884,
+    "impostor_topk_mean": 0.7300912439823151,
+    "margin": 0.19382885098457336,
+    "rank": 13
+  },
+  {
+    "subject_id": "vein022_2",
+    "num_images": 12,
+    "genuine_mean": 0.9778169393539429,
+    "impostor_topk_mean": 0.7864815990130106,
+    "margin": 0.19133534034093225,
+    "rank": 14
+  },
+  {
+    "subject_id": "vein053_2",
+    "num_images": 12,
+    "genuine_mean": 0.9479285478591919,
+    "impostor_topk_mean": 0.7568560640017191,
+    "margin": 0.19107248385747277,
+    "rank": 15
+  },
+  {
+    "subject_id": "vein052_4",
+    "num_images": 12,
+    "genuine_mean": 0.9491845369338989,
+    "impostor_topk_mean": 0.7590697656075159,
+    "margin": 0.190114771326383,
+    "rank": 16
+  },
+  {
+    "subject_id": "vein027_3",
+    "num_images": 12,
+    "genuine_mean": 0.9758738875389099,
+    "impostor_topk_mean": 0.7910125603278478,
+    "margin": 0.18486132721106208,
+    "rank": 17
+  },
+  {
+    "subject_id": "vein044_4",
+    "num_images": 12,
+    "genuine_mean": 0.8878051042556763,
+    "impostor_topk_mean": 0.70484858751297,
+    "margin": 0.1829565167427063,
+    "rank": 18
+  },
+  {
+    "subject_id": "vein102_4",
+    "num_images": 12,
+    "genuine_mean": 0.9662473797798157,
+    "impostor_topk_mean": 0.7850596954425176,
+    "margin": 0.18118768433729804,
+    "rank": 19
+  },
+  {
+    "subject_id": "vein110_2",
+    "num_images": 12,
+    "genuine_mean": 0.956839919090271,
+    "impostor_topk_mean": 0.7760026156902313,
+    "margin": 0.18083730340003967,
+    "rank": 20
+  },
+  {
+    "subject_id": "vein086_4",
+    "num_images": 12,
+    "genuine_mean": 0.8578455448150635,
+    "impostor_topk_mean": 0.6772069682677587,
+    "margin": 0.18063857654730475,
+    "rank": 21
+  },
+  {
+    "subject_id": "vein049_2",
+    "num_images": 12,
+    "genuine_mean": 0.9599568843841553,
+    "impostor_topk_mean": 0.7802414993445078,
+    "margin": 0.17971538503964746,
+    "rank": 22
+  },
+  {
+    "subject_id": "vein080_4",
+    "num_images": 12,
+    "genuine_mean": 0.9140601754188538,
+    "impostor_topk_mean": 0.7372400760650635,
+    "margin": 0.17682009935379028,
+    "rank": 23
+  },
+  {
+    "subject_id": "vein116_3",
+    "num_images": 12,
+    "genuine_mean": 0.9509086012840271,
+    "impostor_topk_mean": 0.7750174055496851,
+    "margin": 0.17589119573434198,
+    "rank": 24
+  },
+  {
+    "subject_id": "vein046_1",
+    "num_images": 12,
+    "genuine_mean": 0.9665923118591309,
+    "impostor_topk_mean": 0.7941165169080099,
+    "margin": 0.17247579495112098,
+    "rank": 25
+  },
+  {
+    "subject_id": "vein022_1",
+    "num_images": 12,
+    "genuine_mean": 0.9262102842330933,
+    "impostor_topk_mean": 0.7553286304076513,
+    "margin": 0.17088165382544196,
+    "rank": 26
+  },
+  {
+    "subject_id": "vein100_4",
+    "num_images": 12,
+    "genuine_mean": 0.8128277063369751,
+    "impostor_topk_mean": 0.6447690725326538,
+    "margin": 0.1680586338043213,
+    "rank": 27
+  },
+  {
+    "subject_id": "vein091_1",
+    "num_images": 12,
+    "genuine_mean": 0.9586700201034546,
+    "impostor_topk_mean": 0.7908912946780523,
+    "margin": 0.1677787254254023,
+    "rank": 28
+  },
+  {
+    "subject_id": "vein094_2",
+    "num_images": 12,
+    "genuine_mean": 0.9260759949684143,
+    "impostor_topk_mean": 0.7629922032356262,
+    "margin": 0.16308379173278809,
+    "rank": 29
+  },
+  {
+    "subject_id": "vein043_1",
+    "num_images": 12,
+    "genuine_mean": 0.9591746926307678,
+    "impostor_topk_mean": 0.7979357987642288,
+    "margin": 0.161238893866539,
+    "rank": 30
+  },
+  {
+    "subject_id": "vein016_4",
+    "num_images": 12,
+    "genuine_mean": 0.8918293118476868,
+    "impostor_topk_mean": 0.732825830578804,
+    "margin": 0.15900348126888275,
+    "rank": 31
+  },
+  {
+    "subject_id": "vein075_3",
+    "num_images": 12,
+    "genuine_mean": 0.9744405746459961,
+    "impostor_topk_mean": 0.8161820272604624,
+    "margin": 0.1582585473855337,
+    "rank": 32
+  },
+  {
+    "subject_id": "vein078_3",
+    "num_images": 12,
+    "genuine_mean": 0.8850205540657043,
+    "impostor_topk_mean": 0.7268572251001993,
+    "margin": 0.158163328965505,
+    "rank": 33
+  },
+  {
+    "subject_id": "vein103_3",
+    "num_images": 12,
+    "genuine_mean": 0.9577470421791077,
+    "impostor_topk_mean": 0.8006203869978586,
+    "margin": 0.15712665518124902,
+    "rank": 34
+  },
+  {
+    "subject_id": "vein109_3",
+    "num_images": 12,
+    "genuine_mean": 0.906477689743042,
+    "impostor_topk_mean": 0.7502251118421555,
+    "margin": 0.15625257790088654,
+    "rank": 35
+  },
+  {
+    "subject_id": "vein105_2",
+    "num_images": 12,
+    "genuine_mean": 0.9794570207595825,
+    "impostor_topk_mean": 0.8233683407306671,
+    "margin": 0.1560886800289154,
+    "rank": 36
+  },
+  {
+    "subject_id": "vein116_2",
+    "num_images": 12,
+    "genuine_mean": 0.9170763492584229,
+    "impostor_topk_mean": 0.7611217200756073,
+    "margin": 0.15595462918281555,
+    "rank": 37
+  },
+  {
+    "subject_id": "vein105_3",
+    "num_images": 12,
+    "genuine_mean": 0.9764683842658997,
+    "impostor_topk_mean": 0.8214366386334101,
+    "margin": 0.15503174563248956,
+    "rank": 38
+  },
+  {
+    "subject_id": "vein061_3",
+    "num_images": 12,
+    "genuine_mean": 0.9701712727546692,
+    "impostor_topk_mean": 0.815669059753418,
+    "margin": 0.15450221300125122,
+    "rank": 39
+  },
+  {
+    "subject_id": "vein026_3",
+    "num_images": 12,
+    "genuine_mean": 0.9686239957809448,
+    "impostor_topk_mean": 0.8149636536836624,
+    "margin": 0.1536603420972824,
+    "rank": 40
+  },
+  {
+    "subject_id": "vein117_2",
+    "num_images": 12,
+    "genuine_mean": 0.9105405807495117,
+    "impostor_topk_mean": 0.7581337839365005,
+    "margin": 0.15240679681301117,
+    "rank": 41
+  },
+  {
+    "subject_id": "vein108_1",
+    "num_images": 12,
+    "genuine_mean": 0.9407539963722229,
+    "impostor_topk_mean": 0.7884652018547058,
+    "margin": 0.1522887945175171,
+    "rank": 42
+  },
+  {
+    "subject_id": "vein075_1",
+    "num_images": 12,
+    "genuine_mean": 0.98820960521698,
+    "impostor_topk_mean": 0.8364722182353338,
+    "margin": 0.15173738698164618,
+    "rank": 43
+  },
+  {
+    "subject_id": "vein076_3",
+    "num_images": 12,
+    "genuine_mean": 0.9313628673553467,
+    "impostor_topk_mean": 0.7796515921751658,
+    "margin": 0.1517112751801809,
+    "rank": 44
+  },
+  {
+    "subject_id": "vein078_2",
+    "num_images": 12,
+    "genuine_mean": 0.9536523818969727,
+    "impostor_topk_mean": 0.8037648151318232,
+    "margin": 0.14988756676514947,
+    "rank": 45
+  },
+  {
+    "subject_id": "vein077_3",
+    "num_images": 12,
+    "genuine_mean": 0.9865592122077942,
+    "impostor_topk_mean": 0.8375550558169683,
+    "margin": 0.14900415639082587,
+    "rank": 46
+  },
+  {
+    "subject_id": "vein034_3",
+    "num_images": 12,
+    "genuine_mean": 0.9462676644325256,
+    "impostor_topk_mean": 0.7982840240001678,
+    "margin": 0.1479836404323578,
+    "rank": 47
+  },
+  {
+    "subject_id": "vein026_2",
+    "num_images": 12,
+    "genuine_mean": 0.9752820134162903,
+    "impostor_topk_mean": 0.8281573305527369,
+    "margin": 0.1471246828635534,
+    "rank": 48
+  },
+  {
+    "subject_id": "vein015_2",
+    "num_images": 12,
+    "genuine_mean": 0.9229516983032227,
+    "impostor_topk_mean": 0.7760462115208308,
+    "margin": 0.1469054867823919,
+    "rank": 49
+  },
+  {
+    "subject_id": "vein040_3",
+    "num_images": 12,
+    "genuine_mean": 0.9868669509887695,
+    "impostor_topk_mean": 0.8400862316290537,
+    "margin": 0.14678071935971582,
+    "rank": 50
+  },
+  {
+    "subject_id": "vein074_1",
+    "num_images": 12,
+    "genuine_mean": 0.9462066292762756,
+    "impostor_topk_mean": 0.8009840051333109,
+    "margin": 0.14522262414296472,
+    "rank": 51
+  },
+  {
+    "subject_id": "vein088_4",
+    "num_images": 12,
+    "genuine_mean": 0.9480578899383545,
+    "impostor_topk_mean": 0.8029458820819855,
+    "margin": 0.14511200785636902,
+    "rank": 52
+  },
+  {
+    "subject_id": "vein068_2",
+    "num_images": 12,
+    "genuine_mean": 0.9671646952629089,
+    "impostor_topk_mean": 0.8225081712007523,
+    "margin": 0.14465652406215668,
+    "rank": 53
+  },
+  {
+    "subject_id": "vein088_2",
+    "num_images": 12,
+    "genuine_mean": 0.9637930393218994,
+    "impostor_topk_mean": 0.8194215993086497,
+    "margin": 0.14437144001324975,
+    "rank": 54
+  },
+  {
+    "subject_id": "vein110_3",
+    "num_images": 12,
+    "genuine_mean": 0.982633650302887,
+    "impostor_topk_mean": 0.8383917858203253,
+    "margin": 0.1442418644825617,
+    "rank": 55
+  },
+  {
+    "subject_id": "vein051_3",
+    "num_images": 12,
+    "genuine_mean": 0.9625337719917297,
+    "impostor_topk_mean": 0.8187541415294012,
+    "margin": 0.14377963046232856,
+    "rank": 56
+  },
+  {
+    "subject_id": "vein115_2",
+    "num_images": 12,
+    "genuine_mean": 0.9402250051498413,
+    "impostor_topk_mean": 0.7965628057718277,
+    "margin": 0.1436621993780136,
+    "rank": 57
+  },
+  {
+    "subject_id": "vein082_4",
+    "num_images": 12,
+    "genuine_mean": 0.9409373998641968,
+    "impostor_topk_mean": 0.7988377859195074,
+    "margin": 0.1420996139446894,
+    "rank": 58
+  },
+  {
+    "subject_id": "vein042_1",
+    "num_images": 12,
+    "genuine_mean": 0.8907419443130493,
+    "impostor_topk_mean": 0.749528686205546,
+    "margin": 0.1412132581075033,
+    "rank": 59
+  },
+  {
+    "subject_id": "vein028_2",
+    "num_images": 12,
+    "genuine_mean": 0.9639881253242493,
+    "impostor_topk_mean": 0.8234077592690786,
+    "margin": 0.14058036605517066,
+    "rank": 60
+  },
+  {
+    "subject_id": "vein063_3",
+    "num_images": 12,
+    "genuine_mean": 0.9680418968200684,
+    "impostor_topk_mean": 0.8274940699338913,
+    "margin": 0.14054782688617706,
+    "rank": 61
+  },
+  {
+    "subject_id": "vein103_4",
+    "num_images": 12,
+    "genuine_mean": 0.9464579224586487,
+    "impostor_topk_mean": 0.8066303630669912,
+    "margin": 0.13982755939165747,
+    "rank": 62
+  },
+  {
+    "subject_id": "vein077_4",
+    "num_images": 12,
+    "genuine_mean": 0.9719170331954956,
+    "impostor_topk_mean": 0.8331230779488882,
+    "margin": 0.13879395524660743,
+    "rank": 63
+  },
+  {
+    "subject_id": "vein106_3",
+    "num_images": 12,
+    "genuine_mean": 0.91254723072052,
+    "impostor_topk_mean": 0.7745480040709177,
+    "margin": 0.1379992266496023,
+    "rank": 64
+  },
+  {
+    "subject_id": "vein022_3",
+    "num_images": 12,
+    "genuine_mean": 0.9687917828559875,
+    "impostor_topk_mean": 0.8310461441675822,
+    "margin": 0.1377456386884054,
+    "rank": 65
+  },
+  {
+    "subject_id": "vein106_1",
+    "num_images": 12,
+    "genuine_mean": 0.8468765616416931,
+    "impostor_topk_mean": 0.7092083990573883,
+    "margin": 0.1376681625843048,
+    "rank": 66
+  },
+  {
+    "subject_id": "vein096_3",
+    "num_images": 12,
+    "genuine_mean": 0.9049628376960754,
+    "impostor_topk_mean": 0.7683833489815394,
+    "margin": 0.13657948871453607,
+    "rank": 67
+  },
+  {
+    "subject_id": "vein062_1",
+    "num_images": 12,
+    "genuine_mean": 0.8652999401092529,
+    "impostor_topk_mean": 0.7294797499974569,
+    "margin": 0.13582019011179602,
+    "rank": 68
+  },
+  {
+    "subject_id": "vein033_2",
+    "num_images": 12,
+    "genuine_mean": 0.9198224544525146,
+    "impostor_topk_mean": 0.7844034930070242,
+    "margin": 0.13541896144549048,
+    "rank": 69
+  },
+  {
+    "subject_id": "vein114_2",
+    "num_images": 12,
+    "genuine_mean": 0.9791034460067749,
+    "impostor_topk_mean": 0.8438074141740799,
+    "margin": 0.135296031832695,
+    "rank": 70
+  },
+  {
+    "subject_id": "vein052_3",
+    "num_images": 12,
+    "genuine_mean": 0.963395357131958,
+    "impostor_topk_mean": 0.8282494892676672,
+    "margin": 0.13514586786429084,
+    "rank": 71
+  },
+  {
+    "subject_id": "vein077_2",
+    "num_images": 12,
+    "genuine_mean": 0.965272843837738,
+    "impostor_topk_mean": 0.830246776342392,
+    "margin": 0.13502606749534607,
+    "rank": 72
+  },
+  {
+    "subject_id": "vein059_1",
+    "num_images": 12,
+    "genuine_mean": 0.9283742904663086,
+    "impostor_topk_mean": 0.7954605221748352,
+    "margin": 0.1329137682914734,
+    "rank": 73
+  },
+  {
+    "subject_id": "vein068_4",
+    "num_images": 12,
+    "genuine_mean": 0.9179943799972534,
+    "impostor_topk_mean": 0.7856258501609167,
+    "margin": 0.13236852983633673,
+    "rank": 74
+  },
+  {
+    "subject_id": "vein102_1",
+    "num_images": 12,
+    "genuine_mean": 0.9437824487686157,
+    "impostor_topk_mean": 0.8114922344684601,
+    "margin": 0.13229021430015564,
+    "rank": 75
+  },
+  {
+    "subject_id": "vein040_4",
+    "num_images": 12,
+    "genuine_mean": 0.9755415320396423,
+    "impostor_topk_mean": 0.8433852344751358,
+    "margin": 0.13215629756450653,
+    "rank": 76
+  },
+  {
+    "subject_id": "vein055_3",
+    "num_images": 12,
+    "genuine_mean": 0.9489913582801819,
+    "impostor_topk_mean": 0.8170587768157324,
+    "margin": 0.13193258146444953,
+    "rank": 77
+  },
+  {
+    "subject_id": "vein088_1",
+    "num_images": 12,
+    "genuine_mean": 0.9706181883811951,
+    "impostor_topk_mean": 0.8407782465219498,
+    "margin": 0.1298399418592453,
+    "rank": 78
+  },
+  {
+    "subject_id": "vein043_2",
+    "num_images": 12,
+    "genuine_mean": 0.9461885690689087,
+    "impostor_topk_mean": 0.816883772611618,
+    "margin": 0.12930479645729065,
+    "rank": 79
+  },
+  {
+    "subject_id": "vein102_2",
+    "num_images": 12,
+    "genuine_mean": 0.9574334025382996,
+    "impostor_topk_mean": 0.8288066883881887,
+    "margin": 0.12862671415011084,
+    "rank": 80
+  },
+  {
+    "subject_id": "vein043_3",
+    "num_images": 12,
+    "genuine_mean": 0.9810762405395508,
+    "impostor_topk_mean": 0.8526230355103811,
+    "margin": 0.12845320502916968,
+    "rank": 81
+  },
+  {
+    "subject_id": "vein044_3",
+    "num_images": 12,
+    "genuine_mean": 0.8550289273262024,
+    "impostor_topk_mean": 0.7266173958778381,
+    "margin": 0.12841153144836426,
+    "rank": 82
+  },
+  {
+    "subject_id": "vein110_4",
+    "num_images": 12,
+    "genuine_mean": 0.973747730255127,
+    "impostor_topk_mean": 0.8467378616333008,
+    "margin": 0.12700986862182617,
+    "rank": 83
+  },
+  {
+    "subject_id": "vein104_4",
+    "num_images": 12,
+    "genuine_mean": 0.8393892049789429,
+    "impostor_topk_mean": 0.7130006353060404,
+    "margin": 0.12638856967290246,
+    "rank": 84
+  },
+  {
+    "subject_id": "vein057_3",
+    "num_images": 12,
+    "genuine_mean": 0.9544567465782166,
+    "impostor_topk_mean": 0.8284028520186743,
+    "margin": 0.1260538945595423,
+    "rank": 85
+  },
+  {
+    "subject_id": "vein064_3",
+    "num_images": 12,
+    "genuine_mean": 0.9333795309066772,
+    "impostor_topk_mean": 0.807389572262764,
+    "margin": 0.12598995864391327,
+    "rank": 86
+  },
+  {
+    "subject_id": "vein081_2",
+    "num_images": 12,
+    "genuine_mean": 0.9184035658836365,
+    "impostor_topk_mean": 0.7932779639959335,
+    "margin": 0.12512560188770294,
+    "rank": 87
+  },
+  {
+    "subject_id": "vein060_2",
+    "num_images": 12,
+    "genuine_mean": 0.9043269753456116,
+    "impostor_topk_mean": 0.7792628755172094,
+    "margin": 0.12506409982840216,
+    "rank": 88
+  },
+  {
+    "subject_id": "vein068_1",
+    "num_images": 12,
+    "genuine_mean": 0.9388919472694397,
+    "impostor_topk_mean": 0.8138405929009119,
+    "margin": 0.12505135436852777,
+    "rank": 89
+  },
+  {
+    "subject_id": "vein061_2",
+    "num_images": 12,
+    "genuine_mean": 0.9877559542655945,
+    "impostor_topk_mean": 0.8653856913248698,
+    "margin": 0.12237026294072473,
+    "rank": 90
+  },
+  {
+    "subject_id": "vein038_4",
+    "num_images": 12,
+    "genuine_mean": 0.9028027653694153,
+    "impostor_topk_mean": 0.7806872775157293,
+    "margin": 0.12211548785368598,
+    "rank": 91
+  },
+  {
+    "subject_id": "vein108_4",
+    "num_images": 12,
+    "genuine_mean": 0.8548749089241028,
+    "impostor_topk_mean": 0.7331658552090327,
+    "margin": 0.12170905371507013,
+    "rank": 92
+  },
+  {
+    "subject_id": "vein059_4",
+    "num_images": 12,
+    "genuine_mean": 0.9801898002624512,
+    "impostor_topk_mean": 0.8588923414548238,
+    "margin": 0.12129745880762732,
+    "rank": 93
+  },
+  {
+    "subject_id": "vein082_1",
+    "num_images": 12,
+    "genuine_mean": 0.8660969734191895,
+    "impostor_topk_mean": 0.7466580967108408,
+    "margin": 0.11943887670834863,
+    "rank": 94
+  },
+  {
+    "subject_id": "vein113_4",
+    "num_images": 12,
+    "genuine_mean": 0.9664902091026306,
+    "impostor_topk_mean": 0.8471722702185313,
+    "margin": 0.11931793888409936,
+    "rank": 95
+  },
+  {
+    "subject_id": "vein040_1",
+    "num_images": 12,
+    "genuine_mean": 0.9326837658882141,
+    "impostor_topk_mean": 0.8144886791706085,
+    "margin": 0.11819508671760559,
+    "rank": 96
+  },
+  {
+    "subject_id": "vein091_3",
+    "num_images": 12,
+    "genuine_mean": 0.9493322968482971,
+    "impostor_topk_mean": 0.8312602887550989,
+    "margin": 0.11807200809319818,
+    "rank": 97
+  },
+  {
+    "subject_id": "vein094_4",
+    "num_images": 12,
+    "genuine_mean": 0.8595548272132874,
+    "impostor_topk_mean": 0.7415434469779333,
+    "margin": 0.11801138023535407,
+    "rank": 98
+  },
+  {
+    "subject_id": "vein109_2",
+    "num_images": 12,
+    "genuine_mean": 0.9627621173858643,
+    "impostor_topk_mean": 0.8448469787836075,
+    "margin": 0.11791513860225677,
+    "rank": 99
+  },
+  {
+    "subject_id": "vein026_1",
+    "num_images": 12,
+    "genuine_mean": 0.9529438018798828,
+    "impostor_topk_mean": 0.8351542154947916,
+    "margin": 0.11778958638509118,
+    "rank": 100
+  },
+  {
+    "subject_id": "vein076_2",
+    "num_images": 12,
+    "genuine_mean": 0.9594032764434814,
+    "impostor_topk_mean": 0.8429692933956782,
+    "margin": 0.11643398304780328,
+    "rank": 101
+  },
+  {
+    "subject_id": "vein091_4",
+    "num_images": 12,
+    "genuine_mean": 0.9393475651741028,
+    "impostor_topk_mean": 0.82339575390021,
+    "margin": 0.11595181127389276,
+    "rank": 102
+  },
+  {
+    "subject_id": "vein096_4",
+    "num_images": 12,
+    "genuine_mean": 0.9582949280738831,
+    "impostor_topk_mean": 0.8426790436108907,
+    "margin": 0.11561588446299231,
+    "rank": 103
+  },
+  {
+    "subject_id": "vein070_1",
+    "num_images": 12,
+    "genuine_mean": 0.9587365388870239,
+    "impostor_topk_mean": 0.8433099786440531,
+    "margin": 0.11542656024297082,
+    "rank": 104
+  },
+  {
+    "subject_id": "vein097_1",
+    "num_images": 12,
+    "genuine_mean": 0.9165748953819275,
+    "impostor_topk_mean": 0.8016690313816071,
+    "margin": 0.11490586400032043,
+    "rank": 105
+  },
+  {
+    "subject_id": "vein033_4",
+    "num_images": 12,
+    "genuine_mean": 0.97510826587677,
+    "impostor_topk_mean": 0.8605434695879618,
+    "margin": 0.11456479628880822,
+    "rank": 106
+  },
+  {
+    "subject_id": "vein095_2",
+    "num_images": 12,
+    "genuine_mean": 0.9238097667694092,
+    "impostor_topk_mean": 0.8097068170706431,
+    "margin": 0.11410294969876611,
+    "rank": 107
+  },
+  {
+    "subject_id": "vein074_2",
+    "num_images": 12,
+    "genuine_mean": 0.9821350574493408,
+    "impostor_topk_mean": 0.8701338072617849,
+    "margin": 0.11200125018755591,
+    "rank": 108
+  },
+  {
+    "subject_id": "vein035_2",
+    "num_images": 12,
+    "genuine_mean": 0.959337592124939,
+    "impostor_topk_mean": 0.8479135781526566,
+    "margin": 0.11142401397228241,
+    "rank": 109
+  },
+  {
+    "subject_id": "vein034_2",
+    "num_images": 12,
+    "genuine_mean": 0.9357231855392456,
+    "impostor_topk_mean": 0.8245721062024435,
+    "margin": 0.11115107933680213,
+    "rank": 110
+  },
+  {
+    "subject_id": "vein071_4",
+    "num_images": 12,
+    "genuine_mean": 0.9319300055503845,
+    "impostor_topk_mean": 0.8208059072494507,
+    "margin": 0.11112409830093384,
+    "rank": 111
+  },
+  {
+    "subject_id": "vein048_2",
+    "num_images": 12,
+    "genuine_mean": 0.9523953199386597,
+    "impostor_topk_mean": 0.8417733957370123,
+    "margin": 0.1106219242016474,
+    "rank": 112
+  },
+  {
+    "subject_id": "vein065_3",
+    "num_images": 12,
+    "genuine_mean": 0.9457380771636963,
+    "impostor_topk_mean": 0.83551258345445,
+    "margin": 0.11022549370924628,
+    "rank": 113
+  },
+  {
+    "subject_id": "vein056_4",
+    "num_images": 12,
+    "genuine_mean": 0.9103371500968933,
+    "impostor_topk_mean": 0.8003516892592112,
+    "margin": 0.10998546083768213,
+    "rank": 114
+  },
+  {
+    "subject_id": "vein102_3",
+    "num_images": 12,
+    "genuine_mean": 0.9140639305114746,
+    "impostor_topk_mean": 0.8046031445264816,
+    "margin": 0.10946078598499298,
+    "rank": 115
+  },
+  {
+    "subject_id": "vein074_3",
+    "num_images": 12,
+    "genuine_mean": 0.9597142934799194,
+    "impostor_topk_mean": 0.8507721076409022,
+    "margin": 0.10894218583901727,
+    "rank": 116
+  },
+  {
+    "subject_id": "vein080_2",
+    "num_images": 12,
+    "genuine_mean": 0.8936907649040222,
+    "impostor_topk_mean": 0.7858745654424032,
+    "margin": 0.10781619946161902,
+    "rank": 117
+  },
+  {
+    "subject_id": "vein111_2",
+    "num_images": 12,
+    "genuine_mean": 0.9742529988288879,
+    "impostor_topk_mean": 0.8664560367663702,
+    "margin": 0.10779696206251776,
+    "rank": 118
+  },
+  {
+    "subject_id": "vein065_2",
+    "num_images": 12,
+    "genuine_mean": 0.928975522518158,
+    "impostor_topk_mean": 0.821256160736084,
+    "margin": 0.10771936178207397,
+    "rank": 119
+  },
+  {
+    "subject_id": "vein085_2",
+    "num_images": 12,
+    "genuine_mean": 0.9493263959884644,
+    "impostor_topk_mean": 0.8416479329268137,
+    "margin": 0.10767846306165063,
+    "rank": 120
+  },
+  {
+    "subject_id": "vein055_2",
+    "num_images": 12,
+    "genuine_mean": 0.9521231055259705,
+    "impostor_topk_mean": 0.8445711632569631,
+    "margin": 0.10755194226900733,
+    "rank": 121
+  },
+  {
+    "subject_id": "vein113_2",
+    "num_images": 12,
+    "genuine_mean": 0.9732723832130432,
+    "impostor_topk_mean": 0.8657777309417725,
+    "margin": 0.10749465227127075,
+    "rank": 122
+  },
+  {
+    "subject_id": "vein075_4",
+    "num_images": 12,
+    "genuine_mean": 0.969416618347168,
+    "impostor_topk_mean": 0.8620417316754659,
+    "margin": 0.10737488667170203,
+    "rank": 123
+  },
+  {
+    "subject_id": "vein031_3",
+    "num_images": 12,
+    "genuine_mean": 0.9173100590705872,
+    "impostor_topk_mean": 0.8101061830917994,
+    "margin": 0.10720387597878778,
+    "rank": 124
+  },
+  {
+    "subject_id": "vein042_3",
+    "num_images": 12,
+    "genuine_mean": 0.9585970044136047,
+    "impostor_topk_mean": 0.8534790327151617,
+    "margin": 0.10511797169844306,
+    "rank": 125
+  },
+  {
+    "subject_id": "vein035_3",
+    "num_images": 12,
+    "genuine_mean": 0.9628889560699463,
+    "impostor_topk_mean": 0.858002578218778,
+    "margin": 0.10488637785116828,
+    "rank": 126
+  },
+  {
+    "subject_id": "vein016_3",
+    "num_images": 12,
+    "genuine_mean": 0.8812978267669678,
+    "impostor_topk_mean": 0.7769006391366323,
+    "margin": 0.10439718763033545,
+    "rank": 127
+  },
+  {
+    "subject_id": "vein073_1",
+    "num_images": 12,
+    "genuine_mean": 0.9684919714927673,
+    "impostor_topk_mean": 0.8643286228179932,
+    "margin": 0.10416334867477417,
+    "rank": 128
+  },
+  {
+    "subject_id": "vein056_2",
+    "num_images": 12,
+    "genuine_mean": 0.9174023270606995,
+    "impostor_topk_mean": 0.8134701053301493,
+    "margin": 0.10393222173055017,
+    "rank": 129
+  },
+  {
+    "subject_id": "vein059_2",
+    "num_images": 12,
+    "genuine_mean": 0.9497349858283997,
+    "impostor_topk_mean": 0.8464526782433192,
+    "margin": 0.1032823075850805,
+    "rank": 130
+  },
+  {
+    "subject_id": "vein065_1",
+    "num_images": 12,
+    "genuine_mean": 0.9226540327072144,
+    "impostor_topk_mean": 0.8194057196378708,
+    "margin": 0.10324831306934357,
+    "rank": 131
+  },
+  {
+    "subject_id": "vein105_1",
+    "num_images": 12,
+    "genuine_mean": 0.9780911803245544,
+    "impostor_topk_mean": 0.8750872015953064,
+    "margin": 0.10300397872924805,
+    "rank": 132
+  },
+  {
+    "subject_id": "vein044_2",
+    "num_images": 12,
+    "genuine_mean": 0.823779284954071,
+    "impostor_topk_mean": 0.7217835585276285,
+    "margin": 0.1019957264264425,
+    "rank": 133
+  },
+  {
+    "subject_id": "vein123_3",
+    "num_images": 12,
+    "genuine_mean": 0.9391592741012573,
+    "impostor_topk_mean": 0.8384881416956583,
+    "margin": 0.100671132405599,
+    "rank": 134
+  },
+  {
+    "subject_id": "vein049_3",
+    "num_images": 12,
+    "genuine_mean": 0.9509130716323853,
+    "impostor_topk_mean": 0.8511587629715601,
+    "margin": 0.09975430866082513,
+    "rank": 135
+  },
+  {
+    "subject_id": "vein077_1",
+    "num_images": 12,
+    "genuine_mean": 0.9841601252555847,
+    "impostor_topk_mean": 0.8844637423753738,
+    "margin": 0.09969638288021088,
+    "rank": 136
+  },
+  {
+    "subject_id": "vein074_4",
+    "num_images": 12,
+    "genuine_mean": 0.9601721167564392,
+    "impostor_topk_mean": 0.861605038245519,
+    "margin": 0.09856707851092017,
+    "rank": 137
+  },
+  {
+    "subject_id": "vein114_3",
+    "num_images": 12,
+    "genuine_mean": 0.971567690372467,
+    "impostor_topk_mean": 0.8733383019765218,
+    "margin": 0.0982293883959452,
+    "rank": 138
+  },
+  {
+    "subject_id": "vein030_2",
+    "num_images": 12,
+    "genuine_mean": 0.9153404831886292,
+    "impostor_topk_mean": 0.8175047188997269,
+    "margin": 0.09783576428890228,
+    "rank": 139
+  },
+  {
+    "subject_id": "vein038_1",
+    "num_images": 12,
+    "genuine_mean": 0.9662942886352539,
+    "impostor_topk_mean": 0.8686605940262476,
+    "margin": 0.09763369460900628,
+    "rank": 140
+  },
+  {
+    "subject_id": "vein047_1",
+    "num_images": 12,
+    "genuine_mean": 0.9265919327735901,
+    "impostor_topk_mean": 0.8290682087341944,
+    "margin": 0.09752372403939569,
+    "rank": 141
+  },
+  {
+    "subject_id": "vein027_1",
+    "num_images": 12,
+    "genuine_mean": 0.9780038595199585,
+    "impostor_topk_mean": 0.8807837069034576,
+    "margin": 0.09722015261650085,
+    "rank": 142
+  },
+  {
+    "subject_id": "vein092_1",
+    "num_images": 12,
+    "genuine_mean": 0.9058077335357666,
+    "impostor_topk_mean": 0.8098294287919998,
+    "margin": 0.09597830474376678,
+    "rank": 143
+  },
+  {
+    "subject_id": "vein097_3",
+    "num_images": 12,
+    "genuine_mean": 0.8248310089111328,
+    "impostor_topk_mean": 0.7289692213137945,
+    "margin": 0.09586178759733832,
+    "rank": 144
+  },
+  {
+    "subject_id": "vein075_2",
+    "num_images": 12,
+    "genuine_mean": 0.9866713285446167,
+    "impostor_topk_mean": 0.8910506019989649,
+    "margin": 0.09562072654565179,
+    "rank": 145
+  },
+  {
+    "subject_id": "vein097_2",
+    "num_images": 12,
+    "genuine_mean": 0.8916104435920715,
+    "impostor_topk_mean": 0.7964559346437454,
+    "margin": 0.09515450894832611,
+    "rank": 146
+  },
+  {
+    "subject_id": "vein113_3",
+    "num_images": 12,
+    "genuine_mean": 0.96440589427948,
+    "impostor_topk_mean": 0.8698443075021108,
+    "margin": 0.09456158677736914,
+    "rank": 147
+  },
+  {
+    "subject_id": "vein067_2",
+    "num_images": 12,
+    "genuine_mean": 0.9172061085700989,
+    "impostor_topk_mean": 0.8227440416812897,
+    "margin": 0.0944620668888092,
+    "rank": 148
+  },
+  {
+    "subject_id": "vein083_4",
+    "num_images": 12,
+    "genuine_mean": 0.9199284315109253,
+    "impostor_topk_mean": 0.8264214197794596,
+    "margin": 0.0935070117314657,
+    "rank": 149
+  },
+  {
+    "subject_id": "vein048_3",
+    "num_images": 12,
+    "genuine_mean": 0.8931648135185242,
+    "impostor_topk_mean": 0.7997019042571386,
+    "margin": 0.09346290926138556,
+    "rank": 150
+  },
+  {
+    "subject_id": "vein071_3",
+    "num_images": 12,
+    "genuine_mean": 0.9607179760932922,
+    "impostor_topk_mean": 0.8682694832483927,
+    "margin": 0.09244849284489953,
+    "rank": 151
+  },
+  {
+    "subject_id": "vein062_3",
+    "num_images": 12,
+    "genuine_mean": 0.9183833599090576,
+    "impostor_topk_mean": 0.8264870991309484,
+    "margin": 0.0918962607781092,
+    "rank": 152
+  },
+  {
+    "subject_id": "vein022_4",
+    "num_images": 12,
+    "genuine_mean": 0.8290114998817444,
+    "impostor_topk_mean": 0.7371497750282288,
+    "margin": 0.09186172485351562,
+    "rank": 153
+  },
+  {
+    "subject_id": "vein038_3",
+    "num_images": 12,
+    "genuine_mean": 0.9428783655166626,
+    "impostor_topk_mean": 0.8511031170686086,
+    "margin": 0.09177524844805396,
+    "rank": 154
+  },
+  {
+    "subject_id": "vein037_1",
+    "num_images": 12,
+    "genuine_mean": 0.9449960589408875,
+    "impostor_topk_mean": 0.8532770474751791,
+    "margin": 0.09171901146570838,
+    "rank": 155
+  },
+  {
+    "subject_id": "vein069_2",
+    "num_images": 12,
+    "genuine_mean": 0.9656921029090881,
+    "impostor_topk_mean": 0.8747489303350449,
+    "margin": 0.09094317257404327,
+    "rank": 156
+  },
+  {
+    "subject_id": "vein028_4",
+    "num_images": 12,
+    "genuine_mean": 0.9710872769355774,
+    "impostor_topk_mean": 0.88014783958594,
+    "margin": 0.09093943734963739,
+    "rank": 157
+  },
+  {
+    "subject_id": "vein059_3",
+    "num_images": 12,
+    "genuine_mean": 0.9285732507705688,
+    "impostor_topk_mean": 0.8379995127518972,
+    "margin": 0.09057373801867163,
+    "rank": 158
+  },
+  {
+    "subject_id": "vein111_4",
+    "num_images": 12,
+    "genuine_mean": 0.9520602822303772,
+    "impostor_topk_mean": 0.861624057094256,
+    "margin": 0.09043622513612115,
+    "rank": 159
+  },
+  {
+    "subject_id": "vein072_1",
+    "num_images": 12,
+    "genuine_mean": 0.8518152832984924,
+    "impostor_topk_mean": 0.7623635878165563,
+    "margin": 0.0894516954819361,
+    "rank": 160
+  },
+  {
+    "subject_id": "vein091_2",
+    "num_images": 12,
+    "genuine_mean": 0.8681938648223877,
+    "impostor_topk_mean": 0.7787822236617407,
+    "margin": 0.08941164116064704,
+    "rank": 161
+  },
+  {
+    "subject_id": "vein095_1",
+    "num_images": 12,
+    "genuine_mean": 0.8881626725196838,
+    "impostor_topk_mean": 0.7988065977891287,
+    "margin": 0.08935607473055518,
+    "rank": 162
+  },
+  {
+    "subject_id": "vein106_2",
+    "num_images": 12,
+    "genuine_mean": 0.9236741662025452,
+    "impostor_topk_mean": 0.8343810538450877,
+    "margin": 0.08929311235745752,
+    "rank": 163
+  },
+  {
+    "subject_id": "vein026_4",
+    "num_images": 12,
+    "genuine_mean": 0.9863982796669006,
+    "impostor_topk_mean": 0.8971297591924667,
+    "margin": 0.0892685204744339,
+    "rank": 164
+  },
+  {
+    "subject_id": "vein054_2",
+    "num_images": 12,
+    "genuine_mean": 0.8598688244819641,
+    "impostor_topk_mean": 0.7706793248653412,
+    "margin": 0.08918949961662292,
+    "rank": 165
+  },
+  {
+    "subject_id": "vein078_4",
+    "num_images": 12,
+    "genuine_mean": 0.9693728089332581,
+    "impostor_topk_mean": 0.8814105540513992,
+    "margin": 0.08796225488185883,
+    "rank": 166
+  },
+  {
+    "subject_id": "vein097_4",
+    "num_images": 12,
+    "genuine_mean": 0.9240769147872925,
+    "impostor_topk_mean": 0.8364274104436239,
+    "margin": 0.08764950434366858,
+    "rank": 167
+  },
+  {
+    "subject_id": "vein034_1",
+    "num_images": 12,
+    "genuine_mean": 0.9657546281814575,
+    "impostor_topk_mean": 0.8781973073879877,
+    "margin": 0.08755732079346978,
+    "rank": 168
+  },
+  {
+    "subject_id": "vein086_1",
+    "num_images": 12,
+    "genuine_mean": 0.9052436351776123,
+    "impostor_topk_mean": 0.8177526344855627,
+    "margin": 0.08749100069204963,
+    "rank": 169
+  },
+  {
+    "subject_id": "vein073_3",
+    "num_images": 12,
+    "genuine_mean": 0.9330151677131653,
+    "impostor_topk_mean": 0.8460703392823538,
+    "margin": 0.08694482843081153,
+    "rank": 170
+  },
+  {
+    "subject_id": "vein060_3",
+    "num_images": 12,
+    "genuine_mean": 0.9608657360076904,
+    "impostor_topk_mean": 0.8741347541411718,
+    "margin": 0.08673098186651862,
+    "rank": 171
+  },
+  {
+    "subject_id": "vein031_4",
+    "num_images": 12,
+    "genuine_mean": 0.9200369119644165,
+    "impostor_topk_mean": 0.8334243347247442,
+    "margin": 0.0866125772396723,
+    "rank": 172
+  },
+  {
+    "subject_id": "vein057_2",
+    "num_images": 12,
+    "genuine_mean": 0.9448765516281128,
+    "impostor_topk_mean": 0.8584021578232447,
+    "margin": 0.0864743938048681,
+    "rank": 173
+  },
+  {
+    "subject_id": "vein116_4",
+    "num_images": 12,
+    "genuine_mean": 0.946627676486969,
+    "impostor_topk_mean": 0.8603751460711161,
+    "margin": 0.0862525304158529,
+    "rank": 174
+  },
+  {
+    "subject_id": "vein028_1",
+    "num_images": 12,
+    "genuine_mean": 0.9501328468322754,
+    "impostor_topk_mean": 0.8640540540218353,
+    "margin": 0.08607879281044006,
+    "rank": 175
+  },
+  {
+    "subject_id": "vein046_4",
+    "num_images": 12,
+    "genuine_mean": 0.9766647815704346,
+    "impostor_topk_mean": 0.8911595741907755,
+    "margin": 0.08550520737965905,
+    "rank": 176
+  },
+  {
+    "subject_id": "vein048_4",
+    "num_images": 12,
+    "genuine_mean": 0.8728330135345459,
+    "impostor_topk_mean": 0.7877954741319021,
+    "margin": 0.0850375394026438,
+    "rank": 177
+  },
+  {
+    "subject_id": "vein028_3",
+    "num_images": 12,
+    "genuine_mean": 0.956696093082428,
+    "impostor_topk_mean": 0.8717379073301951,
+    "margin": 0.0849581857522329,
+    "rank": 178
+  },
+  {
+    "subject_id": "vein070_4",
+    "num_images": 12,
+    "genuine_mean": 0.9439349174499512,
+    "impostor_topk_mean": 0.8596424063046774,
+    "margin": 0.08429251114527381,
+    "rank": 179
+  },
+  {
+    "subject_id": "vein003_2",
+    "num_images": 12,
+    "genuine_mean": 0.8919166922569275,
+    "impostor_topk_mean": 0.8083359350760778,
+    "margin": 0.08358075718084967,
+    "rank": 180
+  },
+  {
+    "subject_id": "vein078_1",
+    "num_images": 12,
+    "genuine_mean": 0.9625049829483032,
+    "impostor_topk_mean": 0.8795402000347773,
+    "margin": 0.08296478291352594,
+    "rank": 181
+  },
+  {
+    "subject_id": "vein007_4",
+    "num_images": 12,
+    "genuine_mean": 0.94331294298172,
+    "impostor_topk_mean": 0.8612432777881622,
+    "margin": 0.08206966519355774,
+    "rank": 182
+  },
+  {
+    "subject_id": "vein027_2",
+    "num_images": 12,
+    "genuine_mean": 0.9856135249137878,
+    "impostor_topk_mean": 0.9038562476634979,
+    "margin": 0.08175727725028992,
+    "rank": 183
+  },
+  {
+    "subject_id": "vein069_1",
+    "num_images": 12,
+    "genuine_mean": 0.9345080256462097,
+    "impostor_topk_mean": 0.8532073348760605,
+    "margin": 0.08130069077014923,
+    "rank": 184
+  },
+  {
+    "subject_id": "vein071_2",
+    "num_images": 12,
+    "genuine_mean": 0.9705966711044312,
+    "impostor_topk_mean": 0.8901177744070689,
+    "margin": 0.0804788966973623,
+    "rank": 185
+  },
+  {
+    "subject_id": "vein032_1",
+    "num_images": 12,
+    "genuine_mean": 0.9662120938301086,
+    "impostor_topk_mean": 0.8858750561873118,
+    "margin": 0.08033703764279687,
+    "rank": 186
+  },
+  {
+    "subject_id": "vein046_3",
+    "num_images": 12,
+    "genuine_mean": 0.9362236857414246,
+    "impostor_topk_mean": 0.856297622124354,
+    "margin": 0.07992606361707055,
+    "rank": 187
+  },
+  {
+    "subject_id": "vein052_2",
+    "num_images": 12,
+    "genuine_mean": 0.9671144485473633,
+    "impostor_topk_mean": 0.8873943438132604,
+    "margin": 0.07972010473410285,
+    "rank": 188
+  },
+  {
+    "subject_id": "vein032_2",
+    "num_images": 12,
+    "genuine_mean": 0.9615664482116699,
+    "impostor_topk_mean": 0.8821140478054682,
+    "margin": 0.07945240040620172,
+    "rank": 189
+  },
+  {
+    "subject_id": "vein061_4",
+    "num_images": 12,
+    "genuine_mean": 0.954268217086792,
+    "impostor_topk_mean": 0.8757043729225794,
+    "margin": 0.07856384416421258,
+    "rank": 190
+  },
+  {
+    "subject_id": "vein123_1",
+    "num_images": 12,
+    "genuine_mean": 0.8877760767936707,
+    "impostor_topk_mean": 0.8097598205010096,
+    "margin": 0.07801625629266107,
+    "rank": 191
+  },
+  {
+    "subject_id": "vein109_1",
+    "num_images": 12,
+    "genuine_mean": 0.9442303776741028,
+    "impostor_topk_mean": 0.8665644576152166,
+    "margin": 0.07766592005888617,
+    "rank": 192
+  },
+  {
+    "subject_id": "vein043_4",
+    "num_images": 12,
+    "genuine_mean": 0.9687232971191406,
+    "impostor_topk_mean": 0.8915055294831594,
+    "margin": 0.0772177676359812,
+    "rank": 193
+  },
+  {
+    "subject_id": "vein108_2",
+    "num_images": 12,
+    "genuine_mean": 0.9159624576568604,
+    "impostor_topk_mean": 0.8387610365947088,
+    "margin": 0.07720142106215155,
+    "rank": 194
+  },
+  {
+    "subject_id": "vein041_2",
+    "num_images": 12,
+    "genuine_mean": 0.9211136698722839,
+    "impostor_topk_mean": 0.8446102639039358,
+    "margin": 0.07650340596834815,
+    "rank": 195
+  },
+  {
+    "subject_id": "vein062_2",
+    "num_images": 12,
+    "genuine_mean": 0.8881587386131287,
+    "impostor_topk_mean": 0.8122559289137522,
+    "margin": 0.07590280969937646,
+    "rank": 196
+  },
+  {
+    "subject_id": "vein049_4",
+    "num_images": 12,
+    "genuine_mean": 0.9076606035232544,
+    "impostor_topk_mean": 0.8330116470654806,
+    "margin": 0.07464895645777381,
+    "rank": 197
+  },
+  {
+    "subject_id": "vein070_2",
+    "num_images": 12,
+    "genuine_mean": 0.9049942493438721,
+    "impostor_topk_mean": 0.8304049124320348,
+    "margin": 0.07458933691183722,
+    "rank": 198
+  },
+  {
+    "subject_id": "vein073_4",
+    "num_images": 12,
+    "genuine_mean": 0.9119555950164795,
+    "impostor_topk_mean": 0.8373873035113016,
+    "margin": 0.07456829150517785,
+    "rank": 199
+  },
+  {
+    "subject_id": "vein084_3",
+    "num_images": 12,
+    "genuine_mean": 0.9055996537208557,
+    "impostor_topk_mean": 0.8316237181425095,
+    "margin": 0.07397593557834625,
+    "rank": 200
+  },
+  {
+    "subject_id": "vein072_3",
+    "num_images": 12,
+    "genuine_mean": 0.9593779444694519,
+    "impostor_topk_mean": 0.8856814553340276,
+    "margin": 0.07369648913542426,
+    "rank": 201
+  },
+  {
+    "subject_id": "vein090_2",
+    "num_images": 12,
+    "genuine_mean": 0.9435192346572876,
+    "impostor_topk_mean": 0.8704417645931244,
+    "margin": 0.07307747006416321,
+    "rank": 202
+  },
+  {
+    "subject_id": "vein021_4",
+    "num_images": 12,
+    "genuine_mean": 0.8540239930152893,
+    "impostor_topk_mean": 0.7815103282531103,
+    "margin": 0.07251366476217902,
+    "rank": 203
+  },
+  {
+    "subject_id": "vein030_3",
+    "num_images": 12,
+    "genuine_mean": 0.8242239356040955,
+    "impostor_topk_mean": 0.7519104530413946,
+    "margin": 0.07231348256270087,
+    "rank": 204
+  },
+  {
+    "subject_id": "vein048_1",
+    "num_images": 12,
+    "genuine_mean": 0.9376795887947083,
+    "impostor_topk_mean": 0.8654975146055222,
+    "margin": 0.0721820741891861,
+    "rank": 205
+  },
+  {
+    "subject_id": "vein090_1",
+    "num_images": 12,
+    "genuine_mean": 0.951931893825531,
+    "impostor_topk_mean": 0.8798468708992004,
+    "margin": 0.07208502292633057,
+    "rank": 206
+  },
+  {
+    "subject_id": "vein001_4",
+    "num_images": 12,
+    "genuine_mean": 0.8817787766456604,
+    "impostor_topk_mean": 0.8097402850786845,
+    "margin": 0.07203849156697595,
+    "rank": 207
+  },
+  {
+    "subject_id": "vein105_4",
+    "num_images": 12,
+    "genuine_mean": 0.9720120429992676,
+    "impostor_topk_mean": 0.9004907260338465,
+    "margin": 0.07152131696542108,
+    "rank": 208
+  },
+  {
+    "subject_id": "vein122_1",
+    "num_images": 12,
+    "genuine_mean": 0.9141027927398682,
+    "impostor_topk_mean": 0.8426778564850489,
+    "margin": 0.07142493625481927,
+    "rank": 209
+  },
+  {
+    "subject_id": "vein110_1",
+    "num_images": 12,
+    "genuine_mean": 0.9752506017684937,
+    "impostor_topk_mean": 0.9040650178988775,
+    "margin": 0.07118558386961615,
+    "rank": 210
+  },
+  {
+    "subject_id": "vein003_3",
+    "num_images": 12,
+    "genuine_mean": 0.8351616263389587,
+    "impostor_topk_mean": 0.7641509423653284,
+    "margin": 0.0710106839736303,
+    "rank": 211
+  },
+  {
+    "subject_id": "vein069_3",
+    "num_images": 12,
+    "genuine_mean": 0.9583564400672913,
+    "impostor_topk_mean": 0.8879687339067459,
+    "margin": 0.07038770616054535,
+    "rank": 212
+  },
+  {
+    "subject_id": "vein117_1",
+    "num_images": 12,
+    "genuine_mean": 0.8941625356674194,
+    "impostor_topk_mean": 0.8240327934424082,
+    "margin": 0.07012974222501123,
+    "rank": 213
+  },
+  {
+    "subject_id": "vein056_3",
+    "num_images": 12,
+    "genuine_mean": 0.9114453196525574,
+    "impostor_topk_mean": 0.8415337552626928,
+    "margin": 0.06991156438986457,
+    "rank": 214
+  },
+  {
+    "subject_id": "vein015_3",
+    "num_images": 12,
+    "genuine_mean": 0.8962124586105347,
+    "impostor_topk_mean": 0.8267697195212046,
+    "margin": 0.06944273908933007,
+    "rank": 215
+  },
+  {
+    "subject_id": "vein101_4",
+    "num_images": 12,
+    "genuine_mean": 0.9462301731109619,
+    "impostor_topk_mean": 0.8770574182271957,
+    "margin": 0.06917275488376617,
+    "rank": 216
+  },
+  {
+    "subject_id": "vein087_2",
+    "num_images": 12,
+    "genuine_mean": 0.8676981925964355,
+    "impostor_topk_mean": 0.7985962082942327,
+    "margin": 0.06910198430220282,
+    "rank": 217
+  },
+  {
+    "subject_id": "vein061_1",
+    "num_images": 12,
+    "genuine_mean": 0.9595587849617004,
+    "impostor_topk_mean": 0.8910268942515055,
+    "margin": 0.06853189071019494,
+    "rank": 218
+  },
+  {
+    "subject_id": "vein114_4",
+    "num_images": 12,
+    "genuine_mean": 0.9577851891517639,
+    "impostor_topk_mean": 0.8892581562201182,
+    "margin": 0.06852703293164575,
+    "rank": 219
+  },
+  {
+    "subject_id": "vein027_4",
+    "num_images": 12,
+    "genuine_mean": 0.9567421078681946,
+    "impostor_topk_mean": 0.8886245091756185,
+    "margin": 0.06811759869257605,
+    "rank": 220
+  },
+  {
+    "subject_id": "vein033_3",
+    "num_images": 12,
+    "genuine_mean": 0.9391510486602783,
+    "impostor_topk_mean": 0.8713925232489904,
+    "margin": 0.0677585254112879,
+    "rank": 221
+  },
+  {
+    "subject_id": "vein095_4",
+    "num_images": 12,
+    "genuine_mean": 0.8977911472320557,
+    "impostor_topk_mean": 0.8306911985079447,
+    "margin": 0.06709994872411096,
+    "rank": 222
+  },
+  {
+    "subject_id": "vein047_4",
+    "num_images": 12,
+    "genuine_mean": 0.9381217956542969,
+    "impostor_topk_mean": 0.8711933841307958,
+    "margin": 0.06692841152350104,
+    "rank": 223
+  },
+  {
+    "subject_id": "vein031_1",
+    "num_images": 12,
+    "genuine_mean": 0.9317241907119751,
+    "impostor_topk_mean": 0.8657527466615041,
+    "margin": 0.06597144405047095,
+    "rank": 224
+  },
+  {
+    "subject_id": "vein033_1",
+    "num_images": 12,
+    "genuine_mean": 0.9344090223312378,
+    "impostor_topk_mean": 0.868810181816419,
+    "margin": 0.06559884051481879,
+    "rank": 225
+  },
+  {
+    "subject_id": "vein067_4",
+    "num_images": 12,
+    "genuine_mean": 0.9434128999710083,
+    "impostor_topk_mean": 0.8779655794302622,
+    "margin": 0.06544732054074609,
+    "rank": 226
+  },
+  {
+    "subject_id": "vein029_1",
+    "num_images": 12,
+    "genuine_mean": 0.9523916244506836,
+    "impostor_topk_mean": 0.8870175182819366,
+    "margin": 0.06537410616874695,
+    "rank": 227
+  },
+  {
+    "subject_id": "vein079_2",
+    "num_images": 12,
+    "genuine_mean": 0.9676957130432129,
+    "impostor_topk_mean": 0.9025532851616541,
+    "margin": 0.06514242788155877,
+    "rank": 228
+  },
+  {
+    "subject_id": "vein064_2",
+    "num_images": 12,
+    "genuine_mean": 0.953874409198761,
+    "impostor_topk_mean": 0.8888024836778641,
+    "margin": 0.06507192552089691,
+    "rank": 229
+  },
+  {
+    "subject_id": "vein056_1",
+    "num_images": 12,
+    "genuine_mean": 0.9173022508621216,
+    "impostor_topk_mean": 0.8522860358158747,
+    "margin": 0.06501621504624688,
+    "rank": 230
+  },
+  {
+    "subject_id": "vein029_3",
+    "num_images": 12,
+    "genuine_mean": 0.9187626838684082,
+    "impostor_topk_mean": 0.8537936011950175,
+    "margin": 0.06496908267339074,
+    "rank": 231
+  },
+  {
+    "subject_id": "vein101_1",
+    "num_images": 12,
+    "genuine_mean": 0.9694988131523132,
+    "impostor_topk_mean": 0.9045512725909551,
+    "margin": 0.0649475405613581,
+    "rank": 232
+  },
+  {
+    "subject_id": "vein003_1",
+    "num_images": 12,
+    "genuine_mean": 0.9285836815834045,
+    "impostor_topk_mean": 0.8638532708088557,
+    "margin": 0.06473041077454889,
+    "rank": 233
+  },
+  {
+    "subject_id": "vein002_2",
+    "num_images": 12,
+    "genuine_mean": 0.9351537227630615,
+    "impostor_topk_mean": 0.8705871403217316,
+    "margin": 0.06456658244132996,
+    "rank": 234
+  },
+  {
+    "subject_id": "vein116_1",
+    "num_images": 12,
+    "genuine_mean": 0.9125057458877563,
+    "impostor_topk_mean": 0.8479545513788859,
+    "margin": 0.06455119450887048,
+    "rank": 235
+  },
+  {
+    "subject_id": "vein082_3",
+    "num_images": 12,
+    "genuine_mean": 0.8505364656448364,
+    "impostor_topk_mean": 0.786177471280098,
+    "margin": 0.06435899436473846,
+    "rank": 236
+  },
+  {
+    "subject_id": "vein020_2",
+    "num_images": 12,
+    "genuine_mean": 0.9058675765991211,
+    "impostor_topk_mean": 0.8418411662181219,
+    "margin": 0.06402641038099921,
+    "rank": 237
+  },
+  {
+    "subject_id": "vein045_4",
+    "num_images": 12,
+    "genuine_mean": 0.9135342240333557,
+    "impostor_topk_mean": 0.849912648399671,
+    "margin": 0.06362157563368476,
+    "rank": 238
+  },
+  {
+    "subject_id": "vein115_3",
+    "num_images": 12,
+    "genuine_mean": 0.9355801343917847,
+    "impostor_topk_mean": 0.8726828595002493,
+    "margin": 0.0628972748915354,
+    "rank": 239
+  },
+  {
+    "subject_id": "vein065_4",
+    "num_images": 12,
+    "genuine_mean": 0.9304962754249573,
+    "impostor_topk_mean": 0.867726688583692,
+    "margin": 0.06276958684126532,
+    "rank": 240
+  },
+  {
+    "subject_id": "vein121_1",
+    "num_images": 12,
+    "genuine_mean": 0.9238141179084778,
+    "impostor_topk_mean": 0.8610501885414124,
+    "margin": 0.06276392936706543,
+    "rank": 241
+  },
+  {
+    "subject_id": "vein047_3",
+    "num_images": 12,
+    "genuine_mean": 0.9594790935516357,
+    "impostor_topk_mean": 0.8971339563528696,
+    "margin": 0.06234513719876611,
+    "rank": 242
+  },
+  {
+    "subject_id": "vein020_3",
+    "num_images": 12,
+    "genuine_mean": 0.8807447552680969,
+    "impostor_topk_mean": 0.8185653239488602,
+    "margin": 0.062179431319236755,
+    "rank": 243
+  },
+  {
+    "subject_id": "vein073_2",
+    "num_images": 12,
+    "genuine_mean": 0.8746641874313354,
+    "impostor_topk_mean": 0.8125012417634329,
+    "margin": 0.06216294566790259,
+    "rank": 244
+  },
+  {
+    "subject_id": "vein060_1",
+    "num_images": 12,
+    "genuine_mean": 0.8973293900489807,
+    "impostor_topk_mean": 0.83533775806427,
+    "margin": 0.06199163198471069,
+    "rank": 245
+  },
+  {
+    "subject_id": "vein050_1",
+    "num_images": 12,
+    "genuine_mean": 0.9272211194038391,
+    "impostor_topk_mean": 0.8652909199396769,
+    "margin": 0.06193019946416223,
+    "rank": 246
+  },
+  {
+    "subject_id": "vein058_3",
+    "num_images": 12,
+    "genuine_mean": 0.942052960395813,
+    "impostor_topk_mean": 0.8801914205153784,
+    "margin": 0.061861539880434635,
+    "rank": 247
+  },
+  {
+    "subject_id": "vein079_4",
+    "num_images": 12,
+    "genuine_mean": 0.9267513155937195,
+    "impostor_topk_mean": 0.8653406252463659,
+    "margin": 0.06141069034735358,
+    "rank": 248
+  },
+  {
+    "subject_id": "vein085_1",
+    "num_images": 12,
+    "genuine_mean": 0.9727776050567627,
+    "impostor_topk_mean": 0.9115491310755411,
+    "margin": 0.061228473981221554,
+    "rank": 249
+  },
+  {
+    "subject_id": "vein112_2",
+    "num_images": 12,
+    "genuine_mean": 0.9120880961418152,
+    "impostor_topk_mean": 0.8512128641208013,
+    "margin": 0.06087523202101386,
+    "rank": 250
+  },
+  {
+    "subject_id": "vein114_1",
+    "num_images": 12,
+    "genuine_mean": 0.9593852758407593,
+    "impostor_topk_mean": 0.8985101580619812,
+    "margin": 0.060875117778778076,
+    "rank": 251
+  },
+  {
+    "subject_id": "vein080_1",
+    "num_images": 12,
+    "genuine_mean": 0.9516578912734985,
+    "impostor_topk_mean": 0.8912871728340784,
+    "margin": 0.0603707184394201,
+    "rank": 252
+  },
+  {
+    "subject_id": "vein035_4",
+    "num_images": 12,
+    "genuine_mean": 0.9581786394119263,
+    "impostor_topk_mean": 0.8989835381507874,
+    "margin": 0.059195101261138916,
+    "rank": 253
+  },
+  {
+    "subject_id": "vein121_3",
+    "num_images": 12,
+    "genuine_mean": 0.9318580627441406,
+    "impostor_topk_mean": 0.8731614847977957,
+    "margin": 0.058696577946344974,
+    "rank": 254
+  },
+  {
+    "subject_id": "vein117_3",
+    "num_images": 12,
+    "genuine_mean": 0.8473559021949768,
+    "impostor_topk_mean": 0.7887872060139974,
+    "margin": 0.058568696180979374,
+    "rank": 255
+  },
+  {
+    "subject_id": "vein045_1",
+    "num_images": 12,
+    "genuine_mean": 0.8851066827774048,
+    "impostor_topk_mean": 0.826636458436648,
+    "margin": 0.05847022434075677,
+    "rank": 256
+  },
+  {
+    "subject_id": "vein076_4",
+    "num_images": 12,
+    "genuine_mean": 0.9573259353637695,
+    "impostor_topk_mean": 0.8994691967964172,
+    "margin": 0.057856738567352295,
+    "rank": 257
+  },
+  {
+    "subject_id": "vein042_4",
+    "num_images": 12,
+    "genuine_mean": 0.9734610319137573,
+    "impostor_topk_mean": 0.9158551047245661,
+    "margin": 0.05760592718919122,
+    "rank": 258
+  },
+  {
+    "subject_id": "vein076_1",
+    "num_images": 12,
+    "genuine_mean": 0.9734377861022949,
+    "impostor_topk_mean": 0.9161430845657984,
+    "margin": 0.05729470153649652,
+    "rank": 259
+  },
+  {
+    "subject_id": "vein068_3",
+    "num_images": 12,
+    "genuine_mean": 0.9331304430961609,
+    "impostor_topk_mean": 0.8768745064735413,
+    "margin": 0.05625593662261963,
+    "rank": 260
+  },
+  {
+    "subject_id": "vein112_3",
+    "num_images": 12,
+    "genuine_mean": 0.9254974722862244,
+    "impostor_topk_mean": 0.8697093923886617,
+    "margin": 0.055788079897562626,
+    "rank": 261
+  },
+  {
+    "subject_id": "vein066_1",
+    "num_images": 12,
+    "genuine_mean": 0.9361248016357422,
+    "impostor_topk_mean": 0.8807558168967565,
+    "margin": 0.05536898473898566,
+    "rank": 262
+  },
+  {
+    "subject_id": "vein119_3",
+    "num_images": 12,
+    "genuine_mean": 0.9227337837219238,
+    "impostor_topk_mean": 0.8675463100274404,
+    "margin": 0.0551874736944834,
+    "rank": 263
+  },
+  {
+    "subject_id": "vein066_4",
+    "num_images": 12,
+    "genuine_mean": 0.9383909106254578,
+    "impostor_topk_mean": 0.8832686195770899,
+    "margin": 0.055122291048367855,
+    "rank": 264
+  },
+  {
+    "subject_id": "vein081_3",
+    "num_images": 12,
+    "genuine_mean": 0.9268847107887268,
+    "impostor_topk_mean": 0.8723075836896896,
+    "margin": 0.05457712709903717,
+    "rank": 265
+  },
+  {
+    "subject_id": "vein071_1",
+    "num_images": 12,
+    "genuine_mean": 0.8818886280059814,
+    "impostor_topk_mean": 0.8277712911367416,
+    "margin": 0.05411733686923981,
+    "rank": 266
+  },
+  {
+    "subject_id": "vein035_1",
+    "num_images": 12,
+    "genuine_mean": 0.9407892227172852,
+    "impostor_topk_mean": 0.887464627623558,
+    "margin": 0.05332459509372711,
+    "rank": 267
+  },
+  {
+    "subject_id": "vein096_2",
+    "num_images": 12,
+    "genuine_mean": 0.8690044283866882,
+    "impostor_topk_mean": 0.8162048359711965,
+    "margin": 0.0527995924154917,
+    "rank": 268
+  },
+  {
+    "subject_id": "vein109_4",
+    "num_images": 12,
+    "genuine_mean": 0.948501706123352,
+    "impostor_topk_mean": 0.895956794420878,
+    "margin": 0.052544911702473995,
+    "rank": 269
+  },
+  {
+    "subject_id": "vein118_2",
+    "num_images": 12,
+    "genuine_mean": 0.8995910882949829,
+    "impostor_topk_mean": 0.8475143810113271,
+    "margin": 0.052076707283655765,
+    "rank": 270
+  },
+  {
+    "subject_id": "vein046_2",
+    "num_images": 12,
+    "genuine_mean": 0.9096702933311462,
+    "impostor_topk_mean": 0.8584894289573034,
+    "margin": 0.05118086437384284,
+    "rank": 271
+  },
+  {
+    "subject_id": "vein070_3",
+    "num_images": 12,
+    "genuine_mean": 0.9624093770980835,
+    "impostor_topk_mean": 0.9113597820202509,
+    "margin": 0.05104959507783258,
+    "rank": 272
+  },
+  {
+    "subject_id": "vein016_2",
+    "num_images": 12,
+    "genuine_mean": 0.8698447346687317,
+    "impostor_topk_mean": 0.8193209121624628,
+    "margin": 0.050523822506268856,
+    "rank": 273
+  },
+  {
+    "subject_id": "vein041_3",
+    "num_images": 12,
+    "genuine_mean": 0.9058221578598022,
+    "impostor_topk_mean": 0.8554698874553045,
+    "margin": 0.050352270404497745,
+    "rank": 274
+  },
+  {
+    "subject_id": "vein032_3",
+    "num_images": 12,
+    "genuine_mean": 0.8085680603981018,
+    "impostor_topk_mean": 0.7583038409550985,
+    "margin": 0.0502642194430033,
+    "rank": 275
+  },
+  {
+    "subject_id": "vein051_4",
+    "num_images": 12,
+    "genuine_mean": 0.9129719138145447,
+    "impostor_topk_mean": 0.8629201302925745,
+    "margin": 0.05005178352197015,
+    "rank": 276
+  },
+  {
+    "subject_id": "vein063_1",
+    "num_images": 12,
+    "genuine_mean": 0.9166104793548584,
+    "impostor_topk_mean": 0.8673382798830668,
+    "margin": 0.04927219947179162,
+    "rank": 277
+  },
+  {
+    "subject_id": "vein020_4",
+    "num_images": 12,
+    "genuine_mean": 0.9607892036437988,
+    "impostor_topk_mean": 0.9120815694332123,
+    "margin": 0.04870763421058655,
+    "rank": 278
+  },
+  {
+    "subject_id": "vein020_1",
+    "num_images": 12,
+    "genuine_mean": 0.9155018329620361,
+    "impostor_topk_mean": 0.8670555353164673,
+    "margin": 0.04844629764556885,
+    "rank": 279
+  },
+  {
+    "subject_id": "vein112_1",
+    "num_images": 12,
+    "genuine_mean": 0.8824747204780579,
+    "impostor_topk_mean": 0.8340818832317988,
+    "margin": 0.04839283724625909,
+    "rank": 280
+  },
+  {
+    "subject_id": "vein085_4",
+    "num_images": 12,
+    "genuine_mean": 0.9580148458480835,
+    "impostor_topk_mean": 0.9098068823417028,
+    "margin": 0.04820796350638068,
+    "rank": 281
+  },
+  {
+    "subject_id": "vein050_2",
+    "num_images": 12,
+    "genuine_mean": 0.93376225233078,
+    "impostor_topk_mean": 0.8857121964295706,
+    "margin": 0.048050055901209476,
+    "rank": 282
+  },
+  {
+    "subject_id": "vein066_2",
+    "num_images": 12,
+    "genuine_mean": 0.9431657791137695,
+    "impostor_topk_mean": 0.8951490372419357,
+    "margin": 0.0480167418718338,
+    "rank": 283
+  },
+  {
+    "subject_id": "vein083_3",
+    "num_images": 12,
+    "genuine_mean": 0.9246580600738525,
+    "impostor_topk_mean": 0.8767931014299393,
+    "margin": 0.04786495864391327,
+    "rank": 284
+  },
+  {
+    "subject_id": "vein123_2",
+    "num_images": 12,
+    "genuine_mean": 0.9434479475021362,
+    "impostor_topk_mean": 0.8967766364415487,
+    "margin": 0.04667131106058753,
+    "rank": 285
+  },
+  {
+    "subject_id": "vein016_1",
+    "num_images": 12,
+    "genuine_mean": 0.9252169132232666,
+    "impostor_topk_mean": 0.8786109735568365,
+    "margin": 0.04660593966643012,
+    "rank": 286
+  },
+  {
+    "subject_id": "vein060_4",
+    "num_images": 12,
+    "genuine_mean": 0.8986815810203552,
+    "impostor_topk_mean": 0.8521122684081396,
+    "margin": 0.04656931261221564,
+    "rank": 287
+  },
+  {
+    "subject_id": "vein122_3",
+    "num_images": 12,
+    "genuine_mean": 0.8915945291519165,
+    "impostor_topk_mean": 0.8456904242436091,
+    "margin": 0.04590410490830743,
+    "rank": 288
+  },
+  {
+    "subject_id": "vein104_3",
+    "num_images": 12,
+    "genuine_mean": 0.8488771915435791,
+    "impostor_topk_mean": 0.8032488425572714,
+    "margin": 0.04562834898630774,
+    "rank": 289
+  },
+  {
+    "subject_id": "vein044_1",
+    "num_images": 12,
+    "genuine_mean": 0.9187300801277161,
+    "impostor_topk_mean": 0.8733095526695251,
+    "margin": 0.04542052745819092,
+    "rank": 290
+  },
+  {
+    "subject_id": "vein051_2",
+    "num_images": 12,
+    "genuine_mean": 0.9324784874916077,
+    "impostor_topk_mean": 0.8872892210880915,
+    "margin": 0.04518926640351617,
+    "rank": 291
+  },
+  {
+    "subject_id": "vein101_3",
+    "num_images": 12,
+    "genuine_mean": 0.8729205131530762,
+    "impostor_topk_mean": 0.8280182033777237,
+    "margin": 0.04490230977535248,
+    "rank": 292
+  },
+  {
+    "subject_id": "vein122_4",
+    "num_images": 12,
+    "genuine_mean": 0.8620337247848511,
+    "impostor_topk_mean": 0.8182049592336019,
+    "margin": 0.04382876555124915,
+    "rank": 293
+  },
+  {
+    "subject_id": "vein036_3",
+    "num_images": 12,
+    "genuine_mean": 0.9012534022331238,
+    "impostor_topk_mean": 0.8575219710667928,
+    "margin": 0.043731431166330936,
+    "rank": 294
+  },
+  {
+    "subject_id": "vein054_3",
+    "num_images": 12,
+    "genuine_mean": 0.7778441905975342,
+    "impostor_topk_mean": 0.7344382852315903,
+    "margin": 0.04340590536594391,
+    "rank": 295
+  },
+  {
+    "subject_id": "vein039_2",
+    "num_images": 12,
+    "genuine_mean": 0.9135103225708008,
+    "impostor_topk_mean": 0.8707506904999415,
+    "margin": 0.04275963207085931,
+    "rank": 296
+  },
+  {
+    "subject_id": "vein055_1",
+    "num_images": 12,
+    "genuine_mean": 0.9319092035293579,
+    "impostor_topk_mean": 0.8894155224164327,
+    "margin": 0.042493681112925175,
+    "rank": 297
+  },
+  {
+    "subject_id": "vein017_2",
+    "num_images": 12,
+    "genuine_mean": 0.821431577205658,
+    "impostor_topk_mean": 0.779188354810079,
+    "margin": 0.04224322239557898,
+    "rank": 298
+  },
+  {
+    "subject_id": "vein029_4",
+    "num_images": 12,
+    "genuine_mean": 0.9233466386795044,
+    "impostor_topk_mean": 0.8814548353354136,
+    "margin": 0.04189180334409082,
+    "rank": 299
+  },
+  {
+    "subject_id": "vein036_2",
+    "num_images": 12,
+    "genuine_mean": 0.8287141919136047,
+    "impostor_topk_mean": 0.7871286670366923,
+    "margin": 0.04158552487691247,
+    "rank": 300
+  },
+  {
+    "subject_id": "vein041_4",
+    "num_images": 12,
+    "genuine_mean": 0.8984584212303162,
+    "impostor_topk_mean": 0.8573462118705114,
+    "margin": 0.04111220935980475,
+    "rank": 301
+  },
+  {
+    "subject_id": "vein103_1",
+    "num_images": 12,
+    "genuine_mean": 0.9311333894729614,
+    "impostor_topk_mean": 0.8909922589858373,
+    "margin": 0.04014113048712409,
+    "rank": 302
+  },
+  {
+    "subject_id": "vein058_4",
+    "num_images": 12,
+    "genuine_mean": 0.9320579767227173,
+    "impostor_topk_mean": 0.8919219374656677,
+    "margin": 0.04013603925704956,
+    "rank": 303
+  },
+  {
+    "subject_id": "vein067_3",
+    "num_images": 12,
+    "genuine_mean": 0.9211244583129883,
+    "impostor_topk_mean": 0.8810441543658575,
+    "margin": 0.0400803039471308,
+    "rank": 304
+  },
+  {
+    "subject_id": "vein055_4",
+    "num_images": 12,
+    "genuine_mean": 0.9400252103805542,
+    "impostor_topk_mean": 0.900635227560997,
+    "margin": 0.03938998281955719,
+    "rank": 305
+  },
+  {
+    "subject_id": "vein015_4",
+    "num_images": 12,
+    "genuine_mean": 0.875511646270752,
+    "impostor_topk_mean": 0.8362372120221456,
+    "margin": 0.03927443424860633,
+    "rank": 306
+  },
+  {
+    "subject_id": "vein121_2",
+    "num_images": 12,
+    "genuine_mean": 0.8353976607322693,
+    "impostor_topk_mean": 0.7966754833857218,
+    "margin": 0.03872217734654748,
+    "rank": 307
+  },
+  {
+    "subject_id": "vein079_1",
+    "num_images": 12,
+    "genuine_mean": 0.909757137298584,
+    "impostor_topk_mean": 0.8715741087992986,
+    "margin": 0.03818302849928534,
+    "rank": 308
+  },
+  {
+    "subject_id": "vein108_3",
+    "num_images": 12,
+    "genuine_mean": 0.928651750087738,
+    "impostor_topk_mean": 0.8905130475759506,
+    "margin": 0.038138702511787415,
+    "rank": 309
+  },
+  {
+    "subject_id": "vein088_3",
+    "num_images": 12,
+    "genuine_mean": 0.899573802947998,
+    "impostor_topk_mean": 0.8624247610569,
+    "margin": 0.03714904189109802,
+    "rank": 310
+  },
+  {
+    "subject_id": "vein014_3",
+    "num_images": 12,
+    "genuine_mean": 0.8915191292762756,
+    "impostor_topk_mean": 0.8546313693126043,
+    "margin": 0.03688775996367133,
+    "rank": 311
+  },
+  {
+    "subject_id": "vein063_4",
+    "num_images": 12,
+    "genuine_mean": 0.8657993078231812,
+    "impostor_topk_mean": 0.8293583045403162,
+    "margin": 0.036441003282864926,
+    "rank": 312
+  },
+  {
+    "subject_id": "vein092_3",
+    "num_images": 12,
+    "genuine_mean": 0.8770423531532288,
+    "impostor_topk_mean": 0.8411169697841009,
+    "margin": 0.03592538336912787,
+    "rank": 313
+  },
+  {
+    "subject_id": "vein118_4",
+    "num_images": 12,
+    "genuine_mean": 0.8761794567108154,
+    "impostor_topk_mean": 0.8404914438724518,
+    "margin": 0.03568801283836365,
+    "rank": 314
+  },
+  {
+    "subject_id": "vein111_1",
+    "num_images": 12,
+    "genuine_mean": 0.8718559145927429,
+    "impostor_topk_mean": 0.8364942570527395,
+    "margin": 0.03536165754000342,
+    "rank": 315
+  },
+  {
+    "subject_id": "vein009_2",
+    "num_images": 12,
+    "genuine_mean": 0.8779193162918091,
+    "impostor_topk_mean": 0.8440028776725134,
+    "margin": 0.03391643861929572,
+    "rank": 316
+  },
+  {
+    "subject_id": "vein107_2",
+    "num_images": 12,
+    "genuine_mean": 0.8248553276062012,
+    "impostor_topk_mean": 0.7926395684480667,
+    "margin": 0.03221575915813446,
+    "rank": 317
+  },
+  {
+    "subject_id": "vein123_4",
+    "num_images": 12,
+    "genuine_mean": 0.8897069692611694,
+    "impostor_topk_mean": 0.8587931195894877,
+    "margin": 0.03091384967168176,
+    "rank": 318
+  },
+  {
+    "subject_id": "vein003_4",
+    "num_images": 12,
+    "genuine_mean": 0.9174470901489258,
+    "impostor_topk_mean": 0.8865809738636017,
+    "margin": 0.030866116285324097,
+    "rank": 319
+  },
+  {
+    "subject_id": "vein090_3",
+    "num_images": 12,
+    "genuine_mean": 0.9097939133644104,
+    "impostor_topk_mean": 0.8797713865836462,
+    "margin": 0.030022526780764225,
+    "rank": 320
+  },
+  {
+    "subject_id": "vein036_4",
+    "num_images": 12,
+    "genuine_mean": 0.9141944646835327,
+    "impostor_topk_mean": 0.8844585766394933,
+    "margin": 0.02973588804403937,
+    "rank": 321
+  },
+  {
+    "subject_id": "vein013_2",
+    "num_images": 12,
+    "genuine_mean": 0.7389577031135559,
+    "impostor_topk_mean": 0.7097595433394114,
+    "margin": 0.029198159774144528,
+    "rank": 322
+  },
+  {
+    "subject_id": "vein015_1",
+    "num_images": 12,
+    "genuine_mean": 0.8818559646606445,
+    "impostor_topk_mean": 0.8536626050869623,
+    "margin": 0.028193359573682186,
+    "rank": 323
+  },
+  {
+    "subject_id": "vein005_2",
+    "num_images": 12,
+    "genuine_mean": 0.85182124376297,
+    "impostor_topk_mean": 0.8240495473146439,
+    "margin": 0.02777169644832611,
+    "rank": 324
+  },
+  {
+    "subject_id": "vein090_4",
+    "num_images": 12,
+    "genuine_mean": 0.9360146522521973,
+    "impostor_topk_mean": 0.9096209506193796,
+    "margin": 0.026393701632817623,
+    "rank": 325
+  },
+  {
+    "subject_id": "vein021_1",
+    "num_images": 12,
+    "genuine_mean": 0.8375607132911682,
+    "impostor_topk_mean": 0.8113764027754465,
+    "margin": 0.026184310515721676,
+    "rank": 326
+  },
+  {
+    "subject_id": "vein079_3",
+    "num_images": 12,
+    "genuine_mean": 0.9149174094200134,
+    "impostor_topk_mean": 0.8890534887711207,
+    "margin": 0.025863920648892758,
+    "rank": 327
+  },
+  {
+    "subject_id": "vein121_4",
+    "num_images": 12,
+    "genuine_mean": 0.8991653919219971,
+    "impostor_topk_mean": 0.8736082315444946,
+    "margin": 0.02555716037750244,
+    "rank": 328
+  },
+  {
+    "subject_id": "vein002_3",
+    "num_images": 12,
+    "genuine_mean": 0.8018513321876526,
+    "impostor_topk_mean": 0.7764977713425955,
+    "margin": 0.025353560845057133,
+    "rank": 329
+  },
+  {
+    "subject_id": "vein113_1",
+    "num_images": 12,
+    "genuine_mean": 0.943962037563324,
+    "impostor_topk_mean": 0.9190997183322906,
+    "margin": 0.024862319231033325,
+    "rank": 330
+  },
+  {
+    "subject_id": "vein037_2",
+    "num_images": 12,
+    "genuine_mean": 0.8960174918174744,
+    "impostor_topk_mean": 0.8712106645107269,
+    "margin": 0.024806827306747437,
+    "rank": 331
+  },
+  {
+    "subject_id": "vein011_4",
+    "num_images": 12,
+    "genuine_mean": 0.8510946035385132,
+    "impostor_topk_mean": 0.8264601280291876,
+    "margin": 0.024634475509325626,
+    "rank": 332
+  },
+  {
+    "subject_id": "vein030_1",
+    "num_images": 12,
+    "genuine_mean": 0.8842522501945496,
+    "impostor_topk_mean": 0.8604075709978739,
+    "margin": 0.023844679196675655,
+    "rank": 333
+  },
+  {
+    "subject_id": "vein083_1",
+    "num_images": 12,
+    "genuine_mean": 0.870746374130249,
+    "impostor_topk_mean": 0.8476101954778036,
+    "margin": 0.023136178652445438,
+    "rank": 334
+  },
+  {
+    "subject_id": "vein001_3",
+    "num_images": 12,
+    "genuine_mean": 0.8730387687683105,
+    "impostor_topk_mean": 0.8503043254216512,
+    "margin": 0.022734443346659305,
+    "rank": 335
+  },
+  {
+    "subject_id": "vein115_1",
+    "num_images": 12,
+    "genuine_mean": 0.9198487997055054,
+    "impostor_topk_mean": 0.8979460994402567,
+    "margin": 0.021902700265248654,
+    "rank": 336
+  },
+  {
+    "subject_id": "vein096_1",
+    "num_images": 12,
+    "genuine_mean": 0.9197718501091003,
+    "impostor_topk_mean": 0.8980113019545873,
+    "margin": 0.021760548154513004,
+    "rank": 337
+  },
+  {
+    "subject_id": "vein037_4",
+    "num_images": 12,
+    "genuine_mean": 0.9007052183151245,
+    "impostor_topk_mean": 0.8790920923153559,
+    "margin": 0.021613125999768612,
+    "rank": 338
+  },
+  {
+    "subject_id": "vein106_4",
+    "num_images": 12,
+    "genuine_mean": 0.7726996541023254,
+    "impostor_topk_mean": 0.7512430846691132,
+    "margin": 0.02145656943321228,
+    "rank": 339
+  },
+  {
+    "subject_id": "vein062_4",
+    "num_images": 12,
+    "genuine_mean": 0.9098502993583679,
+    "impostor_topk_mean": 0.8885119706392288,
+    "margin": 0.0213383287191391,
+    "rank": 340
+  },
+  {
+    "subject_id": "vein049_1",
+    "num_images": 12,
+    "genuine_mean": 0.8982279896736145,
+    "impostor_topk_mean": 0.8771050026019415,
+    "margin": 0.02112298707167304,
+    "rank": 341
+  },
+  {
+    "subject_id": "vein086_2",
+    "num_images": 12,
+    "genuine_mean": 0.8168613314628601,
+    "impostor_topk_mean": 0.7957588732242584,
+    "margin": 0.021102458238601685,
+    "rank": 342
+  },
+  {
+    "subject_id": "vein112_4",
+    "num_images": 12,
+    "genuine_mean": 0.9340870976448059,
+    "impostor_topk_mean": 0.9137106190125147,
+    "margin": 0.020376478632291195,
+    "rank": 343
+  },
+  {
+    "subject_id": "vein111_3",
+    "num_images": 12,
+    "genuine_mean": 0.8093760013580322,
+    "impostor_topk_mean": 0.7891989896694819,
+    "margin": 0.02017701168855035,
+    "rank": 344
+  },
+  {
+    "subject_id": "vein080_3",
+    "num_images": 12,
+    "genuine_mean": 0.8230780959129333,
+    "impostor_topk_mean": 0.8031440824270248,
+    "margin": 0.01993401348590851,
+    "rank": 345
+  },
+  {
+    "subject_id": "vein038_2",
+    "num_images": 12,
+    "genuine_mean": 0.8776712417602539,
+    "impostor_topk_mean": 0.857843279838562,
+    "margin": 0.019827961921691895,
+    "rank": 346
+  },
+  {
+    "subject_id": "vein054_1",
+    "num_images": 12,
+    "genuine_mean": 0.921331524848938,
+    "impostor_topk_mean": 0.9016275803248087,
+    "margin": 0.01970394452412927,
+    "rank": 347
+  },
+  {
+    "subject_id": "vein002_4",
+    "num_images": 12,
+    "genuine_mean": 0.9362691640853882,
+    "impostor_topk_mean": 0.9170338958501816,
+    "margin": 0.019235268235206604,
+    "rank": 348
+  },
+  {
+    "subject_id": "vein095_3",
+    "num_images": 12,
+    "genuine_mean": 0.8616187572479248,
+    "impostor_topk_mean": 0.8426231543223063,
+    "margin": 0.018995602925618527,
+    "rank": 349
+  },
+  {
+    "subject_id": "vein037_3",
+    "num_images": 12,
+    "genuine_mean": 0.8845102190971375,
+    "impostor_topk_mean": 0.866299644112587,
+    "margin": 0.018210574984550476,
+    "rank": 350
+  },
+  {
+    "subject_id": "vein040_2",
+    "num_images": 12,
+    "genuine_mean": 0.832633912563324,
+    "impostor_topk_mean": 0.8148121436436971,
+    "margin": 0.017821768919626835,
+    "rank": 351
+  },
+  {
+    "subject_id": "vein054_4",
+    "num_images": 12,
+    "genuine_mean": 0.9312481880187988,
+    "impostor_topk_mean": 0.9134884576002756,
+    "margin": 0.01775973041852319,
+    "rank": 352
+  },
+  {
+    "subject_id": "vein034_4",
+    "num_images": 12,
+    "genuine_mean": 0.8973951935768127,
+    "impostor_topk_mean": 0.880320280790329,
+    "margin": 0.017074912786483765,
+    "rank": 353
+  },
+  {
+    "subject_id": "vein107_4",
+    "num_images": 12,
+    "genuine_mean": 0.854517936706543,
+    "impostor_topk_mean": 0.8394538511832556,
+    "margin": 0.015064085523287418,
+    "rank": 354
+  },
+  {
+    "subject_id": "vein089_3",
+    "num_images": 12,
+    "genuine_mean": 0.7945429682731628,
+    "impostor_topk_mean": 0.7795532842477163,
+    "margin": 0.014989684025446537,
+    "rank": 355
+  },
+  {
+    "subject_id": "vein047_2",
+    "num_images": 12,
+    "genuine_mean": 0.8619260787963867,
+    "impostor_topk_mean": 0.8471145331859589,
+    "margin": 0.014811545610427856,
+    "rank": 356
+  },
+  {
+    "subject_id": "vein023_2",
+    "num_images": 12,
+    "genuine_mean": 0.9269433617591858,
+    "impostor_topk_mean": 0.9128118008375168,
+    "margin": 0.014131560921669006,
+    "rank": 357
+  },
+  {
+    "subject_id": "vein011_3",
+    "num_images": 12,
+    "genuine_mean": 0.8975778222084045,
+    "impostor_topk_mean": 0.8842710256576538,
+    "margin": 0.013306796550750732,
+    "rank": 358
+  },
+  {
+    "subject_id": "vein067_1",
+    "num_images": 12,
+    "genuine_mean": 0.9172016978263855,
+    "impostor_topk_mean": 0.9039212614297867,
+    "margin": 0.013280436396598816,
+    "rank": 359
+  },
+  {
+    "subject_id": "vein050_4",
+    "num_images": 12,
+    "genuine_mean": 0.9287926554679871,
+    "impostor_topk_mean": 0.9172463615735372,
+    "margin": 0.011546293894449833,
+    "rank": 360
+  },
+  {
+    "subject_id": "vein004_3",
+    "num_images": 12,
+    "genuine_mean": 0.9148297905921936,
+    "impostor_topk_mean": 0.9034692545731863,
+    "margin": 0.011360536019007328,
+    "rank": 361
+  },
+  {
+    "subject_id": "vein081_4",
+    "num_images": 12,
+    "genuine_mean": 0.8885316848754883,
+    "impostor_topk_mean": 0.8773667067289352,
+    "margin": 0.01116497814655304,
+    "rank": 362
+  },
+  {
+    "subject_id": "vein001_2",
+    "num_images": 12,
+    "genuine_mean": 0.8920353055000305,
+    "impostor_topk_mean": 0.8816592991352081,
+    "margin": 0.010376006364822388,
+    "rank": 363
+  },
+  {
+    "subject_id": "vein118_1",
+    "num_images": 12,
+    "genuine_mean": 0.8734287023544312,
+    "impostor_topk_mean": 0.8633182744185129,
+    "margin": 0.01011042793591821,
+    "rank": 364
+  },
+  {
+    "subject_id": "vein118_3",
+    "num_images": 12,
+    "genuine_mean": 0.7929108142852783,
+    "impostor_topk_mean": 0.784339557091395,
+    "margin": 0.008571257193883297,
+    "rank": 365
+  },
+  {
+    "subject_id": "vein093_1",
+    "num_images": 12,
+    "genuine_mean": 0.8714962005615234,
+    "impostor_topk_mean": 0.8629934390385946,
+    "margin": 0.008502761522928837,
+    "rank": 366
+  },
+  {
+    "subject_id": "vein012_3",
+    "num_images": 12,
+    "genuine_mean": 0.8795582056045532,
+    "impostor_topk_mean": 0.8732806195815405,
+    "margin": 0.00627758602301276,
+    "rank": 367
+  },
+  {
+    "subject_id": "vein017_4",
+    "num_images": 12,
+    "genuine_mean": 0.8964471817016602,
+    "impostor_topk_mean": 0.891150231162707,
+    "margin": 0.005296950538953182,
+    "rank": 368
+  },
+  {
+    "subject_id": "vein094_3",
+    "num_images": 12,
+    "genuine_mean": 0.7379136085510254,
+    "impostor_topk_mean": 0.7333399107058843,
+    "margin": 0.004573697845141056,
+    "rank": 369
+  },
+  {
+    "subject_id": "vein023_3",
+    "num_images": 12,
+    "genuine_mean": 0.9051538705825806,
+    "impostor_topk_mean": 0.9009262025356293,
+    "margin": 0.004227668046951294,
+    "rank": 370
+  },
+  {
+    "subject_id": "vein083_2",
+    "num_images": 12,
+    "genuine_mean": 0.8757754564285278,
+    "impostor_topk_mean": 0.8724859158198038,
+    "margin": 0.0032895406087239953,
+    "rank": 371
+  },
+  {
+    "subject_id": "vein014_2",
+    "num_images": 12,
+    "genuine_mean": 0.887917697429657,
+    "impostor_topk_mean": 0.8847582240899404,
+    "margin": 0.0031594733397165564,
+    "rank": 372
+  },
+  {
+    "subject_id": "vein122_2",
+    "num_images": 12,
+    "genuine_mean": 0.8733713626861572,
+    "impostor_topk_mean": 0.8713524887959162,
+    "margin": 0.002018873890241024,
+    "rank": 373
+  },
+  {
+    "subject_id": "vein057_4",
+    "num_images": 12,
+    "genuine_mean": 0.855562686920166,
+    "impostor_topk_mean": 0.8547550837198893,
+    "margin": 0.0008076032002767297,
+    "rank": 374
+  },
+  {
+    "subject_id": "vein063_2",
+    "num_images": 12,
+    "genuine_mean": 0.8879362344741821,
+    "impostor_topk_mean": 0.8873028804858526,
+    "margin": 0.0006333539883295325,
+    "rank": 375
+  },
+  {
+    "subject_id": "vein103_2",
+    "num_images": 12,
+    "genuine_mean": 0.8448137044906616,
+    "impostor_topk_mean": 0.8441954950491587,
+    "margin": 0.000618209441502926,
+    "rank": 376
+  },
+  {
+    "subject_id": "vein115_4",
+    "num_images": 12,
+    "genuine_mean": 0.8762457966804504,
+    "impostor_topk_mean": 0.8759405662616094,
+    "margin": 0.0003052304188410071,
+    "rank": 377
+  },
+  {
+    "subject_id": "vein005_3",
+    "num_images": 12,
+    "genuine_mean": 0.8804692029953003,
+    "impostor_topk_mean": 0.8816461463769277,
+    "margin": -0.0011769433816274377,
+    "rank": 378
+  },
+  {
+    "subject_id": "vein064_4",
+    "num_images": 12,
+    "genuine_mean": 0.8971192836761475,
+    "impostor_topk_mean": 0.8990466247002283,
+    "margin": -0.0019273410240808753,
+    "rank": 379
+  },
+  {
+    "subject_id": "vein011_1",
+    "num_images": 12,
+    "genuine_mean": 0.9154015183448792,
+    "impostor_topk_mean": 0.9176560292641321,
+    "margin": -0.0022545109192529944,
+    "rank": 380
+  },
+  {
+    "subject_id": "vein032_4",
+    "num_images": 12,
+    "genuine_mean": 0.8993366956710815,
+    "impostor_topk_mean": 0.9030834883451462,
+    "margin": -0.0037467926740646362,
+    "rank": 381
+  },
+  {
+    "subject_id": "vein001_1",
+    "num_images": 12,
+    "genuine_mean": 0.8735922574996948,
+    "impostor_topk_mean": 0.8774204303820928,
+    "margin": -0.0038281728823980066,
+    "rank": 382
+  },
+  {
+    "subject_id": "vein007_2",
+    "num_images": 12,
+    "genuine_mean": 0.8882529735565186,
+    "impostor_topk_mean": 0.8923450708389282,
+    "margin": -0.004092097282409668,
+    "rank": 383
+  },
+  {
+    "subject_id": "vein045_2",
+    "num_images": 12,
+    "genuine_mean": 0.8522371649742126,
+    "impostor_topk_mean": 0.8569785306851069,
+    "margin": -0.00474136571089423,
+    "rank": 384
+  },
+  {
+    "subject_id": "vein008_1",
+    "num_images": 12,
+    "genuine_mean": 0.8199731111526489,
+    "impostor_topk_mean": 0.8250674108664194,
+    "margin": -0.0050942997137705115,
+    "rank": 385
+  },
+  {
+    "subject_id": "vein087_3",
+    "num_images": 12,
+    "genuine_mean": 0.8001469969749451,
+    "impostor_topk_mean": 0.8065158873796463,
+    "margin": -0.006368890404701233,
+    "rank": 386
+  },
+  {
+    "subject_id": "vein082_2",
+    "num_images": 12,
+    "genuine_mean": 0.7745336294174194,
+    "impostor_topk_mean": 0.7812380939722061,
+    "margin": -0.006704464554786682,
+    "rank": 387
+  },
+  {
+    "subject_id": "vein069_4",
+    "num_images": 12,
+    "genuine_mean": 0.8915668725967407,
+    "impostor_topk_mean": 0.8997379293044409,
+    "margin": -0.00817105670770013,
+    "rank": 388
+  },
+  {
+    "subject_id": "vein029_2",
+    "num_images": 12,
+    "genuine_mean": 0.8500099182128906,
+    "impostor_topk_mean": 0.8582360148429871,
+    "margin": -0.008226096630096436,
+    "rank": 389
+  },
+  {
+    "subject_id": "vein025_2",
+    "num_images": 12,
+    "genuine_mean": 0.8710641860961914,
+    "impostor_topk_mean": 0.8794222225745519,
+    "margin": -0.008358036478360531,
+    "rank": 390
+  },
+  {
+    "subject_id": "vein011_2",
+    "num_images": 12,
+    "genuine_mean": 0.8233836889266968,
+    "impostor_topk_mean": 0.8326218326886495,
+    "margin": -0.009238143761952755,
+    "rank": 391
+  },
+  {
+    "subject_id": "vein084_2",
+    "num_images": 12,
+    "genuine_mean": 0.8411824703216553,
+    "impostor_topk_mean": 0.8515319476524988,
+    "margin": -0.01034947733084357,
+    "rank": 392
+  },
+  {
+    "subject_id": "vein039_4",
+    "num_images": 12,
+    "genuine_mean": 0.8918006420135498,
+    "impostor_topk_mean": 0.9027708719174067,
+    "margin": -0.010970229903856876,
+    "rank": 393
+  },
+  {
+    "subject_id": "vein002_1",
+    "num_images": 12,
+    "genuine_mean": 0.8989810943603516,
+    "impostor_topk_mean": 0.9103947430849075,
+    "margin": -0.01141364872455597,
+    "rank": 394
+  },
+  {
+    "subject_id": "vein064_1",
+    "num_images": 12,
+    "genuine_mean": 0.8771370649337769,
+    "impostor_topk_mean": 0.8885992368062338,
+    "margin": -0.011462171872456905,
+    "rank": 395
+  },
+  {
+    "subject_id": "vein006_4",
+    "num_images": 12,
+    "genuine_mean": 0.8982126712799072,
+    "impostor_topk_mean": 0.9111705869436264,
+    "margin": -0.012957915663719177,
+    "rank": 396
+  },
+  {
+    "subject_id": "vein009_1",
+    "num_images": 12,
+    "genuine_mean": 0.8670229911804199,
+    "impostor_topk_mean": 0.8799951821565628,
+    "margin": -0.012972190976142883,
+    "rank": 397
+  },
+  {
+    "subject_id": "vein013_1",
+    "num_images": 12,
+    "genuine_mean": 0.8732085227966309,
+    "impostor_topk_mean": 0.8878261844317118,
+    "margin": -0.014617661635080936,
+    "rank": 398
+  },
+  {
+    "subject_id": "vein025_1",
+    "num_images": 12,
+    "genuine_mean": 0.8191158771514893,
+    "impostor_topk_mean": 0.8338622053464254,
+    "margin": -0.014746328194936154,
+    "rank": 399
+  },
+  {
+    "subject_id": "vein099_2",
+    "num_images": 12,
+    "genuine_mean": 0.7577148675918579,
+    "impostor_topk_mean": 0.7730227212111155,
+    "margin": -0.015307853619257572,
+    "rank": 400
+  },
+  {
+    "subject_id": "vein010_1",
+    "num_images": 12,
+    "genuine_mean": 0.8475502729415894,
+    "impostor_topk_mean": 0.8641466399033865,
+    "margin": -0.016596366961797115,
+    "rank": 401
+  },
+  {
+    "subject_id": "vein087_4",
+    "num_images": 12,
+    "genuine_mean": 0.8644364476203918,
+    "impostor_topk_mean": 0.8812893033027649,
+    "margin": -0.016852855682373047,
+    "rank": 402
+  },
+  {
+    "subject_id": "vein039_3",
+    "num_images": 12,
+    "genuine_mean": 0.8499785661697388,
+    "impostor_topk_mean": 0.867111494143804,
+    "margin": -0.017132927974065182,
+    "rank": 403
+  },
+  {
+    "subject_id": "vein058_1",
+    "num_images": 12,
+    "genuine_mean": 0.8524251580238342,
+    "impostor_topk_mean": 0.8695969929297765,
+    "margin": -0.017171834905942318,
+    "rank": 404
+  },
+  {
+    "subject_id": "vein005_4",
+    "num_images": 12,
+    "genuine_mean": 0.8652483820915222,
+    "impostor_topk_mean": 0.8831832557916641,
+    "margin": -0.017934873700141907,
+    "rank": 405
+  },
+  {
+    "subject_id": "vein099_1",
+    "num_images": 12,
+    "genuine_mean": 0.8472772240638733,
+    "impostor_topk_mean": 0.8652618279059728,
+    "margin": -0.017984603842099545,
+    "rank": 406
+  },
+  {
+    "subject_id": "vein100_3",
+    "num_images": 12,
+    "genuine_mean": 0.7622227072715759,
+    "impostor_topk_mean": 0.7813670337200165,
+    "margin": -0.019144326448440552,
+    "rank": 407
+  },
+  {
+    "subject_id": "vein023_4",
+    "num_images": 12,
+    "genuine_mean": 0.8835790753364563,
+    "impostor_topk_mean": 0.9029914339383444,
+    "margin": -0.019412358601888058,
+    "rank": 408
+  },
+  {
+    "subject_id": "vein093_4",
+    "num_images": 12,
+    "genuine_mean": 0.8142538070678711,
+    "impostor_topk_mean": 0.833724762002627,
+    "margin": -0.019470954934755924,
+    "rank": 409
+  },
+  {
+    "subject_id": "vein012_4",
+    "num_images": 12,
+    "genuine_mean": 0.8636472225189209,
+    "impostor_topk_mean": 0.8835270752509435,
+    "margin": -0.01987985273202264,
+    "rank": 410
+  },
+  {
+    "subject_id": "vein100_2",
+    "num_images": 12,
+    "genuine_mean": 0.8623412847518921,
+    "impostor_topk_mean": 0.8843186050653458,
+    "margin": -0.021977320313453674,
+    "rank": 411
+  },
+  {
+    "subject_id": "vein119_1",
+    "num_images": 12,
+    "genuine_mean": 0.8728943467140198,
+    "impostor_topk_mean": 0.8965022563934326,
+    "margin": -0.023607909679412842,
+    "rank": 412
+  },
+  {
+    "subject_id": "vein006_3",
+    "num_images": 12,
+    "genuine_mean": 0.8021836280822754,
+    "impostor_topk_mean": 0.8295471320549647,
+    "margin": -0.027363503972689274,
+    "rank": 413
+  },
+  {
+    "subject_id": "vein008_4",
+    "num_images": 12,
+    "genuine_mean": 0.8704885244369507,
+    "impostor_topk_mean": 0.8987124264240265,
+    "margin": -0.028223901987075806,
+    "rank": 414
+  },
+  {
+    "subject_id": "vein030_4",
+    "num_images": 12,
+    "genuine_mean": 0.8290327787399292,
+    "impostor_topk_mean": 0.8579084972540537,
+    "margin": -0.028875718514124515,
+    "rank": 415
+  },
+  {
+    "subject_id": "vein021_2",
+    "num_images": 12,
+    "genuine_mean": 0.8352343440055847,
+    "impostor_topk_mean": 0.8646512925624847,
+    "margin": -0.029416948556900024,
+    "rank": 416
+  },
+  {
+    "subject_id": "vein089_4",
+    "num_images": 12,
+    "genuine_mean": 0.819771409034729,
+    "impostor_topk_mean": 0.850516473253568,
+    "margin": -0.030745064218839047,
+    "rank": 417
+  },
+  {
+    "subject_id": "vein025_3",
+    "num_images": 12,
+    "genuine_mean": 0.7009378671646118,
+    "impostor_topk_mean": 0.731927752494812,
+    "margin": -0.030989885330200195,
+    "rank": 418
+  },
+  {
+    "subject_id": "vein014_4",
+    "num_images": 12,
+    "genuine_mean": 0.8500595092773438,
+    "impostor_topk_mean": 0.8815276722113291,
+    "margin": -0.031468162933985355,
+    "rank": 419
+  },
+  {
+    "subject_id": "vein021_3",
+    "num_images": 12,
+    "genuine_mean": 0.739976167678833,
+    "impostor_topk_mean": 0.7746016432841619,
+    "margin": -0.034625475605328915,
+    "rank": 420
+  },
+  {
+    "subject_id": "vein094_1",
+    "num_images": 12,
+    "genuine_mean": 0.7715270519256592,
+    "impostor_topk_mean": 0.8062724669774374,
+    "margin": -0.034745415051778195,
+    "rank": 421
+  },
+  {
+    "subject_id": "vein008_2",
+    "num_images": 12,
+    "genuine_mean": 0.8398555517196655,
+    "impostor_topk_mean": 0.8751389880975088,
+    "margin": -0.03528343637784326,
+    "rank": 422
+  },
+  {
+    "subject_id": "vein017_1",
+    "num_images": 12,
+    "genuine_mean": 0.8357754349708557,
+    "impostor_topk_mean": 0.8730119119087855,
+    "margin": -0.03723647693792975,
+    "rank": 423
+  },
+  {
+    "subject_id": "vein041_1",
+    "num_images": 12,
+    "genuine_mean": 0.8547606468200684,
+    "impostor_topk_mean": 0.8925355126460394,
+    "margin": -0.037774865825971005,
+    "rank": 424
+  },
+  {
+    "subject_id": "vein024_1",
+    "num_images": 12,
+    "genuine_mean": 0.795194149017334,
+    "impostor_topk_mean": 0.8341951817274094,
+    "margin": -0.03900103271007538,
+    "rank": 425
+  },
+  {
+    "subject_id": "vein087_1",
+    "num_images": 12,
+    "genuine_mean": 0.8176622986793518,
+    "impostor_topk_mean": 0.8585172146558762,
+    "margin": -0.04085491597652435,
+    "rank": 426
+  },
+  {
+    "subject_id": "vein099_3",
+    "num_images": 12,
+    "genuine_mean": 0.6962645053863525,
+    "impostor_topk_mean": 0.737526590625445,
+    "margin": -0.04126208523909247,
+    "rank": 427
+  },
+  {
+    "subject_id": "vein010_3",
+    "num_images": 12,
+    "genuine_mean": 0.820300817489624,
+    "impostor_topk_mean": 0.8616801599661509,
+    "margin": -0.04137934247652686,
+    "rank": 428
+  },
+  {
+    "subject_id": "vein086_3",
+    "num_images": 12,
+    "genuine_mean": 0.7113800644874573,
+    "impostor_topk_mean": 0.7531066636244456,
+    "margin": -0.041726599136988285,
+    "rank": 429
+  },
+  {
+    "subject_id": "vein008_3",
+    "num_images": 12,
+    "genuine_mean": 0.839108407497406,
+    "impostor_topk_mean": 0.8808623254299164,
+    "margin": -0.041753917932510376,
+    "rank": 430
+  },
+  {
+    "subject_id": "vein045_3",
+    "num_images": 12,
+    "genuine_mean": 0.7526369690895081,
+    "impostor_topk_mean": 0.7969533701737722,
+    "margin": -0.044316401084264156,
+    "rank": 431
+  },
+  {
+    "subject_id": "vein017_3",
+    "num_images": 12,
+    "genuine_mean": 0.7664823532104492,
+    "impostor_topk_mean": 0.8110594848791758,
+    "margin": -0.044577131668726566,
+    "rank": 432
+  },
+  {
+    "subject_id": "vein014_1",
+    "num_images": 12,
+    "genuine_mean": 0.8212947249412537,
+    "impostor_topk_mean": 0.8683599978685379,
+    "margin": -0.04706527292728424,
+    "rank": 433
+  },
+  {
+    "subject_id": "vein058_2",
+    "num_images": 12,
+    "genuine_mean": 0.8311181664466858,
+    "impostor_topk_mean": 0.8792639325062434,
+    "margin": -0.04814576605955756,
+    "rank": 434
+  },
+  {
+    "subject_id": "vein099_4",
+    "num_images": 12,
+    "genuine_mean": 0.8054857850074768,
+    "impostor_topk_mean": 0.8536593019962311,
+    "margin": -0.04817351698875427,
+    "rank": 435
+  },
+  {
+    "subject_id": "vein004_4",
+    "num_images": 12,
+    "genuine_mean": 0.8454577922821045,
+    "impostor_topk_mean": 0.8947548270225525,
+    "margin": -0.049297034740448,
+    "rank": 436
+  },
+  {
+    "subject_id": "vein019_1",
+    "num_images": 12,
+    "genuine_mean": 0.8157568573951721,
+    "impostor_topk_mean": 0.8658041556676229,
+    "margin": -0.0500472982724508,
+    "rank": 437
+  },
+  {
+    "subject_id": "vein024_4",
+    "num_images": 12,
+    "genuine_mean": 0.8352948427200317,
+    "impostor_topk_mean": 0.8856702893972397,
+    "margin": -0.05037544667720795,
+    "rank": 438
+  },
+  {
+    "subject_id": "vein120_3",
+    "num_images": 12,
+    "genuine_mean": 0.8418696522712708,
+    "impostor_topk_mean": 0.8932873706022898,
+    "margin": -0.05141771833101905,
+    "rank": 439
+  },
+  {
+    "subject_id": "vein006_1",
+    "num_images": 12,
+    "genuine_mean": 0.8164513111114502,
+    "impostor_topk_mean": 0.868647520740827,
+    "margin": -0.052196209629376766,
+    "rank": 440
+  },
+  {
+    "subject_id": "vein004_2",
+    "num_images": 12,
+    "genuine_mean": 0.83942049741745,
+    "impostor_topk_mean": 0.8917084882656733,
+    "margin": -0.05228799084822333,
+    "rank": 441
+  },
+  {
+    "subject_id": "vein093_3",
+    "num_images": 12,
+    "genuine_mean": 0.8111988306045532,
+    "impostor_topk_mean": 0.863753005862236,
+    "margin": -0.0525541752576828,
+    "rank": 442
+  },
+  {
+    "subject_id": "vein019_3",
+    "num_images": 12,
+    "genuine_mean": 0.7832177877426147,
+    "impostor_topk_mean": 0.8360770593086878,
+    "margin": -0.05285927156607306,
+    "rank": 443
+  },
+  {
+    "subject_id": "vein009_3",
+    "num_images": 12,
+    "genuine_mean": 0.8015388250350952,
+    "impostor_topk_mean": 0.8555484116077423,
+    "margin": -0.054009586572647095,
+    "rank": 444
+  },
+  {
+    "subject_id": "vein039_1",
+    "num_images": 12,
+    "genuine_mean": 0.8394004106521606,
+    "impostor_topk_mean": 0.8934527238210043,
+    "margin": -0.054052313168843624,
+    "rank": 445
+  },
+  {
+    "subject_id": "vein081_1",
+    "num_images": 12,
+    "genuine_mean": 0.8358599543571472,
+    "impostor_topk_mean": 0.891636977593104,
+    "margin": -0.05577702323595679,
+    "rank": 446
+  },
+  {
+    "subject_id": "vein120_4",
+    "num_images": 12,
+    "genuine_mean": 0.8361656665802002,
+    "impostor_topk_mean": 0.8978521327177683,
+    "margin": -0.06168646613756812,
+    "rank": 447
+  },
+  {
+    "subject_id": "vein007_1",
+    "num_images": 12,
+    "genuine_mean": 0.8047142028808594,
+    "impostor_topk_mean": 0.866786261399587,
+    "margin": -0.06207205851872766,
+    "rank": 448
+  },
+  {
+    "subject_id": "vein119_2",
+    "num_images": 12,
+    "genuine_mean": 0.8231708407402039,
+    "impostor_topk_mean": 0.8863977839549383,
+    "margin": -0.06322694321473443,
+    "rank": 449
+  },
+  {
+    "subject_id": "vein107_1",
+    "num_images": 12,
+    "genuine_mean": 0.8000950813293457,
+    "impostor_topk_mean": 0.86384516954422,
+    "margin": -0.06375008821487427,
+    "rank": 450
+  },
+  {
+    "subject_id": "vein019_4",
+    "num_images": 12,
+    "genuine_mean": 0.8203359842300415,
+    "impostor_topk_mean": 0.8847332845131556,
+    "margin": -0.06439730028311408,
+    "rank": 451
+  },
+  {
+    "subject_id": "vein120_1",
+    "num_images": 12,
+    "genuine_mean": 0.8328040242195129,
+    "impostor_topk_mean": 0.8988379240036011,
+    "margin": -0.06603389978408813,
+    "rank": 452
+  },
+  {
+    "subject_id": "vein072_2",
+    "num_images": 12,
+    "genuine_mean": 0.7862673401832581,
+    "impostor_topk_mean": 0.858366126815478,
+    "margin": -0.07209878663221991,
+    "rank": 453
+  },
+  {
+    "subject_id": "vein089_2",
+    "num_images": 12,
+    "genuine_mean": 0.7693064212799072,
+    "impostor_topk_mean": 0.8415397852659225,
+    "margin": -0.07223336398601532,
+    "rank": 454
+  },
+  {
+    "subject_id": "vein057_1",
+    "num_images": 12,
+    "genuine_mean": 0.8242921829223633,
+    "impostor_topk_mean": 0.8969373106956482,
+    "margin": -0.07264512777328491,
+    "rank": 455
+  },
+  {
+    "subject_id": "vein004_1",
+    "num_images": 12,
+    "genuine_mean": 0.8068851828575134,
+    "impostor_topk_mean": 0.8805746287107468,
+    "margin": -0.07368944585323334,
+    "rank": 456
+  },
+  {
+    "subject_id": "vein092_2",
+    "num_images": 12,
+    "genuine_mean": 0.7920162677764893,
+    "impostor_topk_mean": 0.8774794638156891,
+    "margin": -0.08546319603919983,
+    "rank": 457
+  },
+  {
+    "subject_id": "vein007_3",
+    "num_images": 12,
+    "genuine_mean": 0.74360191822052,
+    "impostor_topk_mean": 0.8299254675706228,
+    "margin": -0.08632354935010278,
+    "rank": 458
+  },
+  {
+    "subject_id": "vein024_2",
+    "num_images": 12,
+    "genuine_mean": 0.7797884941101074,
+    "impostor_topk_mean": 0.8669327050447464,
+    "margin": -0.08714421093463898,
+    "rank": 459
+  },
+  {
+    "subject_id": "vein117_4",
+    "num_images": 12,
+    "genuine_mean": 0.7616589665412903,
+    "impostor_topk_mean": 0.8510416944821676,
+    "margin": -0.08938272794087732,
+    "rank": 460
+  },
+  {
+    "subject_id": "vein119_4",
+    "num_images": 12,
+    "genuine_mean": 0.7707304954528809,
+    "impostor_topk_mean": 0.8602424462636312,
+    "margin": -0.08951195081075036,
+    "rank": 461
+  },
+  {
+    "subject_id": "vein084_1",
+    "num_images": 12,
+    "genuine_mean": 0.7890607714653015,
+    "impostor_topk_mean": 0.8817233145236969,
+    "margin": -0.09266254305839539,
+    "rank": 462
+  },
+  {
+    "subject_id": "vein006_2",
+    "num_images": 12,
+    "genuine_mean": 0.7609079480171204,
+    "impostor_topk_mean": 0.8537582655747732,
+    "margin": -0.09285031755765283,
+    "rank": 463
+  },
+  {
+    "subject_id": "vein025_4",
+    "num_images": 12,
+    "genuine_mean": 0.6724821329116821,
+    "impostor_topk_mean": 0.7667020161946615,
+    "margin": -0.09421988328297937,
+    "rank": 464
+  },
+  {
+    "subject_id": "vein098_4",
+    "num_images": 12,
+    "genuine_mean": 0.7655245065689087,
+    "impostor_topk_mean": 0.861189623673757,
+    "margin": -0.09566511710484826,
+    "rank": 465
+  },
+  {
+    "subject_id": "vein024_3",
+    "num_images": 12,
+    "genuine_mean": 0.7298850417137146,
+    "impostor_topk_mean": 0.8273164282242457,
+    "margin": -0.09743138651053107,
+    "rank": 466
+  },
+  {
+    "subject_id": "vein084_4",
+    "num_images": 12,
+    "genuine_mean": 0.7809045314788818,
+    "impostor_topk_mean": 0.8787376979986826,
+    "margin": -0.09783316651980078,
+    "rank": 467
+  },
+  {
+    "subject_id": "vein098_1",
+    "num_images": 12,
+    "genuine_mean": 0.6433647274971008,
+    "impostor_topk_mean": 0.741265078385671,
+    "margin": -0.09790035088857019,
+    "rank": 468
+  },
+  {
+    "subject_id": "vein013_3",
+    "num_images": 12,
+    "genuine_mean": 0.6702748537063599,
+    "impostor_topk_mean": 0.7683349301417669,
+    "margin": -0.09806007643540704,
+    "rank": 469
+  },
+  {
+    "subject_id": "vein092_4",
+    "num_images": 12,
+    "genuine_mean": 0.7399637699127197,
+    "impostor_topk_mean": 0.8386832177639008,
+    "margin": -0.09871944785118103,
+    "rank": 470
+  },
+  {
+    "subject_id": "vein018_3",
+    "num_images": 12,
+    "genuine_mean": 0.7809904217720032,
+    "impostor_topk_mean": 0.8799432714780172,
+    "margin": -0.09895284970601403,
+    "rank": 471
+  },
+  {
+    "subject_id": "vein010_2",
+    "num_images": 12,
+    "genuine_mean": 0.7304916977882385,
+    "impostor_topk_mean": 0.8307146181662878,
+    "margin": -0.10022292037804925,
+    "rank": 472
+  },
+  {
+    "subject_id": "vein012_1",
+    "num_images": 12,
+    "genuine_mean": 0.7591170072555542,
+    "impostor_topk_mean": 0.8593621204296747,
+    "margin": -0.10024511317412055,
+    "rank": 473
+  },
+  {
+    "subject_id": "vein098_3",
+    "num_images": 12,
+    "genuine_mean": 0.7605223655700684,
+    "impostor_topk_mean": 0.8625471393267313,
+    "margin": -0.10202477375666297,
+    "rank": 474
+  },
+  {
+    "subject_id": "vein018_2",
+    "num_images": 12,
+    "genuine_mean": 0.7523317337036133,
+    "impostor_topk_mean": 0.8558548341194788,
+    "margin": -0.10352310041586554,
+    "rank": 475
+  },
+  {
+    "subject_id": "vein005_1",
+    "num_images": 12,
+    "genuine_mean": 0.7693722248077393,
+    "impostor_topk_mean": 0.8748526473840078,
+    "margin": -0.10548042257626855,
+    "rank": 476
+  },
+  {
+    "subject_id": "vein100_1",
+    "num_images": 12,
+    "genuine_mean": 0.735332190990448,
+    "impostor_topk_mean": 0.8441322594881058,
+    "margin": -0.10880006849765778,
+    "rank": 477
+  },
+  {
+    "subject_id": "vein010_4",
+    "num_images": 12,
+    "genuine_mean": 0.75523841381073,
+    "impostor_topk_mean": 0.8723922818899155,
+    "margin": -0.11715386807918549,
+    "rank": 478
+  },
+  {
+    "subject_id": "vein089_1",
+    "num_images": 12,
+    "genuine_mean": 0.6236429810523987,
+    "impostor_topk_mean": 0.742617130279541,
+    "margin": -0.11897414922714233,
+    "rank": 479
+  },
+  {
+    "subject_id": "vein019_2",
+    "num_images": 12,
+    "genuine_mean": 0.6735942959785461,
+    "impostor_topk_mean": 0.79275281727314,
+    "margin": -0.11915852129459381,
+    "rank": 480
+  },
+  {
+    "subject_id": "vein018_4",
+    "num_images": 12,
+    "genuine_mean": 0.7882386445999146,
+    "impostor_topk_mean": 0.9112769862016042,
+    "margin": -0.1230383416016897,
+    "rank": 481
+  },
+  {
+    "subject_id": "vein018_1",
+    "num_images": 12,
+    "genuine_mean": 0.6963773369789124,
+    "impostor_topk_mean": 0.827363446354866,
+    "margin": -0.13098610937595367,
+    "rank": 482
+  },
+  {
+    "subject_id": "vein012_2",
+    "num_images": 12,
+    "genuine_mean": 0.6500245928764343,
+    "impostor_topk_mean": 0.7936371465524038,
+    "margin": -0.14361255367596948,
+    "rank": 483
+  },
+  {
+    "subject_id": "vein013_4",
+    "num_images": 12,
+    "genuine_mean": 0.6394704580307007,
+    "impostor_topk_mean": 0.794122780362765,
+    "margin": -0.15465232233206427,
+    "rank": 484
+  },
+  {
+    "subject_id": "vein009_4",
+    "num_images": 12,
+    "genuine_mean": 0.6899275183677673,
+    "impostor_topk_mean": 0.8480108628670374,
+    "margin": -0.15808334449927008,
+    "rank": 485
+  },
+  {
+    "subject_id": "vein093_2",
+    "num_images": 12,
+    "genuine_mean": 0.6503796577453613,
+    "impostor_topk_mean": 0.8125142057736715,
+    "margin": -0.16213454802831018,
+    "rank": 486
+  },
+  {
+    "subject_id": "vein120_2",
+    "num_images": 12,
+    "genuine_mean": 0.6950364112854004,
+    "impostor_topk_mean": 0.8705507715543112,
+    "margin": -0.17551436026891076,
+    "rank": 487
+  },
+  {
+    "subject_id": "vein107_3",
+    "num_images": 12,
+    "genuine_mean": 0.6194405555725098,
+    "impostor_topk_mean": 0.8011346459388733,
+    "margin": -0.18169409036636353,
+    "rank": 488
+  },
+  {
+    "subject_id": "vein098_2",
+    "num_images": 12,
+    "genuine_mean": 0.629623293876648,
+    "impostor_topk_mean": 0.8184491097927094,
+    "margin": -0.1888258159160614,
+    "rank": 489
+  },
+  {
+    "subject_id": "vein023_1",
+    "num_images": 12,
+    "genuine_mean": 0.6163952946662903,
+    "impostor_topk_mean": 0.8396008064349493,
+    "margin": -0.223205511768659,
+    "rank": 490
+  },
+  {
+    "subject_id": "vein066_3",
+    "num_images": 12,
+    "genuine_mean": 0.5457290410995483,
+    "impostor_topk_mean": 0.7783627659082413,
+    "margin": -0.23263372480869293,
+    "rank": 491
+  },
+  {
+    "subject_id": "vein050_3",
+    "num_images": 12,
+    "genuine_mean": 0.6854843497276306,
+    "impostor_topk_mean": 0.9338104973236719,
+    "margin": -0.24832614759604132,
+    "rank": 492
+  }
+]

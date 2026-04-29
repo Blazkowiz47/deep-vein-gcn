@@ -103,7 +103,8 @@ def main(args, config) -> str:
         config["leaveoutds"] = args.leave
 
     model = config["model"]
-    model_name: str = args.model_name or get_run_name(model, args.dataset)
+    model_name: str = args.model_name or get_run_name(model, args.leave, args.seed)
+
     initialise_dirs(model_name)
     logfile = rf"tmp/{model_name}/train.log"
     ckptdir = rf"tmp/{model_name}/checkpoints"
@@ -136,7 +137,7 @@ def main(args, config) -> str:
     wrapper = get_dataset(args.dataset, config, log)
 
     trainds = wrapper.get_split("train")
-    validationds = wrapper.get_split("validation", batch_size=8)
+    validationds = wrapper.get_split("validation")
     if config["num_classes"] != wrapper.num_classes:
         config["num_classes"] = wrapper.num_classes
 
@@ -154,28 +155,37 @@ def main(args, config) -> str:
 
     train_metric = MulticlassAccuracy(num_classes=config["num_classes"]).to(device)
     val_metric = MulticlassAccuracy(num_classes=config["num_classes"]).to(device)
-    # For proposed
-    optimizer = AdamW(
-        params,
-        lr=config["lr"],
-        weight_decay=0.05,
-    )
+    optimizer_name = config.get("optimizer", "adamw").lower()
+    if optimizer_name == "adamw":
+        optimizer = AdamW(
+            params,
+            lr=config["lr"],
+            weight_decay=config.get("optimizer_weight_decay", 0.001),
+        )
+    elif optimizer_name == "sgd":
+        optimizer = SGD(
+            params,
+            lr=config["lr"],
+            momentum=config.get("optimizer_momentum", 0.9),
+            weight_decay=config.get("optimizer_weight_decay", 5e-4),
+            nesterov=config.get("optimizer_nesterov", False),
+        )
+    else:
+        raise ValueError(f"Unsupported optimizer: {optimizer_name}")
 
-    # For arcvein only
-    # optimizer = SGD(
-    #     params,
-    #     lr=config['lr'],
-    #
-    #     nesterov=True,
-    #     momentum=0.9,
-    #     weight_decay=5 * 1e-4,
-    # )
-
-    scheduler = CosineAnnealingLR(optimizer, epochs, 1e-3)  # disable for arcvein
+    scheduler_name = config.get("scheduler", "cosine").lower()
+    if scheduler_name == "cosine":
+        scheduler = CosineAnnealingLR(
+            optimizer, epochs, config.get("scheduler_eta_min", 1e-3)
+        )
+    elif scheduler_name == "none":
+        scheduler = None
+    else:
+        raise ValueError(f"Unsupported scheduler: {scheduler_name}")
     best_validation_loss = np.inf
     best_acc_val = 0
     loss_is_nan = False
-    early_stop = 10
+    early_stop = config.get('early_stop',100000)
     validation_acc_didnt_increase = early_stop
 
     try:
@@ -290,7 +300,8 @@ def main(args, config) -> str:
                             f"Validation loss didn't decrease for {early_stop} epochs. Stopping training."
                         )
                         break
-            # scheduler.step() # disable for arcvein
+            if scheduler is not None:
+                scheduler.step()
             # if not epoch % 30:
             #     for group in optimizer.param_groups:
             #         group["lr"] /= 10

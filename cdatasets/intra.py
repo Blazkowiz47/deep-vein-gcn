@@ -15,7 +15,7 @@ from utils import DatasetGenerator, Wrapper, image_extensions
 set_image_backend("accimage")  # Faster image loading than PIL
 
 
-class LeaveoneoutWrapper(Wrapper):
+class IntraWrapper(Wrapper):
     def __init__(
         self,
         config: Dict[str, Any],
@@ -37,19 +37,15 @@ class LeaveoneoutWrapper(Wrapper):
                 ...
         """
 
-        self.name = "leaveoneout"
+        self.name = "intra"
         self.log = log
         self.kwargs: Dict[str, Any] = kwargs
-        self.stat_seed = config.get("stat_seed", 0)
         self.partition_split = kwargs.get("partition_split", 0.8)
-        self.leaveoutds = config.get("leaveoutds", "vera")
+        self.stat_seed = config.get("stat_seed", 0)
+        self.dataset = config["main_dataset"]
         self.height = config.get("height", 224)
         self.width = config.get("width", 224)
-        self.rdirs: List[str] = []
-
-        for dataset in ["fvusm", "fv300", "mmcbnu", "polyu", "vera"]:
-            if dataset != self.leaveoutds and not dataset.startswith("leaveoutds_"):
-                self.rdirs.append(os.path.join("./data", dataset, str(self.stat_seed)))
+        self.rdir = os.path.join("./data", self.dataset, str(self.stat_seed))
 
         self.batch_size = config["batch_size"]
         self.num_workers = config.get("num_workers", 4)
@@ -73,26 +69,16 @@ class LeaveoneoutWrapper(Wrapper):
         )
 
     def initialise_db_old(self) -> None:
-        for rdir in self.rdirs:
-            self._internal_loop(rdir, "test", self.test_data)
-            self._internal_loop(rdir, "train", self.train_data)
-
-        self.num_classes = len(self.train_data)
+        train_data = {}
+        test_data = {}
+        self._internal_loop(self.rdir, "test", test_data)
+        self._internal_loop(self.rdir, "train", train_data)
         self.log.info(f"Number of classes: {self.num_classes}")
-
-    def initialise_db(self) -> None:
-        for ssplit in ["train", "test"]:
-            self._internal_loop(ssplit, self.total_data)
-        dataset_length = sum([len(v) for v in self.total_data.values()])
-        self.num_classes = len(self.total_data)
-        self.log.debug(f"Data-length for {self.name} split: {dataset_length}")
-        self.log.debug(f"Number of classes for {self.name} split: {self.num_classes}")
-
-        for cid in self.total_data:
-            random.shuffle(self.total_data[cid])
-            partition_index = int(self.partition_split * len(self.total_data[cid]))
-            self.train_data[cid] = self.total_data[cid][:partition_index]
-            self.test_data[cid] = self.total_data[cid][partition_index:]
+        total_ids = int(len(train_data) * self.partition_split)
+        trainids = list(sorted(train_data.keys()))[:total_ids]
+        self.num_classes = len(trainids)
+        self.train_data = {k: train_data[k] for k in trainids}
+        self.test_data = {k: test_data[k] for k in trainids}
 
     def _internal_loop(
         self, rdir: str, ssplit: str, prev: Dict[str, List[str]]
@@ -100,13 +86,11 @@ class LeaveoneoutWrapper(Wrapper):
         rdir = os.path.join(rdir, ssplit)
         for cid in os.listdir(rdir):
             ds = rdir.split("/")[-3]
-            if cid not in prev:
-                prev[ds + "_" + cid] = []
             cdir = os.path.join(rdir, cid)
             imgs = 0
             for img in os.listdir(cdir):
                 if "." + img.split(".")[-1].lower() in image_extensions:
-                    prev[ds + "_" + cid].append(os.path.join(cdir, img))
+                    prev.setdefault(ds + "_" + cid, []).append(os.path.join(cdir, img))
                     imgs += 1
 
             if ssplit == "train" and self.mintrain_imgs > imgs:
@@ -169,10 +153,9 @@ class LeaveoneoutWrapper(Wrapper):
         return imgarray.float(), label.float()
 
 
-class BalancedLeaveoneoutWrapper(LeaveoneoutWrapper):
+class BalancedIntraWrapper(IntraWrapper):
     def __init__(self, config: Dict[str, Any], log: Logger, **kwargs):
         super().__init__(config, log, **kwargs)
-        self.name = "balanced_leaveoneout"
 
     def loop_splitset(self, ssplit: str) -> List[Any]:
         if ssplit == "train":

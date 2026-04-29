@@ -38,16 +38,24 @@ def get_avg_ci(data):
 
 
 if __name__ == "__main__":
-    print("Proposed: 7.53 [5.88 - 9.18]")
-    print()
-    res = groupify(load_jsonl(Path(loss_ablation_path)))
-    print("Loss ablation: ")
-    for key, data in res.items():
-        avg, ci = get_avg_ci(list(data.values()))
-        print(f"{key}: {avg:.2f} [{ci[0]:.2f}-{ci[1]:.2f}]")
-
-    res = groupify(load_jsonl(Path(component_ablation_path)))
-    print("Component ablation: ")
-    for key, data in res.items():
-        avg, ci = get_avg_ci(list(data.values()))
-        print(f"{key}: {avg:.2f} [{ci[0]:.2f}-{ci[1]:.2f}]")
+    x = ["a", "b", "c", "d", "e", "f", "g"]
+    data = list(enumerate(x))
+    P = 3
+    for start in range(0, len(data), P):
+        message = ""
+        for offset in range(P):
+            message += str(data[(start + offset) % len(data)])
+        print(message)
+    # print("Proposed: 7.53 [5.88 - 9.18]")
+    # print()
+    # res = groupify(load_jsonl(Path(loss_ablation_path)))
+    # print("Loss ablation: ")
+    # for key, data in res.items():
+    #     avg, ci = get_avg_ci(list(data.values()))
+    #     print(f"{key}: {avg:.2f} [{ci[0]:.2f}-{ci[1]:.2f}]")
+    #
+    # res = groupify(load_jsonl(Path(component_ablation_path)))
+    # print("Component ablation: ")
+    # for key, data in res.items():
+    #     avg, ci = get_avg_ci(list(data.values()))
+    #     print(f"{key}: {avg:.2f} [{ci[0]:.2f}-{ci[1]:.2f}]")

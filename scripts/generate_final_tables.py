@@ -31,6 +31,7 @@ METHOD_LABELS = {
     "lgfin": "LGFIN",
     "fv-vit": "FV-ViT",
     "veinAttNet": "VeinAttNet",
+    "resnet": "Chen et al",
     "snakegraph2": "Proposed Method",
 }
 
@@ -42,6 +43,7 @@ METHOD_ORDER = [
     "lgfin",
     "fv-vit",
     "veinAttNet",
+    "resnet",
     "snakegraph2",
 ]
 
@@ -163,7 +165,9 @@ def load_baseline_metrics() -> Dict[str, Dict[str, Dict[str, float]]]:
 
 def build_table(split_name: str, results: dict, baselines: dict) -> str:
     lines = [f"## {split_name.title()} Subjects", ""]
-    headers = ["Train -> Test Dataset", "Algorithm"] + [label for _, label in METRIC_ORDER]
+    headers = ["Train -> Test Dataset", "Algorithm"] + [
+        label for _, label in METRIC_ORDER
+    ]
     lines.append("| " + " | ".join(headers) + " |")
     lines.append("|" + "|".join(["---"] * len(headers)) + "|")
 
@@ -190,7 +194,10 @@ def build_table(split_name: str, results: dict, baselines: dict) -> str:
             metric_means = []
             for method, metric_source, use_ci in rows:
                 if use_ci:
-                    values = [seed_metrics[metric_key] for seed_metrics in metric_source.values()]
+                    values = [
+                        seed_metrics[metric_key]
+                        for seed_metrics in metric_source.values()
+                    ]
                     scale = 100.0 if metric_key.startswith("tar_") else 1.0
                     metric_means.append((method, float(np.mean(values) * scale)))
                 else:
@@ -208,7 +215,10 @@ def build_table(split_name: str, results: dict, baselines: dict) -> str:
             row = [dataset_cell, METHOD_LABELS[method]]
             for metric_key, _ in METRIC_ORDER:
                 if use_ci:
-                    values = [seed_metrics[metric_key] for seed_metrics in metric_source.values()]
+                    values = [
+                        seed_metrics[metric_key]
+                        for seed_metrics in metric_source.values()
+                    ]
                     scale = 100.0 if metric_key.startswith("tar_") else 1.0
                     formatted = format_metric(values, scale=scale)
                     current_value = float(np.mean(values) * scale)

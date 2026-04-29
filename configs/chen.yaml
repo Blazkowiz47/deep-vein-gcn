@@ -1,0 +1,32 @@
+batch_size: 256
+epochs: 100
+device: "cuda"
+width: 224
+height: 224
+lr: 0.1
+validate_after_epochs: 1
+seed: 2025
+num_workers: 8
+
+# dataset seed
+stat_seed: 0
+
+# Hyper parameters for loss function
+loss: "arcface"
+num_classes: 301 # For training on FV-300
+embedding_size: 512
+scale: 32.0
+margin: 0.5
+
+# Hyper parameters for model
+model: "resnet"
+backbone: "resnet18"
+
+# Optimizer
+optimizer: "sgd"
+optimizer_momentum: 0.9
+optimizer_weight_decay: 0.0005
+optimizer_nesterov: false
+scheduler: "none"
+freeze_centroids: 100
+early_stop: 15

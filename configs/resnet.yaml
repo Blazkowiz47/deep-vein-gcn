@@ -1,0 +1,20 @@
+batch_size: 64
+epochs: 100
+device: "cuda"
+width: 224
+height: 224
+lr: 0.00003
+validate_after_epochs: 1
+seed: 2025
+num_workers: 8
+
+# dataset seed
+stat_seed: 0
+
+# Hyper parameters for loss funtion
+loss: "triplet"
+num_classes: 301 # For training on FV-300
+
+# Hyper parameters for model
+model: "resnet"
+freeze_centroids: 100

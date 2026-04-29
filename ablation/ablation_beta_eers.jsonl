@@ -1,0 +1,3 @@
+{"key": "fvusm:0:beta_0p1", "value": {"beta": 0.1, "eer": 9.069476191467771}}
+{"key": "fvusm:0:beta_0p5", "value": {"beta": 0.5, "eer": 10.599809202166885}}
+{"key": "fvusm:0:beta_0p9", "value": {"beta": 0.9, "eer": 11.56842138956167}}

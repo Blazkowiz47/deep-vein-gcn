@@ -36,7 +36,9 @@ def set_seeds(log: Logger, seed: int):
     np.random.seed(seed)
 
 
-def get_run_name(model: str, dataset: str) -> str:
+def get_run_name(model: str, dataset: str, seed=None) -> str:
+    if seed is not None:
+        return f"{model}_{dataset}_{seed}"
     return f"{model}_{dataset}_{datetime.now().strftime('%d_%m_%y_%H_%M_2.2%S').replace('.', '_')}"
 
 

@@ -34,6 +34,11 @@ def get_model(model: str, config: Dict[str, Any], log: Logger, **kwargs) -> Modu
 
         return Arcvein(config, log, **kwargs)
 
+    if model == "resnet":
+        from models.resnet import Resnet
+
+        return Resnet(config, log, **kwargs)
+
     ### Donot remove this line as the build generator uses this as a marker
     ### while adding new model.
     raise NotImplementedError(f"Model: {model} not present")
