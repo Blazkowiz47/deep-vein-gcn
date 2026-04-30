@@ -31,18 +31,19 @@ METHOD_LABELS = {
     "lgfin": "LGFIN",
     "fv-vit": "FV-ViT",
     "veinAttNet": "VeinAttNet",
-    "resnet": "Chen et al",
+    "chen": "Chen et al",
     "snakegraph2": "Proposed Method",
 }
 
 PROPOSED_METHOD = "snakegraph2"
 VEIN_ATTNET = "veinAttNet"
 HANDCRAFTED_METHODS = ("mcp", "rlt", "wld")
-LEARNED_BASELINES = ("arcvein", "lgfin", "fv-vit", "veinAttNet", "resnet")
+LEARNED_BASELINES = ("arcvein", "lgfin", "fv-vit", "veinAttNet", "chen")
 FIXED_LEARNED_COMPARATORS = (
     "arcvein",
     "lgfin",
     "fv-vit",
+    "chen",
     "veinAttNet",
 )
 METRICS = [
@@ -56,6 +57,7 @@ COMPACT_ROWS = (
     ("Proposed vs ArcVein", "seed"),
     ("Proposed vs LGFIN", "seed"),
     ("Proposed vs FV-ViT", "seed"),
+    ("Proposed vs Chen et al", "seed"),
     ("Proposed vs VeinAttNet", "seed"),
 )
 

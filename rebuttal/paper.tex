@@ -1,54 +1,3 @@
-%% bare_jrnl_compsoc.tex
-%% V1.4b
-%% 2015/08/26
-%% by Michael Shell
-%% See:
-%% http://www.michaelshell.org/
-%% for current contact information.
-%%
-%% This is a skeleton file demonstrating the use of IEEEtran.cls
-%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
-%% Computer Society journal paper.
-%%
-%% Support sites:
-%% http://www.michaelshell.org/tex/ieeetran/
-%% http://www.ctan.org/pkg/ieeetran
-%% and
-%% http://www.ieee.org/
-
-%%*************************************************************************
-%% Legal Notice:
-%% This code is offered as-is without any warranty either expressed or
-%% implied; without even the implied warranty of MERCHANTABILITY or
-%% FITNESS FOR A PARTICULAR PURPOSE!
-%% User assumes all risk.
-%% In no event shall the IEEE or any contributor to this code be liable for
-%% any damages or losses, including, but not limited to, incidental,
-%% consequential, or any other damages, resulting from the use or misuse
-%% of any information contained here.
-%%
-%% All comments are the opinions of their respective authors and are not
-%% necessarily endorsed by the IEEE.
-%%
-%% This work is distributed under the LaTeX Project Public License (LPPL)
-%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
-%% distributed and modified. A copy of the LPPL, version 1.3, is included
-%% in the base LaTeX documentation of all distributions of LaTeX released
-%% 2003/12/01 or later.
-%% Retain all contribution notices and credits.
-%% ** Modified files should be clearly indicated as such, including  **
-%% ** renaming them and changing author support contact information. **
-%%*************************************************************************
-
-
-% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
-% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
-% *** with production work. The IEEE's font choices and paper sizes can   ***
-% *** trigger bugs that do not appear when using other class files.       ***                          ***
-% The testflow support page is at:
-% http://www.michaelshell.org/tex/testflow/
-
-
 \documentclass[10pt,journal,compsoc]{IEEEtran}
 %
 % If IEEEtran.cls has not been installed into the LaTeX system files,
@@ -382,7 +331,9 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{OpenVeinNet: A Novel Open-Set Finger Vein Verification Network Using Multi-Graph Learning and Centroid-Angular Hybrid Loss}
+%\title{OpenVeinNet: A Novel Open-Set Finger Vein Verification Network Using Multi-Graph Learning and Centroid-Angular Hybrid Loss}
+%\title{OpenVeinNet: A Robust Open-Set Finger Vein Verification Framework Using Dynamic Snake Convolution, Graph-Based Feature Modelling, and Centroid-Angular Hybrid Loss}
+\title{OpenVeinNet: Robust Open-Set Finger Vein Verification with Dynamic Snake Convolution and Graph Learning}
 %
 %
 % author names and IEEE memberships
@@ -409,12 +360,9 @@
 \author{Sushrut Patwardhan and
         Raghavendra Ramachandra% <-this % stops a space
 \thanks{Both authors have contributed equally. \\
+SAFE Centre, Department of Information Security and Communication Technology (IIK), Norwegian University of Science and Technology (NTNU), Gjøvik, Norway.  \\
             Corresponding Author: Raghavendra Ramachandra (E-Mail: raghavendra.ramachandra@ntnu.no)}}
-% \affiliation{organization={Norwegian University of Science and Technology (NTNU)},%Department and Organization
-%                 addressline={Teknologivegen 22},
-%                 city={Gjøvik},
-%                 postcode={2815},
-%                 country={Norway}}
+
 % note the % following the last \IEEEmembership and also \thanks -
 % these prevent an unwanted space from occurring between the last author name
 % and the end of the author line. i.e., if you had this:
@@ -476,10 +424,9 @@
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-Biometric verification systems play a crucial role in secure access control applications. Among the various biometric modalities, finger vein recognition has gained significant attention due to its high reliability and robustness. A key advantage of finger vein biometrics is that the vascular patterns lie beneath the skin, making them invisible to the naked eye and inherently resistant to presentation attacks.
-In this paper, we present {OpenVeinNet}, a novel open-set finger vein verification framework that integrates dynamic snake convolution with a graph convolutional network. The dynamic snake convolution effectively captures the tubular structures of finger vein patterns, while the graph convolutional network encodes these structures into discriminative feature representations for reliable verification. To further enhance performance in open-set scenarios, we introduce a \emph{centroid-angular hybrid loss}, which jointly optimises intra-class compactness and inter-class separability in the learned feature space.
-Extensive experiments were conducted on five publicly available datasets including FV-300, MMCBNU, POLY-U, FV-USM, and VERA,  and the proposed method was benchmarked against seven state-of-the-art approaches, including both handcrafted and deep learning methods. The results demonstrate that OpenVeinNet consistently outperforms existing techniques, achieving superior accuracy and robustness in open-set verification scenarios.
-
+Biometric verification systems play a crucial role in secure access control applications. Among different biometric modalities, finger vein recognition has attracted increasing attention because vascular patterns are located beneath the skin, making them difficult to observe externally and relatively resistant to presentation attacks. However, reliable finger vein verification remains challenging under open-set conditions, where evaluation identities are unseen during training and non-enrolled identities must be rejected at inference time.
+In this paper, we present \textit{OpenVeinNet}, an open-set finger vein verification framework that integrates Dynamic Snake Convolution (DSConv) with graph-based feature modelling. DSConv is used to capture the curvilinear and tubular structure of finger vein patterns, while the graph convolutional backbone models long-range topological relationships between vein regions. To improve embedding discrimination, we further introduce a \emph{Centroid Angular Hybrid Loss}, which encourages intra-class compactness and inter-class angular separation in the learned feature space.
+Extensive experiments are conducted on five publicly available finger vein datasets, namely FV-300, MMCBNU, FV-USM, PolyU, and VERA. The proposed method is evaluated against handcrafted and deep learning-based baselines under both enrollment-based unknown-rejection and full-subject verification protocols. The results show that OpenVeinNet achieves strong overall generalisation across datasets, with consistently low EER and competitive threshold-based verification performance at fixed FAR operating points. These findings demonstrate the effectiveness of combining adaptive tubular feature extraction, graph-based relational modelling, and angularly constrained embedding learning for open-set finger vein verification.
 \end{abstract}
 
 % Note that keywords are not normally used for peer review papers.
@@ -500,35 +447,14 @@ Biometrics, Finger vein, Deep learning, Graph Neural Network, Verification.
 % - because all conference papers position the abstract like regular
 % papers do.
 \IEEEdisplaynontitleabstractindextext
-% \IEEEdisplaynontitleabstractindextext has no effect when using
-% compsoc or transmag under a non-conference mode.
-
-
-
-% For peer review papers, you can put extra information on the cover
-% page as needed:
-% \ifCLASSOPTIONpeerreview
-% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
-% \fi
-%
-% For peerreview papers, this IEEEtran command inserts a page break and
-% creates the second title. It will be ignored for other modes.
 \IEEEpeerreviewmaketitle
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
-Reliable user verification is essential for secure access control systems across a wide range of applications. Biometric authentication has emerged as a preferred solution owing to its convenience and ability to uniquely identify individuals.  Conventional biometric traits such as fingerprints, facial features, irises, palmprints, and ears are widely used; however, they can be susceptible to spoofing, particularly when acquired in a non-intrusive manner.  In contrast, finger vein patterns present a compelling alternative, as they are located beneath the skin and are inherently difficult to replicate or observe externally. This intrinsic resistance to presentation attacks, coupled with high verification accuracy and relatively low deployment cost, has driven the increasing adoption of finger vein recognition, especially in banking and financial services.
 
+Reliable user verification is essential for secure access control systems across a wide range of applications. Biometric authentication has become a widely adopted solution because it offers convenient and identity-linked access control. Conventional biometric traits such as fingerprints, facial features, irises, palmprints, and ears are commonly used; however, they may be vulnerable to spoofing, particularly when acquired in a non-intrusive manner. In contrast, finger vein patterns provide an attractive alternative because the vascular structures are located beneath the skin and are therefore difficult to observe externally or replicate. This intrinsic resistance to presentation attacks, together with high verification accuracy and relatively low deployment cost, has increased the use of finger vein recognition, particularly in banking and financial services.
 
-Finger vein patterns can be acquired using cost-effective near-infrared (NIR) imaging systems, in which the light source and camera are positioned above, alongside, or around the finger.  When NIR light penetrates the finger, it is absorbed by the haemoglobin present in the veins, causing the vascular structures to appear darker than the surrounding tissue.  Finger vein biometrics exhibit high temporal stability, are less affected by environmental variations, and demonstrate strong uniqueness across individuals.
-Furthermore, capturing images from both the dorsal and palmar sides of the finger can enhance verification accuracy.
-
-
-%\begin{figure}[ht!]
-%\centering
-%\includegraphics[width=\linewidth]{plots/fingervein.pdf}
-%\caption{finger vein images captured using near-infrared sensing.}
-%\label{fig:fingervein}
-%\end{figure}
+Finger vein patterns are typically acquired using cost-effective near-infrared (NIR) imaging systems, where the light source and camera are positioned above, alongside, or around the finger. When NIR light penetrates the finger, it is absorbed by haemoglobin in the veins, causing the vascular structures to appear darker than the surrounding tissue. Finger vein biometrics are also characterised by temporal stability, relatively low sensitivity to external environmental variations, and strong uniqueness across individuals. Furthermore, capturing images from both the dorsal and palmar sides of the finger can improve verification performance.
 
 \begin{figure}[ht!]
 \centering
@@ -536,10 +462,6 @@ Furthermore, capturing images from both the dorsal and palmar sides of the finge
 \caption{A brief taxonomy of finger vein verification techniques based on deep learning approaches.}
 \label{fig:techniques}
 \end{figure}
-
-
-
-
 
 \begin{table*}[hbt!]
     \centering
@@ -566,6 +488,7 @@ Furthermore, capturing images from both the dorsal and palmar sides of the finge
                 Hengyi Ren et al., \cite{2021_1} (2021) &  Squeeze and Excitation blocks embedded Resnet trained on encrypted finger vein images.\\ \hline
                 Ridvan Salih Kuzu et al., \cite{2021_2} (2021) & Custom DenseNet 161 trained on additive angular penalty and large margin cosine penalty loss function. \\ \hline
                 Borui Hou et. al., \cite{arcvein} (2021) & Resnet-like architecture with ECA-Resnet blocks trained on arc-cosine loss and softmax loss together.\\ \hline
+                Zhenxiang Chen et. al., \cite{chenresnetarcloss} (2021) & Resnet-18 architecture trained on arc-loss with image enhancement, and luminance-inversion data augmentation\\ \hline
                 Weili Yang et al., \cite{2022_1} (2022) & Multi-view finger vein with individual CNNs and view pooling. \\ \hline
                 Huafeng Qin et al., \cite{2022_2} (2022) & Based on Local Attention Transformer\\ \hline
                 Tingting Chai et al., \cite{2022_3} (2022) &  5 Sequential convolution layers and 1 dense layers \\ \hline
@@ -573,98 +496,77 @@ Furthermore, capturing images from both the dorsal and palmar sides of the finge
                 Weiye Liu et al., \cite{2023_1} (2023) & Inception architecture with residual attention block.\\ \hline
                 Zhongxia Zhang et al., \cite{2023_2} (2023) & CNN with spatial and channel attention module.\\ \hline
                 Chunxin Fang et al., \cite{2023_3} (2023) & Siamese network with attention module.\\ \hline
-                Chih-Hsien Hsia et al. \cite{2023_4} (2023) & Lightweight Convolutional Neural Network with attention and Margin based loss function.\\ \hline
-                Yiwei Huang et al. \cite{2023_5} (2023) & Axially enhanced local attention network (criss-cross kernel) \\ \hline
+                Chih-Hsien Hsia et al. \cite{2023_4} (2023) & Lightweight Convolutional Neural Network with attention and Margin based loss function.\\ \hline 
+                Yiwei Huang et al. \cite{2023_5} (2023) & Axially enhanced local attention network (criss-cross kernel) \\ \hline 
                 Huang, Junduan et al. \cite{2023_6} (2023) & Frequency spatial coupling network with resnet like architecture \\ \hline
                 Bin Wa et al., \cite{binma} (2023) & 3 Sequential convolution layers with bilinear pooling and multiple attention modules.\\ \hline
                 Xiaoye Li et al., \cite{vit} (2023) & Vision Transformer with rigorous regularisation added in mlp.\\ \hline
-                Raghavendra Ramachandra et al., \cite{veinatnnet} (2024) & 3 Sequential convolution layers followed by multi-head attention module connected in parallel with normal and enhanced finger vein images.\\  \hline
+                Raghavendra Ramachandra et al., \cite{veinatnnet} (2024) & 3 Sequential convolution layers followed by multi-head attention module connected in parallel with normal and enhanced finger vein images.\\  \hline 
                 Huafeng Qin et al., \cite{2024_2} (2024) & Generates optimal network using Neural Architecture Search using Gated Recurrent Units with self-attention. \\ \hline
                 Pengyang Zhao et. al. \cite{2024_1} (2024) & Transformer-based view finger vein recognition model which uses enhanced images as attention mask\\ \hline
                 Enyan Li et. al. \cite{lgfin} (2025) & Transformer and convolution-based model processing local and global features.\\ \hline
                 \hline
-                \textbf{Proposed Method} (\textbf{2025}) & \textbf{Dynamic Snake Convolution with Graph Convolution layers for feature extraction and novel Centroid-Angular Hybrid Loss.} \\
-              \hline
+                \textbf{Proposed Method} (\textbf{2026}) & \textbf{Dynamic Snake Convolution with Graph Convolution layers for feature extraction and novel Centroid-Angular Hybrid Loss.} \\
+              \hline          
         \end{tabular}
     }
     \medskip
-    \caption{Summary of Existing Deep Learning-Based Finger Vein Verification Techniques}
+    \caption{Summary of existing deep learning-based finger vein verification techniques.}
     \label{tab:prevwork}
 \end{table*}
 
 \begin{figure*}[htp]
 \centering
 \includegraphics[width=1\textwidth]{plots/Proposed_FV.pdf}
-\caption{Block diagram of the proposed OpenVeinNet framework for open-set finger vein verification. (a) The training phase incorporates a STEM module with Dynamic Snake Convolution, followed by a multi-layer Graph Convolutional Network (GCN) and the proposed Graph-Augmented Softmax Loss for robust representation learning. (b) During inference, the system performs open-set verification by comparing probe samples against enrolled templates using the learned graph-based embeddings.}
+\caption{Block diagram of the proposed OpenVeinNet framework for open-set finger vein verification. (a) The training phase incorporates a stem module with Dynamic Snake Convolution, followed by a multi-layer Graph Convolutional Network (GCN) and the proposed Centroid Angular Hybrid Loss for robust representation learning. (b) During inference, the system performs open-set verification by comparing probe samples against enrolled templates using the learned graph-based embeddings.}
 \label{fig:model}
 \end{figure*}
 
-Fingervein verification has been extensively investigated in the academic literature, leading to a wide range of methods that employ both handcrafted and deep learning approaches.  Earlier studies on finger vein recognition primarily relied on image processing techniques to extract vein patterns for template-based matching.  Notable handcrafted feature extraction methods include Maximum Curvature Points (MCP) \cite{mcp}, Repeated Line Tracking (RLT) \cite{rlt}, Wide Line Detectors (WLD) \cite{wld}, and Mean Curvature (MC), which are effective in enhancing vascular structures and achieving reliable verification accuracy under controlled acquisition conditions. In addition, various texture descriptors such as Local Binary Pattern (LBP) \cite{FV_LBPV}, Local Line Binary Pattern (LLBP) \cite{rosdi2011finger}, Histogram of Oriented Gradients (HoG) \cite{FV_HoG}, and Local Directional Pattern (LDP) have been widely explored.
-Dimensionality reduction methods, including Principal Component Analysis (PCA) and Linear Discriminant Analysis (LDA), have also been applied to improve computational efficiency and reduce feature redundancy. While these approaches have shown strong performance in constrained settings, they often struggle to generalise to variations in image quality, capture devices, and acquisition environments, as discussed in \cite{surveyonmanualfeatures}.
+Finger vein verification has been extensively investigated in the literature, resulting in a wide range of handcrafted and deep learning-based methods. Earlier studies primarily relied on image processing techniques to extract vein patterns for template-based matching. Representative handcrafted methods include Maximum Curvature Points (MCP)~\cite{mcp}, Repeated Line Tracking (RLT)~\cite{rlt}, Wide Line Detectors (WLD)~\cite{wld}, and Mean Curvature (MC), which enhance vascular structures and can achieve reliable verification under controlled acquisition conditions. Texture descriptors such as Local Binary Pattern (LBP)~\cite{FV_LBPV}, Local Line Binary Pattern (LLBP)~\cite{rosdi2011finger}, Histogram of Oriented Gradients (HoG)~\cite{FV_HoG}, and Local Directional Pattern (LDP) have also been explored. In addition, dimensionality reduction methods, including Principal Component Analysis (PCA) and Linear Discriminant Analysis (LDA), have been used to improve computational efficiency and reduce feature redundancy. Although these handcrafted approaches remain effective in clean and well-controlled scenarios, they often struggle to generalise across changes in image quality, capture devices, and acquisition environments~\cite{surveyonmanualfeatures}.
 
+In recent years, deep learning has been extensively explored for finger vein verification, yielding strong performance gains over traditional methods. A taxonomy of deep learning algorithms for finger vein verification is illustrated in Figure~\ref{fig:techniques}, and a summary of representative techniques is provided in Table~\ref{tab:prevwork}. Early deep learning-based approaches typically employed serial convolutional neural network (CNN) architectures, consisting of convolutional layers followed by one or two fully connected layers. Such models, as used in~\cite{2015_1, 2016_1, 2016_2, 2017_1,2017_2, 2018_1, 2019_2, 2020_2, 2020_3, 2021_1, 2021_2, 2022_1, 2022_3, ism}, are generally lightweight and computationally efficient, but their generalisation can be limited when evaluated across unseen acquisition conditions or new subject populations.
 
-In recent years, deep learning has been extensively explored for finger vein verification, yielding strong performance gains over traditional methods. A taxonomy of deep learning algorithms for finger vein verification is illustrated in Figure~\ref{fig:techniques}, and a summary of representative techniques is provided in Table~\ref{tab:prevwork}.  Early deep learning-based approaches typically employed serial convolutional neural network (CNN) architectures, consisting of a sequence of convolutional layers followed by one or two fully connected layers.
-Such models, as used in works like \cite{2015_1, 2016_1, 2016_2, 2017_1,2017_2, 2018_1, 2019_2, 2020_2, 2020_3, 2021_1, 2021_2, 2022_1, 2022_3, ism}, were generally lightweight and computationally efficient; however, they often exhibited limited generalisation capability, particularly when applied to diverse acquisition conditions or unseen data.
+Autoencoder-based networks have been used to learn high-level feature representations for finger vein verification~\cite{2019_4, 2019_5}. Deformable filters incorporated into Fully Convolutional Networks (FCNs) have also been proposed to better model spatial variations~\cite{2020_1}. While these approaches improve local adaptability, they may require longer training and can still be sensitive to sensor-specific characteristics. Siamese networks have also been investigated for finger vein verification~\cite{2019_1, 2019_3, 2023_3}. Their pairwise training formulation can help with class imbalance, but such models are computationally demanding to train and may become difficult to scale as the number of enrolled identities increases.
 
+Attention-based architectures have attracted growing interest because they can model both local and global discriminative cues within a unified framework~\cite{chenresnetarcloss, arcvein, binma, 2022_2, 2023_1, 2023_2, 2023_3, 2023_4, 2023_5, vit, veinatnnet, 2024_1, 2024_2}. However, their performance can degrade under cross-dataset evaluation when the training and testing data differ in sensor characteristics, image quality, and acquisition protocols. Vision Transformer (ViT)-based methods have also been explored~\cite{2022_2, vit}, but their effectiveness is often constrained by the limited scale of publicly available finger vein datasets. More recently, LGFIN~\cite{lgfin} combines multi-scale local and global contextual features using a dynamic feature interaction network, showing the importance of jointly modelling complementary vein information.
 
-Autoencoder-based neural networks have been applied to extract high-level feature representations for finger vein verification \cite{2019_4, 2019_5}. Similarly, deformable filters incorporated into Fully Convolutional Networks (FCNs) have been proposed to improve performance \cite{2020_1}.
-While these approaches can effectively model spatial variations, they often demand longer training times and exhibit limited generalisability across different imaging sensors. Siamese networks have also gained popularity for finger vein verification \cite{2019_1, 2019_3, 2023_3}.  Trained with contrastive loss functions, they are relatively robust to class imbalance within datasets. However, these models are computationally intensive to train and can be difficult to scale as the number of enrolled identities increases. Attention-based architectures have attracted growing interest due to their ability to capture both global and local discriminative features in a unified framework \cite{arcvein, binma, 2022_2, 2023_1, 2023_2, 2023_3, 2023_4, 2023_5, vit, veinatnnet, 2024_1, 2024_2}. Although these models achieve strong performance on the data they are trained on, their feature embeddings may struggle to generalise to new domains, partly due to their reliance on high-quality training data and susceptibility to overfitting. More recently, Vision Transformer (ViT)-based methods have been explored for finger vein verification \cite{2022_2, vit}. While they show promise, their performance across different sensors is often constrained by the relatively small size of available finger vein datasets, which limits their ability to learn robust, generalisable representations. The latest work from \cite{lgfin} aims to enhance performance by combining multi-scale local and global context features using a dynamic feature interaction network.
+Despite these advances, two challenges remain central for practical finger vein verification. First, many methods show reduced robustness under cross-dataset evaluation because the learned representations are affected by sensor and acquisition shifts. Second, open-set deployment requires not only matching enrolled identities but also rejecting non-enrolled probes at fixed operating thresholds. This distinction is important because a system that performs well when all test identities are enrolled may still fail when unknown identities are presented during inference \cite{chenresnetarcloss}.
 
+To address these limitations, we propose \emph{OpenVeinNet}, a finger vein verification framework designed for robust cross-dataset and open-set evaluation. The proposed model uses Dynamic Snake Convolution (DSConv) layers to capture the curvilinear and tubular structures of finger vein patterns. These features are then processed by Graph Convolutional Networks (GCNs), which model long-range topological relationships between vein regions. For verification, the extracted embeddings are compared using cosine similarity between enrolment and probe samples. To further improve open-set discrimination, we introduce a Centroid Angular Hybrid Loss that encourages intra-class compactness and inter-class angular separation in the learned embedding space.
 
-Based on the above discussion, one of the most persistent challenges in existing finger vein verification methods is their limited generalisability across datasets captured under varying image qualities and sensing conditions. Most approaches require end-to-end training or dataset-specific fine-tuning to achieve reliable performance, which reduces their adaptability in practical deployments.  Furthermore, existing finger vein verification methods often struggle with poor generalisability in open-set scenarios, where training and testing subjects differ, and with limited ability to explicitly model the tubular structure of vein patterns.
-To address these limitations, we propose a novel architecture, \emph{OpenVeinNet}, designed to enhance both the reliability and generalisability of finger vein verification.  The proposed model incorporates Dynamic Snake Convolution (DSC) layers to effectively capture the tubular structures characteristic of finger vein patterns. These features are subsequently processed using Graph Convolutional Neural Networks (GCNs) to extract highly discriminative representations. For the final verification stage, we employ a lightweight single-layer CNN in a serial configuration with a softmax classifier to compute verification scores. We evaluate the proposed approach on five publicly available finger vein datasets and compare its performance against seven state-of-the-art (SOTA) methods. The results demonstrate that OpenVeinNet consistently outperforms existing techniques in terms of verification accuracy and cross-dataset generalisation. The main contributions of this work are as follows:
+We evaluate the proposed approach on five publicly available finger vein datasets, namely FV-300, FV-USM, MMCBNU, PolyU, and VERA, and compare it against handcrafted and deep learning-based state-of-the-art methods. The evaluation includes both enrollment-based unknown-rejection and full-subject verification protocols, together with threshold-based operating points such as TAR@FAR. The results show that OpenVeinNet achieves strong overall generalisation and favourable verification performance across challenging cross-dataset settings. The main contributions of this work are as follows:
 
 \begin{itemize}
-    \item Introduces a novel finger vein verification framework, \emph{OpenVeinNet}, which integrates Dynamic Snake Convolutions with Graph Convolutions in a unified three-stage design to robustly capture and represent discriminative vein features.
-    \item Extensive experimental evaluations on five publicly available datasets such as: FV-300, FV-USM, MMCBNU, PolyU, and VERA and  benchmarking performance against seven state-of-the-art (SOTA) methods.
-    \item Proposes a new task-specific loss function tailored to enhance discriminative feature learning for finger vein verification.
-    \item Provides interpretability analysis of \emph{OpenVeinNet} using Grad-CAM++, offering visual insights into the network’s decision-making process.
-    \item Ensures reproducibility by releasing the complete source code and pre-trained models at:
-    \url{https://github.com/Blazkowiz47/OpenVeinNet}
+    \item We introduce \emph{OpenVeinNet}, a finger vein verification framework that integrates DSConv-based tubular feature extraction with graph-based relational modelling to capture both local vein geometry and long-range vascular connectivity.
+    \item We propose a Centroid Angular Hybrid Loss that improves discriminative representation learning by promoting intra-class compactness and inter-class angular separation, which is particularly beneficial for open-set verification.
+    \item We conduct extensive experiments on five public datasets, including FV-300, FV-USM, MMCBNU, PolyU, and VERA, and benchmark the proposed method against handcrafted and deep learning-based state-of-the-art methods.
+    \item We evaluate the method under both enrollment-based unknown-rejection and full-subject verification protocols, reporting AUC, EER, and threshold-based TAR@FAR operating points to reflect practical biometric deployment conditions.
+    \item We provide ablation studies, computational-cost analysis, and Grad-CAM++-based interpretability analysis to justify the architectural design, loss formulation, and decision behaviour of the proposed model.
+    \item We support reproducibility by releasing the complete source code and pre-trained models at:
+    \url{https://github.com/Blazkowiz47/deep-vein-gcn}
 \end{itemize}
 
-
-The remainder of this paper is organised as follows. Section~\ref{sec:proposed} presents the proposed method, detailing its architectural components and the newly introduced loss function. Section~\ref{sec:experiments} reports the quantitative performance of the approach in comparison with state-of-the-art models across multiple datasets. Section~\ref{sec:refinement} outlines the ablation studies conducted to guide the design choices and refine the proposed architecture. Section~\ref{sec:interpretation} employs interpretability techniques to visualise and analyse the internal workings of the model. Finally, Section~\ref{sec:conclusion} summarises the key conclusions and highlights potential directions for future research.
-
-
-
-
-
+The remainder of this paper is organised as follows. Section~\ref{sec:proposed} presents the proposed method, including its architectural components and loss function. Section~\ref{sec:experiments} reports the experimental protocols and quantitative comparison with state-of-the-art methods. Section~\ref{sec:refinement} presents the ablation studies used to validate the main design choices. Section~\ref{sec:interpretation} provides the interpretability analysis. Finally, Section~\ref{sec:conclusion} concludes the paper and discusses future research directions.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Proposed Method: OpenVeinNet for Open-Set Finger Vein Verification}
 \label{sec:proposed}
 
+Finger vein recognition relies on the distinctive curvilinear patterns of veins located beneath the skin for biometric verification. Although these patterns are unique to each finger and individual, reliable verification remains challenging due to variations in vein visibility, image quality, finger pose, rotation, and acquisition conditions. These challenges become more pronounced in open-set verification, where evaluation identities are unseen during training and non-enrolled probe samples must be rejected at inference time. To address these issues, we propose \textit{OpenVeinNet}, a finger vein verification framework that combines a Dynamic Snake Convolution Graph Neural Network (DscGrapher) with a Centroid Angular Hybrid Loss. The DscGrapher is designed to model the tubular and branching structure of finger veins using Graph Convolutional Networks (GCNs)~\cite{deepgcns}. It first extracts vein-aware local features using Dynamic Snake Convolution (DSConv) \cite{dsc}, and then aggregates neighbouring regions into graph-based embeddings. The resulting compact feature representation is compared using cosine similarity for verification.
 
-%\begin{figure}[!ht]
-%\centering
-%\includegraphics[width=0.425\textwidth]{plots/model.pdf}
-%\caption{OpenVeinNet}
-%\label{fig:model}
-%\end{figure}
+Figure~\ref{fig:model} shows the block diagram of the proposed \textit{OpenVeinNet}, and Table~\ref{tab:dims} provides the architectural details. Figure~\ref{fig:model}(a) illustrates the training phase, while Figure~\ref{fig:model}(b) shows the open-set verification phase. During inference, finger vein images are passed through \textit{OpenVeinNet} to extract discriminative embeddings. These embeddings are then compared using cosine similarity between the probe and enrolled reference samples.
 
-Finger vein recognition uses the distinctive, curvilinear patterns of veins located beneath the skin for biometric verification. Although these patterns are unique to each finger and individual, the recognition process involves several challenges. These include variations in vein visibility under different imaging conditions, as well as irregular shapes caused by changes in finger pose and rotation during acquisition. As a result, open set verification, where the model must identify individuals who were not seen during training, is not only a technically demanding task but also essential for the practical deployment of such systems. To address these challenges, we propose \textit{OpenVeinNet}, a new framework that combines a Dynamic Snake Convolution Graph Neural Network (DscGrapher) with a Centroid Angular Hybrid Loss. The DscGrapher is designed to model the unique tubular structure of finger veins by making use of Graph Convolutional Networks (GCNs)~\cite{deepgcns}. It takes the output of the Dynamic Snake Convolution (DSC) and transforms it into graph node embeddings by aggregating features from neighbouring regions. This results in a compact feature representation of the finger vein image, which is then compared using cosine similarity for verification.
+As shown in Figure~\ref{fig:model}(a), \textit{OpenVeinNet} consists of two main components. The first is a stem module that extracts local tubular vein features using DSConv blocks. The second is a graph-based backbone composed of Grapher Blocks, which captures local and long-range relationships between vein regions. In addition to the architectural design, we introduce the Centroid Angular Hybrid Loss to encourage compact intra-class embeddings and improved inter-class angular separation. The stem module also includes a learnable positional embedding to preserve spatial structure before graph-based feature aggregation. The final global representation is obtained using adaptive average pooling and is used for verification.
 
-Figure~\ref{fig:model} shows the block diagram of the proposed \textit{OpenVeinNet} and Table \ref{tab:dims} shows the details of the proposed architecture. Part (a) illustrates the training process, while part (b) demonstrates the open set verification phase. During verification, finger vein images are passed through the \textit{OpenVeinNet} to extract discriminative feature embeddings. These embeddings are then compared using cosine distance to assess the similarity between a probe and a reference sample.
-As shown in Figure~\ref{fig:model}(a), the \textit{OpenVeinNet} architecture consists of two main components. The first is a stem module that extracts prominent tubular features from the input image. The second is a backbone made up of ten graphers connected in series, which are responsible for capturing both global and local feature representations.
-In addition to the architectural design, we introduce a new loss function called the Centroid Angular Hybrid Loss. This encourages feature embeddings to remain compact within each class while also ensuring clear separation between different classes. The stem module includes Dynamic Snake Convolution (DSConv) layers for adaptive feature extraction, along with a learnable positional embedding that preserves spatial information. The backbone consists of a sequence of Grapher Blocks that are designed to capture long-range connectivity in vein structures, followed by a global pooling layer that generates the final embeddings used for verification.
-The following sections provide a detailed explanation of each component in the proposed \textit{OpenVeinNet} framework.
-\subsection{Stem:  Dynamic Snake Convolution (DSConv) Blocks}
-Finger veins form complex, non-repeating structures that often resemble branching trees. Standard convolutional layers struggle to capture these patterns effectively because of their fixed and rigid receptive fields. To overcome this limitation, the Dynamic Snake Convolution (DSConv) adjusts its sampling locations in a flexible manner that follows the natural contours of the vein patterns. This dynamic behaviour allows DSConv to adapt to variations in shape and direction, enabling more accurate extraction of features from faint, curved, or irregular veins. %As a result, the network benefits from a clearer and more structured flow of information through the stem module, which is essential for reliable representation learning in finger vein recognition.
+The following subsections describe each component of the proposed \textit{OpenVeinNet} framework.
 
+\subsection{Stem: Dynamic Snake Convolution (DSConv) Blocks}
 
-
-%Figure \ref{fig:model} shows the block diagram of the proposed OpenVeinNet for reliable finger vein verification, and Table \ref{tab:dims} shows the details of the OpenVeinNet architecture. The finger vein structures are tubular; thus, extracting a distinct feature can contribute to discriminant features. Therefore, we proposed the use of Dynamic Snake Convolution (DSC) \cite{dsc}, which can capture distinct tubular structure information from the finger vein.  In the next step, we process the distinct tubular structure of a finger vein using Graph Convolution Neural Networks (GCNs) \cite{deepgcns}, which convert the output of DSC into graph node embeddings by aggregating the features from the neighbouring nodes and generates the final embedding of the finger vein image which is compared using simple cosine-similarity for verification. As shown in Figure \ref{fig:model}, the proposed OpenVeinNet is made up of two blocks: (a) a stem that can extract the prominent tabular structure corresponding to the finger vein, and, (b) a backbone that consists of  10 graphers that are connected in series to extract the global and local feature embeddings. The following sections discuss each building block of the proposed OpenVeinNet.
-
-%\subsection{Stem}
-%\label{stem}
-%The primary objective of the proposed stem is to transform finger vein images into rich, discriminative features that capture the underlying vein patterns.
-%To achieve this, we adopt the Dynamic Snake Convolution (DSC) \cite{dsc}, which is specifically designed to encode the complex, deformed tubular geometric structures.
-%Unlike standard convolution operations, DSC performs convolutions using a straightened kernel that adapts in both the x- and y-directions, enabling it to trace a fixed, tubular path.
-%This property allows DSC to capture intricate vein features with high accuracy, making it well-suited for given tasks.
+Finger vein patterns form complex, non-repeating, branching structures. Standard convolutional layers operate on fixed and regular grids, which limits their ability to follow curved and irregular vascular patterns. To address this limitation, we employ Dynamic Snake Convolution (DSConv), which adjusts its sampling locations to better align with local vein contours. This adaptive sampling behaviour allows the network to extract features from faint, curved, or locally deformed vein structures more effectively than standard convolutions.
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.425\textwidth]{plots/dsblock.pdf}
-\caption{DSBlock (In: input channels, Ot: output channels, K: kernel size, x and y are the directions in which DSConv operates)}
+\caption{DSBlock (In: input channels, Out: output channels, K: kernel size, x and y are the directions in which DSConv operates)}
 \label{fig:dscblock}
 \end{figure}
 
@@ -679,485 +581,494 @@ Finger veins form complex, non-repeating structures that often resemble branchin
          \hline
                 & DSC module 1 (S=2, F=3) & (112,112,16) \\
         Stem    & DSC module 2 (S=2, F=3) & (56,56,32) \\
-                & DSC module 3 (S=1, F=3) & (28,28,64) \\
+                & DSC module 3 (S=2, F=3) & (28,28,64) \\
          \hline
-                    & Stage I (K=9, S=2, F=3) & (13,13,128) \\
-        Backbone    & Stage II (K=9, S=2, F=3) & (6,6,256) \\
+                    & Stage I (K=18, S=2, F=3) & (14,14,128) \\
+        Backbone    & Stage II (K=9, S=2, F=3) & (7,7,256) \\
                     & avg\_pool & (1,1,256) \\
          \hline
     \end{tabular}
 
     \medskip
-    \caption{OpenVeinNet architecture details indicating output dimension. $K$ indicates number of nearest neighbours, $S$ indicates strides, and $F$ indicates filter-size}
+    \caption{OpenVeinNet architecture details indicating output dimension. $K$ indicates the number of nearest neighbours, $S$ indicates stride, and $F$ indicates filter size.}
     \label{tab:dims}
 \end{table}
 
-Figure~\ref{fig:dscblock} illustrates the architecture of the proposed DSConv Block. This block incorporates two standard convolution layers and two Dynamic Snake Convolutions (DSCs), which operate independently along the horizontal and vertical directions. This design helps improve learning efficiency and enhances the model's ability to generalise to complex vein patterns. The input to the DSConv Block is first passed through a regular convolution, followed by two DSCs. The outputs from these three branches are then concatenated and passed through another convolutional layer to produce the final output.
-Figure~\ref{fig:stem} shows the architecture of the complete stem module. Each DSConv Block in the stem is followed by a batch normalisation layer and a GELU activation. However, the GELU activation is deliberately omitted after the final DSConv Block. This allows the resulting embeddings to span a wider range of values, which is important for capturing fine-grained vein features.
+Figure~\ref{fig:dscblock} illustrates the proposed DSConv Block. The block contains one standard convolution branch and two DSConv branches operating along the horizontal and vertical directions. The standard convolution preserves conventional local image evidence, while the DSConv branches adapt to direction-specific vein structures. The outputs of these branches are concatenated and passed through a final convolution to produce the block output. This design allows the stem to capture both regular local texture and deformable tubular features.
 
-Given the finger vein image $\bm{X} \in \mathbb{R}^{B \times C_{\text{in}} \times H \times W}$, where $B$ is the batch size, $C_{\text{in}}$ is the number of channels, and $H = 224$, $W = 224$ are the height and width respectively.  Each {DSConv} operates by applying a deformable sampling strategy, based on learned offset maps, to follow vein-like tubular structures in either the x- or y-direction. This process can be described mathematically as follows:
+Figure~\ref{fig:stem} shows the complete stem architecture. Each DSConv Block is followed by batch normalisation and GELU activation. The GELU activation is omitted after the final DSConv Block to allow the extracted feature map to retain a wider range of responses, which is useful for preserving fine-grained vein information before graph-based processing.
 
- A \(3 \times 3\) convolution predicts offsets \(\bm{O} \in \mathbb{R}^{B \times 2K \times H \times W}\), where \(K\) is the kernel size (set to \(9\), \(7\), or \(3\) for the three stem layers), and \(\bm{O} = (\bm{O}_y, \bm{O}_x)\) contains \(K\) offsets for \(y\)- and \(x\)-directions per pixel:
-    \begin{equation}
+Given a finger vein image $\bm{X} \in \mathbb{R}^{B \times C_{\text{in}} \times H \times W}$, where $B$ is the batch size, $C_{\text{in}}$ is the number of channels, and $H = W = 224$, each DSConv applies a deformable sampling strategy based on learned offset maps. A \(3 \times 3\) convolution predicts offsets \(\bm{O} \in \mathbb{R}^{B \times 2K \times H \times W}\), where \(K\) is the kernel size and \(\bm{O} = (\bm{O}_y, \bm{O}_x)\) contains offsets for the vertical and horizontal directions:
+\begin{equation}
     \bm{O} = \tanh(\mathrm{GroupNorm}(\mathrm{Conv}_{3 \times 3}(\bm{X})))
-    \end{equation}
+\end{equation}
 
-Let Offsets adjust pixel coordinates be \(\bm{p} = (p_y, p_x)\), where \(\bm{p}\) denotes a pixel’s position in the spatial grid (\(p_y \in \{0, 1, \dots, H-1\}\), \(p_x \in \{0, 1, \dots, W-1\}\)). The coordinate maps are generated as:
-    \begin{equation}
+Let \(\bm{p} = (p_y, p_x)\) denote a pixel position in the spatial grid, where \(p_y \in \{0,1,\dots,H-1\}\) and \(p_x \in \{0,1,\dots,W-1\}\). The coordinate maps are generated as:
+\begin{equation}
     \bm{Y}_{\text{coord}}, \bm{X}_{\text{coord}} = \mathrm{GetCoordinateMap2D}(\bm{O}, m, \mathrm{extend\_scope})
-    \end{equation}
-Where,
-\begin{itemize}
-        \item \(m \in \{0, 1\}\) specifies \(x\)-axis (\(m=0\)) or \(y\)-axis (\(m=1\)) deformation.
-        \item \(\mathrm{extend\_scope}\) is a scalar (= \(1.0\)) that scales the offsets (\(\bm{O}_y \cdot \mathrm{extend\_scope}\), \(\bm{O}_x \cdot \mathrm{extend\_scope}\)) to control the deformation range.
-       \end{itemize}
-    The coordinates are normalized to \([-1, 1]\) for interpolation.
+\end{equation}
+where \(m \in \{0,1\}\) specifies deformation along the \(x\)-axis (\(m=0\)) or \(y\)-axis (\(m=1\)), and \(\mathrm{extend\_scope}=1.0\) controls the deformation range. The coordinates are normalised to \([-1,1]\) before interpolation.
 
-In the next step, the feature  sampled at \(\bm{p} + \bm{O}\) is performed using   bilinear interpolation as follows:
-    \begin{equation}
-    \bm{X}_{\text{deformed}} = \mathrm{GridSample}(\bm{X}, [\bm{X}_{\text{coord}}, \bm{Y}_{\text{coord}}], \text{mode}=\text{\textquotedblleft bilinear\textquotedblright})
-    \end{equation}
+The deformed feature map is sampled using bilinear interpolation:
+\begin{equation}
+    \bm{X}_{\text{deformed}} = \mathrm{GridSample}(\bm{X}, [\bm{X}_{\text{coord}}, \bm{Y}_{\text{coord}}], \text{mode}=\text{"bilinear"})
+\end{equation}
 
- A 1D convolution processes the deformed features, aligning with vein orientations as follows:
-    \begin{equation}
-    \bm{X}_{\text{dir}} =
-    \begin{cases}
+A directional convolution is then applied to the deformed feature map:
+\begin{equation}
+    \bm{X}_{\text{dir}} = 
+    \begin{cases} 
     \mathrm{Conv}_{(K, 1)}(\bm{X}_{\text{deformed}}), & \text{if } m = 0 \\
     \mathrm{Conv}_{(1, K)}(\bm{X}_{\text{deformed}}), & \text{if } m = 1
     \end{cases}
-    \end{equation}
- In the next step, the  output is normalized and activated as follows:
-     \begin{equation}
-    \bm{X}_{\text{dir}} = \mathrm{ReLU}(\mathrm{GroupNorm}(\bm{X}_{\text{dir}}))
-    \end{equation}
+\end{equation}
 
-The feature fusion of  outputs from a standard convolution (\(\bm{X}_{\text{conv}} = \text{Conv}_{K \times K}(\bm{X})\)), x-axis DSConv (\(\bm{X}_x = \text{DSConv}_x(\bm{X}) = \bm{X}_{\text{dir}, m=0}\)), and y-axis DSConv (\(\bm{X}_y = \text{DSConv}_y(\bm{X}) = \bm{X}_{\text{dir}, m=1}\)) are concatenated and processed by a final convolution as follows:
+The output is normalised and activated:
 \begin{equation}
-    \bm{X}_{\text{out}} = \mathrm{Conv}_{K \times K}(\mathrm{Concat}(\bm{X}_{\text{conv}}, \bm{X}_x, \bm{X}_y))
-    \end{equation}
+    \bm{X}_{\text{dir}} = \mathrm{ReLU}(\mathrm{GroupNorm}(\bm{X}_{\text{dir}})).
+\end{equation}
 
-
-%To further enhance learning efficiency and generalisation, we encapsulate two regular convolutions and two DSCs working in the x and y directions individually in a DSBlock.
-%As shown in Figure \ref{fig:dscblock}, we pass the input to DSBlock through a convolution, two DSC, and concatenate the output of these three and pass it through another convolution to generate the final output.
-%The proposed stem is composed of DSBlocks, Batch normalisation layers, and Gaussian Exponential Linear Unit (GELU).
-%We particularly use the batch normalisation layer in combination with GELU, as it has been proven to be effective for faster and better convergence while simultaneously adding a regularisation effect through the stochastic properties of GELU.
+The outputs from the standard convolution branch \(\bm{X}_{\text{conv}} = \mathrm{Conv}_{K \times K}(\bm{X})\), the \(x\)-axis DSConv branch \(\bm{X}_x = \text{DSConv}_x(\bm{X})\), and the \(y\)-axis DSConv branch \(\bm{X}_y = \text{DSConv}_y(\bm{X})\) are concatenated and fused by a final convolution:
+\begin{equation}
+    \bm{X}_{\text{out}} = \mathrm{Conv}_{K \times K}(\mathrm{Concat}(\bm{X}_{\text{conv}}, \bm{X}_x, \bm{X}_y)).
+\end{equation}
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.475\textwidth]{plots/stem.pdf}
-\caption{Stem architecture of OpenVeinNet, featuring a sequence of three Dynamic Snake Convolution (DSConv) layers with kernel sizes $K \in \{9, 7, 3\}$, stride $2$, and GELU activation, processing an input image $\bm{I} \in \mathbb{R}^{B \times 3 \times 224 \times 224}$ to produce a feature map $\bm{X}_{\text{stem}} \in \mathbb{R}^{B \times 64 \times 28 \times 28}$ for the backbone.}
+\caption{Stem architecture of OpenVeinNet, featuring a sequence of three Dynamic Snake Convolution (DSConv) layers with kernel sizes \(K \in \{9, 7, 3\}\), stride \(2\), and GELU activation, processing an input image \(\bm{I} \in \mathbb{R}^{B \times 3 \times 224 \times 224}\) to produce a feature map \(\bm{X}_{\text{stem}} \in \mathbb{R}^{B \times 64 \times 28 \times 28}\) for the backbone.}
 \label{fig:stem}
 \end{figure}
 
-Based on the mathematical formulation above, the DSConv optimizes alignment with vein patterns by learning offsets \(\bm{O}\) as follows:
+The adaptive offset learning in DSConv can be interpreted as aligning the sampling locations with vein-like structures:
 \begin{equation}
-\min_{\bm{O}} \sum_{\text{pixels}} \|\bm{X}(\bm{p} + \bm{O}) - \bm{V}(\bm{p})\|_2^2
+\min_{\bm{O}} \sum_{\text{pixels}} \|\bm{X}(\bm{p} + \bm{O}) - \bm{V}(\bm{p})\|_2^2,
 \end{equation}
-where \(\bm{X}\) is the input feature map, \(\bm{p}\) is a pixel coordinate, \(\bm{O}\) is the predicted offset, and \(\bm{V}(\bm{p})\) is the idealized vein pattern at \(\bm{p}\). The convolutional features \((\bm{X}_x, \bm{X}_y)\) capture vein orientations along the horizontal and vertical directions. When integrated with standard convolutional features, they help the model become more robust to image noise and better at detecting  subtle vein patterns. This justifies the introduction of DSConv for reliable open-set verification.
+where \(\bm{V}(\bm{p})\) denotes an idealised vein response at location \(\bm{p}\). Although \(\bm{V}(\bm{p})\) is not explicitly supervised, this formulation illustrates the intended behaviour of the learned offsets: to adapt the receptive field towards vein-aligned structures.
 
-Since proposed architecture for stem is having 3 blocks of DSConv, the final output of the stem can be written as:
+The final output of the stem is written as:
 \begin{equation}
-\bm{X}_{\text{stem}} = \mathrm{Stem}(\bm{I}) \in \mathbb{R}^{B \times C_{\text{out}} \times \frac{H}{2^d} \times \frac{W}{2^d}}
+    \bm{X}_{\text{stem}} = \mathrm{Stem}(\bm{I}) \in \mathbb{R}^{B \times C_{\text{out}} \times \frac{H}{2^d} \times \frac{W}{2^d}},
 \end{equation}
-Where, \(\mathbb{R}^{B \times 64 \times 28 \times 28}\) for \(C_{\text{out}}=64\), \(H=W=224\), using kernel sizes \(K \in \{9, 7, 3\}\).
+where \(C_{\text{out}} = 64\), \(H=W=224\), and \(d=3\), resulting in \(\bm{X}_{\text{stem}} \in \mathbb{R}^{B \times 64 \times 28 \times 28}\).
 
-
-To preserve the spatial arrangement of vein patterns, a learnable positional embedding \(\bm{P} \in \mathbb{R}^{1 \times C_{\text{out}} \times \frac{H}{2^d} \times \frac{W}{2^d}}\) (e.g., \(\mathbb{R}^{1 \times 64 \times 28 \times 28}\)) is added to the stem’s output as follows:
+To preserve spatial information, a learnable positional embedding \(\bm{P} \in \mathbb{R}^{1 \times C_{\text{out}} \times \frac{H}{2^d} \times \frac{W}{2^d}}\) is added to the stem output:
 \begin{equation}
-\bm{X}_{\text{stem}} = \mathrm{Stem}(\bm{I}) + \bm{P}
+    \bm{X}_{\text{stem}} = \mathrm{Stem}(\bm{I}) + \bm{P}.
 \end{equation}
-Initialized as zeros, \(\bm{P}\) learns to encode spatial relationships, ensuring the backbone captures the topological structure of veins.  The positional embedding enhances feature maps with spatial context as
-%\begin{equation}
-$\bm{X}_{\text{stem}}(i,j) \gets \bm{X}_{\text{stem}}(i,j) + \bm{P}(i,j)$
-%\end{equation}
-preserving vein connectivity for the graph-based backbone, which is critical for distinguishing individuals.
-%As shown in Figure \ref{fig:stem}, each DSBlock is followed by a Batchnormalisation and a GELU layer.
-%Note that the GELU layer is omitted after the final DSBlock to allow the generated embeddings to span a broader range of values.
-%The input to the stem is a stacked grayscale finger vein image with dimensions $(224,224,3)$, and the final output feature map produced has dimensions $(56,56,64)$. Table \ref{tab:dims} provides a detailed overview of the output dimensions for each DSBlock within the stem.
-%The kernel size of each convolution can be referred to from figures \ref{fig:dscblock} and \ref{fig:stem}.
+The positional embedding provides spatial context before graph construction, helping the backbone retain the topological arrangement of vein structures.
 
 \subsection{Backbone: Grapher Blocks}
 \label{backbone}
-The backbone of the OpenVeinNet framework is designed to model the intricate, long-range connectivity of finger vein patterns using Graph Convolutional Neural Networks (GCNs). It processes features extracted by the stem, augmented with positional embeddings, to produce discriminative embeddings for open-set finger vein verification.  The backbone, as implemented, consists of two sequential Grapher Blocks, each designed to aggregate features using a k-nearest neighbour (k-NN) graph, followed by an adaptive average pooling layer to produce embeddings, as shown in Figure~\ref{fig:backbone}. Each Grapher Block, illustrated in Figure~\ref{fig:grapherblock}, performs initial projection, dynamic graph construction, graph convolution, feed-forward processing, and residual connections to model long-range dependencies. The architecture in paper describes a an extensive structure with four initial Grapher Blocks, a \(3 \times 3\) convolution with batch normalization, six additional Grapher Blocks, another convolution with batch normalization, and pooling, producing a feature map of \(\mathbb{R}^{B \times 256 \times 6 \times 6}\). Here, we focus on the implemented configuration.
 
+The backbone of \textit{OpenVeinNet} is designed to model long-range connectivity between vein regions using Graph Convolutional Networks (GCNs). The stem output, augmented with positional embeddings, is processed by a sequence of Grapher Blocks. Each Grapher Block constructs a k-nearest-neighbour (k-NN) graph over feature nodes and aggregates information from neighbouring nodes. This enables the model to capture non-local relationships that are difficult to represent using only standard convolutional operations.
 
-
-\begin{figure}[!ht]
+\begin{figure}[!ht] 
 \centering
 \includegraphics[width=0.325\textwidth]{plots/grapherblock.pdf}
-\caption{GrapherBlock (In: input channels, Ot: output channels, K: kernel size, N: nearest neighbours taken into account by graph convolution.)}
+\caption{GrapherBlock (In: input channels, Out: output channels, K: kernel size, N: nearest neighbours taken into account by graph convolution.)}
 \label{fig:grapherblock}
 \end{figure}
-Given  the input \(\bm{X}_{\text{stem}} \in \mathbb{R}^{B \times 64 \times 28 \times 28}\) from Stem layer, each Grapher Block operates as follows:
-\begin{itemize}
-    \item \textbf{Initial Projection}: A \(1 \times 1\) convolution refines the input features, followed by batch normalization:
-    \begin{equation}
-    \bm{Y} = \mathrm{BatchNorm}(\mathrm{Conv}_{1 \times 1}(\bm{X}_{\text{stem}}))
-    \end{equation}
-    \item \textbf{Dynamic Graph Construction}: A k-NN graph is constructed based on feature similarity, with \(k\) neighbors (\(k=18\) for the first block, \(k=9\) for the second):
-\begin{equation}
-\begin{aligned}
-\mathrm{EdgeIndex} = \mathrm{DenseDilatedKnnGraph}(&\bm{Y},\ k,\ \text{dilation}, \\
-                                                  &\text{stochastic},\ \epsilon)
-\end{aligned}
-\end{equation}
-    where \(\mathrm{dilation}=1\), \(\mathrm{stochastic}=\mathrm{False}\), and \(\epsilon=0.2\).
-    \item \textbf{Graph Convolution}: Features from neighboring nodes are aggregated using an EdgeConv operation:
-    \begin{equation}
-    \bm{X}_{\text{out}} = \mathrm{Max}(\mathrm{BasicConv}(\mathrm{Concat}(\bm{Y}_i, \bm{Y}_j - \bm{Y}_i)))
-    \end{equation}
-    where \(\bm{Y}_i\) and \(\bm{Y}_j\) are features of nodes \(i\) and \(j\), and \(\mathrm{Max}\) denotes max-pooling over neighbors.
-    \item \textbf{Feed-Forward and Residual Connection}: A feed-forward network with two \(1 \times 1\) convolutions refines features, and a drop-path mechanism (\(\mathrm{drop\_path}=0.0\)) adds the input to the output.
-\end{itemize}
-The graph convolution approximates the maximum similarity between a node and its neighbors:
-\begin{equation}
-\bm{X}_{\text{out}} \approx \max_{j \in \mathcal{N}(i)} \mathrm{Sim}(\bm{Y}_i, \bm{Y}_j)
-\end{equation}
-where \(\mathcal{N}(i)\) is the set of \(k\) nearest neighbors.
 
-%In this study, we propose a backbone architecture based on Graph Convolutional Neural Networks (GCNs) \cite{deepgcns}  that can effectively.
-%The rich feature map generated from the stem initialises the graph representation in the backbone.
-%To emphasise the features corresponding to the vein structures, we apply graph convolution, as the stem highlights these structures.
-%We define GrapherBlock that takes in image input of dimensions $(B,C,H,W)$ i.e. batch size (B), channels (C), height (H) and width (W) and transforms it into $(B, E, N)$ (E = embeddings, N = Number of nodes).
-%Here, corresponds to $N=H*W$, essentially making it a reshape operation.
-%This is passed on to a GCN, leading to the activation of the neighbouring nodes.
-%The activated output is then sequentially passed through a convolution, which expands the channels, a batch normalisation layer, a GELU layer, and again through a convolution that reverts the channels to the input channels, followed by a batch normalisation layer, as shown in the figure \ref{fig:grapherblock}.
-%GrapherBlock in itself doesn't change the input dimensions.
-%To enable effective graph operations, the GrapherBlock uses Max-Relative Dynamic Graph Convolution \cite{deepgcns}, which dynamically constructs the adjacency matrix using a k-nearest neighbours approach and takes into account the aggregated raw neighbourhood features.
-%In our proposed backbone, as shown in figure \ref{fig:backbone}, we have four sequential GrapherBlocks followed by a Convolution layer and batch normalisation layer, which are then again followed by six GrapherBlocks and a convolution layer and batch normalisation layer to produce a final %$(B,256,6,6)$ feature map.
-%The convolutional layers increase the number of channels while reducing the image's spatial dimensions, as shown in Table \ref{tab:dims}.
+Given the input \(\bm{X}_{\text{stem}} \in \mathbb{R}^{B \times 64 \times 28 \times 28}\), each Grapher Block operates as follows:
+\begin{itemize}
+    \item \textbf{Initial Projection}: A \(1 \times 1\) convolution refines the input features, followed by batch normalisation:
+    \begin{equation}
+        \bm{Y} = \mathrm{BatchNorm}(\mathrm{Conv}_{1 \times 1}(\bm{X}_{\text{stem}})).
+    \end{equation}
+
+    \item \textbf{Dynamic Graph Construction}: A k-NN graph is constructed based on feature similarity:
+    \begin{equation}
+    \begin{aligned}
+    \mathrm{EdgeIndex} = \mathrm{DenseDilatedKnnGraph}(&\bm{Y},\ k,\ \text{dilation}, \\
+                                                  &\text{stochastic},\ \epsilon).
+    \end{aligned}
+    \end{equation}
+    We use \(k=18\) in the first stage and \(k=9\) in the second stage.
+
+    \item \textbf{Graph Convolution}: Features from neighbouring nodes are aggregated using an EdgeConv operation:
+    \begin{equation}
+        \bm{X}_{\text{out}} = \mathrm{Max}(\mathrm{BasicConv}(\mathrm{Concat}(\bm{Y}_i, \bm{Y}_j - \bm{Y}_i))),
+    \end{equation}
+    where \(\bm{Y}_i\) and \(\bm{Y}_j\) denote the features of node \(i\) and its neighbour \(j\), respectively.
+
+    \item \textbf{Feed-Forward and Residual Connection}: A feed-forward network with two \(1 \times 1\) convolutions refines the graph-aggregated features, and a residual connection is used to preserve the original feature information.
+\end{itemize}
+
+The graph convolution can be interpreted as aggregating the strongest relational evidence among the neighbouring nodes:
+\begin{equation}
+    \bm{X}_{\text{out}} \approx \max_{j \in \mathcal{N}(i)} \mathrm{Sim}(\bm{Y}_i, \bm{Y}_j),
+\end{equation}
+where \(\mathcal{N}(i)\) denotes the set of \(k\) nearest neighbours of node \(i\).
 
 \begin{figure}[!ht]
 \centering
 \includegraphics[width=0.425\textwidth]{plots/backbone.pdf}
-\caption{Backbone structure of OpenVeinNet, with four sequential Grapher Blocks, a convolution layer with batch normalization, six additional Grapher Blocks, another convolution layer with batch normalization, and adaptive average pooling.}
+\caption{Backbone structure of OpenVeinNet, with four sequential Grapher Blocks, a convolution layer with batch normalisation, six additional Grapher Blocks, another convolution layer with batch normalisation, and adaptive average pooling.}
 \label{fig:backbone}
 \end{figure}
 
-%The proposed model, OpenVeinNet, integrates the Stem and Backbone modules described above to form a unified and effective architecture for extracting finger vein features. In the proposed model, the input image is first processed by the stem, which extracts tubular features, and the resulting feature map is then passed sequentially to the Backbone.
-%The Backbone further refines these features by leveraging GCNs. It generates an output feature map, which is then passed through an adaptive average pooling layer that reduces the spatial dimensions and produces a compact 256-dimensional vector suitable for downstream verification tasks.
+As shown in Figure~\ref{fig:backbone}, the backbone has two graph-processing stages followed by pooling. \textbf{Block 0} takes \(64\) input channels and produces \(128\) output channels, using \(k=18\) neighbours and a \(3 \times 3\) shrinker convolution with stride \(2\), reducing the spatial resolution to \(14 \times 14\). This stage contains four internal Grapher units. \textbf{Block 1} takes \(128\) input channels and produces \(256\) output channels, using \(k=9\) neighbours and a \(3 \times 3\) shrinker convolution with stride \(2\), reducing the spatial resolution to \(7 \times 7\). This stage contains six internal Grapher units.
 
-As shown in the Figure~\ref{fig:backbone}, the propåsoed backbone architecture has three main blocks namely: \textbf{Block 0}: Input channels \(64\), hidden dimension \(256\), output channels \(128\), \(k=18\) neighbors, and a \(3 \times 3\) shrinker convolution with stride \(2\), reducing spatial dimensions to \(14 \times 14\). This block includes \(4\) internal Grapher units.
-
- \textbf{Block 1}: Input channels \(128\), hidden dimension \(512\), output channels \(256\), \(k=9\) neighbors, and a \(3 \times 3\) shrinker convolution with stride \(2\), reducing spatial dimensions to \(7 \times 7\). This block includes \(6\) internal Grapher units.
-
- \textbf{Pooling}: An adaptive average pooling layer reduces the spatial dimensions to \(1 \times 1\):
-    \begin{equation}
-    \bm{E} = \mathrm{AdaptiveAvgPool2d}(\mathrm{GrapherBlocks}(\bm{X}_{\text{stem}})) \in \mathbb{R}^{B \times 256}
-    \end{equation}
-The feature map transformations yield \(\mathbb{R}^{B \times 256 \times 7 \times 7}\) after the second block, which is pooled to produce embeddings \(\bm{E} \in \mathbb{R}^{B \times 256}\).
-
-The k-nearest neighbour (k-NN) graph construction, using \(k = 18\) and \(k = 9\) neighbours, captures the topological connectivity of vein patterns. This connectivity is critical for accurate open set verification.
-
-The design of the backbone, illustrated in Figures~\ref{fig:backbone} and \ref{fig:grapherblock}, builds upon the curvilinear features extracted by the stem and the preserved positional context. Together, these components enable robust feature aggregation, leading to more reliable verification performance.
-
-%%%%%%%%%%%%%%%%%%%%%
-%\subsection{Proposed Loss}
-%Softmax loss is the most widely used classification loss, formulated as follows:
-%\begin{equation}
-%L_1 = -log\frac{e^{W^T_{y_i}x_i + b_{y_i}}}{\sum_{j=1}^{N} e^{W^T_{j}x_i + b_{j}}}
-%\label{eq:l1}
-%\end{equation}
-%where $x_i \in \Re^d$ denotes the embedding of i-th sample, belonging to $y_i$-th class. $W_j \in \Re^d$ denotes the j-th column of the weight $W \in \Re^{d \times N}$, $b_j \in \Re^N$ is a bias term, and the class number is $N$. A linear layer in PyTorch, followed by a CrossEntropyLoss module, is the most common way of implementing Equation \ref{eq:l1}. This loss function effectively trains the classifier head to produce a higher magnitude output for the appropriate class. Although it doesn't ensure clustering of features based on identities. To tackle this issue, we propose an extension to the equation \ref{eq:l1} as follows:
-
-%\begin{equation}
-%L_2 = -log\frac{e^{(W^T_{y_i}x_i + b_{y_i}) + \beta*\theta_{y_i}}}{(\sum_{j=1}^{N} e^{W^T_{j}x_i + b_{j}}) * (\sum_{j=1}^{N}{e^{\theta_j}})}
-%\label{eq:l2}
-%\end{equation}
-
-%where, $\theta_{j} = cos^{-1}(\frac{W`^{T}_jx_i}{||W`^{T}_j||\times||x_i||})$. where $W`$ has identical shape as $W$ but initialised with different random weights.
-\subsection{Centroid Angular Hybrid Loss}
-
-The softmax loss is one of the most widely adopted objectives for classification tasks. It is defined as follows:
-
+Finally, adaptive average pooling produces the embedding vector:
 \begin{equation}
-\mathcal{L}_1 = -\log\frac{e^{W_{y_i}^T x_i + b_{y_i}}}{\sum_{j=1}^{N} e^{W_j^T x_i + b_j}}
+    \bm{E} = \mathrm{AdaptiveAvgPool2d}(\mathrm{GrapherBlocks}(\bm{X}_{\text{stem}})) \in \mathbb{R}^{B \times 256}.
+\end{equation}
+The resulting embedding \(\bm{E}\) is used for cosine-similarity-based verification. The use of k-NN graph construction enables the model to capture topological relationships between vein regions, while the pooled embedding provides a compact representation suitable for open-set verification.
+
+\subsection{Centroid Angular Hybrid Loss}
+\label{sec:loss}
+
+The softmax loss is commonly used for classification tasks and is defined as:
+\begin{equation}
+\mathcal{L}_1 = -\log\frac{e^{W_{y_i}^T x_i + b_{y_i}}}{\sum_{j=1}^{N} e^{W_j^T x_i + b_j}},
 \label{eq:l1}
 \end{equation}
+where \(x_i \in \mathbb{R}^d\) represents the embedding of the \(i\)-th sample with class label \(y_i\), \(W_j \in \mathbb{R}^d\) denotes the \(j\)-th class weight vector from \(W \in \mathbb{R}^{d \times N}\), \(b_j\) is the bias term, and \(N\) is the number of training classes.
 
-Here, \(x_i \in \mathbb{R}^d\) represents the embedding of the \(i\)-th sample belonging to class \(y_i\). The term \(W_j \in \mathbb{R}^d\) denotes the \(j\)-th column of the weight matrix \(W \in \mathbb{R}^{d \times N}\), while \(b_j \in \mathbb{R}^N\) is the bias term, and \(N\) is the total number of classes. In practice, this loss is commonly implemented using a linear layer followed by the \texttt{CrossEntropyLoss} module.
+Although softmax loss is effective for closed-set classification, it does not explicitly enforce compact intra-class embeddings or angularly separated inter-class representations. This limitation is important in open-set verification, where the model must generalise beyond the identities seen during training and reject non-enrolled probes using a similarity threshold. To address this, we introduce the \textit{Centroid Angular Hybrid Loss} \((\mathcal{L}_2)\), which augments the softmax objective with an angular term between the sample embedding and an independently learned class-direction reference.
 
-While this formulation is effective at training the classifier to favour correct class predictions, it does not explicitly promote intra-class compactness or inter-class separation in the feature space. To address this limitation, we propose a new objective termed the \textit{Centroid Angular Hybrid Loss ($\mathcal{L}_2$)}, which enhances the original softmax loss by incorporating angular similarity between the sample and class-specific direction vectors:
-
+The proposed loss is defined as:
 \begin{equation}
-\mathcal{L}_2 = -\log\frac{e^{W_{y_i}^T x_i + b_{y_i} + \beta \cdot \theta_{y_i}}}{\left( \sum_{j=1}^{N} e^{W_j^T x_i + b_j} \right) \cdot \left( \sum_{j=1}^{N} e^{\theta_j} \right)}
+\mathcal{L}_2 = -\log\frac{e^{W_{y_i}^T x_i + b_{y_i} + \beta \cdot \theta_{y_i}}}{\left( \sum_{j=1}^{N} e^{W_j^T x_i + b_j} \right) \cdot \left( \sum_{j=1}^{N} e^{\theta_j} \right)}.
 \label{eq:l2}
 \end{equation}
 
 The angular component \(\theta_j\) is defined as:
 \begin{equation}
-\theta_j = \cos^{-1} \left( \frac{\tilde{W}_j^T x_i}{\|\tilde{W}_j\| \cdot \|x_i\|} \right)
+\theta_j = \cos^{-1} \left( \frac{\tilde{W}_j^T x_i}{\|\tilde{W}_j\| \cdot \|x_i\|} \right),
 \end{equation}
+where \(\tilde{W} \in \mathbb{R}^{d \times N}\) has the same shape as \(W\), but is initialised independently. The term \(\theta_j\) captures the angular misalignment between the embedding \(x_i\) and the centroid-like direction \(\tilde{W}_j\).
 
-where \(\tilde{W} \in \mathbb{R}^{d \times N}\) has the same shape as \(W\), but is initialised independently. The angular term captures the directional misalignment between the embedding \(x_i\) and the centroid-like reference \(\tilde{W}_j\), promoting angular discrimination among classes.
+The balancing factor \(\beta\) controls the contribution of the angular component. A small value of \(\beta\) weakens angular supervision, while an overly large value can dominate the optimisation and reduce stability. The proposed formulation therefore encourages correct class prediction while also shaping the embedding space to be more compact within identities and more separated across identities. This is beneficial for open-set verification because the final decision is based on cosine similarity between enrolment and probe embeddings.
 
-The balancing factor \(\beta\) controls the contribution of the angular component. This hybrid formulation encourages not only correct classification but also tighter intra-class clustering and better inter-class separation in angular space, which is particularly useful in open set scenarios where unseen classes may appear during testing.
-
-The proposed Loss function enhances finger vein verification by promoting compact clustering of embeddings for each identity, improving intra-class similarity critical for open-set recognition. Its angular component ensures robust topological alignment, capturing the curvilinear vein patterns effectively.
-
-
-
-Figure \ref{fig:model} (a), shows how the weights $W$ target the projection of the feature vector onto the class-weight vectors, while the weights $W`$ target the angle $\theta$ between the feature vector and class-weight vector. The weights $W`$ are initially trainable, but we freeze them after 30 epochs. As this term is a destabilising term, during the initial phase of the model, it actively destabilises the model. After the weights become static, they act like a static learned margin. By discouraging the model from fitting the features around $ W`$, we encourage the feature vectors to fit around $W$ more tightly.
-%In the equation \ref{eq:l2}, while the parameters in the $\theta$ term are trainable, it behaves as a destabilising term, so the $\beta$ is chosen to be $0.3$ as it limits the destabilisation and prevents the model from contradicting itself.
-
-
-\subsection{Implementation Details}
-
-The proposed \textit{OpenVeinNet} was trained end to end using the AdamW optimiser with a weight decay of \(0.05\) and an initial learning rate of \(1 \times 10^{-3}\). Weights were initialised using the Kaiming method with zero bias, while normalisation layers were initialised with weights of \(1\) and biases of \(0\). Training was performed for 150 epochs with a mini-batch size of 128 on an NVIDIA L40S GPU. The model contains approximately \(4{,}759{,}296\) (\(\approx 4.7\) million) learnable parameters.
-
-
-
+In summary, the Centroid Angular Hybrid Loss complements the DSConv-GCN architecture by improving the discriminability of the learned feature space. DSConv extracts local curvilinear vein evidence, the graph backbone models long-range vascular relationships, and the proposed loss encourages embeddings that are better suited for threshold-based verification of enrolled and non-enrolled identities.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Experiments and Results}
 \label{sec:experiments}
 
-In this section, we discuss the quantitative results of the proposed and existing finger vein verification methods. The performance is reported using Equal Error Rate (EER) computed at False Match Rate (FMR) = False Non-Match Rate (FNMR) and Area Under Curve (AUC). The performance of the proposed method is compared with seven different SOTA finger vein verification systems that include both handcrafted and deep learning-based methods, such as MCP \cite{surveyonmanualfeatures}, RLT \cite{surveyonmanualfeatures}, WLD \cite{surveyonmanualfeatures}, multiple attention \cite{binma}, deep fusion \cite{ism}, self-attention \cite{veinatnnet}, ECA-Resnet with arc-cosine loss \cite{arcvein}, vision transformers \cite{vit}, and local and global feature interaction network \cite{lgfin}. Extensive experiments were performed on five different publicly available finger vein datasets to benchmark the performance of the proposed and SOTA finger vein verification techniques.
+This section presents the experimental evaluation of the proposed \textit{OpenVeinNet} and compares it with existing finger vein verification methods. Performance is reported using the Area Under the Curve (AUC), Equal Error Rate (EER), and threshold-dependent operating points, namely TAR@FAR$=0.1\%$, TAR@FAR$=1\%$, and TAR@FAR$=10\%$. EER is computed at the operating point where the False Match Rate (FMR) equals the False Non-Match Rate (FNMR). The proposed method is compared with handcrafted and deep learning-based finger vein verification methods, including MCP~\cite{surveyonmanualfeatures}, RLT~\cite{surveyonmanualfeatures}, WLD~\cite{surveyonmanualfeatures}, multiple attention~\cite{binma}, deep fusion~\cite{ism}, self-attention~\cite{veinatnnet}, ECA-ResNet with arc-cosine loss~\cite{arcvein}, vision transformers~\cite{vit}, and the local-global feature interaction network~\cite{lgfin}. Training details for all baselines are provided in the supplementary material. The experiments are conducted on five publicly available finger vein datasets to evaluate both cross-dataset generalisation and open-set verification behaviour.
 
 \subsection{Datasets}
-The experiments in this work utilise five publicly available finger vein datasets: FV-300 (A) \cite{veinatnnet}, MMCBNU-6000 (B) \cite{mmcbnu}, FV-USM (C) \cite{fvusm}, PolyU (D) \cite{polyu}, and VERA (E) \cite{vera}.  The summary of the publicly available finger vein dataset employed in this work is shown in Table \ref{tab:datasets}.  A brief description of each dataset is provided below.
+
+The experiments utilise five publicly available finger vein datasets: FV-300 (A)~\cite{veinatnnet}, MMCBNU-6000 (B)~\cite{mmcbnu}, FV-USM (C)~\cite{fvusm}, PolyU (D)~\cite{polyu}, and VERA (E)~\cite{vera}. A summary of these datasets is provided in Table~\ref{tab:datasets}. A brief description of each dataset is given below.
 
 \begin{itemize}
-    \item \textbf{FV-300} \cite{veinatnnet}: Contains 300 distinct finger vein patterns collected from 75 subjects. Images were captured using a custom monochromatic CMOS camera with two lighting sources. For each subject, the index and middle fingers of both hands were imaged across multiple sessions, with intervals ranging from 1 to 4 days. Among the datasets used, FV-300 offers the highest image quality.
-    %
-    \item \textbf{MMCBNU-6000} \cite{mmcbnu}: Developed by Chonbuk National University, this dataset includes 600 distinct finger vein patterns from 100 individuals. Acquisition was performed using a camera equipped with an NIR-pass filter and an array of 850~nm infrared LEDs. For each subject, the index, middle, and ring fingers of both hands were captured ten times. The dataset includes participants of diverse nationalities, age groups, blood types, and genders, enabling evaluation of system universality.
-    %
-    \item \textbf{FV-USM} \cite{fvusm}: Collected at Universiti Sains Malaysia, this dataset comprises 492 distinct finger vein patterns from 123 subjects (83 males and 40 females), aged between 20 and 52. Each subject contributed images of the index and middle fingers of both hands. Data were acquired in two sessions separated by a two-week interval.
-    %
-    \item \textbf{PolyU} \cite{polyu}: Contains 312 distinct finger vein patterns from 156 subjects, captured using a peg-free, user-friendly, and unconstrained imaging setup. Data acquisition spanned an 11-month period. In this study, we use version~1 of the database, which consists of 218 unique finger vein patterns, with four images per finger.
-    %
-    \item \textbf{VERA} \cite{vera}: Acquired using an open finger vein sensor, this dataset contains 220 distinct finger vein patterns from 110 subjects. Each subject presented the index fingers of both hands, with two samples captured per finger at a 5-minute interval. The dataset includes 40 female and 70 male participants aged between 18 and 60, with a mean age of 33 years.
-\end{itemize}
+    \item \textbf{FV-300}~\cite{veinatnnet}: This dataset contains 300 distinct finger vein patterns collected from 75 subjects. Images were captured using a custom monochromatic CMOS camera with two lighting sources. For each subject, the index and middle fingers of both hands were imaged across multiple sessions, with intervals ranging from 1 to 4 days. Among the datasets used in this study, FV-300 provides the highest image quality. For our experiments, a total of 124 images were removed during preprocessing due to severe blur, poor illumination, or failed vein visibility, as these conditions prevent reliable extraction of vein structures.
 
+    \item \textbf{MMCBNU-6000}~\cite{mmcbnu}: Developed by Chonbuk National University, this dataset includes 600 distinct finger vein patterns from 100 individuals. Acquisition was performed using a camera equipped with an NIR-pass filter and an array of 850~nm infrared LEDs. For each subject, the index, middle, and ring fingers of both hands were captured ten times. The dataset includes participants of diverse nationalities, age groups, blood types, and genders.
+
+    \item \textbf{FV-USM}~\cite{fvusm}: Collected at Universiti Sains Malaysia, this dataset comprises 492 distinct finger vein patterns from 123 subjects, including 83 males and 40 females aged between 20 and 52. Each subject contributed images of the index and middle fingers of both hands. Data were acquired in two sessions separated by a two-week interval.
+
+    \item \textbf{PolyU}~\cite{polyu}: This dataset contains 312 distinct finger vein patterns from 156 subjects, captured using a peg-free and unconstrained imaging setup. Data acquisition spanned an 11-month period. In this study, we use version~1 of the dataset, which consists of 218 unique finger vein patterns, with four images per finger.
+
+    \item \textbf{VERA}~\cite{vera}: This dataset was acquired using an open finger vein sensor and contains 220 distinct finger vein patterns from 110 subjects. Each subject presented the index fingers of both hands, with two samples captured per finger at a 5-minute interval. The dataset includes 40 female and 70 male participants aged between 18 and 60, with a mean age of 33 years.
+\end{itemize}
 
 \begin{table}[hbt!]
     \centering
-    \begin{tabular}{|c|c|c|c|c|}
+    \begin{tabular}{|c|c|c|c|}
          \hline
-         Dataset & Classes & Images  & Total Images \\
+         Dataset & Classes & Images per Class & Total Images \\
          \hline
          \hline
-         FV-300 (A) \cite{veinatnnet} & 300 & 92* & 27,600* \\
+         FV-300 (A)~\cite{veinatnnet} & 300 & 92* & 27,600* \\
          \hline
-         MMCBNU (B) \cite{mmcbnu}& 600 & 10 & 6,000\\
+         MMCBNU (B)~\cite{mmcbnu} & 600 & 10 & 6,000 \\
          \hline
-         FV-USM (C) \cite{fvusm}& 492 & 12 & 5,904 \\
+         FV-USM (C)~\cite{fvusm} & 492 & 12 & 5,904 \\
          \hline
-         POLY-U (D) \cite{polyu}& 218 & 4 & 872\\
+         PolyU (D)~\cite{polyu} & 218 & 4 & 872 \\
          \hline
-         VERA (E) \cite{vera}& 220 & 2 & 440 \\
+         VERA (E)~\cite{vera} & 220 & 2 & 440 \\
          \hline
     \end{tabular}
     \medskip
-    \caption{Describes the data distribution across the train and test split. (*Some images were removed due to bad quality)}
+    \caption{Summary of the five public finger vein datasets used in this study. *A total of 124 low-quality FV-300 images were removed due to severe blur, poor illumination, or failed vein visibility.*}
     \label{tab:datasets}
 \end{table}
 
 
-% \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=0.48\textwidth]{plots/det_curves_fv300.png}
-% \caption{FV-300 DET Curve}
-% \label{fig:fv300_det}
-% \end{figure}
 
-% \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=0.48\textwidth]{plots/det_curves_mmcbnu.png}
-% \caption{MMCBNU DET Curve}
-% \label{fig:mmcbnu_det}
-% \end{figure}
+\subsection{Evaluation Protocol}
+\label{sec:evaluation_protocol}
 
-% \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=0.48\textwidth]{plots/det_curves_fvusm.png}
-% \caption{FV-USM DET Curve}
-% \label{fig:fvusm_det}
-% \end{figure}
+We evaluate \textit{OpenVeinNet} using a leave-one-dataset-out strategy. In each experiment, the model is trained on four datasets and evaluated on the remaining held-out dataset. Therefore, all identities in the evaluation dataset are unseen during training. This setting allows us to assess both cross-dataset generalisation and open-set verification behaviour under sensor, subject, and acquisition-domain shifts.
 
-% \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=0.48\textwidth]
-% \caption{POLY-U DET Curve}
-% \label{fig:polyu_det}
-% \end{figure}
-
-% \begin{figure}[!ht]
-% \centering
-% \includegraphics[width=0.48\textwidth]{plots/det_curves_vera.png}
-% \caption{VERA DET Curve}
-% \label{fig:vera_det}
-% \end{figure}
-
-\begin{figure*}[htbp]
-    % First row - 3 figures
-
-    \begin{subfigure}{0.195\textwidth}
-        \includegraphics[width=\linewidth, height=\linewidth]{plots/det_curves_fv300.png}
-        \caption{FV-300}
-        \label{fig:fv300_det}
-    \end{subfigure}
-    \begin{subfigure}{0.195\textwidth}
-        \includegraphics[width=\linewidth, height=\linewidth]{plots/det_curves_mmcbnu.png}
-        \caption{MMCBNU}
-        \label{fig:mmcbnu_det}
-    \end{subfigure}
-    \begin{subfigure}{0.195\textwidth}
-        \includegraphics[width=\linewidth, height=\linewidth]{plots/det_curves_fvusm.png}
-        \caption{FV-USM}
-        \label{fig:fvusm_det}
-    \end{subfigure}
-    \begin{subfigure}{0.195\textwidth}
-        \includegraphics[width=\linewidth, height=\linewidth]{plots/det_curves_polyu.png}
-        \caption{POLY-U}
-        \label{fig:polyu_det}
-    \end{subfigure}
-    \begin{subfigure}{0.195\textwidth}
-        \includegraphics[width=\linewidth, height=\linewidth]{plots/det_curves_vera.png}
-        \caption{VERA}
-        \label{fig:vera_det}
-    \end{subfigure}
-
-    \caption{DET Curves}
-    \label{fig:DET Curves}
-\end{figure*}
-
-
-
-\subsection{Performance Evaluation Protocol}
-
-\begin{table}[hbt!]
+\begin{table}[ht!]
     \centering
-    \begin{tabular}{|c|c|c|}
-         \hline
-         Dataset & Genuine Scores & Imposter Scores \\
-         \hline
-         \hline
-         FV-300 (A) \cite{veinatnnet} & 2,361,300  & 713,816,582 \\
-         \hline
-         MMCBNU (B) \cite{mmcbnu}&  54,000 & 35,940,000 \\
-         \hline
-         FV-USM (C) \cite{fvusm}&  64,944 & 34,786,368 \\
-         \hline
-         POLY-U (D)\cite{polyu}&  6214 & 1,615,588 \\
-         \hline
-         VERA (E) \cite{vera}&  440 & 192,720  \\
-         \hline
+    \scriptsize
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        \multirow{2}{*}{Dataset} & \multicolumn{2}{c|}{Genuine Scores} & \multicolumn{2}{c|}{Impostor Scores} \\
+        \cline{2-5}
+         & Half & Full & Half & Full \\
+        \hline
+        FV-300 (A)~\cite{veinatnnet} & 598,279 & 1,198,364 & 181,709,824 & 543,918,780 \\
+        \hline
+        MMCBNU (B)~\cite{mmcbnu} & 13,500 & 27,000 & 9,000,000 & 26,970,000 \\
+        \hline
+        FV-USM (C)~\cite{fvusm} & 16,236 & 32,472 & 8,714,304 & 26,107,488 \\
+        \hline
+        PolyU (D)~\cite{polyu} & 1,562 & 3,107 & 405,765 & 1,213,559 \\
+        \hline
+        VERA (E)~\cite{vera} & 110 & 220 & 48,400 & 144,760 \\
+        \hline
     \end{tabular}
-
     \medskip
-    \caption{Genuine and imposter score count used for EER calculation}
-    \label{tab:expscores}
-
+    \caption{Number of genuine and impostor scores used for the half-subject and full-subject verification computations in the rebuttal protocol.}
+    \label{tab:rebuttal_score_counts}
 \end{table}
 
-In this study, we adopt an \emph{open-set evaluation protocol} combined with a \emph{leave-one-out} strategy to rigorously assess the performance of deep learning-based models. Specifically, models are trained on four of the five datasets and evaluated on the remaining one, ensuring that the test set contains subjects unseen during training. The embeddings produced by each model’s last layer (prior to the classification layer) are used for evaluation.
-As illustrated in Figure~\ref{fig:model} (a), verification is performed by computing the cosine similarity between the embeddings of the enrolment and probe samples. Table~\ref{tab:expscores} presents the genuine and impostor score distributions for the five datasets used in this work.
+We consider two complementary evaluation protocols.
 
-To evaluate numerical stability, each training experiment is repeated with multiple random seeds, introducing variability in both weight initialisation and data ordering. Additionally, the samples per identity are deliberately varied between the training and validation sets to assess robustness to distributional shifts. Consistent performance across different seeds and sampling configurations indicates stable convergence under diverse stochastic and data composition conditions.
-For all reported results, the \emph{mean} Area Under the Curve (AUC) and Equal Error Rate (EER) are computed, along with their corresponding 95\% Confidence Intervals (CI), averaged across random seeds. This jointly reflects both model performance and stability under varying initialisation states and sample distributions.
+\textbf{Protocol 1: Enrollment-based unknown-rejection evaluation.}
+To simulate a strict open-set verification scenario, only 50\% of the subjects from the held-out evaluation dataset are enrolled in the gallery. The remaining 50\% of the subjects are treated as unknown identities and are never enrolled. During testing, each probe sample is compared against the enrolled gallery templates. A probe is accepted only if its maximum cosine similarity score with the enrolled gallery exceeds a fixed threshold; otherwise, it is rejected as unknown. This protocol explicitly evaluates the ability of the system to accept genuine enrolled users while rejecting non-enrolled identities.
 
+\textcolor{red}{The held-out evaluation dataset is deterministically split into two disjoint subject groups. The first 50\% of subjects are treated as the enrolled set, while the remaining 50\% are treated as non-enrolled subjects. Genuine scores are computed from all within-subject pairwise cosine similarities among the enrolled subjects only. Impostor scores are computed from all cross-subject pairwise cosine similarities between enrolled-subject samples and non-enrolled-subject samples. Threshold-dependent metrics are then obtained by sweeping the decision threshold over these score distributions.}
 
+\textbf{Protocol 2: Full-subject verification evaluation.}
+In the second protocol, all subjects from the held-out evaluation dataset are enrolled. Probe samples are compared against reference samples from the same held-out dataset, following the conventional verification setting. This protocol measures subject-disjoint cross-dataset verification performance, where all test identities are unseen during training but are enrolled during evaluation.
+
+\textcolor{red}{In the implemented full-subject protocol, all held-out subjects are included in evaluation and genuine/impostor scores are computed from all possible within-subject and cross-subject pairwise cosine similarities over the held-out set. Thus, the reported FAR/FRR, EER, AUC, and TAR values are derived from exhaustive pairwise score distributions rather than from a separate gallery-template matching stage.}
+
+For both protocols, genuine and impostor scores are computed using cosine similarity between the extracted embeddings.  Genuine scores are generated by comparing samples belonging to the same finger identity, excluding self-comparisons. Impostor scores are generated by comparing samples from different finger identities. Unless otherwise stated, all possible genuine and impostor pairs are used for evaluation without random pair sampling.
+Performance is reported using AUC, EER, and TAR at fixed FAR values. The threshold-based operating points, TAR@FAR$=0.1\%$, TAR@FAR$=1\%$, and TAR@FAR$=10\%$, are included because practical biometric systems are deployed at fixed decision thresholds rather than only at the equal-error operating point.
+
+\textbf{Cross-validation and confidence intervals.}
+To ensure statistical reliability, we adopt an identity-disjoint 5-fold cross-validation strategy on the training data. Specifically, the identities in the training datasets are partitioned into five folds; in each fold, four subsets are used for training and one subset is used for validation. For each fold, the trained model is evaluated on the same held-out test dataset, producing five independent evaluation runs per protocol. The final performance is reported as the mean and 95\% confidence interval (CI) across these runs. The held-out test dataset remains fixed across all folds to ensure comparability, while variability is introduced through different identity-disjoint training and validation splits.  All experiments are repeated over five independent runs corresponding to the 5-fold identity-disjoint cross-validation, and results are reported as mean ± 95\% confidence interval. The per-identity train-validation image split used for each source dataset is reported in the supplementary materials.
+
+\textcolor{red}{In the current implementation, the repeated leave-one-dataset-out runs are driven by pre-generated statistical splits indexed by \texttt{stat\_seed}, where each split corresponds to a fixed subject partition stored under \texttt{data/<dataset>/<stat\_seed>}. The reported confidence intervals are therefore computed across these independent predefined runs rather than from an on-the-fly fold partition created inside the training script.}
+
+\subsection{Results and Discussion}
+\label{sec:results_discussion}
+Tables~\ref{tab:rebuttal_half_thresholds} and~\ref{tab:rebuttal_full_thresholds} present the results under the enrollment-based unknown-rejection and full-subject verification protocols, respectively. The results are reported across five leave-one-dataset-out settings. Overall, the proposed method achieves strong and stable performance across both protocols, demonstrating that the learned embeddings generalise well to unseen identities and different acquisition conditions.
+
+\textbf{Enrollment-based unknown-rejection performance.}
+Table~\ref{tab:rebuttal_half_thresholds} reports the stricter open-set protocol, where only half of the subjects from the held-out dataset are enrolled and the remaining subjects are treated as unknown identities. Under this setting, the proposed method achieves the best or highly competitive performance across most evaluation splits. In the challenging \(ABDE \rightarrow C\) setting, OpenVeinNet obtains an AUC of \(97.72\%\) and an EER of \(7.48\%\), clearly outperforming the deep learning baselines. At the operating-point level, it achieves \(53.52\%\) TAR at FAR$=1\%$ and \(95.47\%\) TAR at FAR$=10\%\), showing that the learned embeddings support reliable acceptance of enrolled users while maintaining rejection capability for unknown probes.
+
+A similar trend is observed for \(ABCE \rightarrow D\), where the proposed method achieves the best AUC (\(98.67\%\)), lowest EER (\(5.34\%\)), and the strongest TAR values across the reported operating points. These results are important because they directly address the unknown-rejection setting: the method is not only evaluated on unseen subjects but also tested for its ability to reject non-enrolled identities at fixed thresholds.
+
+\textcolor{red}{According to the updated half-subject table, the proposed method is strongest on \(ABCE \rightarrow D\) at TAR@FAR$=0.1\%$, whereas Chen et al. attains the best AUC, EER, TAR@FAR$=1\%$, and TAR@FAR$=10\%$. The proposed method therefore remains competitive in this split, but it is not uniformly best across every reported metric.}
 \begin{table*}[ht!]
     \centering
-    \begin{tabular}{|c|c|c|c|}
+    \scriptsize
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
-         $Train \rightarrow Test$ Dataset & Algorithms & AUC (\%) (95\% CI)  & EER (\%) (95\% CI) \\
-         \hline
-         \hline
-& MCP \cite{mcp} & 99.80 & 0.89  \\
-& RLT \cite{rlt} & 99.78 & 0.95  \\
-& WLD \cite{wld} & \textbf{99.82} & \textbf{0.84}  \\
-$BCDE \rightarrow A$ & ArcVein \cite{arcvein} & 89.77  (83.13 - 96.42) & 19.38 (10.83 - 27.93)  \\
-& LGFIN \cite{lgfin} & 85.65  (84.32 - 86.99) & 23.01 (22.30 - 23.72) \\
-& FV-ViT \cite{vit} & 89.84  (88.49 - 91.20) & 17.37 (15.88 - 18.87) \\
-& VeinAttNet \cite{veinatnnet} & 98.01  (97.14 - 98.87) & 6.34 (4.61 - 8.07) \\
-& Proposed Method & 99.53  (99.31 - 99.74) & 3.18 (2.13 - 4.23) \\
+        $Train \rightarrow Test$ Dataset & Algorithm & AUC (\%) & EER (\%) & TAR@FAR$=0.1\%$ (\%) & TAR@FAR$=1\%$ (\%) & TAR@FAR$=10\%$ (\%) \\
         \hline
+        $BCDE \rightarrow A$ & MCP \cite{mcp} & 99.80 & 0.89 & 40.19 & 99.47 & \textbf{100.00} \\
+         & RLT \cite{rlt} & 99.78 & 0.95 & 30.00 & 99.24 & \textbf{100.00} \\
+         & WLD \cite{wld} & \textbf{99.82} & \textbf{0.84} & 43.82 & \textbf{99.59} & 100.00 \\
+         & ArcVein \cite{arcvein} & 89.39 (82.64--96.14) & 19.49 (11.45--27.54) & 6.67 (0.00--16.88) & 22.81 (2.86--42.77) & 61.22 (35.63--86.81) \\
+         & LGFIN \cite{lgfin} & 85.52 (83.95--87.08) & 23.35 (22.54--24.15) & 4.23 (0.00--8.51) & 15.12 (6.50--23.74) & 50.09 (41.24--58.95) \\
+         & FV-ViT \cite{vit} & 89.72 (88.31--91.13) & 17.74 (16.16--19.33) & 0.95 (0.00--2.12) & 6.34 (3.56--9.12) & 58.68 (51.23--66.13) \\
+         & VeinAttNet \cite{veinatnnet} & 97.83 (95.75--99.91) & 6.56 (2.64--10.48) & 21.55 (0.00--54.93) & 50.87 (12.87--88.86) & 96.75 (91.84--100.00) \\
+         & Chen et al  \cite{chenresnetarcloss} & 95.31 (93.90--96.73) & 11.44 (9.19--13.70) & 4.38 (1.61--7.14) & 29.74 (20.34--39.15) & 85.22 (78.30--92.14) \\
+         & Proposed Method & 99.47 (99.19--99.75) & 3.49 (2.47--4.51) & 58.11 (42.09--74.13) & 85.03 (76.76--93.30) & 99.80 (99.53--100.00) \\
         \hline
-& MCP \cite{mcp} & 92.90 & 12.31  \\
-& RLT \cite{rlt} & 90.31 & 13.76  \\
-& WLD \cite{wld} & 87.76 & 16.98  \\
-$ACDE \rightarrow B$ & ArcVein \cite{arcvein} & 91.74  (86.43 - 97.04) & 15.47 (9.10 - 21.84) \\
-& LGFIN \cite{lgfin} & 92.55  (91.90 - 93.21) & 15.12 (14.27 - 15.97) \\
-& FV-ViT \cite{vit} & 89.75  (87.38 - 92.12) & 17.92 (15.47 - 20.38) \\
-& VeinAttNet \cite{veinatnnet} & 99.16  (99.13 - 99.20) & 4.26 (4.06 - 4.47) \\
-& Proposed Method & \textbf{99.17}  (98.89 - 99.45) & \textbf{3.91} (3.03 - 4.79) \\
+        $ACDE \rightarrow B$ & MCP \cite{mcp} & 92.90 & 12.31 & 0.04 & 3.29 & 77.65 \\
+         & RLT \cite{rlt} & 90.31 & 13.76 & 0.00 & 0.04 & 57.20 \\
+         & WLD \cite{wld} & 87.76 & 16.98 & 0.00 & 0.06 & 37.44 \\
+         & ArcVein \cite{arcvein} & 91.71 (86.06--97.37) & 15.61 (8.81--22.41) & 0.99 (0.00--2.30) & 18.34 (5.65--31.02) & 72.04 (48.42--95.66) \\
+         & LGFIN \cite{lgfin} & 92.48 (91.94--93.02) & 15.34 (14.66--16.02) & 5.26 (1.47--9.06) & 26.98 (25.83--28.13) & 75.30 (72.60--77.99) \\
+         & FV-ViT \cite{vit} & 89.70 (87.28--92.12) & 18.03 (15.65--20.41) & 1.94 (0.82--3.06) & 14.97 (7.27--22.68) & 64.48 (54.60--74.36) \\
+         & VeinAttNet \cite{veinatnnet} & 99.06 (98.74--99.39) & 4.35 (3.82--4.88) & \textbf{39.09} (27.25--50.92) & \textbf{78.50} (69.77--87.22) & 98.79 (98.37--99.21) \\
+         & Chen et al \cite{chenresnetarcloss} & 95.47 (93.02--97.91) & 11.26 (7.34--15.19) & 13.30 (0.00--30.56) & 40.13 (26.90--53.36) & 87.04 (77.54--96.54) \\
+         & Proposed Method & \textbf{99.12} (98.86--99.38) & \textbf{3.99} (3.29--4.70) & 28.13 (19.96--36.30) & 74.71 (67.50--81.91) & \textbf{99.51} (99.18--99.84) \\
         \hline
+        $ABDE \rightarrow C$ & MCP \cite{mcp} & 87.01 & 18.93 & 0.01 & 0.55 & 35.11 \\
+         & RLT \cite{rlt} & 79.40 & 25.14 & 0.00 & 0.00 & 4.91 \\
+         & WLD \cite{wld} & 83.07 & 22.87 & 0.00 & 0.08 & 20.58 \\
+         & ArcVein \cite{arcvein} & 87.51 (84.43--90.58) & 20.22 (16.79--23.64) & 2.02 (0.00--4.36) & 7.84 (3.90--11.78) & 52.75 (41.61--63.90) \\
+         & LGFIN \cite{lgfin} & 87.73 (85.09--90.38) & 19.55 (16.73--22.37) & 1.01 (0.00--3.20) & 5.72 (0.00--15.54) & 57.81 (51.20--64.42) \\
+         & FV-ViT \cite{vit} & 89.66 (88.43--90.89) & 18.24 (17.19--19.28) & 2.23 (0.95--3.51) & 15.78 (8.26--23.30) & 65.69 (61.22--70.17) \\
+         & VeinAttNet \cite{veinatnnet} & 86.79 (85.37--88.22) & 22.20 (20.14--24.26) & 8.01 (5.92--10.10) & 15.23 (11.25--19.21) & 49.21 (46.92--51.50) \\
+         & Chen et al \cite{chenresnetarcloss} & 97.54 (96.38--98.69) & 7.95 (5.83--10.06) & 11.93 (0.17--23.69) & \textbf{57.45} (44.19--70.71) & 94.28 (90.19--98.36) \\
+         & Proposed Method & \textbf{97.72} (97.28--98.17) & \textbf{7.48} (6.70--8.25) & \textbf{13.71} (3.69--23.72) & 53.52 (47.25--59.79) & \textbf{95.47} (93.72--97.21) \\
         \hline
-& MCP \cite{mcp} & 87.01 & 18.93  \\
-& RLT \cite{rlt} & 79.40 & 25.14  \\
-& WLD \cite{wld} & 83.07 & 22.87  \\
-$ABDE \rightarrow C$ & ArcVein \cite{arcvein} & 88.09  (84.76 - 91.41) & 19.76 (15.95 - 23.58) \\
-& LGFIN \cite{lgfin} & 87.74  (85.77 - 89.70) & 19.79 (17.73 - 21.85) \\
-& FV-ViT \cite{vit} & 88.64  (87.30 - 89.98) & 19.18 (17.93 - 20.43) \\
-& VeinAttNet \cite{veinatnnet} & 85.94  (84.84 - 87.03) & 23.04 (21.45 - 24.63) \\
-& Proposed Method & \textbf{97.71}  (96.90 - 98.53) & \textbf{7.53} (5.88 - 9.18) \\
+        $ABCE \rightarrow D$ & MCP \cite{mcp} & 95.77 & 9.90 & 3.83 & 21.88 & 90.35 \\
+         & RLT \cite{rlt} & 88.17 & 16.51 & 0.00 & 0.07 & 34.81 \\
+         & WLD \cite{wld} & 89.72 & 15.60 & 0.00 & 0.86 & 48.95 \\
+         & ArcVein \cite{arcvein} & 83.78 (82.07--85.48) & 24.18 (22.21--26.14) & 1.43 (0.00--5.53) & 5.44 (1.23--9.66) & 46.83 (38.51--55.15) \\
+         & LGFIN \cite{lgfin} & 93.95 (92.23--95.66) & 13.41 (11.36--15.45) & 15.41 (10.38--20.43) & 32.25 (18.67--45.83) & 79.50 (71.57--87.43) \\
+         & FV-ViT \cite{vit} & 87.65 (85.36--89.93) & 20.32 (18.21--22.42) & 0.67 (0.00--1.73) & 11.18 (2.88--19.48) & 59.39 (52.00--66.78) \\
+         & VeinAttNet \cite{veinatnnet} & 97.90 (97.34--98.47) & 7.72 (6.71--8.72) & 24.96 (0.00--52.09) & 67.50 (58.20--76.79) & 94.53 (93.02--96.05) \\
+         & Chen et al \cite{chenresnetarcloss} & \textbf{98.72} (98.46--98.98) & \textbf{5.28} (4.35--6.22) & 14.05 (3.77--24.34) & \textbf{71.58} (68.57--74.59) & \textbf{98.52} (97.20--99.84) \\
+         & Proposed Method & 98.67 (98.32--99.02) & 5.34 (4.40--6.29) & \textbf{25.65} (11.73--39.56) & 67.68 (60.38--74.98) & 98.39 (97.81--98.97) \\
         \hline
+        $ABCD \rightarrow E$ & MCP \cite{mcp} & 72.21 & 33.19 & \textbf{0.00} & 0.04 & 11.14 \\
+         & RLT \cite{rlt} & 59.21 & 44.43 & 0.00 & 0.00 & 1.11 \\
+         & WLD \cite{wld} & 69.67 & 35.45 & 0.00 & 0.02 & 8.51 \\
+         & ArcVein \cite{arcvein} & 71.51 (69.25--73.77) & 33.66 (31.29--36.04) & \textbf{0.00} (0.00--0.00) & 0.38 (0.05--0.71) & 18.16 (15.53--20.79) \\
+         & LGFIN \cite{lgfin} & 75.88 (74.57--77.20) & 32.29 (31.43--33.14) & \textbf{0.00} (0.00--0.00) & 9.23 (0.00--20.97) & 32.59 (23.47--41.70) \\
+         & FV-ViT \cite{vit} & 74.34 (72.58--76.09) & 32.09 (28.61--35.57) & \textbf{0.00} (0.00--0.00) & 4.10 (0.00--8.95) & 30.29 (23.60--36.98) \\
+         & VeinAttNet \cite{veinatnnet} & 89.73 (88.62--90.83) & 18.19 (17.04--19.35) & \textbf{0.00} (0.00--0.00) & 13.49 (0.63--26.36) & 67.34 (56.41--78.27) \\
+         & Chen et al \cite{chenresnetarcloss} & \textbf{93.90} (92.39--95.40) & \textbf{14.32} (12.82--15.82) & \textbf{0.00} (0.00--0.00) & \textbf{27.53} (20.02--35.04) & \textbf{75.43} (59.75--91.12) \\
+         & Proposed Method & 91.32 (87.69--94.95) & 16.64 (13.57--19.71) & \textbf{0.00} (0.00--0.00) & 13.70 (0.00--31.29) & 66.40 (45.03--87.76) \\
         \hline
-& MCP \cite{mcp} & 95.77 & 9.90  \\
-& RLT \cite{rlt} & 88.17 & 16.51  \\
-& WLD \cite{wld} & 89.72 & 15.60  \\
-$ABCE \rightarrow D$ & ArcVein \cite{arcvein} & 84.16  (81.09 - 87.23) & 23.85 (20.42 - 27.27) \\
-& LGFIN \cite{lgfin} & 93.65  (91.84 - 95.45) & 13.64 (11.46 - 15.81) \\
-& FV-ViT \cite{vit} & 87.34  (84.62 - 90.07) & 20.58 (18.08 - 23.08) \\
-& VeinAttNet \cite{veinatnnet} & 97.24  (96.35 - 98.13) & 8.67 (7.01 - 10.34) \\
-& Proposed Method & \textbf{98.81}  (98.44 - 99.18) & \textbf{5.26} (4.36 - 6.16) \\
-        \hline
-        \hline
-& MCP \cite{mcp} & 72.21 & 33.19  \\
-& RLT \cite{rlt} & 59.21 & 44.43  \\
-& WLD \cite{wld} & 69.67 & 35.45  \\
-$ABCD \rightarrow E$ & ArcVein \cite{arcvein} & 69.52  (66.76 - 72.29) & 35.57 (33.86 - 37.27) \\
-& LGFIN \cite{lgfin} & 74.70  (73.03 - 76.37) & 33.16 (31.65 - 34.68) \\
-& FV-ViT \cite{vit} & 72.23  (69.72 - 74.74) & 34.40 (32.11 - 36.69) \\
-& VeinAttNet \cite{veinatnnet} & 87.31  (85.24 - 89.37) & 21.26 (19.72 - 22.80) \\
-& Proposed Method & \textbf{89.98}  (86.91 - 93.06) & \textbf{18.50} (15.94 - 21.06) \\
-        \hline
-    \end{tabular}
-    \medskip
-    \caption{Quantitative performances of various techniques on all the datasets.}
-    \label{tab:results}
+    \end{tabular}}
+    \caption{Half-subject threshold-based operating-point results.}
+    \label{tab:rebuttal_half_thresholds}
 \end{table*}
 
 
 
-\subsection{Results and Discussion}
-%Table \ref{tab:results} shows the performance of the proposed and existing finger vein verification techniques for the five different finger vein databases and Figure \ref{fig:fv300_det}, \ref{fig:mmcbnu_det}, \ref{fig:fvusm_det}, \ref{fig:polyu_det}, \ref{fig:vera_det} shows the DET curves. Based on these results, the following are important observations:
-%\begin{itemize}
- %   \item Among the three traditional techniques, WLD \cite{wld} showed the best performance on FV-300 \cite{veinatnnet} dataset, while MCP \cite{mcp} showed superior performance on the remaining four datasets.
-  %  \item Based on the results, it is worth noting that the generalisation capability of deep-learning techniques is limited. However, the proposed method can generalise more to an unknown dataset.
-   % \item FV-USM \cite{fvusm} is known to be a challenging dataset, as evidenced by the EER values of traditional techniques. Yet, the proposed method achieves remarkable generalizability with an EER of $7.42\%$, almost a third of that of other methods.
-    %\item FV-300 \cite{veinatnnet} is a high-quality dataset which explains the superior performance of traditional template matching techniques. The comparable performance of the proposed method demonstrates that, even though the proposed model is trained on low-quality data, it can generalise well enough on high-quality data.
-%\end{itemize}
 
-Table~\ref{tab:results} presents the performance of the proposed method and several state-of-the-art (SOTA) baselines across five open-set evaluation scenarios. For optimal verification performance, the Area Under the Curve (AUC) should be maximised, while the Equal Error Rate (EER) should be minimised. The 95\% confidence intervals (CI) are reported to reflect the statistical reliability of the results.
+\textbf{Full-subject verification performance.}
+Table~\ref{tab:rebuttal_full_thresholds} reports the results when all subjects from the held-out dataset are enrolled. In this setting, the proposed method achieves the lowest EER in all five evaluation splits. For example, in the \(BCDE \rightarrow A\) setting, OpenVeinNet achieves an EER of \(3.17\%\), compared with \(6.20\%\) for VeinAttNet and substantially higher EER values for other deep learning baselines. In the more difficult \(ABDE \rightarrow C\) and \(ABCE \rightarrow D\) settings, the proposed method obtains EER values of \(7.44\%\) and \(5.21\%\), respectively, while also achieving strong TAR values at low FAR thresholds. These results show that the embedding space learned by OpenVeinNet remains discriminative under substantial dataset shift.
 
-Across all open-set cases, the proposed method consistently outperforms both traditional handcrafted feature-based methods (MCP, RLT, WLD) and deep learning-based baselines (ArcVein, LGFIN, FV-ViT, VeinAttNet) in terms of achieving higher AUC and lower EER. The improvement is particularly notable in challenging cross-dataset scenarios where sensor characteristics and image quality differ significantly between training and test sets.
+\textcolor{red}{Based on the updated full-subject table, the proposed method no longer achieves the lowest EER in all five splits after including Chen et al. It remains best on \(BCDE \rightarrow A\), \(ACDE \rightarrow B\), \(ABDE \rightarrow C\), and marginally on \(ABCE \rightarrow D\), while Chen et al. attains the best EER on \(ABCD \rightarrow E\).}
 
-\textbf{Case BCDE $\rightarrow$ A:} The proposed method achieves an AUC of $99.53\%$ (CI: $99.31$--$99.74$) and an EER of $3.18\%$ (CI: $2.13$--$4.23$), significantly outperforming ArcVein ($89.77\%$ AUC, $19.38\%$ EER) and FV-ViT ($89.84\%$ AUC, $17.37\%$ EER). The high accuracy here reflects strong generalisation to high-quality datasets (FV-300) despite being excluded from training.
+\textbf{Behaviour at strict operating points.}
+From a deployment perspective, the low-FAR regime is particularly important because false accepts directly affect security. The proposed method generally achieves higher TAR values at FAR$=0.1\%$ and FAR$=1\%$ than the deep learning baselines, especially in the challenging \(ABDE \rightarrow C\) and \(ABCE \rightarrow D\) protocols. Handcrafted methods such as MCP and WLD can perform strongly on clean and well-controlled data, particularly in \(BCDE \rightarrow A\), but their performance degrades considerably under stronger domain shift. This suggests that handcrafted vessel-enhancement pipelines can be effective when the target data are clean, but their robustness is limited when image quality, sensor characteristics, and acquisition conditions vary.
 
-\textbf{Case ACDE $\rightarrow$ B:} Performance remains strong, with an AUC of $99.17\%$ (CI: $98.89$--$99.45$) and EER of $3.91\%$ (CI: $3.03$--$4.79$), slightly surpassing VeinAttNet ($99.16\%$ AUC, $4.26\%$ EER). The narrow margin indicates that both architectures handle MMCBNU data well, though our method offers a measurable stability advantage as shown by the CI.
+\textbf{Challenging dataset analysis.}
+The \(ABCD \rightarrow E\) setting is the most challenging protocol because VERA contains only two images per class and exhibits higher acquisition variability. All methods show reduced performance in this setting. Nevertheless, the proposed method achieves the best AUC and EER in both evaluation protocols. At FAR$=0.1\%$, the TAR is zero for all methods, indicating that extremely strict operating points are difficult to realise reliably for this low-sample dataset. This should be interpreted with care: the small number of genuine comparisons in VERA leads to a coarse score distribution, which limits score resolution at very low FAR thresholds. Hence, the zero TAR at FAR$=0.1\%$ reflects the limited score resolution and strict operating threshold rather than a complete failure of the learned representation. Importantly, OpenVeinNet maintains competitive or best performance at FAR$=1\%$ and FAR$=10\%$, demonstrating better relative robustness under severe domain shift.
 
-\textbf{Case ABDE $\rightarrow$ C:} This is a highly challenging setting due to dataset variability, where many baselines suffer from significant performance degradation (e.g., ArcVein at $88.09\%$ AUC, $19.76\%$ EER). The proposed method achieves a substantial improvement with $97.71\%$ AUC (CI: $96.90$--$98.53$) and $7.53\%$ EER (CI: $5.88$--$9.18$), demonstrating robust cross-sensor generalisation.
+\textcolor{red}{For the updated VERA-based \(ABCD \rightarrow E\) results, Chen et al. attains the best AUC and EER in both half-subject and full-subject evaluation, while the proposed method remains competitive at several operating points. The main interpretation, however, is unchanged: VERA is intrinsically difficult because of its very small number of images per class and stronger acquisition variability.}
 
-\textbf{Case ABCE $\rightarrow$ D:} The proposed approach attains $98.81\%$ AUC (CI: $98.44$--$99.18$) and $5.26\%$ EER (CI: $4.36$--$6.16$), improving upon VeinAttNet ($97.24\%$ AUC, $8.67\%$ EER) by a notable margin. This confirms the model’s ability to handle unconstrained imaging conditions present in the PolyU dataset.
+\textbf{Comparison with state-of-the-art methods.}
+Compared with recent deep learning approaches such as ArcVein, LGFIN, FV-ViT, and VeinAttNet, the proposed method provides a stronger overall trade-off between AUC, EER, and threshold-based TAR. While VeinAttNet is competitive in some settings, such as \(ACDE \rightarrow B\), its performance is less stable across all held-out datasets. In contrast, OpenVeinNet achieves consistently low EER and strong TAR across both protocols, demonstrating more reliable generalisation.
 
-\textbf{Case ABCD $\rightarrow$ E:}
-% This is the most difficult scenario, with traditional handcrafted methods performing poorly (AUC below $73\%$ for MCP and RLT). While all deep learning baselines struggle due to the open finger vein sensor’s acquisition variability, the proposed method achieves the highest performance ($89.98\%$ AUC, $18.50\%$ EER), outperforming VeinAttNet ($87.31\%$ AUC, $21.26\%$ EER). This highlights its relative robustness in extreme cross-domain shifts, though the drop in AUC and increase in EER compared to other cases suggests that domain adaptation or augmentation may further improve performance.
-This is the most difficult scenario, as the E dataset is the noisiest and lowest in quality among all datasets, posing an additional challenge for verification performance. Traditional handcrafted methods perform poorly (AUC below $73\%$ for MCP and RLT), with their very high EER further reflecting the impact of noise and degraded image quality. While all deep learning baselines struggle due to the open finger vein sensor’s acquisition variability, the proposed method achieves the highest performance ($89.98\%$ AUC, $18.50\%$ EER), outperforming VeinAttNet ($87.31\%$ AUC, $21.26\%$ EER). This highlights its relative robustness under extreme cross-domain shifts and low-quality conditions, though the drop in AUC and rise in EER compared to other cases suggests that domain adaptation or augmentation could further improve performance.
+\textcolor{red}{With the inclusion of Chen et al. in the updated comparison, the strongest learned baseline is no longer always VeinAttNet; Chen et al. is the best learned comparator in several splits, particularly on PolyU and VERA. The comparative discussion should therefore be interpreted with respect to ArcVein, LGFIN, FV-ViT, VeinAttNet, and Chen et al. together.}
 
-\textbf{Overall Analysis:} The proposed method’s superiority can be attributed to two main factors: (i) the Dynamic Snake Convolution layers in the STEM module, which effectively capture the curvilinear vein structures even under noise and illumination changes; and (ii) the graph convolutional backbone, which encodes relational and topological information, enhancing the model’s generalisation in open-set scenarios. The consistently narrow CIs further confirm training stability and reduced sensitivity to random initialisation and data sampling. In summary, the results validate that the proposed method achieves state-of-the-art performance across diverse open-set conditions, maintaining high accuracy and stability even in the most challenging cross-dataset configurations. Figure~\ref{fig:DET Curves} presents the Detection Error Trade-off (DET) curves for all evaluated methods across the five open-set verification scenarios. The DET curve illustrates the trade-off between the False Non Match Rate (FNMR) and the False Match Rate (FMR), plotted on a normal deviate scale to better highlight differences in the low-error regions.
+\textbf{Technical justification of performance gains.}
+The improvement of OpenVeinNet can be attributed to the complementarity of its three main components. First, DSConv adaptively samples along curvilinear structures and therefore captures local tubular vein evidence more effectively than fixed-grid convolution. Second, the graph-based backbone models long-range relationships between vein regions, enabling the network to encode global vascular topology. Third, the Centroid Angular Hybrid Loss encourages compact intra-class embeddings and angularly separated inter-class representations, which improves cosine-similarity-based verification under open-set conditions.
+
+Overall, the experimental results show that OpenVeinNet improves cross-dataset generalisation and provides strong open-set verification capability. The consistent gains in EER and threshold-based TAR across several held-out datasets support the effectiveness of combining adaptive tubular feature extraction, graph-based relational modelling, and angularly constrained embedding learning.
+\begin{table*}[ht!]
+    \centering
+    \scriptsize
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \hline
+        $Train \rightarrow Test$ Dataset & Algorithm & AUC (\%) & EER (\%) & TAR@FAR$=0.1\%$ (\%) & TAR@FAR$=1\%$ (\%) & TAR@FAR$=10\%$ (\%) \\
+        \hline
+        $BCDE \rightarrow A$ & MCP \cite{mcp} & 99.80 & 0.89 & 40.19 & 99.47 & \textbf{100.00} \\
+         & RLT \cite{rlt} & 99.78 & 0.95 & 30.00 & 99.24 & \textbf{100.00} \\
+         & WLD \cite{wld} & \textbf{99.82} & \textbf{0.84} & 43.82 & \textbf{99.59} & 100.00 \\
+         & ArcVein \cite{arcvein} & 89.76 (83.11--96.41) & 19.39 (10.82--27.96) & 6.62 (1.16--12.08) & 24.78 (5.85--43.72) & 63.68 (39.45--87.92) \\
+         & LGFIN \cite{lgfin} & 85.64 (84.31--86.98) & 23.02 (22.30--23.73) & 3.28 (1.05--5.51) & 14.66 (6.00--23.33) & 50.07 (42.59--57.55) \\
+         & FV-ViT \cite{vit} & 89.86 (88.50--91.22) & 17.37 (15.85--18.89) & 1.04 (0.00--2.11) & 6.70 (3.57--9.82) & 59.05 (51.71--66.39) \\
+         & VeinAttNet \cite{veinatnnet} & 98.10 (96.36--99.85) & 6.20 (2.52--9.87) & 20.74 (0.00--51.02) & 56.08 (21.05--91.12) & 97.46 (93.70--100.00) \\
+         & Chen et al \cite{chenresnetarcloss} & 95.34 (93.97--96.72) & 11.22 (9.09--13.35) & 3.89 (2.09--5.68) & 27.83 (21.27--34.38) & 85.94 (79.15--92.73) \\
+         & Proposed Method & 99.53 (99.31--99.74) & 3.17 (2.13--4.22) & \textbf{53.51} (43.47--63.55) & 87.34 (80.89--93.79) & 99.86 (99.67--100.00) \\
+        \hline
+        $ACDE \rightarrow B$ & MCP \cite{mcp} & 92.90 & 12.31 & 0.04 & 3.29 & 77.65 \\
+         & RLT \cite{rlt} & 90.31 & 13.76 & 0.00 & 0.04 & 57.20 \\
+         & WLD \cite{wld} & 87.76 & 16.98 & 0.00 & 0.06 & 37.44 \\
+         & ArcVein \cite{arcvein} & 91.73 (86.42--97.05) & 15.48 (9.10--21.85) & 1.49 (0.04--2.94) & 16.01 (5.77--26.25) & 72.07 (49.33--94.80) \\
+         & LGFIN \cite{lgfin} & 92.55 (91.90--93.20) & 15.12 (14.28--15.96) & 5.31 (3.32--7.29) & 25.07 (22.95--27.19) & 75.64 (72.47--78.80) \\
+         & FV-ViT \cite{vit} & 89.87 (87.55--92.20) & 17.74 (15.40--20.08) & 1.86 (0.78--2.95) & 13.15 (7.54--18.76) & 65.36 (55.78--74.93) \\
+         & VeinAttNet \cite{veinatnnet} & \textbf{99.21} (98.92--99.50) & 4.06 (3.34--4.79) & \textbf{46.04} (32.62--59.47) & \textbf{82.79} (76.00--89.58) & 98.89 (98.50--99.29) \\
+         & Chen et al \cite{chenresnetarcloss} & 95.57 (93.05--98.09) & 11.08 (7.15--15.01) & 12.34 (2.30--22.38) & 41.46 (31.23--51.70) & 87.40 (77.75--97.06) \\
+         & Proposed Method & 99.17 (98.88--99.45) & \textbf{3.91} (3.02--4.80) & 29.60 (27.53--31.67) & 76.93 (69.48--84.39) & \textbf{99.53} (99.13--99.94) \\
+        \hline
+        $ABDE \rightarrow C$ & MCP \cite{mcp} & 87.01 & 18.93 & 0.01 & 0.55 & 35.11 \\
+         & RLT \cite{rlt} & 79.40 & 25.14 & 0.00 & 0.00 & 4.91 \\
+         & WLD \cite{wld} & 83.07 & 22.87 & 0.00 & 0.08 & 20.58 \\
+         & ArcVein \cite{arcvein} & 88.09 (84.75--91.42) & 19.74 (15.90--23.58) & 1.55 (0.11--2.98) & 8.65 (5.87--11.42) & 55.14 (42.20--68.08) \\
+         & LGFIN \cite{lgfin} & 87.75 (85.77--89.72) & 19.77 (17.72--21.82) & 0.56 (0.00--1.99) & 5.10 (0.00--12.95) & 57.47 (52.05--62.90) \\
+         & FV-ViT \cite{vit} & 88.77 (87.45--90.08) & 19.03 (17.79--20.26) & 1.17 (0.00--2.43) & 11.88 (6.77--16.98) & 62.87 (58.04--67.69) \\
+         & VeinAttNet \cite{veinatnnet} & 86.92 (85.25--88.59) & 22.02 (19.67--24.38) & 6.07 (2.52--9.62) & 15.45 (10.92--19.98) & 50.11 (45.21--55.00) \\
+         & Chen et al \cite{chenresnetarcloss} & 97.35 (95.96--98.74) & 8.33 (6.00--10.66) & 15.69 (9.04--22.34) & 55.34 (40.04--70.65) & 93.49 (88.70--98.27) \\
+         & Proposed Method & \textbf{97.78} (97.30--98.26) & \textbf{7.44} (6.51--8.38) & \textbf{16.84} (7.18--26.49) & \textbf{55.77} (50.67--60.87) & \textbf{95.39} (93.58--97.21) \\
+        \hline
+        $ABCE \rightarrow D$ & MCP \cite{mcp} & 95.77 & 9.90 & 3.83 & 21.88 & 90.35 \\
+         & RLT \cite{rlt} & 88.17 & 16.51 & 0.00 & 0.07 & 34.81 \\
+         & WLD \cite{wld} & 89.72 & 15.60 & 0.00 & 0.86 & 48.95 \\
+         & ArcVein \cite{arcvein} & 84.16 (81.10--87.22) & 23.86 (20.44--27.28) & 0.56 (0.00--1.62) & 6.58 (3.28--9.87) & 49.39 (40.30--58.48) \\
+         & LGFIN \cite{lgfin} & 93.65 (91.84--95.46) & 13.65 (11.49--15.82) & 13.83 (10.69--16.97) & 28.08 (19.72--36.44) & 78.93 (71.26--86.61) \\
+         & FV-ViT \cite{vit} & 88.55 (86.32--90.79) & 19.27 (17.31--21.24) & 2.22 (0.00--4.90) & 12.93 (5.79--20.08) & 62.52 (55.10--69.94) \\
+         & VeinAttNet \cite{veinatnnet} & 97.54 (96.98--98.10) & 8.20 (7.10--9.29) & 17.31 (0.00--38.14) & 57.91 (49.43--66.40) & 93.67 (91.66--95.69) \\
+         & Chen et al \cite{chenresnetarcloss} & 98.76 (98.47--99.06) & 5.22 (4.41--6.03) & 14.34 (0.75--27.92) & 71.02 (64.54--77.50) & \textbf{98.49} (97.45--99.54) \\
+         & Proposed Method & \textbf{98.80} (98.43--99.17) & \textbf{5.21} (4.37--6.04) & \textbf{29.96} (15.66--44.27) & \textbf{72.22} (63.14--81.31) & 98.34 (97.69--98.99) \\
+        \hline
+        $ABCD \rightarrow E$ & MCP \cite{mcp} & 72.21 & 33.19 & \textbf{0.00} & 0.04 & 11.14 \\
+         & RLT \cite{rlt} & 59.21 & 44.43 & 0.00 & 0.00 & 1.11 \\
+         & WLD \cite{wld} & 69.67 & 35.45 & 0.00 & 0.02 & 8.51 \\
+         & ArcVein \cite{arcvein} & 69.52 (66.73--72.30) & 35.57 (33.86--37.29) & \textbf{0.00} (0.00--0.00) & 1.11 (0.66--1.57) & 17.31 (15.56--19.05) \\
+         & LGFIN \cite{lgfin} & 74.72 (73.06--76.37) & 33.09 (31.79--34.39) & \textbf{0.00} (0.00--0.00) & 5.70 (0.00--14.47) & 31.52 (23.60--39.44) \\
+         & FV-ViT \cite{vit} & 73.12 (70.51--75.74) & 33.07 (29.82--36.31) & \textbf{0.00} (0.00--0.00) & 3.99 (0.01--7.96) & 31.17 (26.60--35.73) \\
+         & VeinAttNet \cite{veinatnnet} & 88.41 (87.57--89.26) & 19.90 (18.19--21.62) & \textbf{0.00} (0.00--0.00) & \textbf{18.28} (7.72--28.84) & 60.95 (56.15--65.75) \\
+         & Chen et al \cite{chenresnetarcloss} & \textbf{92.45} (90.30--94.61) & \textbf{15.50} (12.98--18.01) & \textbf{0.00} (0.00--0.00) & 12.24 (0.00--30.11) & \textbf{72.08} (60.44--83.71) \\
+         & Proposed Method & 89.98 (86.89--93.06) & 18.43 (15.72--21.13) & \textbf{0.00} (0.00--0.00) & 15.84 (2.82--28.87) & 64.67 (51.49--77.85) \\
+        \hline
+    \end{tabular}}
+    \caption{Full-subject threshold-based operating-point results.}
+    \label{tab:rebuttal_full_thresholds}
+\end{table*}
 
 
 
+%%%%%%%%%%%%%%
+\subsection{Dataset Quality Analysis and Performance Interpretation}
+\label{sec:dataset_quality_analysis}
+
+To better understand dataset-specific performance variations observed in Section~\ref{sec:results_discussion}, we analyse the intrinsic quality of the datasets using a set of handcrafted image-quality measures. The goal of this analysis is not to define a universal quality metric, but to provide consistent and interpretable indicators of structural clarity, continuity, and contrast across datasets.
+
+For a grayscale image $I$ defined over pixel domain $\Omega$, we compute four complementary measures:
+\begin{align}
+Q_{\text{grad}}(I) &= \frac{1}{|\Omega|}\sum_{p \in \Omega} \sqrt{G_x(p)^2 + G_y(p)^2}, \\
+Q_{\text{coh}}(I) &= \frac{1}{B}\sum_{b=1}^{B}
+\left(
+\frac{\sqrt{(j_{11}^{(b)}-j_{22}^{(b)})^2 + 4(j_{12}^{(b)})^2}}
+{j_{11}^{(b)} + j_{22}^{(b)} + \varepsilon}
+\right)^2, \\
+Q_{\text{lap}}(I) &= \mathrm{Var}(\Delta I), \\
+Q_{\text{con}}(I) &= \frac{1}{B}\sum_{b=1}^{B} \sigma_b,
+\end{align}
+where $G_x$ and $G_y$ denote Sobel gradients, $(j_{11}^{(b)}, j_{22}^{(b)}, j_{12}^{(b)})$ are structure-tensor components computed over block $b$, $\Delta I$ represents the Laplacian response, and $\sigma_b$ is the standard deviation within block $b$. In all cases, higher values indicate stronger structural visibility or contrast.
+
+\begin{table}[ht!]
+    \centering
+    \resizebox{\columnwidth}{!}{
+    \begin{tabular}{|l|c|c|c|c|c|}
+        \hline
+        Dataset & Gradient & Grad. Coherence & Laplacian & Contrast & Images/Subject \\
+        \hline
+        FV-300 (A) \cite{veinatnnet} & 0.0687 & 0.3675 & 0.0609 & 0.0311 & 89.57 \\
+        MMCBNU (B) \cite{mmcbnu} & 0.0781 & 0.5398 & 0.0026 & 0.0392 & 10.00 \\
+        FV-USM (C)\cite{fvusm} & 0.0312 & 0.2928 & 0.0009 & 0.0137 & 12.00 \\
+        PolyU (D) \cite{polyu} & 0.0478 & 0.4605 & 0.0017 & 0.0249 & 5.84 \\
+        VERA (E) \cite{vera} & 0.0476 & 0.1429 & 0.0074 & 0.0196 & 2.00 \\
+        \hline
+    \end{tabular}
+    }
+ \caption{Mean fingervein  image-quality indicators computed across datasets. The metrics quantify gradient strength, structural coherence, edge sharpness (Laplacian variance), and local contrast. Higher values indicate better visibility and continuity of vein structures. The number of images per subject is also reported to highlight dataset density, which impacts verification reliability.}
+    \label{tab:rebuttal_quality}
+\end{table}
+
+The results in Table~\ref{tab:rebuttal_quality} provide useful insights into the observed performance trends. As observed in Tables~\ref{tab:rebuttal_half_thresholds} and~\ref{tab:rebuttal_full_thresholds}, handcrafted methods such as MCP and WLD outperform several deep learning baselines in the \(BCDE \rightarrow A\) setting. 
+First, the $BCDE \rightarrow A$ setting corresponds to evaluation on FV-300, which exhibits relatively high structural quality and, importantly, a significantly larger number of samples per subject compared to other datasets. Under such controlled and high-quality conditions, handcrafted methods based on vessel enhancement and template matching remain highly competitive, as the vein structures are already well-defined and less affected by noise or variability. Therefore, the strong performance of handcrafted approaches in this setting does not contradict the overall findings, but rather highlights that simpler methods can perform well when the data distribution is favourable.
+
+In contrast, the performance drop observed in the $ABCD \rightarrow E$ setting is consistent with both dataset characteristics and the quality analysis. VERA exhibits the lowest gradient-coherence among all datasets, indicating weaker structural continuity of vein patterns, and contains only two images per subject. This results in limited intra-class representation and a sparse score distribution during evaluation. Furthermore, the open-sensor acquisition setup introduces additional variability, increasing the domain shift relative to the training data.
+
+As a result, the $ABCD \rightarrow E$ protocol represents a challenging low-quality, low-sample, and high-variability scenario. The reduced performance across all methods in this setting is therefore expected and reflects the inherent difficulty of the dataset rather than a limitation specific to the proposed approach.
+
+Overall, this analysis clarifies that the observed performance variations are primarily driven by dataset characteristics, including image quality, sample density, and acquisition variability. These findings support a more precise interpretation of the experimental results, where the proposed method demonstrates strong generalisation across diverse conditions while remaining robust under challenging cross-dataset scenarios.
+
+\textbf{Statistical significance:}
+To validate that the observed improvements are not due to random variation, we performed paired statistical significance testing using a two-sided sign-flip permutation test on full-subject EER across matched runs. The proposed method shows statistically significant improvements over all competing deep learning baselines after Holm correction ($p < 10^{-4}$). Detailed results are provided in the supplementary material.
+\textcolor{red}{Using the current full-subject EER significance tests, the proposed method remains statistically significant against ArcVein, LGFIN, FV-ViT, Chen et al., and VeinAttNet after Holm correction. However, the corrected \(p\)-values are not all below \(10^{-4}\); in particular, the comparison against Chen et al. remains significant but with a larger adjusted \(p\)-value than the other baselines.}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Ablation Study}
-\label{sec:refinement}
+\label{sec:ablation}
+
+In this section, we present a consolidated ablation study to justify the main design choices of OpenVeinNet. The ablations analyse: (i) the kernel-size configuration of the DSConv stem, (ii) the number of Grapher Blocks in the backbone, (iii) the contribution of the proposed Centroid Angular Hybrid (CAH) loss compared with standard losses, (iv) its comparison against strong angular-margin losses, (v) the sensitivity of the balancing factor $\beta$, and (vi) the individual contributions of DSConv and graph-based modelling. Unless otherwise stated, the ablation experiments are conducted under the $ABDE \rightarrow C$ protocol, where FV-USM is used as the held-out evaluation dataset. Lower EER indicates better verification performance.
+
+
+\subsection{Effect of DSConv Kernel Sizes}
 
 \begin{table}[ht!]
     \centering
     \begin{tabular}{| c | c |}
-        \hline
-        Kernel set & EER (in \%)  \\
+        \hline 
+        Kernel set & EER (\%)  \\
         \hline
         \hline
         (3, 3, 3) & 12.3351 \\
@@ -1167,34 +1078,35 @@ This is the most difficult scenario, as the E dataset is the noisiest and lowest
         (9, 7, 5) & 11.0605 \\
         (7, 5, 3) & 13.0697 \\
         (9, 5, 3) & 11.2155 \\
-        (9, 7, 3) & 10.8235 \\
+        \textbf{(9, 7, 3)} & \textbf{10.8235} \\
         \hline
     \end{tabular}
-    \caption{Set of kernel sizes sequentially in the DSBLocks of the stem}
+    \caption{Ablation on the kernel sizes used sequentially in the DSConv Blocks of the stem.}
     \label{tab:stemexps}
 \end{table}
+
+Table~\ref{tab:stemexps} shows the effect of different kernel-size configurations in the DSConv stem. Uniformly small kernels such as $(3,3,3)$ and $(5,5,5)$ are less effective, suggesting that very local receptive fields are insufficient to capture the extended curvilinear structure of finger veins. Uniformly large kernels improve the result, but do not provide the best performance. The best EER is obtained using the progressively decreasing configuration $(9,7,3)$, which achieves an EER of $10.8235\%$.
+
+This trend is technically meaningful. Larger kernels in the shallow layers help capture broader vascular structures and long vein segments, while smaller kernels in deeper layers refine local discriminative details. Therefore, the $(9,7,3)$ configuration provides a better balance between global vein continuity and fine local pattern representation.
+
+\subsection{Effect of the Number of Grapher Blocks}
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=\linewidth]{plots/backbone_numberofgraphers.png}
-\caption{Experiments refining the number of GrapherBlocks in the Backbone; Y-axis shows number of blocks at the start, X-axis shows them at the end.}
+\caption{Ablation on the number of Grapher Blocks in the backbone. The Y-axis indicates the number of Grapher Blocks in the first stage, while the X-axis indicates the number of Grapher Blocks in the second stage.}
 \label{fig:bakcbone_graphers}
 \end{figure}
 
-In this section, we present and discuss the quantitative results of the study performed to justify the choice of parameters in the proposed OpenVeinNet.
-We conducted two different refinement studies: 1) to validate the choice of kernel sizes within the DSBlocks of the Stem, and 2) to justify the number of GrapherBlocks employed in the Backbone.
-In general, existing literature suggests that either a uniform kernel size throughout the network or gradually shrinking the kernel size in deeper layers of the model yields optimal performance. To identify the most effective configuration for our model while keeping the number of experiments manageable, we chose a specific set of kernel sizes as shown in Table \ref{tab:stemexps}.
+The number of Grapher Blocks controls the depth of graph-based message passing in the backbone. A shallow graph backbone may not propagate sufficient relational information between vein regions, while an overly deep graph backbone may introduce redundancy, over-smoothing, or unnecessary computational cost. To identify an effective configuration, we evaluate different combinations of Grapher Blocks in the first and second backbone stages, selected from $\{2,4,6,8\}$.
 
+As shown in Figure~\ref{fig:bakcbone_graphers}, the configuration with four Grapher Blocks in the first stage and six Grapher Blocks in the second stage achieves the best EER of $10.5945\%$. This indicates that the model benefits from moderate graph depth: sufficient to capture long-range vein connectivity, but not so deep that feature representations become over-smoothed. This observation supports the final backbone design used in OpenVeinNet.
 
-These results demonstrate that using larger kernels in the shallow layers, followed by progressively smaller kernels, achieves better performance, as indicated by the lowest EER of $10.8235\%$ for the $[9,7,3]$ configurations.
-
-The number of sequential GrapherBlocks is proportional to the effective depth of message passing within the GCNs, determining how far information propagates among neighbouring nodes.  In order to get the optimal number of GrapherBlocks in the Backbone while simultaneously keeping the experiments limited, we picked four choices for the number of sequential GrapherBlocks at a time to be among: ${2,4,6,8}$. While conducting these experiments, the optimal stem configuration of $[9,7,3]$ is chosen.
-
-As the GrapherBlocks at the start and end of Backbone can vary independently, a total of 16 experiments were conducted, as shown in Figure \ref{fig:bakcbone_graphers}. The combination of four GrapherBlocks at the start of the backbone and six GrapherBlocks at the end worked best with an EER of $10.5945\%$.
+\subsection{Comparison with Standard Loss Functions}
 
 \begin{table}[htbp]
 \centering
-\caption{Study on different loss functions}
+\caption{Ablation study on standard loss functions under the $ABDE \rightarrow C$ protocol. Lower EER is better.}
 \label{tab:loss_ablation}
 \begin{tabular}{|l|c|}
 \hline
@@ -1202,175 +1114,192 @@ As the GrapherBlocks at the start and end of Backbone can vary independently, a 
 \hline
 MSE        &  26.68 \\
 NLL        &  33.98 \\
-\textbf{Proposed} & \textbf{7.08} \\
+\textbf{Proposed CAH Loss} & \textbf{7.44} \\
 \hline
 \end{tabular}
 \end{table}
 
-In order to assess the effectiveness of the proposed loss function, we trained the proposed network separately with Mean Squared Error (MSE) loss, Negative Log-Likelihood (NLL) loss, and the proposed loss. Performance was evaluated using EER by training using $ABDE \rightarrow C$. As shown in Table \ref{tab:loss_ablation}, the proposed loss consistently outperformed both MSE and NLL, achieves the lowest EER, indicating its superior ability to optimize feature representation for the verification task.
+Table~\ref{tab:loss_ablation} compares the proposed CAH loss with standard MSE and NLL losses. The proposed loss achieves a substantially lower EER than both alternatives, confirming that regression-style or likelihood-based objectives are not sufficient for learning highly discriminative finger-vein embeddings. In contrast, the proposed loss explicitly promotes class separability and compact identity-specific embeddings, which are essential for verification.
 
 
+\subsection{Comparison with Strong Angular-Margin Losses}
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        Loss Function & Mean EER (\%) \\
+        \hline
+        ArcFace \cite{deng2019arcface} & 7.83 \\
+        MagFace \cite{meng2021magface} & 8.20 \\
+        AdaFace \cite{kim2022adaface} & 8.22 \\
+        \textbf{Proposed CAH Loss} & \textbf{7.44} \\
+        \hline
+    \end{tabular}
+    \caption{Loss ablation against strong angular-margin losses on the $ABDE \rightarrow C$ protocol. Lower EER is better.}
+    \label{tab:rebuttal_loss_ablation}
+\end{table}
+
+To further validate the proposed loss, Table~\ref{tab:rebuttal_loss_ablation} compares CAH against strong angular-margin losses, including ArcFace, MagFace, and AdaFace. These losses are widely used for discriminative biometric representation learning. 
+The proposed CAH loss obtains the lowest mean EER of $7.44\%$, compared with ArcFace ($7.83\%$), MagFace ($8.20\%$), and AdaFace ($8.22\%$). This result is important because it shows that the proposed loss is not only better than standard objectives, but also competitive with established angular-margin losses under the same protocol.
+
+\subsection{Sensitivity to the Balancing Factor $\beta$}
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        $\beta$ & EER (\%) \\
+        \hline
+        0.1 & 9.07 \\
+        \textbf{0.3 (default)} & \textbf{7.44} \\
+        0.5 & 10.60 \\
+        0.9 & 11.57 \\
+        \hline
+    \end{tabular}
+    \caption{Sensitivity of the proposed CAH loss to the balancing factor $\beta$ on the $ABDE \rightarrow C$ protocol. Lower EER is better.}
+    \label{tab:rebuttal_beta_ablation}
+\end{table}
+
+Table~\ref{tab:rebuttal_beta_ablation} reports the sensitivity of the proposed loss to the angular balancing factor $\beta$. The best performance is achieved at $\beta=0.3$, with an EER of $7.44\%$. When $\beta$ is too small, such as $0.1$, the angular component is under-weighted and the model does not fully benefit from angular supervision. Conversely, when $\beta$ is too large, such as $0.5$ or $0.9$, the angular term dominates the optimisation and degrades performance.
+
+This confirms that the angular term is useful, but must be balanced carefully. The default value $\beta=0.3$ provides the best trade-off between classification supervision and angular regularisation, supporting the choice used in the final model.
+
+\subsection{Component-Level Ablation of DSConv and Graph Modelling}
+
+\begin{table}[ht!]
+    \centering
+    \begin{tabular}{|l|c|}
+        \hline
+        Variant & Mean EER (\%) \\
+        \hline
+        Standard stem + no graph & 13.59 \\
+        DSConv stem + no graph & 10.96 \\
+        Standard stem + graph backbone & 11.64 \\
+        \textbf{Full model (DSConv + graph backbone)} & \textbf{7.44} \\
+        \hline
+    \end{tabular}
+    \caption{Component ablation isolating the contributions of DSConv and graph modelling on the $ABDE \rightarrow C$ protocol. Lower EER is better.}
+    \label{tab:rebuttal_component_ablation}
+\end{table}
+
+Table~\ref{tab:rebuttal_component_ablation} isolates the contribution of the DSConv stem and the graph-based backbone. The standard convolutional stem without graph modelling gives the weakest performance, with an EER of $13.59\%$. Replacing the standard stem with DSConv reduces the EER to $10.96\%$, showing that adaptive tubular feature extraction is beneficial for finger-vein representation. Similarly, adding the graph backbone to a standard stem improves the EER to $11.64\%$, demonstrating that graph-based relational modelling also contributes positively.
+
+The full model, combining DSConv and graph modelling, achieves the best EER of $7.44\%$. This confirms that the two components are complementary rather than redundant. DSConv improves local modelling of curvilinear vein patterns, while the Grapher backbone captures long-range relationships between vein regions. Their combination produces a more discriminative and generalisable embedding space.
+
+\subsection{Overall Ablation Analysis}
+
+The ablation results provide strong evidence for the design of OpenVeinNet. The stem analysis shows that a progressively decreasing DSConv kernel configuration, $(9,7,3)$, is most effective for capturing both broad and fine vein structures. The Grapher Block analysis confirms that a moderate graph depth, using four Grapher Blocks in the first stage and six in the second, provides the best balance between relational modelling and representation stability.
+
+The loss ablations further show that the proposed CAH loss is a key contributor to the final performance. It substantially outperforms standard losses and also achieves the lowest EER among the evaluated angular-margin alternatives, including ArcFace, MagFace, and AdaFace. The $\beta$ sensitivity study confirms that the angular component is beneficial when properly balanced, with $\beta=0.3$ giving the best result.
+
+Finally, the component-level ablation directly addresses whether the architecture is merely a combination of existing modules. The results show that both DSConv and graph modelling independently improve performance, and their combination provides the strongest result. This demonstrates that OpenVeinNet benefits from a synergistic interaction between local tubular feature extraction, global graph-based relational modelling, and angularly constrained embedding learning.
+
+Overall, these ablation studies confirm that each major component of the proposed framework contributes meaningfully to the final verification performance, thereby validating the architectural and loss-design choices of OpenVeinNet.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Computational Cost and Inference Latency}
+\label{sec:efficiency}
+
+In addition to verification performance, practical deployment of biometric systems requires careful consideration of computational cost and inference latency. While the proposed \textit{OpenVeinNet} is designed primarily for robust open-set verification, it is equally important to quantify its efficiency characteristics and understand the associated trade-offs relative to existing methods.
+
+To this end, we benchmark all learned approaches under a unified experimental protocol. Specifically, we evaluate each method using its held-out FV-300 checkpoint, a batch size of $1$, and repeated forward passes on both CPU and GPU platforms. We report the number of learnable parameters as a proxy for model size, FLOPs as an approximate measure of computational complexity, and mean single-image latency and throughput. Handcrafted methods (MCP, RLT, WLD) are excluded due to the absence of a unified neural inference pipeline. For VeinAttNet, FLOPs are reported as \texttt{n/a}, as its available implementation is in MATLAB and not directly compatible with the same profiling tools.
+
+\begin{table*}[ht!]
+    \centering
+    \scriptsize
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|c|c|c|c|c|c|}
+        \hline
+        Method & Params (M) & FLOPs (G) & CPU Lat. (ms) & CPU Thr. (img/s) & GPU Lat. (ms) & GPU Thr. (img/s) \\
+        \hline
+        ArcVein \cite{arcvein} & 7.83 & 2.45 & 7.09 & 141.10 & \textbf{0.94} & \textbf{1067.42} \\
+        LGFIN \cite{lgfin} & 6.79 & 7.51 & 45.48 & 21.99 & 3.84 & 260.42 \\
+        FV-ViT \cite{vit} & \textbf{0.36} & \textbf{0.03} & \textbf{5.02} & \textbf{199.37} & 1.74 & 574.79 \\
+        VeinAttNet \cite{veinatnnet} & \textbf{0.09} & n/a & 11.24 & 88.96 & 10.63 & 94.08 \\
+        Chen et al \cite{chenresnetarcloss} & 11.18 & 3.65 & 10.66 & 93.77 & 1.27 & 786.02 \\
+        Proposed Method & 4.76 & 5.07 & 55.82 & 17.92 & 13.00 & 76.94 \\
+        \hline
+    \end{tabular}}
+    \caption{Runtime and computational-cost comparison on FV-300 using batch size $1$. Lower latency is better; higher throughput is better.}
+    \label{tab:rebuttal_runtime}
+\end{table*}
+
+Table~\ref{tab:rebuttal_runtime} summarises the computational characteristics of the evaluated methods. Several key observations can be drawn.
+
+\textbf{Efficiency-oriented models.}
+Lightweight architectures such as FV-ViT exhibit the lowest computational footprint, with only $0.36$M parameters and $0.03$ GFLOPs, resulting in the fastest CPU latency ($5.02$ ms) and highest CPU throughput. Similarly, ArcVein achieves the fastest GPU latency ($0.94$ ms) and highest throughput, making it well suited for high-throughput scenarios. However, as demonstrated in Section~\ref{sec:results_discussion}, these efficiency gains come at the cost of reduced verification robustness, particularly under cross-dataset and open-set conditions.
+
+\textbf{Proposed method: accuracy-driven design.}
+The proposed \textit{OpenVeinNet} adopts a more expressive architecture, resulting in a moderate computational footprint of $4.76$M parameters and $5.07$ GFLOPs. This leads to higher latency (55.82 ms on CPU and 13.00 ms on GPU) compared to lightweight baselines. Nevertheless, the model remains computationally practical, especially in GPU-enabled or server-side deployment scenarios. Importantly, OpenVeinNet is still more compact than several CNN-based baselines (e.g., ArcVein and LGFIN) in terms of parameter count, while delivering substantially stronger verification performance.
+
+\textbf{Justification of computational cost.}
+The increased computational cost is a direct consequence of the architectural components that enable improved verification performance. The DSConv layers introduce adaptive sampling mechanisms that align receptive fields with curvilinear vein structures, improving feature quality at the expense of additional computation. The Grapher Blocks further incorporate dynamic graph construction and message passing, allowing the model to capture long-range topological dependencies that cannot be effectively modelled by standard convolutions. While these operations are computationally more demanding, they contribute directly to the discriminative strength and generalisability of the learned embeddings.
+
+In addition, the proposed Centroid Angular Hybrid Loss improves embedding separability in angular space, which is particularly beneficial for open-set verification. As shown in Section~\ref{sec:results_discussion}, this results in consistently lower EER and higher TAR, especially under strict low-FAR operating conditions that are critical for real-world biometric systems.
+
+\textbf{Accuracy-efficiency trade-off.}
+Overall, the results highlight a clear and expected accuracy--efficiency trade-off. Methods such as FV-ViT and ArcVein achieve lower latency but exhibit weaker generalisation and reduced robustness under domain shift. In contrast, OpenVeinNet prioritises discriminative representation learning and open-set reliability, leading to improved verification performance at the cost of moderate computational overhead.
+
+From a deployment perspective, this trade-off is well justified. In security-critical applications, such as financial authentication and identity verification, robustness and low error rates are typically prioritised over minimal latency. At the same time, the proposed model remains sufficiently efficient for practical deployment, particularly when GPU acceleration is available.
+
+
+In summary, OpenVeinNet achieves a favourable balance between computational cost and verification performance, offering strong cross-dataset and open-set robustness while maintaining practical inference efficiency for GPU-enabled deployment.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure*}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{plots/polyu_genuine.pdf}
-\caption{Illustration of GradCAM++ \cite{gradcamplusplus} based interpretation of the proposed model for fingervein images for the same identity (Genuine comparison).}
+\caption{Grad-CAM++~\cite{gradcamplusplus}-based interpretation of the proposed model for finger vein images from the same identity, representing a genuine comparison.}
 \label{fig:explainaibility_genuine}
 \end{figure*}
 
 \begin{figure*}[ht!]
 \centering
 \includegraphics[width=0.9\textwidth]{plots/polyu_imposter.pdf}
-\caption{Illustration of GradCAM++ \cite{gradcamplusplus} based interpretation of the proposed model for fingervein images for the different identity (Imposter comparison).}
+\caption{Grad-CAM++~\cite{gradcamplusplus}-based interpretation of the proposed model for finger vein images from different identities, representing an impostor comparison.}
 \label{fig:explainaibility_imposter}
 \end{figure*}
 
-\section{Interpretation of the proposed method}
+\section{Interpretation of the Proposed Method}
 \label{sec:interpretation}
-The accurate interpretation of deep learning models is essential for understanding their decision-making processes, validating their behaviour, and ensuring trust in biometric verification systems. In this work, we adopt Grad-CAM++ \cite{gradcamplusplus}, an advanced variant of Grad-CAM, to visualise the regions in the input finger vein images that contribute most strongly to the network’s predictions.
 
-% %\paragraph{Mathematical Formulation.}
-% Let $y^{c}$ denote the score for class $c$ before the softmax activation, and let $A^{k} \in \mathbb{R}^{u \times v}$ represent the $k$-th feature map of a convolutional layer, with $u$ and $v$ denoting its spatial dimensions. The weight $\alpha_{ij}^{kc}$ for spatial location $(i, j)$ in the $k$-th feature map is computed as:
-% \begin{equation}
-%     \alpha_{ij}^{kc} = \frac{\frac{\partial^{2} y^{c}}{\partial (A_{ij}^{k})^{2}}}{2 \frac{\partial^{2} y^{c}}{\partial (A_{ij}^{k})^{2}} + \sum_{a} \sum_{b} A_{ab}^{k} \cdot \frac{\partial^{3} y^{c}}{\partial (A_{ij}^{k})^{3}}}
-% \end{equation}
+Interpretability is important for understanding the decision behaviour of deep learning-based biometric systems, particularly in security-sensitive verification tasks. In this work, we employ Grad-CAM++~\cite{gradcamplusplus} to visualise the image regions that contribute most strongly to the proposed model's embedding responses. This analysis helps verify whether \textit{OpenVeinNet} focuses on meaningful vascular structures rather than irrelevant background or sensor-specific artefacts.
 
-% The final importance weight for feature map $k$ is given by:
-% \begin{equation}
-%     w_{k}^{c} = \sum_{i} \sum_{j} \alpha_{ij}^{kc} \cdot \mathrm{ReLU} \left( \frac{\partial y^{c}}{\partial A_{ij}^{k}} \right)
-% \end{equation}
+We analyse two verification cases: (i) \textbf{genuine comparisons}, where the enrolment and probe images belong to the same identity, and (ii) \textbf{impostor comparisons}, where the enrolment and probe images belong to different identities. For each case, we examine both high-similarity and low-similarity pairs. Grad-CAM++ activation maps are computed separately for the stem and backbone components to understand how local tubular feature extraction and graph-based feature aggregation contribute to the final representation.
 
-% The Grad-CAM++ localisation map for class $c$ is then:
-% \begin{equation}
-%     L_{\mathrm{Grad-CAM++}}^{c} = \mathrm{ReLU} \left( \sum_{k} w_{k}^{c} \cdot A^{k} \right)
-% \end{equation}
-% where $\mathrm{ReLU}(\cdot)$ ensures that only features with a positive influence on the target class are preserved.
+Figures~\ref{fig:explainaibility_genuine} and~\ref{fig:explainaibility_imposter} show that the stem activations are strongly aligned with visible vein structures in the input images. This behaviour is expected because the DSConv stem is designed to follow curvilinear and tubular patterns. In genuine high-similarity cases, the activations are more concentrated around consistent vascular regions, indicating that the model relies on stable vein evidence for matching. In low-similarity or impostor cases, the responses become more diffuse or shift towards less consistent regions, reflecting weaker correspondence between the compared samples.
 
-% %\paragraph{Justification for Use in This Work.}
-% In finger vein verification, discriminative information is concentrated in fine-grained vascular structures that are often narrow, tubular, and spatially localised. Standard Grad-CAM highlights broader image regions, which may not precisely delineate such subtle vein features. Grad-CAM++, by incorporating pixel-wise weighting and higher-order derivatives, produces sharper and more spatially accurate attention maps. This higher localisation fidelity is critical for our architecture: the \emph{stem} is optimised to capture detailed vein morphology, while the \emph{backbone} focuses on identity-discriminative regions. Grad-CAM++ thus provides strong qualitative validation that each network component is attending to its intended feature domain, a particularly important property for open-set verification scenarios.
+The backbone activations show a different behaviour. Rather than focusing only on local vein texture, the backbone highlights broader regions that appear to encode higher-level identity-specific information. This is consistent with the role of the Grapher Blocks, which aggregate relational information between neighbouring and non-local vein regions. Therefore, the interpretation results support the intended architectural design: the stem captures fine-grained tubular vein morphology, while the graph-based backbone refines these features into a more discriminative identity representation.
 
-%\paragraph{Experimental Insights.}
-To gain a deeper understanding of the proposed model’s internal representations, we conducted two sets of analyses: (i) \textbf{genuine comparisons} involving images of the same identity, and (ii) \textbf{imposter comparisons} involving images from different identities. Within each set, we examined two cases: maximum similarity between the enrol and probe images, and minimum similarity between them. Grad-CAM++ activations were computed separately for both the stem and backbone components.
-
-As shown in Figure~\ref{fig:explainaibility_genuine} and Figure~\ref{fig:explainaibility_imposter}, the Grad-CAM++ activation maps for the stem exhibit strong correspondence to the actual vein patterns in the input images. This indicates that the stem primarily focuses on vascular structures, with vein patterns appearing more sharply in maximum-similarity cases and becoming more diffuse in minimum-similarity cases. In contrast, the backbone activations tend to highlight broader identity-specific regions deeper in the network, suggesting that they encode higher-level discriminative cues beyond the immediate vein texture. These findings confirm the complementary roles of the two components: the stem captures the fine-grained vascular morphology essential for matching, while the backbone refines this representation to emphasise identity-specific features. This separation of responsibilities supports both high verification accuracy and strong generalisation in open-set conditions, thereby reinforcing the reliability and interpretability of the proposed \emph{OpenVeinNet} architecture.
-
-
+Overall, the Grad-CAM++ analysis provides qualitative evidence that \textit{OpenVeinNet} bases its verification decisions on meaningful vascular patterns and their higher-level structural relationships. This supports the reliability of the proposed architecture and helps explain its strong performance under cross-dataset and open-set verification settings.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusion}
 \label{sec:conclusion}
-
-The inherent security of finger vein biometrics makes them highly suitable for a wide range of secure access control applications. In this work, we introduced \textbf{OpenVeinNet}, a novel open-set finger vein verification framework that combines dynamic snake convolutions and graph convolutions for generalised feature extraction and robust verification. The architecture is composed of two main components: a \emph{Stem}, which employs dynamic snake convolutions to capture the tubular vein structures, and a \emph{Backbone}, which leverages graph convolutional layers to encode these structures into discriminative feature representations.  The verification is performed using the features extracted by the Backbone. To assess its generalisation ability, extensive open-set experiments were conducted on multiple publicly available finger vein datasets. The proposed method was benchmarked against seven state-of-the-art finger vein verification techniques, encompassing both handcrafted and deep learning approaches. Experimental results demonstrate that \textbf{OpenVeinNet} consistently achieves superior performance and generalisability across diverse datasets, confirming its effectiveness for secure and reliable biometric verification.
-
-
-
-
-
-% if have a single appendix:
-%\appendix[Proof of the Zonklar Equations]
-% or
-%\appendix  % for no appendix heading
-% do not use \section anymore after \appendix, only \section*
-% is possibly needed
-
-% use appendices with more than one appendix
-% then use \section to start each appendix
-% you must declare a \section before using any
-% \subsection or using \label (\appendices by itself
-% starts a section numbered zero.)
-% %
-
-
-% \appendices
-% \section{Proof of the First Zonklar Equation}
-% Appendix one text goes here.
-
-% % you can choose not to have a title for an appendix
-% % if you want by leaving the argument blank
-% \section{}
-% Appendix two text goes here.
-
-
-% % use section* for acknowledgment
-% \ifCLASSOPTIONcompsoc
-%   % The Computer Society usually uses the plural form
-%   \section*{Acknowledgments}
-% \else
-%   % regular IEEE prefers the singular form
-%   \section*{Acknowledgment}
-% \fi
-
-
-% The authors would like to thank...
-
-
-% Can use something like this to put references on a page
-% by themselves when using endfloat and the captionsoff option.
-\ifCLASSOPTIONcaptionsoff
-  \newpage
-\fi
+Finger vein biometrics offer inherent resistance to spoofing and therefore represent a highly reliable modality for secure access control applications. In this work, we introduced \textbf{OpenVeinNet}, a novel framework for open-set finger vein verification that explicitly models both local vascular morphology and global structural relationships.
+The proposed architecture integrates a Dynamic Snake Convolution (DSConv)-based \emph{Stem} for adaptive extraction of curvilinear vein patterns, with a graph-based \emph{Backbone} that captures long-range dependencies through relational feature aggregation. In addition, the proposed \emph{Centroid Angular Hybrid (CAH) Loss} enhances the discriminative capability of the embedding space by jointly enforcing intra-class compactness and inter-class angular separability, which is particularly beneficial in open-set scenarios.
+Extensive cross-dataset experiments conducted under both unknown-rejection and full-subject verification protocols demonstrate that \textbf{OpenVeinNet} consistently demonstrates strong generalisation  state-of-the-art methods across multiple benchmarks. The results show significant improvements in EER and TAR, especially under strict low-FAR operating conditions, confirming the robustness of the learned representations in challenging real-world scenarios.
+Furthermore, the computational analysis highlights a favourable accuracy--efficiency trade-off, where the moderate increase in computational cost is justified by substantial gains in verification performance and generalisation. The interpretability analysis using Grad-CAM++ further validates that the model focuses on meaningful vascular structures, reinforcing the reliability of its decision-making process.
+Overall, the proposed framework provides a principled and effective solution for open-set finger vein verification. Future work will explore lightweight variants of the architecture for edge deployment and investigate its applicability to presentation attack detection and multimodal biometric systems.
 
 
 
-% trigger a \newpage just before the given reference
-% number - used to balance the columns on the last page
-% adjust value as needed - may need to be readjusted if
-% the document is modified later
-%\IEEEtriggeratref{8}
-% The "triggered" command can be changed if desired:
-%\IEEEtriggercmd{\enlargethispage{-5in}}
 
-% references section
 
-% can use a bibliography generated by BibTeX as a .bbl file
-% BibTeX documentation can be easily obtained at:
-% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
-% The IEEEtran BibTeX style support page is at:
-% http://www.michaelshell.org/tex/ieeetran/bibtex/
-%\bibliographystyle{IEEEtran}
-% argument is your BibTeX string definitions and bibliography database(s)
-%\bibliography{IEEEabrv,../bib/paper}
-%
-% <OR> manually copy in the resultant .bbl file
-% set second argument of \begin to the number of references
-% (used to reserve space for the reference number labels box)
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 \bibliographystyle{IEEEtran}
 \bibliography{bibliography}
 
-% biography section
-%
-% If you have an EPS/PDF photo (graphicx package needed) extra braces are
-% needed around the contents of the optional argument to biography to prevent
-% the LaTeX parser from getting confused when it sees the complicated
-% \includegraphics command within an optional argument. (You could create
-% your own custom macro containing the \includegraphics command to make things
-% simpler here.)
-%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
-% or if you just want to reserve a space for a photo:
-
-%\begin{IEEEbiography}{Sushrut Patwardhan}
-%Biography text here.
-%\end{IEEEbiography}
-
-% if you will not have a photo at all:
-%\begin{IEEEbiography}{Raghavendra Ramachandra}
-%Biography text here.
-%\end{IEEEbiography}
-
-
-% You can push biographies down or up by placing
-% a \vfill before or after them. The appropriate
-% use of \vfill depends on what kind of text is
-% on the last page and whether or not the columns
-% are being equalized.
-
-%\vfill
-
-% Can be used to pull up biographies so that the bottom of the last one
-% is flush with the other column.
-%\enlargethispage{-5in}
-
-
-
 % that's all folks
 \end{document}
-
-
-

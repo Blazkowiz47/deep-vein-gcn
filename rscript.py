@@ -479,41 +479,43 @@ def test():
 
 
 def tryu():
-    d = {0: torch.rand(10, 512)}
-    x = d[0].cuda()
-    print(x.device)
-    y = x[3:4, :]
-    print(y.device)
-    x = x.cpu()
-    print(d[0].device)
-    print(x.device)
+    from models import get_model
+    from logging import getLogger
+    import yaml
+
+    log = getLogger()
+    with open("./configs/dscgrapher2.yaml", "r") as fp:
+        config = yaml.safe_load(fp)
+
+    model = get_model("dscgrapher", config, log).to()
+    print(model)
 
 
-"""
-
-
-Method/Dataset               & fv300 & mmcbnu  & fvusm & polyu & vera \\
-\hline
-\hline
-mcp \cite{mcp}               & 0.8893           & 12.3102          & 18.9348          & 9.9029           & 33.1855\\
-\hline
-rlt \cite{rlt}               & 0.9529           & 13.7633          & 25.1356          & 16.5138          & 44.4308\\
-\hline
-wld \cite{wld}               & \textbf{0.8404}  & 16.9802          & 22.8704          & 15.5985          & 35.4514\\
-\hline
-arcvein \cite{arcvein}       & 19.3795 ± 4.6553 & 15.4710 ± 3.4661 & 19.7629 ± 2.0776 & 23.8468 ± 1.8629 & 35.5683 ± 0.9276\\
-\hline
-lgfin \cite{lgfin}           & 23.0114 ± 0.3878 & 15.1190 ± 0.4619 & 19.7876 ± 0.6778 & 13.6358 ± 1.1822 & 33.1605 ± 0.8248\\
-\hline
-fv-vit \cite{vit}            & 17.3728 ± 0.8128 & 17.9220 ± 1.3357 & 19.1795 ± 0.6798 & 20.5817 ± 1.3601 & 34.4025 ± 1.2451\\
-\hline
-veinAttNet \cite{veinatnnet} & 6.3419 ± 0.9431  & 4.2626 ± 0.1124  & 23.0401 ± 0.8628 & 8.6726 ± 0.9055  & 21.2606 ± 0.8379 \\
-\hline
-\textbf{Proposed}            & 3.1769 ± 0.5720  & \textbf{3.9098 ± 0.4796 } & \textbf{7.4245 ± 0.5023 } & \textbf{5.2624 ± 0.4903 } & \textbf{18.4991 ± 1.3937} \\
-\hline
-
-
-"""
+# """
+#
+#
+# Method/Dataset               & fv300 & mmcbnu  & fvusm & polyu & vera \\
+# \hline
+# \hline
+# mcp \cite{mcp}               & 0.8893           & 12.3102          & 18.9348          & 9.9029           & 33.1855\\
+# \hline
+# rlt \cite{rlt}               & 0.9529           & 13.7633          & 25.1356          & 16.5138          & 44.4308\\
+# \hline
+# wld \cite{wld}               & \textbf{0.8404}  & 16.9802          & 22.8704          & 15.5985          & 35.4514\\
+# \hline
+# arcvein \cite{arcvein}       & 19.3795 ± 4.6553 & 15.4710 ± 3.4661 & 19.7629 ± 2.0776 & 23.8468 ± 1.8629 & 35.5683 ± 0.9276\\
+# \hline
+# lgfin \cite{lgfin}           & 23.0114 ± 0.3878 & 15.1190 ± 0.4619 & 19.7876 ± 0.6778 & 13.6358 ± 1.1822 & 33.1605 ± 0.8248\\
+# \hline
+# fv-vit \cite{vit}            & 17.3728 ± 0.8128 & 17.9220 ± 1.3357 & 19.1795 ± 0.6798 & 20.5817 ± 1.3601 & 34.4025 ± 1.2451\\
+# \hline
+# veinAttNet \cite{veinatnnet} & 6.3419 ± 0.9431  & 4.2626 ± 0.1124  & 23.0401 ± 0.8628 & 8.6726 ± 0.9055  & 21.2606 ± 0.8379 \\
+# \hline
+# \textbf{Proposed}            & 3.1769 ± 0.5720  & \textbf{3.9098 ± 0.4796 } & \textbf{7.4245 ± 0.5023 } & \textbf{5.2624 ± 0.4903 } & \textbf{18.4991 ± 1.3937} \\
+# \hline
+#
+#
+# """
 
 
 if __name__ == "__main__":

@@ -31,7 +31,6 @@ METHOD_LABELS = {
     "lgfin": "LGFIN",
     "fv-vit": "FV-ViT",
     "veinAttNet": "VeinAttNet",
-    "resnet": "Chen et al",
     "snakegraph2": "Proposed Method",
 }
 
@@ -43,7 +42,6 @@ METHOD_ORDER = [
     "lgfin",
     "fv-vit",
     "veinAttNet",
-    "resnet",
     "snakegraph2",
 ]
 

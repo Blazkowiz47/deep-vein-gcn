@@ -185,7 +185,7 @@ def main(args, config) -> str:
     best_validation_loss = np.inf
     best_acc_val = 0
     loss_is_nan = False
-    early_stop = config.get('early_stop',100000)
+    early_stop = config.get("early_stop", 100000)
     validation_acc_didnt_increase = early_stop
 
     try:
@@ -299,7 +299,17 @@ def main(args, config) -> str:
                         log.info(
                             f"Validation loss didn't decrease for {early_stop} epochs. Stopping training."
                         )
+                        if best_acc_val == 0:
+                            torch.save(
+                        model.state_dict(),
+                        os.path.join(ckptdir, "best_model.pt"),
+                    )
+
+
                         break
+                if validation_acc == 1.0:
+                    log.info("Validation acc == 1")
+                    break
             if scheduler is not None:
                 scheduler.step()
             # if not epoch % 30:
@@ -308,6 +318,7 @@ def main(args, config) -> str:
 
             if wandb_run_name:
                 wandb.log(wandblog)
+
     except KeyboardInterrupt:
         os.system(f"rm -r tmp/{model_name}")
         pass

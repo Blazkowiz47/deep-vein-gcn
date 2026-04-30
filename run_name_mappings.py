@@ -32,7 +32,7 @@ final_runs = {
             2: "leaveoutds_veinAttNet_vera_seed_2",
             3: "leaveoutds_veinAttNet_vera_seed_3",
         },
-        "resnet": {
+        "chen": {
             0: "resnet_vera_0",
             1: "resnet_vera_1",
             2: "resnet_vera_2",
@@ -70,7 +70,7 @@ final_runs = {
             2: "leaveoutds_veinAttNet_polyu_seed_2",
             3: "leaveoutds_veinAttNet_polyu_seed_3",
         },
-        "resnet": {
+        "chen": {
             0: "resnet_polyu_0",
             1: "resnet_polyu_1",
             2: "resnet_polyu_2",
@@ -107,7 +107,7 @@ final_runs = {
             2: "leaveoutds_veinAttNet_fvusm_seed_2",
             3: "leaveoutds_veinAttNet_fvusm_seed_3",
         },
-        "resnet": {
+        "chen": {
             0: "resnet_fvusm_0",
             1: "resnet_fvusm_1",
             2: "resnet_fvusm_2",
@@ -145,7 +145,7 @@ final_runs = {
             2: "leaveoutds_veinAttNet_mmcbnu_seed_2",
             3: "leaveoutds_veinAttNet_mmcbnu_seed_3",
         },
-        "resnet": {
+        "chen": {
             0: "resnet_mmcbnu_0",
             1: "resnet_mmcbnu_1",
             2: "resnet_mmcbnu_2",
@@ -183,7 +183,7 @@ final_runs = {
             2: "leaveoutds_veinAttNet_fv300_seed_2",
             3: "leaveoutds_veinAttNet_fv300_seed_3",
         },
-        "resnet": {
+        "chen": {
             0: "resnet_fv300_0",
             1: "resnet_fv300_1",
             2: "resnet_fv300_2",

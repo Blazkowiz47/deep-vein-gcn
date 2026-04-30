@@ -19,6 +19,61 @@ PROTOCOL_SUFFIX = {
     "full": ("far_full_scores.npy", "frr_full_scores.npy"),
 }
 
+METHOD_LABELS = {
+    "mcp": "MCP",
+    "rlt": "RLT",
+    "wld": "WLD",
+    "arcvein": "ArcVein",
+    "lgfin": "LGFIN",
+    "fv-vit": "FV-ViT",
+    "veinAttNet": "VeinAttNet",
+    "snakegraph2": "Proposed",
+}
+
+METHOD_ORDER = [
+    "mcp",
+    "rlt",
+    "wld",
+    "arcvein",
+    "lgfin",
+    "fv-vit",
+    "veinAttNet",
+    "snakegraph2",
+]
+
+METHOD_COLORS = {
+    "mcp": "#4C78A8",
+    "rlt": "#F58518",
+    "wld": "#54A24B",
+    "arcvein": "#E45756",
+    "lgfin": "#72B7B2",
+    "fv-vit": "#EECA3B",
+    "veinAttNet": "#B279A2",
+    "snakegraph2": "#2F4B7C",
+}
+
+EXCLUDED_METHODS = {"chen"}
+
+
+def method_label(method: str) -> str:
+    return METHOD_LABELS.get(method, method)
+
+
+def method_color(method: str) -> str | None:
+    return METHOD_COLORS.get(method)
+
+
+def ordered_method_items(methods: Dict[str, Dict[int, Tuple[NDArray, NDArray]]]):
+    filtered_methods = {
+        method: value for method, value in methods.items() if method not in EXCLUDED_METHODS
+    }
+    ordered_keys = [method for method in METHOD_ORDER if method in filtered_methods]
+    remaining_keys = sorted(
+        method for method in filtered_methods if method not in METHOD_ORDER
+    )
+    for method in ordered_keys + remaining_keys:
+        yield method, filtered_methods[method]
+
 
 def norminv(p: float | np.ndarray) -> float | np.ndarray:
     """
@@ -211,7 +266,7 @@ def plot_det_curves_per_dataset(
         plt.figure(figsize=(3.5, 3.5))
         logger.info(f"Plotting DET curves for dataset: {dataset}")
 
-        for method, seeds in methods.items():
+        for method, seeds in ordered_method_items(methods):
             logger.debug(f"Processing method: {method}")
             far_list = []
             frr_list = []
@@ -262,14 +317,15 @@ def plot_det_curves_per_dataset(
             y_det = norminv(np.clip(y_pct / 100.0, eps, 1 - eps))
 
             # Plot with seaborn styling in DET space
-            label = f"{method if method != 'snakegraph2' else 'Proposed'}"
-            sns.lineplot(x=x_det, y=y_det, label=label, linewidth=2)
+            label = method_label(method)
+            color = method_color(method)
+            sns.lineplot(x=x_det, y=y_det, label=label, linewidth=2, color=color)
             if std_frr is not None:
                 lower_pct = np.clip(mean_frr - std_frr, min_pct, max_pct)
                 upper_pct = np.clip(mean_frr + std_frr, min_pct, max_pct)
                 lower_det = norminv(np.clip(lower_pct / 100.0, eps, 1 - eps))
                 upper_det = norminv(np.clip(upper_pct / 100.0, eps, 1 - eps))
-                plt.fill_between(x_det, lower_det, upper_det, alpha=0.2)
+                plt.fill_between(x_det, lower_det, upper_det, alpha=0.2, color=color)
 
         # DET axes with ticks at percentage levels
         ticks = [0.1, 0.2, 0.5, 1, 2, 5, 10, 20, 40]
@@ -303,6 +359,8 @@ def get_eers_auc_roc() -> Dict[
     for dataset, data in final_runs.items():
         scores_dict[dataset] = {}
         for method, runs in data.items():
+            if method in EXCLUDED_METHODS:
+                continue
             scores_dict[dataset][method] = {}
             for seed, run_name in runs.items():
                 fmr = np.load(f"tmp/{run_name}/{dataset}/far_scores.npy")
@@ -422,6 +480,8 @@ def get_scores_dict(
         scores_dict[dataset] = {}
         print(f"Loading dataset: {dataset} ({protocol})")
         for method, runs in data.items():
+            if method in EXCLUDED_METHODS:
+                continue
             scores_dict[dataset][method] = {}
             print("\tLoading scores for method:", method)
             for seed, run_name in runs.items():
@@ -540,7 +600,7 @@ def plot_roc_curves_per_dataset(
         plt.figure(figsize=(6, 6))
         logger.info(f"Plotting ROC curves for dataset: {dataset}")
 
-        for method, seeds in methods.items():
+        for method, seeds in ordered_method_items(methods):
             logger.debug(f"Processing method: {method}")
             far_list = []
             frr_list = []
@@ -581,12 +641,13 @@ def plot_roc_curves_per_dataset(
             mean_frr = np.mean(frr_stack, axis=0)
             std_frr = np.std(frr_stack, axis=0) if frr_stack.shape[0] > 1 else None
 
-            label = f"{method if method != 'snakegraph2' else 'Proposed'}"
-            sns.lineplot(x=x_far, y=100 - mean_frr, label=label, linewidth=2)
+            label = method_label(method)
+            color = method_color(method)
+            sns.lineplot(x=x_far, y=100 - mean_frr, label=label, linewidth=2, color=color)
             if std_frr is not None:
                 lower_frr = np.clip(100 - (mean_frr + std_frr), 0, 100)
                 upper_frr = np.clip(100 - (mean_frr - std_frr), 0, 100)
-                plt.fill_between(x_far, lower_frr, upper_frr, alpha=0.2)
+                plt.fill_between(x_far, lower_frr, upper_frr, alpha=0.2, color=color)
 
         # DET axes with ticks at percentage levels
         # ticks = [0.01, 0.1, 1, 2, 5, 10, 20, 40, 80, 100]

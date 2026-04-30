@@ -14,11 +14,12 @@ from models import get_model
 from run_name_mappings import final_runs, get_config_file
 
 
-METHODS = ["arcvein", "lgfin", "fv-vit", "snakegraph2"]
+METHODS = ["arcvein", "lgfin", "fv-vit", "chen", "snakegraph2"]
 METHOD_LABELS = {
     "arcvein": "ArcVein",
     "lgfin": "LGFIN",
     "fv-vit": "FV-ViT",
+    "chen": "Chen et al",
     "snakegraph2": "Proposed Method",
 }
 

@@ -9,7 +9,7 @@ from statistics import mean, stdev
 RESULTS_PATH = Path("ablation/intra_open_set_results.jsonl")
 EXPECTED_SEEDS = {0, 1, 2, 3, 4}
 DATASET_ORDER = ["fv300", "fvusm", "mmcbnu"]
-METHOD_ORDER = ["arcvein", "lgfin", "fvit", "veinAttNet", "resnet", "chen", "proposed"]
+METHOD_ORDER = ["arcvein", "lgfin", "fvit", "veinAttNet", "chen", "proposed"]
 METRIC_SPECS = [
     ("auc", False),
     ("eer", False),
@@ -36,7 +36,6 @@ METHOD_LABELS = {
     "arcvein": "ArcVein",
     "veinAttNet": "VeinAttNet",
     "chen": "Chen et al",
-    "resnet": "ResNet",
 }
 
 
@@ -141,11 +140,15 @@ def main() -> None:
     grouped: dict[tuple[str, str], dict[int, dict]] = defaultdict(dict)
     for key, value in records.items():
         dataset, seed_str, method = key.split(":")
+        if method == 'resnet':
+            continue
         grouped[(dataset, method)][int(seed_str)] = value
 
     dataset_rows: dict[str, list[dict]] = defaultdict(list)
 
-    for dataset, method in sorted(grouped.keys(), key=lambda x: (dataset_sort_key(x[0]), method_sort_key(x[1]))):
+    for dataset, method in sorted(
+        grouped.keys(), key=lambda x: (dataset_sort_key(x[0]), method_sort_key(x[1]))
+    ):
         seed_map = grouped[(dataset, method)]
         if set(seed_map.keys()) != EXPECTED_SEEDS:
             continue
@@ -156,7 +159,9 @@ def main() -> None:
         }
         dataset_rows[dataset].append({"method": method, "metrics": metric_values})
     ordered_datasets = [
-        dataset for dataset in sorted(dataset_rows.keys(), key=dataset_sort_key) if dataset_rows[dataset]
+        dataset
+        for dataset in sorted(dataset_rows.keys(), key=dataset_sort_key)
+        if dataset_rows[dataset]
     ]
     if not ordered_datasets:
         print("% No complete 5-seed result groups found.")
@@ -177,14 +182,17 @@ def main() -> None:
         best_values = {}
         for metric_key, as_percent in METRIC_SPECS:
             metric_means = [
-                scaled_mean(row["metrics"][metric_key], as_percent) for row in method_rows
+                scaled_mean(row["metrics"][metric_key], as_percent)
+                for row in method_rows
             ]
             if METRIC_DIRECTION[metric_key] == "min":
                 best_values[metric_key] = min(metric_means)
             else:
                 best_values[metric_key] = max(metric_means)
 
-        dataset_cell = rf"\multirow{{{len(method_rows)}}}{{*}}{{{display_dataset(dataset)}}}"
+        dataset_cell = (
+            rf"\multirow{{{len(method_rows)}}}{{*}}{{{display_dataset(dataset)}}}"
+        )
         for row_idx, row in enumerate(method_rows):
             prefix = dataset_cell if row_idx == 0 else ""
             cells = [display_method(row["method"])]
@@ -192,7 +200,9 @@ def main() -> None:
                 values = row["metrics"][metric_key]
                 formatted = format_metric(values, as_percent=as_percent)
                 current_value = scaled_mean(values, as_percent)
-                if math.isclose(current_value, best_values[metric_key], rel_tol=0.0, abs_tol=1e-9):
+                if math.isclose(
+                    current_value, best_values[metric_key], rel_tol=0.0, abs_tol=1e-9
+                ):
                     formatted = rf"\textbf{{{formatted}}}"
                 cells.append(formatted)
             print(f"        {prefix} & " + " & ".join(cells) + r" \\")

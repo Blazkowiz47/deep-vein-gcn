@@ -7,12 +7,12 @@
     "params": 7831314.0,
     "flops": 2447068800.0,
     "cpu": {
-      "latency_ms": 7.086924760005786,
-      "throughput_samples_per_s": 141.1049268708736
+      "latency_ms": 6.887670569121838,
+      "throughput_samples_per_s": 145.18696705430523
     },
     "gpu": {
-      "latency_ms": 0.9368398449805682,
-      "throughput_samples_per_s": 1067.4183056557995
+      "latency_ms": 0.9748733602464199,
+      "throughput_samples_per_s": 1025.774260307235
     }
   },
   "lgfin": {
@@ -23,12 +23,12 @@
     "params": 6794654.0,
     "flops": 7513761662.0,
     "cpu": {
-      "latency_ms": 45.48042196500319,
-      "throughput_samples_per_s": 21.987482894716585
+      "latency_ms": 41.16095568984747,
+      "throughput_samples_per_s": 24.294868358624004
     },
     "gpu": {
-      "latency_ms": 3.8400093099699006,
-      "throughput_samples_per_s": 260.4160352954557
+      "latency_ms": 4.010043819434941,
+      "throughput_samples_per_s": 249.37383356097862
     }
   },
   "fv-vit": {
@@ -39,12 +39,28 @@
     "params": 356099.0,
     "flops": 34508720.0,
     "cpu": {
-      "latency_ms": 5.015708469982201,
-      "throughput_samples_per_s": 199.37362906651325
+      "latency_ms": 4.777816329151392,
+      "throughput_samples_per_s": 209.30063675713006
     },
     "gpu": {
-      "latency_ms": 1.7397756400168873,
-      "throughput_samples_per_s": 574.7867581306596
+      "latency_ms": 1.874227219959721,
+      "throughput_samples_per_s": 533.5532369557044
+    }
+  },
+  "chen": {
+    "label": "Chen et al",
+    "dataset": "fv300",
+    "seed": 0,
+    "batch_size": 1,
+    "params": 11176512.0,
+    "flops": 3647043584.0,
+    "cpu": {
+      "latency_ms": 10.6649026600644,
+      "throughput_samples_per_s": 93.76550652867952
+    },
+    "gpu": {
+      "latency_ms": 1.2722315604332834,
+      "throughput_samples_per_s": 786.0204314216434
     }
   },
   "snakegraph2": {
@@ -55,12 +71,12 @@
     "params": 4759296.0,
     "flops": 5066362368.0,
     "cpu": {
-      "latency_ms": 55.81779449501482,
-      "throughput_samples_per_s": 17.91543376170679
+      "latency_ms": 60.53387164953165,
+      "throughput_samples_per_s": 16.519676880897755
     },
     "gpu": {
-      "latency_ms": 12.997246355007519,
-      "throughput_samples_per_s": 76.93937413248497
+      "latency_ms": 13.740437489468604,
+      "throughput_samples_per_s": 72.77788649498626
     }
   }
 }
