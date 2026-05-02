@@ -3,22 +3,13 @@
 {"key": "fvusm:2:magface:none", "value": {"run_name": "dscgrapher_leaveoneout_11_04_26_01_52_2_201", "wandb_run_name": "dscgrapher_leaveoneout_11_04_26_01_52_2_201"}}
 {"key": "fvusm:3:magface:none", "value": {"run_name": "dscgrapher_leaveoneout_11_04_26_05_46_2_200", "wandb_run_name": "dscgrapher_leaveoneout_11_04_26_05_46_2_200"}}
 {"key": "fvusm:4:magface:none", "value": {"run_name": "dscgrapher_leaveoneout_11_04_26_10_01_2_226", "wandb_run_name": "dscgrapher_leaveoneout_11_04_26_10_01_2_226"}}
-
 {"key": "fvusm:0:arcface:none", "value": {"run_name": "dscgrapher_leaveoneout_11_04_26_11_51_2_200", "wandb_run_name": "dscgrapher_leaveoneout_11_04_26_11_51_2_200"}}
 {"key": "fvusm:1:arcface:none", "value": {"run_name": "dscgrapher_leaveoneout_11_04_26_19_41_2_237", "wandb_run_name": "dscgrapher_leaveoneout_11_04_26_19_41_2_237"}}
 {"key": "fvusm:2:arcface:none", "value": {"run_name": "dscgrapher_leaveoneout_12_04_26_01_04_2_205", "wandb_run_name": "dscgrapher_leaveoneout_12_04_26_01_04_2_205"}}
 {"key": "fvusm:3:arcface:none", "value": {"run_name": "dscgrapher_leaveoneout_12_04_26_08_02_2_241", "wandb_run_name": "dscgrapher_leaveoneout_12_04_26_08_02_2_241"}}
 {"key": "fvusm:4:arcface:none", "value": {"run_name": "dscgrapher_leaveoneout_12_04_26_14_36_2_203", "wandb_run_name": "dscgrapher_leaveoneout_12_04_26_14_36_2_203"}}
-
-{"key": "fvusm:0:adaface_0:none", "value": {"run_name": "dscgrapher_leaveoneout_11_04_26_15_34_2_206", "wandb_run_name": "dscgrapher_leaveoneout_11_04_26_15_34_2_206"}}
-{"key": "fvusm:1:adaface_0:none", "value": {"run_name": "dscgrapher_leaveoneout_11_04_26_22_32_2_230", "wandb_run_name": "dscgrapher_leaveoneout_11_04_26_22_32_2_230"}}
-{"key": "fvusm:2:adaface_0:none", "value": {"run_name": "dscgrapher_leaveoneout_12_04_26_06_02_2_229", "wandb_run_name": "dscgrapher_leaveoneout_12_04_26_06_02_2_229"}}
-{"key": "fvusm:3:adaface_0:none", "value": {"run_name": "dscgrapher_leaveoneout_12_04_26_14_29_2_203", "wandb_run_name": "dscgrapher_leaveoneout_12_04_26_14_29_2_203"}}
-{"key": "fvusm:4:adaface_0:none", "value": {"run_name": "dscgrapher_leaveoneout_12_04_26_20_45_2_210", "wandb_run_name": "dscgrapher_leaveoneout_12_04_26_20_45_2_210"}}
 {"key": "fvusm:0:adaface:none", "value": {"run_name": "dscgrapher_leaveoneout_13_04_26_20_44_2_241", "wandb_run_name": "dscgrapher_leaveoneout_13_04_26_20_44_2_241"}}
 {"key": "fvusm:1:adaface:none", "value": {"run_name": "dscgrapher_leaveoneout_13_04_26_23_00_2_200", "wandb_run_name": "dscgrapher_leaveoneout_13_04_26_23_00_2_200"}}
 {"key": "fvusm:2:adaface:none", "value": {"run_name": "dscgrapher_leaveoneout_14_04_26_02_21_2_252", "wandb_run_name": "dscgrapher_leaveoneout_14_04_26_02_21_2_252"}}
 {"key": "fvusm:3:adaface:none", "value": {"run_name": "dscgrapher_leaveoneout_14_04_26_07_53_2_202", "wandb_run_name": "dscgrapher_leaveoneout_14_04_26_07_53_2_202"}}
 {"key": "fvusm:4:adaface:none", "value": {"run_name": "dscgrapher_leaveoneout_14_04_26_11_11_2_234", "wandb_run_name": "dscgrapher_leaveoneout_14_04_26_11_11_2_234"}}
-{"key": "fvusm:0:cosface:none", "value": {"run_name": "dscgrapher_fvusm_0", "wandb_run_name": null}}
-{"key": "fvusm:1:cosface:none", "value": {"run_name": "dscgrapher_fvusm_1", "wandb_run_name": null}}
