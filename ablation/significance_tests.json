@@ -1,5 +1,6 @@
 {
   "test": "two-sided exact paired sign-flip permutation test",
+  "secondary_test": "paired two-sided Wilcoxon signed-rank test",
   "alpha": 0.05,
   "splits": {
     "full": {
@@ -12,10 +13,11 @@
           "metric_key": "eer",
           "metric": "EER",
           "n_pairs": 20,
-          "mean_delta_pp": 15.174291925735792,
-          "median_delta_pp": 16.256584986552035,
+          "mean_delta_pp": 15.16862913325356,
+          "median_delta_pp": 16.24345078949611,
           "p_value": 1.9073486328125e-06,
-          "holm_p_value": 9.5367431640625e-06
+          "wilcoxon_p_value": 1.9073486328125e-06,
+          "holm_p_value": 7.62939453125e-06
         },
         {
           "split": "full",
@@ -24,11 +26,12 @@
           "level": "seed",
           "metric_key": "eer",
           "metric": "EER",
-          "n_pairs": 19,
-          "mean_delta_pp": 13.331743406446792,
-          "median_delta_pp": 11.983768794607894,
-          "p_value": 3.814697265625e-06,
-          "holm_p_value": 1.1444091796875e-05
+          "n_pairs": 20,
+          "mean_delta_pp": 13.05439171382406,
+          "median_delta_pp": 11.98053243094644,
+          "p_value": 1.9073486328125e-06,
+          "wilcoxon_p_value": 1.9073486328125e-06,
+          "holm_p_value": 7.62939453125e-06
         },
         {
           "split": "full",
@@ -38,23 +41,11 @@
           "metric_key": "eer",
           "metric": "EER",
           "n_pairs": 20,
-          "mean_delta_pp": 13.66316787829862,
-          "median_delta_pp": 13.699740254890951,
+          "mean_delta_pp": 13.66220734334451,
+          "median_delta_pp": 13.701044557835509,
           "p_value": 1.9073486328125e-06,
-          "holm_p_value": 9.5367431640625e-06
-        },
-        {
-          "split": "full",
-          "comparison_key": "chen_seed_level",
-          "comparison": "Proposed vs Chen et al",
-          "level": "seed",
-          "metric_key": "eer",
-          "metric": "EER",
-          "n_pairs": 20,
-          "mean_delta_pp": 2.6366202525087923,
-          "median_delta_pp": 0.9420521849630834,
-          "p_value": 0.020368576049804688,
-          "holm_p_value": 0.020368576049804688
+          "wilcoxon_p_value": 1.9073486328125e-06,
+          "holm_p_value": 7.62939453125e-06
         },
         {
           "split": "full",
@@ -64,10 +55,11 @@
           "metric_key": "eer",
           "metric": "EER",
           "n_pairs": 20,
-          "mean_delta_pp": 4.444312874727845,
-          "median_delta_pp": 2.8003259155378095,
+          "mean_delta_pp": 4.439058765006801,
+          "median_delta_pp": 2.7776126184786967,
           "p_value": 9.5367431640625e-05,
-          "holm_p_value": 0.00019073486328125
+          "wilcoxon_p_value": 0.0001678466796875,
+          "holm_p_value": 9.5367431640625e-05
         }
       ]
     }

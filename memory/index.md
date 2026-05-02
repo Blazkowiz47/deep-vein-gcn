@@ -8,9 +8,9 @@ Tags: phd, journal-paper, biometrics, gcn, vein-recognition
 Project path: /home/ubuntu/sushrut/gcn-deep-vein
 Main brain workstream: /home/ubuntu/.sushrut/wiki/workstreams/gcn-deep-vein/index.md
 Devices/servers: raghu2 (SALT servers)
-Latest useful result: `rebuttal/paper.tex` now has red clarifications added for the main code-text mismatches, especially around the half/full evaluation protocol wording, predefined `stat_seed` repetition logic, Chen-updated result interpretation, and the full-subject EER significance statement.
-Current blocker: The paper still contains the original stale prose alongside the red clarifications, and the exact commands/configs behind some final artifacts are not yet fully backfilled into memory.
-Next action: Clean the rebuttal prose once the wording is approved, then backfill the exact commands/configs that produced `final_runs/`, `ablation/`, `rebuttal/`, and `final_tables.md`.
+Latest useful result: `rebuttal/inconsistencies.md` now has a 2026-05-01 current-state re-check for the updated `paper.tex` and `response_letter.tex`, separating resolved findings from active inconsistencies.
+Current blocker: The updated rebuttal still has active mismatches around stale score-count/runtime tables, five-fold/five-run claims, train/validation identity wording, intra-database protocol wording, processed dataset counts, architecture table values, ablation evidence bases, and LaTeX build dependencies.
+Next action: Regenerate score-count/result tables from the corrected `scripts/unenrolled_eval.py` run, then patch stale protocol/repetition wording in the paper and response letter.
 
 ## Active Threads
 
@@ -22,6 +22,8 @@ Next action: Clean the rebuttal prose once the wording is approved, then backfil
 - 2026-04-30: Initialized project memory and linked it to the main knowledge base workstream.
 - 2026-04-30: Captured current repo state as `main` at `83fe33e311f12be4f33694e13925f8359072d5da` (`2026-04-29`, `chore: updates`).
 - 2026-04-30: Reviewed `rebuttal/paper.tex` against the current evaluation/training scripts and inserted red clarification text for the main protocol and narrative mismatches.
+- 2026-04-30: Ran critic/replier agent review for each rebuttal file and logged confirmed inconsistencies in `rebuttal/inconsistencies.md`.
+- 2026-05-01: Re-reviewed the updated paper/response files with sub-agents and recorded the current active inconsistency set.
 
 ## Recent Runs
 

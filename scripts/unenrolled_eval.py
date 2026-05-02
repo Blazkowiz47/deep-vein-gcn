@@ -226,7 +226,7 @@ def parallel_driver(args, config) -> tuple[Dict[str, float], Dict[str, float]]:
             x = (x @ y.T).cpu().flatten()
             imposter_scores.extend(x.tolist())
 
-    imposter_scores_full.extend(imposter_scores)
+    # imposter_scores_full.extend(imposter_scores)
 
     subjects = list(subject_embeddings.keys())
     for i, probe in tqdm(

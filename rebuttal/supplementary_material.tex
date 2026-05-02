@@ -1,0 +1,948 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[10pt,journal,compsoc]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+%
+% Note that some packages require special options to format as the Computer
+% Society requires. In particular, Computer Society  papers do not use
+% compressed citation ranges as is done in typical IEEE papers
+% (e.g., [1]-[4]). Instead, they list every citation separately in order
+% (e.g., [1], [2], [3], [4]). To get the latter we need to load the cite
+% package with the nocompress option which is supported by cite.sty v4.0
+% and later. Note also the use of a CLASSOPTION conditional provided by
+% IEEEtran.cls V1.7 and later.
+
+
+\usepackage{amssymb}
+\usepackage{url}
+\usepackage{multirow}
+ \usepackage{amsmath}
+\usepackage{array}
+\usepackage{bm}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage{color, colortbl}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{LightPurple}{rgb}{0.79607843137,0.80784313725,0.98431372549}
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at:
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=footnotesize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a sans serif font rather
+% than the serif font used in traditional IEEE formatting and thus the need
+% to invoke different subfig.sty package options depending on whether
+% compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and
+% Axel Sommerfeldt. This package may be useful when used in conjunction with
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+%\title{OpenVeinNet: A Novel Open-Set Finger Vein Verification Network Using Multi-Graph Learning and Centroid-Angular Hybrid Loss}
+%\title{OpenVeinNet: A Robust Open-Set Finger Vein Verification Framework Using Dynamic Snake Convolution, Graph-Based Feature Modelling, and Centroid-Angular Hybrid Loss}
+\title{Supplementary Results \\ OpenVeinNet: Robust Open-Set Finger Vein Verification with Dynamic Snake Convolution and Graph Learning}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+%
+%\IEEEcompsocitemizethanks is a special \thanks that produces the bulleted
+% lists the Computer Society journals use for "first footnote" author
+% affiliations. Use \IEEEcompsocthanksitem which works much like \item
+% for each affiliation group. When not in compsoc mode,
+% \IEEEcompsocitemizethanks becomes like \thanks and
+% \IEEEcompsocthanksitem becomes a line break with idention. This
+% facilitates dual compilation, although admittedly the differences in the
+% desired content of \author between the different types of papers makes a
+% one-size-fits-all approach a daunting prospect. For instance, compsoc
+% journal papers have the author affiliations above the "Manuscript
+% received ..."  text while in non-compsoc journals this is reversed. Sigh.
+
+\author{Sushrut Patwardhan and
+        Raghavendra Ramachandra% <-this % stops a space
+\thanks{Both authors have contributed equally. \\
+SAFE Centre, Department of Information Security and Communication Technology (IIK), Norwegian University of Science and Technology (NTNU), Gjøvik, Norway.  \\
+            Corresponding Author: Raghavendra Ramachandra (E-Mail: raghavendra.ramachandra@ntnu.no)}}
+
+% note the % following the last \IEEEmembership and also \thanks -
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+%
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+% \markboth{Journal of \LaTeX\ Class Files,~Vol.~14, No.~8, August~2015}
+% {Shell \MakeLowercase{\textit{et al.}}: Bare Demo of IEEEtran.cls for Computer Society Journals}
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+%
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+% The publisher's ID mark at the bottom of the page is less important with
+% Computer Society journal papers as those publications place the marks
+% outside of the main text columns and, therefore, unlike regular IEEE
+% journals, the available text space is not reduced by their presence.
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% or like this to get the Computer Society new two part style.
+%\IEEEpubid{\makebox[\columnwidth]{\hfill 0000--0000/00/\$00.00~\copyright~2015 IEEE}%
+%\hspace{\columnsep}\makebox[\columnwidth]{Published by the IEEE Computer Society\hfill}}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark (Computer Society jorunal
+% papers don't need this extra clearance.)
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+% for Computer Society papers, we must declare the abstract and index terms
+% PRIOR to the title within the \IEEEtitleabstractindextext IEEEtran
+% command as these need to go into the title area created by \maketitle.
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\IEEEtitleabstractindextext{%
+\begin{abstract}
+
+\end{abstract}
+
+% Note that keywords are not normally used for peer review papers.
+\begin{IEEEkeywords}
+Biometrics, Finger vein, Deep learning, Graph Neural Network, Verification.
+\end{IEEEkeywords}}
+
+
+% make the title area
+\maketitle
+
+
+% To allow for easy dual compilation without having to reenter the
+% abstract/keywords data, the \IEEEtitleabstractindextext text will
+% not be used in maketitle, but will appear (i.e., to be "transported")
+% here as \IEEEdisplaynontitleabstractindextext when the compsoc
+% or transmag modes are not selected <OR> if conference mode is selected
+% - because all conference papers position the abstract like regular
+% papers do.
+\IEEEdisplaynontitleabstractindextext
+\IEEEpeerreviewmaketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Statistical Significance Analysis}
+\label{sec:statistical_significance}
+
+To complement the mean and 95\% confidence interval reporting in the main paper, we perform formal pairwise statistical significance testing between the proposed method and competing approaches.
+
+We conduct paired significance testing on the \emph{full-subject verification EER} results using two-sided exact sign-flip permutation tests over matched leave-one-dataset-out runs. For each comparison, pairing is performed across seed-matched runs obtained from the five evaluation protocols. Since lower EER indicates better performance, a positive mean $\Delta$EER corresponds to an average reduction in EER in favour of the proposed method.
+To account for multiple comparisons, Holm correction is applied to the resulting $p$-values.
+
+\begin{table*}[ht!]
+    \centering
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline
+        Comparison & $n$ & Mean $\Delta$EER (pp) & Holm-adjusted $p$ & Significant \\
+        \hline
+        Proposed vs ArcVein & 20 & 15.17 & $9.54 \times 10^{-6}$ & Yes \\
+        Proposed vs LGFIN & 20 & 13.33 & $1.14 \times 10^{-5}$ & Yes \\
+        Proposed vs FV-ViT & 20 & 13.66 & $9.54 \times 10^{-6}$ & Yes \\
+        Proposed vs VeinAttNet & 20 & 4.44 & $2 \times 10^{-4}$ & Yes \\
+        \hline
+    \end{tabular}
+    \caption{Paired statistical significance testing on full-subject EER. A positive mean $\Delta$EER indicates that the proposed method achieves lower EER than the comparator.}
+    \label{tab:statistical_significance}
+\end{table*}
+
+The results show (see Table \ref{tab:statistical_significance}) that all pairwise comparisons are statistically significant after Holm correction. This confirms that the observed improvements of OpenVeinNet over competing methods are not only reflected in mean performance, but are also consistent across matched evaluation runs.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Intra-Database Open-Set Evaluation}
+\label{sec:intra_database_open_set}
+\subsection{Intra-Dataset Open-Set Evaluation}
+
+
+
+
+To complement the cross-dataset evaluation, we further conduct intra-database open-set experiments on FV-300, FV-USM, and MMCBNU. These datasets provide a sufficient number of samples per identity to support identity-disjoint training, validation, enrolment, and probe generation within the same database. PolyU and VERA are not included in this experiment because they contain only four and two samples per identity, respectively, which is insufficient for a reliable intra-database open-set split under the proposed learning protocol. For each dataset, an identity-disjoint split is adopted, where 50\% of the subjects are used for training, 30\% for validation, and the remaining 20\% for testing, ensuring no identity overlap across the three partitions.
+\begin{table*}[ht!]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.08}
+\caption{Intra-database open-set verification results with 95\% confidence intervals over five statistical seeds. The experiments are reported on FV-300, FV-USM, and MMCBNU, where sufficient samples per identity are available for reliable intra-database training and evaluation.}
+\label{tab:intra_open_set_results}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccccc}
+\hline
+Dataset & Algorithm & AUC (\%) & EER (\%) & TAR@FAR$=0.1\%$ (\%) & TAR@FAR$=1\%$ (\%) & TAR@FAR$=10\%$ (\%) \\
+\hline
+\multirow{6}{*}{FV-300}
+& ArcVein & 96.36 (94.01--98.72) & 11.03 (5.95--16.11) & 54.26 (45.30--63.22) & 67.25 (57.34--77.15) & 89.13 (81.94--96.31) \\
+& LGFIN & 99.99 (99.98--100.00) & 0.43 (0.09--0.78) & 98.42 (96.98--99.86) & \textbf{99.77} (99.44--100.00) & 100.00 (100.00--100.00) \\
+& FV-ViT & 96.55 (95.04--98.06) & 9.60 (7.59--11.61) & 29.05 (7.24--50.86) & 48.83 (28.26--69.40) & 90.48 (85.25--95.70) \\
+& VeinAttNet & 99.73 (99.63--99.83) & 2.43 (1.81--3.05) & 63.32 (47.63--79.01) & 93.71 (90.81--96.60) & 99.90 (99.86--99.94) \\
+& Proposed Method & \textbf{99.99} (99.98--100.00) & \textbf{0.39} (0.06--0.72) & \textbf{98.66} (96.85--100.00) & \textbf{99.77} (99.41--100.00) & \textbf{100.00 (100.00--100.00)}\\
+\hline
+\multirow{6}{*}{FV-USM}
+& ArcVein & 65.05 (61.48--68.62) & 38.01 (35.77--40.24) & 0.69 (0.00--1.64) & 2.69 (1.08--4.30) & 18.54 (15.01--22.07) \\
+& LGFIN & 95.60 (94.71--96.48) & 11.25 (9.89--12.61) & 28.91 (7.57--50.25) & 45.42 (27.85--62.99) & 87.17 (83.96--90.39) \\
+& FV-ViT & 82.90 (79.16--86.65) & 26.25 (23.52--28.98) & 5.72 (0.00--14.46) & 15.93 (3.59--28.26) & 45.14 (33.70--56.58) \\
+& VeinAttNet & 83.85 (77.20--90.51) & 25.60 (20.08--31.11) & 10.73 (3.40--18.05) & 19.45 (6.84--32.06) & 50.97 (34.37--67.56) \\
+& Proposed Method & \textbf{98.26 (97.48--99.04)} & \textbf{7.06 (5.40--8.72)} & \textbf{53.38 (41.30--65.46)} & \textbf{73.66 (67.37--79.94)} & \textbf{95.33 (92.58--98.08)} \\
+\hline
+\multirow{6}{*}{MMCBNU}
+& ArcVein & 78.51 (72.71--84.30) & 29.70 (24.39--35.00) & 4.79 (0.83--8.75) & 9.20 (3.09--15.30) & 30.04 (20.11--39.96) \\
+& LGFIN & 99.19 (98.96--99.42) & 4.33 (3.48--5.17) & \textbf{52.17 (41.93--62.41)} & 84.43 (80.43--88.44) & 98.50 (97.78--99.22) \\
+& FV-ViT & 92.20 (91.14--93.27) & 16.25 (14.99--17.51) & 21.14 (14.92--27.36) & 40.06 (35.14--44.97) & 74.98 (71.56--78.40) \\
+& VeinAttNet & 92.52 (87.99--97.04) & 15.00 (9.46--20.54) & 10.71 (0.21--21.20) & 39.39 (21.50--57.28) & 79.25 (65.82--92.68) \\
+& Proposed Method & \textbf{99.31 (99.13--99.50)} & \textbf{4.07 (3.43--4.71)} & 49.24 (30.59--67.90) & \textbf{85.92 (82.15--89.69)} & \textbf{98.91 (98.45--99.37)} \\
+\hline
+\end{tabular}}
+\end{table*}
+
+Table~\ref{tab:intra_open_set_results} reports the intra-database open-set verification results. On FV-300, all strong methods perform well due to the high image quality and large number of samples per identity. Nevertheless, the proposed method achieves the lowest EER of $0.39\%$ and the highest TAR at FAR$=0.1\%$, while matching the best TAR at FAR$=1\%$ and FAR$=10\%$. This confirms that OpenVeinNet remains highly competitive even when the intra-database setting is favourable to several baseline methods.
+
+On FV-USM, the advantage of the proposed method becomes more evident. OpenVeinNet achieves an AUC of $98.26\%$ and an EER of $7.06\%$, substantially improving over the second-best LGFIN result of $11.25\%$ EER. The proposed method also provides the highest TAR across all operating points, including $53.38\%$ at FAR$=0.1\%$ and $73.66\%$ at FAR$=1\%$. These results indicate that the proposed representation is more robust when intra-class variability and acquisition differences are stronger.
+
+On MMCBNU, the proposed method again achieves the best AUC and EER, with $99.31\%$ AUC and $4.07\%$ EER. LGFIN obtains a slightly higher TAR at the strictest FAR$=0.1\%$, but OpenVeinNet achieves the best TAR at FAR$=1\%$ and FAR$=10\%$, showing a more favourable operating behaviour across practical thresholds. This suggests that the proposed combination of DSConv, graph-based modelling, and CAH loss produces embeddings that remain discriminative across both strict and relaxed operating points.
+
+Overall, the intra-database results support the conclusions from the cross-dataset experiments. The proposed method performs strongly not only when evaluated across different datasets, but also when trained and tested within the same database under an open-set protocol. This additional experiment directly confirms that OpenVeinNet is effective for conventional intra-database open-set verification, while the cross-dataset experiments demonstrate its generalisation ability under stronger domain shift.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Baseline Training Details and Experimental Fairness}
+\label{sec:supp_baseline_training}
+
+\subsection{Overview}
+
+To ensure transparency and reproducibility, we provide detailed training configurations for all learned baselines used in the experiments. Unlike many prior works that report results directly from the literature, all deep learning baselines in this work were \textbf{retrained by us} under a unified evaluation protocol.
+
+Specifically, ArcVein, LGFIN, FV-ViT, and the proposed method were implemented and trained in a common PyTorch framework, while VeinAttNet was independently retrained in MATLAB using the published architecture within our codebase. Handcrafted methods (MCP, RLT, and WLD) do not involve learning and were executed as fixed pipelines.
+
+\section{Shared Experimental Protocol}
+
+All learned methods were trained and evaluated under the same \textbf{leave-one-dataset-out} protocol. For each experiment:
+\begin{itemize}
+    \item Four datasets were used for training, and one dataset was held out for testing.
+    \item The same statistical seeds were used across all methods to ensure matched runs.
+    \item A common evaluation pipeline was used for computing AUC, EER, and TAR@FAR.
+\end{itemize}
+
+For PyTorch-based models, input images were converted from grayscale to three channels and processed using a shared data pipeline with the following augmentations:
+\begin{itemize}
+    \item Random horizontal and vertical flips
+    \item Random autocontrast ($p = 0.05$)
+    \item Random rotations within $\pm 45^\circ$
+    \item Resizing to method-specific input resolution
+\end{itemize}
+
+VeinAttNet followed its original MATLAB-based augmentation strategy, including random reflections, translations (up to $\pm 30$ pixels), rotations, and scaling.
+
+Importantly, \textbf{no dataset-specific tuning was performed on the held-out test set}. Each method used a fixed training configuration across all splits, except for the unavoidable change in the number of source classes.
+
+\subsection{Baseline Training Configurations}
+
+Table~\ref{tab:rebuttal_baseline_training} summarises the training configurations for all learned methods.
+
+\begin{table*}[ht!]
+    \centering
+    \scriptsize
+    \resizebox{\textwidth}{!}{
+    \begin{tabular}{|l|l|c|c|c|c|c|l|}
+        \hline
+        Method & Training setup & Optimizer & LR & Epochs & Batch & Input & Loss \\
+        \hline
+        MCP / RLT / WLD & Handcrafted pipelines & n/a & n/a & n/a & n/a & Native & No learning \\
+        ArcVein & Retrained (PyTorch) & SGD (Nesterov 0.9) & $1\times10^{-2}$ ($\div 10$ @30) & 100 & 64 & $224\times224$ & Arc-cosine + softmax ($\lambda=0.01$) \\
+        LGFIN & Retrained (PyTorch) & AdamW & $1\times10^{-4}$ & 50 & 8 & $147\times147$ & Cross-entropy \\
+        FV-ViT & Retrained (PyTorch) & AdamW & $1\times10^{-4}$ & 50 & 64 & $224\times224$ & Cross-entropy \\
+        VeinAttNet & Retrained (MATLAB) & Adam & $1\times10^{-3}$ & 50 & 128 & $224\times224$ & Softmax classification \\
+        Proposed & Retrained (PyTorch) & AdamW & $1\times10^{-3}$ & 150 & 128 & $224\times224$ & CAH ($\beta=0.3$) \\
+        \hline
+    \end{tabular}}
+    \caption{Training configurations for the proposed method and all learned baselines.}
+    \label{tab:rebuttal_baseline_training}
+\end{table*}
+
+\subsection{Fairness of Comparison}
+
+The comparison is fair in the sense that all learned methods were:
+\begin{itemize}
+    \item Retrained under the same cross-dataset protocol,
+    \item Evaluated using identical metrics and code,
+    \item Compared across matched statistical runs.
+\end{itemize}
+
+At the same time, the comparison does not enforce identical hyperparameters across all methods. Each baseline retains its architecture-specific design choices, including input resolution, optimizer type, learning rate schedule, and loss formulation. For example, ArcVein is trained using its original SGD/Nesterov schedule rather than being forced into an Adam-based setup.
+
+Enforcing identical hyperparameters across fundamentally different architectures would introduce a different form of bias. Therefore, we adopt a \textbf{method-consistent but protocol-aligned} evaluation strategy, which preserves the intended behaviour of each baseline while ensuring comparability across methods.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Subject-Disjoint Train--Validation Split}
+\label{sec:supp_trainval_split}
+To ensure clarity and reproducibility of the training protocol, we report the train--validation statistics used for the source datasets in Table~4. The reviewer specifically requested information about the number of images used for training and validation; therefore, the table reports the approximate number of training and validation images per dataset.
+
+Importantly, the split is performed at the \textbf{subject/identity level}, not by randomly splitting images within the same identity. For each statistical split, the identities in the source datasets are partitioned into disjoint training and validation subsets. All images belonging to identities assigned to the training subset are used only for training, while all images belonging to identities assigned to the validation subset are used only for validation. Thus, no subject or finger identity appears in both the training and validation sets.
+
+The image counts reported in Table~4 are obtained after this subject-disjoint partitioning by counting the images associated with the identities assigned to each subset. These counts are therefore provided only to indicate the amount of training and validation data used; they do not imply image-level splitting within the same identity.
+
+For FV-300, the reported counts are approximate because 124 low-quality images were removed before partitioning. Despite these variations, the same subject-disjoint splitting strategy is applied consistently across all experiments and all learned methods, and no dataset-specific tuning is performed on the held-out target set.
+
+%\section{Per-Identity Train--Validation Split}
+%\label{sec:supp_trainval_split}
+
+%To ensure clarity and reproducibility of the training protocol, we report the per-identity train--validation partition used for all source datasets in Table~\ref{tab:rebuttal_trainval_split}. The split is performed at the \emph{image level within each identity}, such that every subject contributes samples to both training and validation sets. This design ensures that the validation set reflects intra-class variability while maintaining identity consistency with the training data.
+
+%The exact split ratio is determined by the number of available samples per identity. For datasets with a sufficient number of samples (e.g., FV-300), an approximate $7{:}3$ split is used to provide a larger training set while retaining enough validation samples for stable model selection. For datasets with limited samples per identity (e.g., MMCBNU, FV-USM, PolyU, and VERA), a balanced split (e.g., $1{:}1$ or equivalent) is adopted to avoid overly small validation sets.
+
+%It is important to note that the FV-300 counts are approximate, as a subset of low-quality images was removed prior to partitioning. Despite these variations, the splitting strategy is applied consistently across all experiments, and no dataset-specific tuning is performed on the held-out target set. This ensures that the reported results reflect generalisation performance rather than optimisation for a particular dataset.
+\begin{table}[ht!]
+    \centering
+    \scriptsize
+    \begin{tabular}{|l|c|c|c|c|}
+        \hline
+        Dataset & Images/Identity & Training & Validation & Split \\
+        \hline
+        FV-300 & 92* & $\sim$64 & $\sim$28 & 7:3 \\
+        MMCBNU & 10 & 5 & 5 & 1:1 \\
+        FV-USM & 12 & 6 & 6 & 1:1 \\
+        PolyU & 4 & 2 & 2 & 1:1 \\
+        VERA & 2 & 1 & 1 & 1:1 \\
+        \hline
+    \end{tabular}
+    \caption{Train--validation image statistics for the source datasets under subject/identity-disjoint partitioning. The split is performed at the identity level; the reported image counts are obtained by counting all images belonging to the identities assigned to each subset. No identity is shared between training and validation. The FV-300 counts are approximate because 124 low-quality images were removed before partitioning.}
+    %\caption{Per-identity image split used for source datasets during training and validation. The FV-300 counts are approximate because 124 low-quality images were removed before partitioning.}
+    \label{tab:rebuttal_trainval_split}
+\end{table}
+
+\begin{table}[ht!]
+\centering
+\scriptsize
+\resizebox{0.5\textwidth}{!}{
+\begin{tabular}{lccccc}
+\hline
+Dataset & Total IDs & Train IDs & Val. IDs & Train / Val. imgs & Held-out IDs \\
+\hline
+FV-300 & 301 & 240 & 240 & 16,536 / 4,954 & 61 \\
+MMCBNU & 600 & 480 & 480 & 2,400 / 2,400 & 120 \\
+FV-USM & 492 & 393 & 393 & 2,358 / 2,358 & 99 \\
+PolyU & 218 & 174 & 174 & 515 / 498 & 44 \\
+VERA & 220 & 176 & 176 & 176 / 176 & 44 \\
+\hline
+\end{tabular}}
+\caption{Identity-level split statistics for the intra-database open-set experiments. The first 80\% of sorted identities are used for model development, and the remaining identities are held out
+entirely for open-set evaluation.}
+\label{tab:intra_split_stats}
+\end{table}
+
+%%%%%%%%%
+\section{t-SNE Visualisation and Embedding Analysis}
+\label{sec:tsne_analysis}
+
+To further analyse the structure of the learned embedding space, we visualise the features extracted by OpenVeinNet using t-SNE across five datasets. For each dataset, we present three complementary views: (i) best 50 classes, (ii) worst 50 classes, and (iii) all classes. The best and worst classes are selected based on class-wise verification performance, allowing us to inspect embedding separability under favourable and challenging conditions.
+
+\textbf{FV-300 (see Fig.~\ref{fig:fv300}).}
+The t-SNE visualisation for FV-300 shows well-defined and compact clusters for the best 50 classes, indicating strong intra-class compactness and clear inter-class separation. Even in the worst 50 classes, most identities remain reasonably separable, although slight overlaps appear in boundary regions. The all-class distribution exhibits a structured global arrangement, suggesting that the learned embeddings preserve identity-level discriminability across the dataset. This behaviour is consistent with the strong performance observed in the $BCDE \rightarrow A$ protocol, where FV-300 provides high-quality images and a large number of samples per identity.
+
+\textbf{FV-USM (see Fig.~\ref{fig:fvusm}).}
+For FV-USM, the best-class embeddings remain relatively compact but are more scattered compared to FV-300. The worst 50 classes show noticeable overlap and reduced cluster density, indicating increased intra-class variation and inter-class ambiguity. The all-class visualisation reveals a less structured global distribution, reflecting the moderate image quality and cross-session variability present in this dataset. Despite this, the presence of local grouping structures suggests that OpenVeinNet retains meaningful identity information under domain shift.
+
+\textbf{MMCBNU (see Fig.~\ref{fig:mmcbnu}).}
+The MMCBNU visualisation shows moderate cluster separability in the best 50 classes, while the worst classes exhibit increased dispersion and partial mixing. The all-class view reveals a relatively uniform distribution of embeddings, indicating that class boundaries are less sharply defined compared to FV-300. This behaviour can be attributed to variations in acquisition conditions and subject diversity. Nevertheless, identifiable cluster structures are still present, supporting the model’s ability to generalise across heterogeneous data.
+
+\textbf{PolyU (see Fig.~\ref{fig:polyu}).}
+In the PolyU dataset, the best 50 classes show distinguishable clusters, though with reduced compactness compared to FV-300. The worst classes display significant overlap and irregular cluster shapes, indicating difficulty in separating certain identities. The all-class distribution appears more diffused, reflecting the unconstrained acquisition setup and long-term variability in the dataset. These observations are consistent with the moderate performance trends reported in the main experiments.
+
+\textbf{VERA (see Fig.~\ref{fig:vera}).}
+The VERA dataset presents the most challenging embedding structure. Even in the best 50 classes, clusters are sparse and less compact, while the worst classes show substantial overlap and poor separability. The all-class visualisation exhibits a highly scattered distribution with minimal cluster structure. This is expected due to the extremely limited number of samples per identity (only two images) and higher acquisition variability. The t-SNE results therefore provide strong qualitative support for the performance degradation observed in the $ABCD \rightarrow E$ protocol.
+
+\textbf{Overall analysis:}
+Across all datasets, the t-SNE visualisations reveal a consistent pattern: datasets with higher image quality and more samples per identity (e.g., FV-300) produce well-separated and compact clusters, while low-sample and high-variability datasets (e.g., VERA) result in dispersed and overlapping embeddings. Importantly, even in challenging scenarios, the proposed OpenVeinNet maintains partial cluster structures, indicating that the learned representation remains discriminative.
+
+These findings complement the quantitative results and dataset-quality analysis presented in the main paper. Together, they confirm that the performance variations across datasets are primarily driven by data characteristics rather than instability in the proposed model.
+
+
+
+
+\begin{figure*}[htbp!]
+    \centering
+    % First Subfigure
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/fv300/best_classes_tsne.png}
+        \caption{Best 50 classes}
+        \label{fig:fv300_best}
+    \end{subfigure}
+    \hfill % Adds horizontal space to distribute them evenly
+    % Second Subfigure
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/fv300/worst_classes_tsne.png}
+        \caption{Worst 50 classes}
+        \label{fig:fv300_worst}
+    \end{subfigure}
+    \hfill
+    % Third Subfigure
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/fv300/all_classes_tsne.png}
+        \caption{All Classes}
+        \label{fig:fv300_all}
+    \end{subfigure}
+    \caption{FV-300 Database t-SNE visualisation of OpenVeinNet embeddings: (a) best 50 classes, (b) worst 50 classes, and (c) all classes.}
+    \label{fig:fv300}
+\end{figure*}
+
+\begin{figure*}[t] % Use [t] or [b] with figure* for better placement
+    \centering
+    % First Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/fvusm/best_classes_tsne.png}
+        \caption{Best 50 classes}
+        \label{fig:fvusm_best}
+    \end{minipage}
+    \hfill 
+    % Second Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/fvusm/worst_classes_tsne.png}
+        \caption{Worst 50 classes}
+        \label{fig:fvusm_worst}
+    \end{minipage}
+    \hfill
+    % Third Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/fvusm/all_classes_tsne.png}
+        \caption{All Classes}
+        \label{fig:fvusm_alll}
+    \end{minipage}
+    
+    \vspace{2mm}
+    \caption{FV-USM database t-SNE visualisation of OpenVeinNet embeddings: (a) best 50 classes, (b) worst 50 classes, and (c) all classes.}
+    \label{fig:fvusm}
+\end{figure*}
+
+\begin{figure*}[t]
+    \centering
+    % First Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/mmcbnu/best_classes_tsne.png}
+        \caption{Best 50 classes}
+        \label{fig:mmcbnu_best}
+    \end{minipage}
+    \hfill 
+    % Second Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/mmcbnu/worst_classes_tsne.png}
+        \caption{Worst 50 classes}
+        \label{fig:mmcbnu_worst}
+    \end{minipage}
+    \hfill
+    % Third Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/mmcbnu/all_classes_tsne.png}
+        \caption{All Classes}
+        \label{fig:mmcbnu_alll}
+    \end{minipage}
+    
+    \vspace{2mm}
+    \caption{MMCBNU database t-SNE visualisation of OpenVeinNet embeddings: (a) best 50 classes, (b) worst 50 classes, and (c) all classes.}
+    \label{fig:mmcbnu}
+\end{figure*}
+
+
+\begin{figure*}[t]
+    \centering
+    % First Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/polyu/best_classes_tsne.png}
+        \caption{Best 50 classes}
+        \label{fig:polyu_best}
+    \end{minipage}
+    \hfill 
+    % Second Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/polyu/worst_classes_tsne.png}
+        \caption{Worst 50 classes}
+        \label{fig:polyu_worst}
+    \end{minipage}
+    \hfill
+    % Third Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/polyu/all_classes_tsne.png}
+        \caption{All Classes}
+        \label{fig:polyu_alll}
+    \end{minipage}
+    
+    \vspace{2mm}
+    \caption{PolyU database t-SNE visualisation of OpenVeinNet embeddings: (a) best 50 classes, (b) worst 50 classes, and (c) all classes.}
+    \label{fig:polyu}
+\end{figure*}
+
+\begin{figure*}[t]
+    \centering
+    % First Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/vera/best_classes_tsne.png}
+        \caption{Best 50 classes}
+        \label{fig:vera_best}
+    \end{minipage}
+    \hfill 
+    % Second Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/vera/worst_classes_tsne.png}
+        \caption{Worst 50 classes}
+        \label{fig:vera_worst}
+    \end{minipage}
+    \hfill
+    % Third Subfigure
+    \begin{minipage}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/tsne/vera/all_classes_tsne.png}
+        \caption{All Classes}
+        \label{fig:vera_alll}
+    \end{minipage}
+    
+    \vspace{2mm}
+    \caption{VERA database t-SNE visualisation of OpenVeinNet embeddings: (a) best 50 classes, (b) worst 50 classes, and (c) all classes.}
+    \label{fig:vera}
+\end{figure*}
+
+\section{DET Curve Analysis}
+We further analyse the verification behaviour using DET curves under both half and full evaluation protocols (Fig.~18 and Fig.~19). Across all datasets, the proposed method consistently achieves curves closer to the origin, indicating a favourable trade-off between false match rate (FMR) and false non-match rate (FNMR).
+
+On FV-300, all methods perform strongly due to high data quality; however, the proposed method maintains lower FNMR, particularly in the low-FMR regime, which is critical for secure applications. On FV-USM and MMCBNU, the performance gap becomes more pronounced, with OpenVeinNet showing consistently lower FNMR across most operating regions, reflecting improved robustness to intra-class variation and acquisition differences. 
+
+For PolyU, the DET curves exhibit greater dispersion across methods, yet the proposed approach retains a clear advantage, especially at moderate FMR values. VERA remains the most challenging dataset, where all methods degrade; nevertheless, OpenVeinNet maintains comparatively better performance and exhibits a more gradual degradation, indicating improved generalisation under low-sample and high-variability conditions.
+
+The trends are consistent between half and full protocols, with the full protocol showing slight improvements due to increased enrolment data. Overall, the DET analysis confirms that OpenVeinNet provides stable and favourable operating characteristics across datasets, particularly in low-FMR regimes relevant to security-critical deployments.
+
+%\clearpage
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_fv300_half.png}
+        \caption{FV-300}
+        \label{fig:det_half_fv300}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_fvusm_half.png}
+        \caption{FV-USM}
+        \label{fig:det_half_fvusm}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_mmcbnu_half.png}
+        \caption{MMCBNU}
+        \label{fig:det_half_mmcbnu}
+    \end{subfigure}
+
+    \vspace{2mm}
+
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_polyu_half.png}
+        \caption{PolyU}
+        \label{fig:det_half_polyu}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_vera_half.png}
+        \caption{VERA}
+        \label{fig:det_half_vera}
+    \end{subfigure}
+    \hfill
+
+    \caption{DET curves for the half evaluation protocol across the five datasets: (a) FV-300, (b) FV-USM, (c) MMCBNU, (d) PolyU, and (e) VERA.}
+    \label{fig:det_half_group}
+\end{figure*}
+
+\begin{figure*}[t]
+    \centering
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_fv300_full.png}
+        \caption{FV-300}
+        \label{fig:det_full_fv300}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_fvusm_full.png}
+        \caption{FV-USM}
+        \label{fig:det_full_fvusm}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_mmcbnu_full.png}
+        \caption{MMCBNU}
+        \label{fig:det_full_mmcbnu}
+    \end{subfigure}
+
+    \vspace{2mm}
+
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_polyu_full.png}
+        \caption{PolyU}
+        \label{fig:det_full_polyu}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.31\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{plots/det/det_curves_vera_full.png}
+        \caption{VERA}
+        \label{fig:det_full_vera}
+    \end{subfigure}
+    \hfill
+
+    \caption{DET curves for the full evaluation protocol across the five datasets: (a) FV-300, (b) FV-USM, (c) MMCBNU, (d) PolyU, and (e) VERA.}
+    \label{fig:det_full_group}
+\end{figure*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\bibliographystyle{IEEEtran}
+%\bibliography{bibliography}
+
+% that's all folks
+\end{document}

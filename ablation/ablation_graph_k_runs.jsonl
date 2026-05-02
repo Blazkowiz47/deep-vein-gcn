@@ -1,0 +1,3 @@
+{"key": "fvusm:0:k1_9:k2_9", "value": {"run_name": "graph_k_leaveoneout_fvusm_seed_0_k1_9_k2_9", "stage1_k": 9, "stage2_k": 9, "stat_seed": 0, "wandb_run_name": null}}
+{"key": "fvusm:0:k1_18:k2_18", "value": {"run_name": "graph_k_leaveoneout_fvusm_seed_0_k1_18_k2_18", "stage1_k": 18, "stage2_k": 18, "stat_seed": 0, "wandb_run_name": null}}
+{"key": "fvusm:0:k1_9:k2_18", "value": {"run_name": "graph_k_leaveoneout_fvusm_seed_0_k1_9_k2_18", "stage1_k": 9, "stage2_k": 18, "stat_seed": 0, "wandb_run_name": null}}

@@ -20,3 +20,5 @@
 {"key": "fvusm:2:adaface:none", "value": {"run_name": "dscgrapher_leaveoneout_14_04_26_02_21_2_252", "wandb_run_name": "dscgrapher_leaveoneout_14_04_26_02_21_2_252"}}
 {"key": "fvusm:3:adaface:none", "value": {"run_name": "dscgrapher_leaveoneout_14_04_26_07_53_2_202", "wandb_run_name": "dscgrapher_leaveoneout_14_04_26_07_53_2_202"}}
 {"key": "fvusm:4:adaface:none", "value": {"run_name": "dscgrapher_leaveoneout_14_04_26_11_11_2_234", "wandb_run_name": "dscgrapher_leaveoneout_14_04_26_11_11_2_234"}}
+{"key": "fvusm:0:cosface:none", "value": {"run_name": "dscgrapher_fvusm_0", "wandb_run_name": null}}
+{"key": "fvusm:1:cosface:none", "value": {"run_name": "dscgrapher_fvusm_1", "wandb_run_name": null}}

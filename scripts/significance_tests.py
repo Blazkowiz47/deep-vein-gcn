@@ -1,9 +1,11 @@
 import argparse
 import json
+import math
 from pathlib import Path
 from typing import Dict, Iterable, List, Tuple
 
 import numpy as np
+from scipy.stats import wilcoxon
 
 from scripts.unenrolled_eval import get_metric_summary
 from utils import calculate_eer
@@ -31,19 +33,17 @@ METHOD_LABELS = {
     "lgfin": "LGFIN",
     "fv-vit": "FV-ViT",
     "veinAttNet": "VeinAttNet",
-    "chen": "Chen et al",
     "snakegraph2": "Proposed Method",
 }
 
 PROPOSED_METHOD = "snakegraph2"
 VEIN_ATTNET = "veinAttNet"
 HANDCRAFTED_METHODS = ("mcp", "rlt", "wld")
-LEARNED_BASELINES = ("arcvein", "lgfin", "fv-vit", "veinAttNet", "chen")
+LEARNED_BASELINES = ("arcvein", "lgfin", "fv-vit", "veinAttNet")
 FIXED_LEARNED_COMPARATORS = (
     "arcvein",
     "lgfin",
     "fv-vit",
-    "chen",
     "veinAttNet",
 )
 METRICS = [
@@ -57,7 +57,6 @@ COMPACT_ROWS = (
     ("Proposed vs ArcVein", "seed"),
     ("Proposed vs LGFIN", "seed"),
     ("Proposed vs FV-ViT", "seed"),
-    ("Proposed vs Chen et al", "seed"),
     ("Proposed vs VeinAttNet", "seed"),
 )
 
@@ -79,9 +78,9 @@ def parse_args() -> argparse.Namespace:
         help="Structured output path.",
     )
     parser.add_argument(
-        "--output-md",
-        default="rebuttal/significance_tests.md",
-        help="Markdown summary output path.",
+        "--output-tex",
+        default="rebuttal/significance_tests.tex",
+        help="LaTeX summary output path.",
     )
     parser.add_argument(
         "--alpha",
@@ -92,7 +91,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--full-report",
         action="store_true",
-        help="Include the long per-metric markdown report instead of the compact rebuttal table.",
+        help="Include split-level and non-EER rows in the JSON, while keeping compact LaTeX output.",
     )
     return parser.parse_args()
 
@@ -143,7 +142,9 @@ def metric_scale(metric_key: str) -> float:
     return 100.0 if metric_key.startswith("tar_") else 1.0
 
 
-def paired_improvement(proposed_value: float, comparator_value: float, metric_key: str) -> float:
+def paired_improvement(
+    proposed_value: float, comparator_value: float, metric_key: str
+) -> float:
     scale = metric_scale(metric_key)
     if metric_key == "eer":
         return (comparator_value - proposed_value) * scale
@@ -161,6 +162,16 @@ def exact_sign_flip_pvalue(deltas: Iterable[float]) -> float:
 
     observed = abs(float(vals.sum()))
     return float(np.mean(np.abs(sums) >= observed - 1e-12))
+
+
+def wilcoxon_pvalue(deltas: Iterable[float]) -> float:
+    vals = np.asarray(list(deltas), dtype=float)
+    if vals.size == 0:
+        return float("nan")
+    if np.allclose(vals, 0.0):
+        return 1.0
+    _stat, p_value = wilcoxon(vals, alternative="two-sided")
+    return float(p_value)
 
 
 def holm_adjust(records: List[dict]) -> None:
@@ -224,7 +235,9 @@ def select_best_handcrafted_baselines(baselines: dict) -> Dict[str, str]:
     return best_methods
 
 
-def seed_level_deltas_fixed(results: dict, comparator_method: str, metric_key: str) -> List[float]:
+def seed_level_deltas_fixed(
+    results: dict, comparator_method: str, metric_key: str
+) -> List[float]:
     deltas: List[float] = []
     for dataset in DATASET_ORDER:
         proposed = results.get(dataset, {}).get(PROPOSED_METHOD, {})
@@ -257,7 +270,9 @@ def seed_level_deltas_dataset_specific(
     return deltas
 
 
-def split_level_deltas_fixed(results: dict, comparator_method: str, metric_key: str) -> List[float]:
+def split_level_deltas_fixed(
+    results: dict, comparator_method: str, metric_key: str
+) -> List[float]:
     deltas: List[float] = []
     for dataset in DATASET_ORDER:
         proposed = results.get(dataset, {}).get(PROPOSED_METHOD, {})
@@ -295,7 +310,10 @@ def split_level_deltas_dataset_specific(
 
 
 def split_level_deltas_handcrafted(
-    results: dict, baselines: dict, comparator_by_dataset: Dict[str, str], metric_key: str
+    results: dict,
+    baselines: dict,
+    comparator_by_dataset: Dict[str, str],
+    metric_key: str,
 ) -> List[float]:
     deltas: List[float] = []
     for dataset in DATASET_ORDER:
@@ -306,7 +324,9 @@ def split_level_deltas_handcrafted(
             continue
         deltas.append(
             paired_improvement(
-                mean_seed_metric(proposed, metric_key), comparator[metric_key], metric_key
+                mean_seed_metric(proposed, metric_key),
+                comparator[metric_key],
+                metric_key,
             )
         )
     return deltas
@@ -322,6 +342,7 @@ def build_record(
     deltas: List[float],
 ) -> dict:
     p_value = exact_sign_flip_pvalue(deltas)
+    wilcoxon_value = wilcoxon_pvalue(deltas)
     return {
         "split": split_name,
         "comparison_key": comparison_key,
@@ -333,6 +354,7 @@ def build_record(
         "mean_delta_pp": float(np.mean(deltas)) if deltas else float("nan"),
         "median_delta_pp": float(np.median(deltas)) if deltas else float("nan"),
         "p_value": p_value,
+        "wilcoxon_p_value": wilcoxon_value,
     }
 
 
@@ -352,6 +374,19 @@ def format_p(value: float) -> str:
     return f"{value:.4f}"
 
 
+def format_latex_p(value: float) -> str:
+    if np.isnan(value):
+        return r"\texttt{nan}"
+    if value == 0:
+        return "$0$"
+    if value < 1e-3:
+        exponent = int(math.floor(math.log10(abs(value))))
+        mantissa = value / (10 ** exponent)
+        mantissa_str = f"{mantissa:.2f}".rstrip("0").rstrip(".")
+        return rf"${mantissa_str} \times 10^{{{exponent}}}$"
+    return rf"${value:.4f}$"
+
+
 def format_delta(value: float) -> str:
     if np.isnan(value):
         return "nan"
@@ -359,24 +394,41 @@ def format_delta(value: float) -> str:
 
 
 def compact_baseline_note(title: str, mapping: Dict[str, str]) -> str:
-    parts = [f"{DATASET_LABELS[dataset]}={METHOD_LABELS[mapping[dataset]]}" for dataset in DATASET_ORDER]
+    parts = [
+        f"{DATASET_LABELS[dataset]}={METHOD_LABELS[mapping[dataset]]}"
+        for dataset in DATASET_ORDER
+    ]
     return f"- {title} " + ", ".join(parts) + "."
 
 
-def build_compact_markdown(summary: dict, output_json: str, alpha: float) -> str:
-    lines = [
-        "# Significance Tests",
-        "",
-        "Two-sided exact paired sign-flip permutation tests on EER only.",
-        "Positive mean delta favors Proposed Method.",
-        f"Holm-adjusted significance threshold: `{alpha:.2f}`.",
-        f"Structured output: `{output_json}`.",
-        "",
-        "| Split | Comparison | n | Mean Delta EER (pp) | Holm p-value | Significant |",
-        "|---|---|---:|---:|---:|---|",
-    ]
+def build_compact_latex(summary: dict, alpha: float) -> str:
+    splits = list(summary["splits"].keys())
+    include_split_col = len(splits) > 1
 
-    for split_name in summary["splits"]:
+    lines = [
+        r"\begin{table*}[ht!]",
+        r"    \centering",
+    ]
+    if include_split_col:
+        lines.extend(
+            [
+                r"    \begin{tabular}{|l|l|c|c|c|c|}",
+                r"        \hline",
+                r"        Split & Comparison & $n$ & Mean $\Delta$EER (pp) & Holm-adjusted $p$ & Wilcoxon $p$ \\",
+                r"        \hline",
+            ]
+        )
+    else:
+        lines.extend(
+            [
+                r"    \begin{tabular}{|l|c|c|c|c|c|}",
+                r"        \hline",
+                r"        Comparison & $n$ & Mean $\Delta$EER (pp) & Holm-adjusted $p$ & Wilcoxon $p$ & Significant \\",
+                r"        \hline",
+            ]
+        )
+
+    for split_name in splits:
         split_payload = summary["splits"][split_name]
         eer_records = [
             record
@@ -389,97 +441,48 @@ def build_compact_markdown(summary: dict, output_json: str, alpha: float) -> str
                 for item in eer_records
                 if item["comparison"] == comparison and item["level"] == level
             )
-            significant = "yes" if record["holm_p_value"] < alpha else "no"
-            label = f"{comparison} (seed-matched)"
-            lines.append(
-                "| "
-                + " | ".join(
-                    [
-                        split_name.title(),
-                        label,
-                        str(record["n_pairs"]),
-                        format_delta(record["mean_delta_pp"]),
-                        format_p(record["holm_p_value"]),
-                        significant,
-                    ]
+            significant = "Yes" if record["holm_p_value"] < alpha else "No"
+            if include_split_col:
+                lines.append(
+                    "        "
+                    + " & ".join(
+                        [
+                            split_name.title(),
+                            record["comparison"],
+                            str(record["n_pairs"]),
+                            format_delta(record["mean_delta_pp"]),
+                            format_latex_p(record["holm_p_value"]),
+                            format_latex_p(record["wilcoxon_p_value"]),
+                        ]
+                    )
+                    + r" \\"
                 )
-                + " |"
-            )
-        lines.append("")
-
-    return "\n".join(lines).rstrip() + "\n"
-
-
-def build_markdown(
-    summary: dict, output_json: str, alpha: float
-) -> str:
-    lines = [
-        "# Significance Tests",
-        "",
-        "Two-sided exact paired sign-flip permutation tests.",
-        "Positive mean delta favors Proposed Method.",
-        f"Holm-adjusted significance threshold: `{alpha:.2f}`.",
-        f"Structured output: `{output_json}`.",
-        "",
-    ]
-
-    for split_name in summary["splits"]:
-        split_payload = summary["splits"][split_name]
-        lines.append(f"## {split_name.title()} Subjects")
-        lines.append("")
-        lines.append("### EER Summary")
-        lines.append("")
-        lines.append(
-            "| Comparison | Level | n | Mean Delta (pp) | p-value | Holm p-value | Significant |"
-        )
-        lines.append("|---|---:|---:|---:|---:|---:|---|")
-        for record in split_payload["records"]:
-            if record["metric_key"] != "eer":
-                continue
-            significant = "yes" if record["holm_p_value"] < alpha else "no"
-            lines.append(
-                "| "
-                + " | ".join(
-                    [
-                        record["comparison"],
-                        record["level"],
-                        str(record["n_pairs"]),
-                        format_delta(record["mean_delta_pp"]),
-                        format_p(record["p_value"]),
-                        format_p(record["holm_p_value"]),
-                        significant,
-                    ]
+            else:
+                lines.append(
+                    "        "
+                    + " & ".join(
+                        [
+                            record["comparison"],
+                            str(record["n_pairs"]),
+                            format_delta(record["mean_delta_pp"]),
+                            format_latex_p(record["holm_p_value"]),
+                            format_latex_p(record["wilcoxon_p_value"]),
+                            significant,
+                        ]
+                    )
+                    + r" \\"
                 )
-                + " |"
-            )
-        lines.append("")
-        lines.append("### All Metrics")
-        lines.append("")
-        lines.append(
-            "| Comparison | Level | Metric | n | Mean Delta (pp) | p-value | Holm p-value | Significant |"
-        )
-        lines.append("|---|---:|---|---:|---:|---:|---:|---|")
-        for record in split_payload["records"]:
-            significant = "yes" if record["holm_p_value"] < alpha else "no"
-            lines.append(
-                "| "
-                + " | ".join(
-                    [
-                        record["comparison"],
-                        record["level"],
-                        record["metric"],
-                        str(record["n_pairs"]),
-                        format_delta(record["mean_delta_pp"]),
-                        format_p(record["p_value"]),
-                        format_p(record["holm_p_value"]),
-                        significant,
-                    ]
-                )
-                + " |"
-            )
-        lines.append("")
 
-    return "\n".join(lines).rstrip() + "\n"
+    lines.extend(
+        [
+            r"        \hline",
+            r"    \end{tabular}",
+            r"    \caption{Paired statistical significance testing on full-subject EER. A positive mean $\Delta$EER indicates that the proposed method achieves lower EER than the comparator. Holm-adjusted $p$ values are computed from the exact paired sign-flip permutation test, while the Wilcoxon column reports the paired two-sided signed-rank test.}",
+            r"    \label{tab:statistical_significance}",
+            r"\end{table*}",
+        ]
+    )
+    return "\n".join(lines) + "\n"
 
 
 def main() -> None:
@@ -487,6 +490,7 @@ def main() -> None:
 
     summary = {
         "test": "two-sided exact paired sign-flip permutation test",
+        "secondary_test": "paired two-sided Wilcoxon signed-rank test",
         "alpha": args.alpha,
         "splits": {},
     }
@@ -509,7 +513,9 @@ def main() -> None:
                             "seed",
                             metric_key,
                             metric_label,
-                            seed_level_deltas_fixed(results, comparator_method, metric_key),
+                            seed_level_deltas_fixed(
+                                results, comparator_method, metric_key
+                            ),
                         )
                     )
                 if "split" in levels_to_run:
@@ -521,7 +527,9 @@ def main() -> None:
                             "split",
                             metric_key,
                             metric_label,
-                            split_level_deltas_fixed(results, comparator_method, metric_key),
+                            split_level_deltas_fixed(
+                                results, comparator_method, metric_key
+                            ),
                         )
                     )
 
@@ -534,15 +542,12 @@ def main() -> None:
     output_json.parent.mkdir(parents=True, exist_ok=True)
     output_json.write_text(json.dumps(summary, indent=2) + "\n", encoding="utf-8")
 
-    if args.full_report:
-        markdown = build_markdown(summary, args.output_json, args.alpha)
-    else:
-        markdown = build_compact_markdown(summary, args.output_json, args.alpha)
-    output_md = Path(args.output_md)
-    output_md.parent.mkdir(parents=True, exist_ok=True)
-    output_md.write_text(markdown, encoding="utf-8")
+    latex = build_compact_latex(summary, args.alpha)
+    output_tex = Path(args.output_tex)
+    output_tex.parent.mkdir(parents=True, exist_ok=True)
+    output_tex.write_text(latex, encoding="utf-8")
 
-    print(markdown)
+    print(latex)
 
 
 if __name__ == "__main__":

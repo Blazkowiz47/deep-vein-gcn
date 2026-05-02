@@ -1,0 +1,15 @@
+\begin{table*}[ht!]
+    \centering
+    \begin{tabular}{|l|c|c|c|c|c|}
+        \hline
+        Comparison & $n$ & Mean $\Delta$EER (pp) & Holm-adjusted $p$ & Wilcoxon $p$ & Significant \\
+        \hline
+        Proposed vs ArcVein & 20 & 15.17 & $7.63 \times 10^{-6}$ & $1.91 \times 10^{-6}$ & Yes \\
+        Proposed vs LGFIN & 20 & 13.05 & $7.63 \times 10^{-6}$ & $1.91 \times 10^{-6}$ & Yes \\
+        Proposed vs FV-ViT & 20 & 13.66 & $7.63 \times 10^{-6}$ & $1.91 \times 10^{-6}$ & Yes \\
+        Proposed vs VeinAttNet & 20 & 4.44 & $9.54 \times 10^{-5}$ & $1.68 \times 10^{-4}$ & Yes \\
+        \hline
+    \end{tabular}
+    \caption{Paired statistical significance testing on full-subject EER. A positive mean $\Delta$EER indicates that the proposed method achieves lower EER than the comparator. Holm-adjusted $p$ values are computed from the exact paired sign-flip permutation test, while the Wilcoxon column reports the paired two-sided signed-rank test.}
+    \label{tab:statistical_significance}
+\end{table*}

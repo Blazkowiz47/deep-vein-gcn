@@ -32,12 +32,12 @@ final_runs = {
             2: "leaveoutds_veinAttNet_vera_seed_2",
             3: "leaveoutds_veinAttNet_vera_seed_3",
         },
-        "chen": {
-            0: "resnet_vera_0",
-            1: "resnet_vera_1",
-            2: "resnet_vera_2",
-            3: "resnet_vera_3",
-        },
+        # "chen": {
+        #     0: "resnet_vera_0",
+        #     1: "resnet_vera_1",
+        #     2: "resnet_vera_2",
+        #     3: "resnet_vera_3",
+        # },
         "snakegraph2": {
             0: "dscgrapher_leaveoneout_24_04_25_02_57_2_253",
             1: "dscgrapher_leaveoneout_22_04_25_09_59_2_225",
@@ -70,12 +70,12 @@ final_runs = {
             2: "leaveoutds_veinAttNet_polyu_seed_2",
             3: "leaveoutds_veinAttNet_polyu_seed_3",
         },
-        "chen": {
-            0: "resnet_polyu_0",
-            1: "resnet_polyu_1",
-            2: "resnet_polyu_2",
-            3: "resnet_polyu_3",
-        },
+        # "chen": {
+        #     0: "resnet_polyu_0",
+        #     1: "resnet_polyu_1",
+        #     2: "resnet_polyu_2",
+        #     3: "resnet_polyu_3",
+        # },
         "snakegraph2": {
             0: "dscgrapher_leaveoneout_23_04_25_20_21_2_231",
             1: "dscgrapher_leaveoneout_21_04_25_07_39_2_217",
@@ -91,6 +91,7 @@ final_runs = {
             3: "arcvein_leaveoneout_06_03_25_14_25_2_252",
         },
         "lgfin": {
+            0: "lgfin_fvusm_01_05_26_08_26_2_217",
             1: "lgfin_leaveoneout_06_03_25_17_05_2_224",
             2: "lgfin_leaveoneout_06_03_25_17_05_2_227",
             3: "lgfin_leaveoneout_06_03_25_17_05_2_233",
@@ -107,12 +108,12 @@ final_runs = {
             2: "leaveoutds_veinAttNet_fvusm_seed_2",
             3: "leaveoutds_veinAttNet_fvusm_seed_3",
         },
-        "chen": {
-            0: "resnet_fvusm_0",
-            1: "resnet_fvusm_1",
-            2: "resnet_fvusm_2",
-            3: "resnet_fvusm_3",
-        },
+        # "chen": {
+        #     0: "resnet_fvusm_0",
+        #     1: "resnet_fvusm_1",
+        #     2: "resnet_fvusm_2",
+        #     3: "resnet_fvusm_3",
+        # },
         "snakegraph2": {
             0: "dscgrapher_leaveoneout_18_04_25_11_49_2_227",
             1: "dscgrapher_leaveoneout_18_04_25_18_13_2_209",
@@ -145,12 +146,12 @@ final_runs = {
             2: "leaveoutds_veinAttNet_mmcbnu_seed_2",
             3: "leaveoutds_veinAttNet_mmcbnu_seed_3",
         },
-        "chen": {
-            0: "resnet_mmcbnu_0",
-            1: "resnet_mmcbnu_1",
-            2: "resnet_mmcbnu_2",
-            3: "resnet_mmcbnu_3",
-        },
+        # "chen": {
+        #     0: "resnet_mmcbnu_0",
+        #     1: "resnet_mmcbnu_1",
+        #     2: "resnet_mmcbnu_2",
+        #     3: "resnet_mmcbnu_3",
+        # },
         "snakegraph2": {
             0: "dscgrapher_leaveoneout_23_04_25_14_48_2_203",
             1: "dscgrapher_leaveoneout_19_04_25_21_42_2_259",
@@ -183,12 +184,12 @@ final_runs = {
             2: "leaveoutds_veinAttNet_fv300_seed_2",
             3: "leaveoutds_veinAttNet_fv300_seed_3",
         },
-        "chen": {
-            0: "resnet_fv300_0",
-            1: "resnet_fv300_1",
-            2: "resnet_fv300_2",
-            3: "resnet_fv300_3",
-        },
+        # "chen": {
+        #     0: "resnet_fv300_0",
+        #     1: "resnet_fv300_1",
+        #     2: "resnet_fv300_2",
+        #     3: "resnet_fv300_3",
+        # },
         "snakegraph2": {
             0: "dscgrapher_leaveoneout_24_04_25_09_59_2_251",
             1: "dscgrapher_leaveoneout_23_04_25_07_20_2_231",

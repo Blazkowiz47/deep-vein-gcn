@@ -1,6 +1,6 @@
 from logging import getLogger
 import torch
-from torch.nn import CrossEntropyLoss, Linear, Module
+from torch.nn import CrossEntropyLoss, Linear, Module, Identity
 
 
 class CrossEntropy(Module):
@@ -8,8 +8,11 @@ class CrossEntropy(Module):
         super(CrossEntropy, self).__init__()
         self.log = log
         self.name = "CrossEntropy"
-        self.num_classes = config["num_classes"]
-        self.fc = Linear(config["embedding_size"], self.num_classes)
+        if config.get("embedding_size") is not None:
+            self.num_classes = config["num_classes"]
+            self.fc = Linear(config["embedding_size"], self.num_classes)
+        else:
+            self.fc = Identity()
         self.cross_entropy = CrossEntropyLoss()
 
     def forward(self, embds, labels, **kwargs):
