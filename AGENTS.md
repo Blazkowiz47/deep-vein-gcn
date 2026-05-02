@@ -12,6 +12,21 @@ This project participates in Sushrut's knowledge-base memory system. These direc
 - Track experiments and long-running jobs in `memory/runs.md`.
 - Track durable findings in `memory/learnings.md`.
 - Track decisions and their rationale in `memory/decisions.md`.
+- Use `memory/commands/` for portable project-memory slash command specs when present.
+
+### Project Memory Commands
+
+If the user starts a prompt with a project memory command, follow the matching spec in `memory/commands/`:
+
+- `/remember` - add a compact note to today's project memory.
+- `/log` - record session work or a meaningful project change.
+- `/run` - add or update an experiment, evaluation, or long-running job.
+- `/decision` - record a project decision and rationale.
+- `/learned` - record a durable finding or reusable lesson.
+- `/status` - update the project context card.
+- `/check-initialisation` - verify and align the project memory structure.
+
+These command specs are shortcuts. They do not override project-specific instructions or this `AGENTS.md`.
 
 ### When To Update Memory
 

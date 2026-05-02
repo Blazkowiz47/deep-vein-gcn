@@ -24,6 +24,7 @@ Next action: Regenerate score-count/result tables from the corrected `scripts/un
 - 2026-04-30: Reviewed `rebuttal/paper.tex` against the current evaluation/training scripts and inserted red clarification text for the main protocol and narrative mismatches.
 - 2026-04-30: Ran critic/replier agent review for each rebuttal file and logged confirmed inconsistencies in `rebuttal/inconsistencies.md`.
 - 2026-05-01: Re-reviewed the updated paper/response files with sub-agents and recorded the current active inconsistency set.
+- 2026-05-02: Aligned project memory initialization to the current template by refreshing `AGENTS.md`, adding `memory/commands/`, and opening today's project note.
 
 ## Recent Runs
 
@@ -36,6 +37,10 @@ Next action: Regenerate score-count/result tables from the corrected `scripts/un
 ## Decisions
 
 - See `decisions.md`.
+
+## Commands
+
+- See `commands/index.md`.
 
 ## Links
 
