@@ -532,9 +532,9 @@ Attention-based architectures have attracted growing interest because they can m
 
 Despite these advances, two challenges remain central for practical finger vein verification. First, many methods show reduced robustness under cross-dataset evaluation because the learned representations are affected by sensor and acquisition shifts. Second, open-set deployment requires not only matching enrolled identities but also rejecting non-enrolled probes at fixed operating thresholds. This distinction is important because a system that performs well when all test identities are enrolled may still fail when unknown identities are presented during inference \cite{chenresnetarcloss}.
 
-To address these limitations, we propose \emph{OpenVeinNet}, a finger vein verification framework designed for robust cross-dataset and open-set evaluation. The proposed model uses Dynamic Snake Convolution (DSConv) layers to capture the curvilinear and tubular structures of finger vein patterns. These features are then processed by Graph Convolutional Networks (GCNs), which model long-range topological relationships between vein regions. For verification, the extracted embeddings are compared using cosine similarity between enrolment and probe samples. To further improve open-set discrimination, we introduce a Centroid Angular Hybrid Loss that encourages intra-class compactness and inter-class angular separation in the learned embedding space.
+To address these limitations, we propose \emph{OpenVeinNet}, a finger vein verification framework designed for robust cross-dataset and open-set evaluation. The proposed model uses Dynamic Snake Convolution (DSConv) layers to capture the curvilinear and tubular structures of finger vein patterns. These features are then processed by Graph Convolutional Networks (GCNs), which model long-range topological relationships between vein regions. For verification, the extracted embeddings are compared using cosine similarity between enrolment and probe samples. To further improve open-set discrimination, we introduce a Centroid Angular Hybrid Loss that encourages intra-class compactness and inter-class angular separation in the learned embedding space. 
 
-We evaluate the proposed approach on five publicly available finger vein datasets, namely FV-300, FV-USM, MMCBNU, PolyU, and VERA, and compare it against handcrafted and deep learning-based state-of-the-art methods. The evaluation includes both enrollment-based unknown-rejection and full-subject verification protocols, together with threshold-based operating points such as TAR@FAR. The results show that OpenVeinNet achieves strong overall generalisation and favourable verification performance across challenging cross-dataset settings. The main contributions of this work are as follows:
+We evaluate the proposed approach on five publicly available finger vein datasets, namely FV-300, FV-USM, MMCBNU, PolyU, and VERA, and compare it against handcrafted and deep learning-based state-of-the-art methods. The evaluation includes both enrollment-based unknown-rejection and full-subject verification protocols, together with threshold-based operating points such as TAR@FAR. The results show that OpenVeinNet achieves  overall generalisation and favourable verification performance across challenging cross-dataset settings. The main contributions of this work are as follows:
 
 \begin{itemize}
     \item We introduce \emph{OpenVeinNet}, a finger vein verification framework that integrates DSConv-based tubular feature extraction with graph-based relational modelling to capture both local vein geometry and long-range vascular connectivity.
@@ -545,6 +545,15 @@ We evaluate the proposed approach on five publicly available finger vein dataset
     \item The complete source code, trained checkpoints, and scripts required to reproduce the reported results are available at:
     \url{https://github.com/Blazkowiz47/deep-vein-gcn}
 \end{itemize}
+
+\noindent Beyond architectural design, the experiments yield three 
+analytical observations relevant to finger vein verification. 
+The component ablation shows that graph-based relational modelling 
+is only effective when local node features are geometrically aligned 
+with vein structures, revealing a prerequisite specific to tubular 
+biometric patterns. The loss ablation shows that explicitly penalising intra-class scatter through centroid alignment provides a practical advantage over margin-only losses in cosine-similarity-based open-set 
+verification.
+%The loss ablation shows that angular margin losses designed for closed-set recognition are suboptimal for open-set verification, and the cross-dataset analysis demonstrates that structural image coherence is a reliable predictor of relative method performance across acquisition conditions.
 
 The remainder of this paper is organised as follows. Section~\ref{sec:proposed} presents the proposed method, including its architectural components and loss function. Section~\ref{sec:experiments} reports the experimental protocols and quantitative comparison with state-of-the-art methods. Section~\ref{sec:ablation} presents the ablation studies used to validate the main design choices. Section \ref{sec:efficiency} discuss the computation cost and latency, Section~\ref{sec:interpretation} provides the interpretability analysis. Finally, Section~\ref{sec:conclusion} concludes the paper and discusses future research directions.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -875,7 +884,7 @@ A similar trend is observed for \(ABCE \rightarrow D\), where the proposed metho
          & RLT \cite{rlt} & 79.40 & 25.14 & 0.00 & 0.00 & 4.91 \\
          & WLD \cite{wld} & 83.07 & 22.87 & 0.00 & 0.08 & 20.58 \\
          & ArcVein \cite{arcvein} & 87.51 (84.43--90.58) & 20.22 (16.79--23.64) & 2.02 (0.00--4.36) & 7.84 (3.90--11.78) & 52.75 (41.61--63.90) \\
-         & LGFIN \cite{lgfin} & 87.73 (85.09--90.38) & 19.55 (16.73--22.37) & 1.01 (0.00--3.20) & 5.72 (0.00--15.54) & 57.81 (51.20--64.42) \\
+         & LGFIN \cite{lgfin} & 87.78 (86.39--89.17) & 18.34 (14.20--22.47) & 0.81 (0.00--2.13) & 4.72 (0.00--10.76) & 47.65 (15.14--80.17) \\
          & FV-ViT \cite{vit} & 89.66 (88.43--90.89) & 18.24 (17.19--19.28) & 2.23 (0.95--3.51) & 15.78 (8.26--23.30) & 65.69 (61.22--70.17) \\
          & VeinAttNet \cite{veinatnnet} & 86.79 (85.37--88.22) & 22.20 (20.14--24.26) & 8.01 (5.92--10.10) & 15.23 (11.25--19.21) & 49.21 (46.92--51.50) \\
          & Proposed Method & \textbf{97.72} (97.28--98.17) & \textbf{7.48} (6.70--8.25) & \textbf{13.71} (3.69--23.72) & \textbf{53.52} (47.25--59.79) & \textbf{95.47} (93.72--97.21) \\
@@ -890,8 +899,8 @@ A similar trend is observed for \(ABCE \rightarrow D\), where the proposed metho
          & Proposed Method & \textbf{98.67} (98.32--99.02) & \textbf{5.34} (4.40--6.29) & \textbf{25.65} (11.73--39.56) & \textbf{67.68} (60.38--74.98) & \textbf{98.39} (97.81--98.97) \\
         \hline
         $ABCD \rightarrow E$ & MCP \cite{mcp} & 72.21 & 33.19 & \textbf{0.00} & 0.04 & 11.14 \\
-         & RLT \cite{rlt} & 59.21 & 44.43 & 0.00 & 0.00 & 1.11 \\
-         & WLD \cite{wld} & 69.67 & 35.45 & 0.00 & 0.02 & 8.51 \\
+         & RLT \cite{rlt} & 59.21 & 44.43 & \textbf{0.00} & 0.00 & 1.11 \\
+         & WLD \cite{wld} & 69.67 & 35.45 & \textbf{0.00} & 0.02 & 8.51 \\
          & ArcVein \cite{arcvein} & 71.51 (69.25--73.77) & 33.66 (31.29--36.04) & \textbf{0.00} (0.00--0.00) & 0.38 (0.05--0.71) & 18.16 (15.53--20.79) \\
          & LGFIN \cite{lgfin} & 75.88 (74.57--77.20) & 32.29 (31.43--33.14) & \textbf{0.00} (0.00--0.00) & 9.23 (0.00--20.97) & 32.59 (23.47--41.70) \\
          & FV-ViT \cite{vit} & 74.34 (72.58--76.09) & 32.09 (28.61--35.57) & \textbf{0.00} (0.00--0.00) & 4.10 (0.00--8.95) & 30.29 (23.60--36.98) \\
@@ -907,10 +916,15 @@ A similar trend is observed for \(ABCE \rightarrow D\), where the proposed metho
 
 
 \textbf{Full-subject verification performance.}
-Table~\ref{tab:rebuttal_full_thresholds} reports the results when all subjects from the held-out dataset are enrolled. In this setting, the proposed method achieves the lowest EER in 4 of 5 evaluation splits and is competitive in the 5th one. For example, in the \(BCDE \rightarrow A\) setting, OpenVeinNet achieves an EER of \(3.17\%\), compared with \(6.20\%\) for VeinAttNet and substantially higher EER values for other deep learning baselines. In the more difficult \(ABDE \rightarrow C\) and \(ABCE \rightarrow D\) settings, the proposed method obtains EER values of \(7.44\%\) and \(5.21\%\), respectively, while also achieving strong TAR values at low FAR thresholds. These results show that the embedding space learned by OpenVeinNet remains discriminative under substantial dataset shift.
+Table~\ref{tab:rebuttal_full_thresholds} reports the results when all subjects from the held-out dataset are enrolled. In this setting, the proposed method achieves the lowest EER in 4 of 5 evaluation splits and is competitive in the 5th one. For example, in the \(BCDE \rightarrow A\) setting, OpenVeinNet achieves an EER of \(3.17\%\), compared with \(6.20\%\) for VeinAttNet and substantially higher EER values for other deep learning baselines. In the more difficult \(ABDE \rightarrow C\) and \(ABCE \rightarrow D\) settings, the proposed method obtains EER values of \(7.45\%\) and \(5.20\%\), respectively, while also achieving strong TAR values at low FAR thresholds. These results show that the embedding space learned by OpenVeinNet remains discriminative under substantial dataset shift.
 
 \textbf{Behaviour at strict operating points.}
 From a deployment perspective, the low-FAR regime is particularly important because false accepts directly affect security. The proposed method generally achieves higher TAR values at FAR$=0.1\%$ and FAR$=1\%$ than the deep learning baselines, especially in the challenging \(ABDE \rightarrow C\) and \(ABCE \rightarrow D\) protocols. Handcrafted methods such as MCP and WLD can perform strongly on clean and well-controlled data, particularly in \(BCDE \rightarrow A\), but their performance degrades considerably under stronger domain shift. This suggests that handcrafted vessel-enhancement pipelines can be effective when the target data are clean, but their robustness is limited when image quality, sensor characteristics, and acquisition conditions vary.
+
+One exception to the above trend is observed in the \textit{ACDE}$\rightarrow$\textit{B} 
+protocol at FAR$=$0.1\%, where VeinAttNet achieves a higher TAR of 39.09\% compared  with 28.13\% for the proposed method. This can be explained by the score distribution  behaviour on MMCBNU, which has the highest gradient coherence score among all five  datasets (0.5398, Table~7), reflecting strongly defined and structurally consistent vein  patterns. Under such controlled acquisition conditions, VeinAttNet's attention-based 
+architecture produces genuine scores that are more tightly concentrated near the upper  end of the cosine similarity range, which is advantageous specifically at the strict  FAR$=$0.1\% threshold. The graph-based embeddings of OpenVeinNet produce a smoother score distribution that is better calibrated across a wider range of operating points, 
+as evidenced by the lower EER (3.99\% vs.\ 4.35\%) and competitive TAR at FAR$=$1\% and FAR$=$10\%. This trade-off between strict threshold performance and overall operating-point calibration is consistent with the dataset quality analysis in Section~\ref{sec:dataset_quality_analysis}.
 
 \textbf{Challenging dataset analysis.}
 The \(ABCD \rightarrow E\) setting is the most challenging protocol because VERA contains only two images per finger identity/class and exhibits higher acquisition variability. All methods show reduced performance in this setting. Nevertheless, the proposed method achieves the best AUC and EER in both evaluation protocols. At FAR$=0.1\%$, the TAR is zero for all methods, indicating that extremely strict operating points are difficult to realise reliably for this low-sample dataset. This should be interpreted with care: the small number of genuine comparisons in VERA leads to a coarse score distribution, which limits score resolution at very low FAR thresholds. Hence, the zero TAR at FAR$=0.1\%$ reflects the limited score resolution and strict operating threshold rather than a complete failure of the learned representation. Importantly, OpenVeinNet maintains competitive or best performance at FAR$=1\%$ and FAR$=10\%$, demonstrating better relative robustness under severe domain shift.
@@ -934,47 +948,47 @@ Overall, the experimental results show that OpenVeinNet improves cross-dataset g
         $BCDE \rightarrow A$ & MCP \cite{mcp} & 99.80 & 0.89 & 40.19 & 99.47 & \textbf{100.00} \\
          & RLT \cite{rlt} & 99.78 & 0.95 & 30.00 & 99.24 & \textbf{100.00} \\
          & WLD \cite{wld} & \textbf{99.82} & \textbf{0.84} & 43.82 & \textbf{99.59} & 100.00 \\
-         & ArcVein \cite{arcvein} & 89.76 (83.11--96.41) & 19.39 (10.82--27.96) & 6.62 (1.16--12.08) & 24.78 (5.85--43.72) & 63.68 (39.45--87.92) \\
-         & LGFIN \cite{lgfin} & 85.64 (84.31--86.98) & 23.02 (22.30--23.73) & 3.28 (1.05--5.51) & 14.66 (6.00--23.33) & 50.07 (42.59--57.55) \\
-         & FV-ViT \cite{vit} & 89.86 (88.50--91.22) & 17.37 (15.85--18.89) & 1.04 (0.00--2.11) & 6.70 (3.57--9.82) & 59.05 (51.71--66.39) \\
-         & VeinAttNet \cite{veinatnnet} & 98.10 (96.36--99.85) & 6.20 (2.52--9.87) & 20.74 (0.00--51.02) & 56.08 (21.05--91.12) & 97.46 (93.70--100.00) \\
-         & Proposed Method & 99.53 (99.31--99.74) & 3.17 (2.13--4.22) & \textbf{53.51} (43.47--63.55) & 87.34 (80.89--93.79) & 99.86 (99.67--100.00) \\
+         & ArcVein \cite{arcvein} & 89.77 (83.13--96.42) & 19.38 (10.81--27.95) & 6.63 (1.15--12.10) & 24.80 (5.88--43.72) & 63.72 (39.50--87.95) \\
+         & LGFIN \cite{lgfin} & 85.65 (84.32--86.99) & 23.01 (22.30--23.72) & 3.28 (1.06--5.50) & 14.68 (6.02--23.35) & 50.09 (42.60--57.59) \\
+         & FV-ViT \cite{vit} & 89.87 (88.51--91.23) & 17.37 (15.84--18.89) & 1.04 (0.00--2.11) & 6.70 (3.57--9.84) & 59.09 (51.73--66.46) \\
+         & VeinAttNet \cite{veinatnnet} & 98.10 (96.36--99.84) & 6.20 (2.53--9.87) & 20.70 (0.00--50.91) & 56.05 (21.04--91.05) & 97.46 (93.71--100.00) \\
+         & Proposed Method & 99.53 (99.31--99.74) & 3.17 (2.12--4.22) & \textbf{53.52} (43.47--63.57) & 87.33 (80.87--93.78) & 99.86 (99.67--100.00) \\
         \hline
         $ACDE \rightarrow B$ & MCP \cite{mcp} & 92.90 & 12.31 & 0.04 & 3.29 & 77.65 \\
          & RLT \cite{rlt} & 90.31 & 13.76 & 0.00 & 0.04 & 57.20 \\
          & WLD \cite{wld} & 87.76 & 16.98 & 0.00 & 0.06 & 37.44 \\
-         & ArcVein \cite{arcvein} & 91.73 (86.42--97.05) & 15.48 (9.10--21.85) & 1.49 (0.04--2.94) & 16.01 (5.77--26.25) & 72.07 (49.33--94.80) \\
-         & LGFIN \cite{lgfin} & 92.55 (91.90--93.20) & 15.12 (14.28--15.96) & 5.31 (3.32--7.29) & 25.07 (22.95--27.19) & 75.64 (72.47--78.80) \\
-         & FV-ViT \cite{vit} & 89.87 (87.55--92.20) & 17.74 (15.40--20.08) & 1.86 (0.78--2.95) & 13.15 (7.54--18.76) & 65.36 (55.78--74.93) \\
-         & VeinAttNet \cite{veinatnnet} & \textbf{99.21} (98.92--99.50) & 4.06 (3.34--4.79) & \textbf{46.04} (32.62--59.47) & \textbf{82.79} (76.00--89.58) & 98.89 (98.50--99.29) \\
-         & Proposed Method & 99.17 (98.88--99.45) & \textbf{3.91} (3.02--4.80) & 29.60 (27.53--31.67) & 76.93 (69.48--84.39) & \textbf{99.53} (99.13--99.94) \\
+         & ArcVein \cite{arcvein} & 91.74 (86.43--97.04) & 15.47 (9.11--21.83) & 1.49 (0.04--2.94) & 16.02 (5.75--26.28) & 72.07 (49.36--94.78) \\
+         & LGFIN \cite{lgfin} & 92.55 (91.90--93.21) & 15.12 (14.27--15.97) & 5.31 (3.33--7.30) & 25.08 (22.97--27.20) & 75.64 (72.46--78.82) \\
+         & FV-ViT \cite{vit} & 89.87 (87.55--92.20) & 17.74 (15.41--20.08) & 1.86 (0.77--2.95) & 13.17 (7.55--18.79) & 65.35 (55.79--74.92) \\
+         & VeinAttNet \cite{veinatnnet} & \textbf{99.21} (98.92--99.50) & 4.07 (3.35--4.79) & \textbf{46.07} (32.67--59.48) & \textbf{82.77} (75.98--89.57) & 98.89 (98.49--99.28) \\
+         & Proposed Method & 99.17 (98.88--99.45) & \textbf{3.91} (3.02--4.80) & 29.60 (27.53--31.66) & 76.96 (69.52--84.41) & \textbf{99.53} (99.12--99.93) \\
         \hline
         $ABDE \rightarrow C$ & MCP \cite{mcp} & 87.01 & 18.93 & 0.01 & 0.55 & 35.11 \\
          & RLT \cite{rlt} & 79.40 & 25.14 & 0.00 & 0.00 & 4.91 \\
          & WLD \cite{wld} & 83.07 & 22.87 & 0.00 & 0.08 & 20.58 \\
-         & ArcVein \cite{arcvein} & 88.09 (84.75--91.42) & 19.74 (15.90--23.58) & 1.55 (0.11--2.98) & 8.65 (5.87--11.42) & 55.14 (42.20--68.08) \\
-         & LGFIN \cite{lgfin} & 87.75 (85.77--89.72) & 19.77 (17.72--21.82) & 0.56 (0.00--1.99) & 5.10 (0.00--12.95) & 57.47 (52.05--62.90) \\
-         & FV-ViT \cite{vit} & 88.77 (87.45--90.08) & 19.03 (17.79--20.26) & 1.17 (0.00--2.43) & 11.88 (6.77--16.98) & 62.87 (58.04--67.69) \\
-         & VeinAttNet \cite{veinatnnet} & 86.92 (85.25--88.59) & 22.02 (19.67--24.38) & 6.07 (2.52--9.62) & 15.45 (10.92--19.98) & 50.11 (45.21--55.00) \\
-         & Proposed Method & \textbf{97.78} (97.30--98.26) & \textbf{7.44} (6.51--8.38) & \textbf{16.84} (7.18--26.49) & \textbf{55.77} (50.67--60.87) & \textbf{95.39} (93.58--97.21) \\
+         & ArcVein \cite{arcvein} & 88.09 (84.76--91.42) & 19.74 (15.89--23.60) & 1.55 (0.11--2.98) & 8.65 (5.88--11.42) & 55.14 (42.22--68.07) \\
+         & LGFIN \cite{lgfin} & 87.76 (86.73--88.80) & 18.51 (14.31--22.72) & 0.45 (0.00--1.27) & 4.20 (0.00--9.20) & 47.31 (14.97--79.66) \\
+         & FV-ViT \cite{vit} & 88.76 (87.44--90.08) & 19.04 (17.80--20.28) & 1.16 (0.00--2.42) & 11.87 (6.76--16.97) & 62.83 (58.00--67.65) \\
+         & VeinAttNet \cite{veinatnnet} & 86.93 (85.26--88.60) & 22.02 (19.66--24.37) & 6.07 (2.52--9.62) & 15.45 (10.92--19.98) & 50.11 (45.21--55.01) \\
+         & Proposed Method & \textbf{97.78} (97.30--98.25) & \textbf{7.45} (6.52--8.38) & \textbf{16.82} (7.18--26.45) & \textbf{55.77} (50.67--60.86) & \textbf{95.39} (93.58--97.20) \\
         \hline
         $ABCE \rightarrow D$ & MCP \cite{mcp} & 95.77 & 9.90 & 3.83 & 21.88 & 90.35 \\
          & RLT \cite{rlt} & 88.17 & 16.51 & 0.00 & 0.07 & 34.81 \\
          & WLD \cite{wld} & 89.72 & 15.60 & 0.00 & 0.86 & 48.95 \\
-         & ArcVein \cite{arcvein} & 84.16 (81.10--87.22) & 23.86 (20.44--27.28) & 0.56 (0.00--1.62) & 6.58 (3.28--9.87) & 49.39 (40.30--58.48) \\
-         & LGFIN \cite{lgfin} & 93.65 (91.84--95.46) & 13.65 (11.49--15.82) & 13.83 (10.69--16.97) & 28.08 (19.72--36.44) & 78.93 (71.26--86.61) \\
-         & FV-ViT \cite{vit} & 88.55 (86.32--90.79) & 19.27 (17.31--21.24) & 2.22 (0.00--4.90) & 12.93 (5.79--20.08) & 62.52 (55.10--69.94) \\
-         & VeinAttNet \cite{veinatnnet} & 97.54 (96.98--98.10) & 8.20 (7.10--9.29) & 17.31 (0.00--38.14) & 57.91 (49.43--66.40) & 93.67 (91.66--95.69) \\
-         & Proposed Method & \textbf{98.80} (98.43--99.17) & \textbf{5.21} (4.37--6.04) & \textbf{29.96} (15.66--44.27) & \textbf{72.22} (63.14--81.31) & \textbf{98.34} (97.69--98.99) \\
+         & ArcVein \cite{arcvein} & 84.16 (81.10--87.23) & 23.85 (20.43--27.27) & 0.56 (0.00--1.61) & 6.57 (3.28--9.86) & 49.40 (40.36--58.44) \\
+         & LGFIN \cite{lgfin} & 93.65 (91.84--95.46) & 13.63 (11.45--15.82) & 13.83 (10.69--16.97) & 28.09 (19.74--36.44) & 78.94 (71.26--86.61) \\
+         & FV-ViT \cite{vit} & 88.57 (86.33--90.80) & 19.26 (17.28--21.24) & 2.22 (0.00--4.91) & 12.93 (5.81--20.06) & 62.53 (55.11--69.96) \\
+         & VeinAttNet \cite{veinatnnet} & 97.54 (96.99--98.10) & 8.17 (7.08--9.26) & 17.29 (0.00--38.14) & 57.93 (49.38--66.47) & 93.71 (91.71--95.72) \\
+         & Proposed Method & \textbf{98.80} (98.43--99.17) & \textbf{5.20} (4.36--6.04) & \textbf{29.97} (15.63--44.31) & \textbf{72.23} (63.18--81.28) & \textbf{98.35} (97.68--99.02) \\
         \hline
         $ABCD \rightarrow E$ & MCP \cite{mcp} & 72.21 & 33.19 & \textbf{0.00} & 0.04 & 11.14 \\
-         & RLT \cite{rlt} & 59.21 & 44.43 & 0.00 & 0.00 & 1.11 \\
-         & WLD \cite{wld} & 69.67 & 35.45 & 0.00 & 0.02 & 8.51 \\
-         & ArcVein \cite{arcvein} & 69.52 (66.73--72.30) & 35.57 (33.86--37.29) & \textbf{0.00} (0.00--0.00) & 1.11 (0.66--1.57) & 17.31 (15.56--19.05) \\
-         & LGFIN \cite{lgfin} & 74.72 (73.06--76.37) & 33.09 (31.79--34.39) & \textbf{0.00} (0.00--0.00) & 5.70 (0.00--14.47) & 31.52 (23.60--39.44) \\
-         & FV-ViT \cite{vit} & 73.12 (70.51--75.74) & 33.07 (29.82--36.31) & \textbf{0.00} (0.00--0.00) & 3.99 (0.01--7.96) & 31.17 (26.60--35.73) \\
-         & VeinAttNet \cite{veinatnnet} & 88.41 (87.57--89.26) & 19.90 (18.19--21.62) & \textbf{0.00} (0.00--0.00) & \textbf{18.28} (7.72--28.84) & 60.95 (56.15--65.75) \\
-         & Proposed Method & \textbf{89.98} (86.89--93.06) & 18.43 (15.72--21.13) & \textbf{0.00} (0.00--0.00) & 15.84 (2.82--28.87) & \textbf{64.67} (51.49--77.85) \\
+         & RLT \cite{rlt} & 59.21 & 44.43 & \textbf{0.00} & 0.00 & 1.11 \\
+         & WLD \cite{wld} & 69.67 & 35.45 & \textbf{0.00} & 0.02 & 8.51 \\
+         & ArcVein \cite{arcvein} & 69.52 (66.76--72.29) & 35.56 (33.84--37.28) & \textbf{0.00} (0.00--0.00) & 1.11 (0.65--1.58) & 17.31 (15.56--19.07) \\
+         & LGFIN \cite{lgfin} & 74.70 (73.03--76.37) & 33.16 (31.68--34.63) & \textbf{0.00} (0.00--0.00) & 5.69 (0.00--14.49) & 31.50 (23.59--39.41) \\
+         & FV-ViT \cite{vit} & 73.16 (70.55--75.76) & 33.06 (29.81--36.32) & \textbf{0.00} (0.00--0.00) & 3.99 (0.02--7.96) & 31.22 (26.66--35.78) \\
+         & VeinAttNet \cite{veinatnnet} & 88.43 (87.59--89.27) & 19.90 (18.18--21.62) & \textbf{0.00} (0.00--0.00) & \textbf{18.27} (7.66--28.88) & 61.01 (56.22--65.80) \\
+         & Proposed Method & \textbf{89.98} (86.88--93.07) & \textbf{18.43} (15.70--21.16) & \textbf{0.00} (0.00--0.00) & 15.86 (2.85--28.86) & \textbf{64.68} (51.47--77.88) \\
         \hline
     \end{tabular}}
     \caption{Full-subject threshold-based operating-point results.}
@@ -1038,7 +1052,7 @@ To validate that the observed improvements are not due to random variation, we p
 \section{Ablation Study}
 \label{sec:ablation}
 
-In this section, we present a consolidated ablation study to justify the main design choices of OpenVeinNet. The ablations analyse: (i) the kernel-size configuration of the DSConv stem, (ii) the number of Grapher Blocks in the backbone, (iii) the contribution of the proposed Centroid Angular Hybrid (CAH) loss compared with standard losses, (iv) its comparison against strong angular-margin losses, (v) the sensitivity of the balancing factor $\beta$, and (vi) the individual contributions of DSConv and graph-based modelling. Unless otherwise stated, the ablation experiments are conducted under the $ABDE \rightarrow C$ protocol, where FV-USM is used as the held-out evaluation dataset. Lower EER indicates better verification performance.
+In this section, we present a consolidated ablation study to justify the main design choices of OpenVeinNet. The ablations analyse: (i) the kernel-size configuration of the DSConv stem, (ii) the number of Grapher Blocks in the backbone, (iii) the contribution of the proposed Centroid Angular Hybrid (CAH) loss compared with standard losses, (iv) its comparison against strong angular-margin losses, (v) the sensitivity of the balancing factor $\beta$, and (vi) the individual contributions of DSConv and graph-based modelling. Unless otherwise stated, the ablation experiments are conducted under the $ABDE \rightarrow C$ protocol (Full-subject), where FV-USM is used as the held-out evaluation dataset. Lower EER indicates better verification performance.
 
 
 \subsection{Effect of DSConv Kernel Sizes}
@@ -1064,7 +1078,7 @@ In this section, we present a consolidated ablation study to justify the main de
     \label{tab:stemexps}
 \end{table}
 
-Table~\ref{tab:stemexps} shows the effect of different kernel-size configurations in the DSConv stem. Uniformly small kernels such as $(3,3,3)$ and $(5,5,5)$ are less effective, suggesting that very local receptive fields are insufficient to capture the extended curvilinear structure of finger veins. Uniformly large kernels improve the result, but do not provide the best performance. The best EER is obtained using the progressively decreasing configuration $(9,7,3)$, which achieves an EER of $10.8235\%$.
+Table~\ref{tab:stemexps} shows the effect of different kernel-size configurations in the DSConv stem. Uniformly small kernels such as $(3,3,3)$ and $(5,5,5)$ are less effective, suggesting that very local receptive fields are insufficient to capture the extended curvilinear structure of finger veins. Uniformly large kernels improve the result, but do not provide the best performance. The best EER is obtained using the progressively decreasing configuration $(9,7,3)$, which achieves an EER of $10.82\%$.
 
 This trend is technically meaningful. Larger kernels in the shallow layers help capture broader vascular structures and long vein segments, while smaller kernels in deeper layers refine local discriminative details. Therefore, the $(9,7,3)$ configuration provides a better balance between global vein continuity and fine local pattern representation.
 
@@ -1079,7 +1093,7 @@ This trend is technically meaningful. Larger kernels in the shallow layers help 
 
 The number of Grapher Blocks controls the depth of graph-based message passing in the backbone. A shallow graph backbone may not propagate sufficient relational information between vein regions, while an overly deep graph backbone may introduce redundancy, over-smoothing, or unnecessary computational cost. To identify an effective configuration, we evaluate different combinations of Grapher Blocks in the first and second backbone stages, selected from $\{2,4,6,8\}$.
 
-As shown in Figure~\ref{fig:bakcbone_graphers}, the configuration with four Grapher Blocks in the first stage and six Grapher Blocks in the second stage achieves the best EER of $10.5945\%$. This indicates that the model benefits from moderate graph depth: sufficient to capture long-range vein connectivity, but not so deep that feature representations become over-smoothed. This observation supports the final backbone design used in OpenVeinNet.
+As shown in Figure~\ref{fig:bakcbone_graphers}, the configuration with four Grapher Blocks in the first stage and six Grapher Blocks in the second stage achieves the best EER of $10.595\%$. This indicates that the model benefits from moderate graph depth: sufficient to capture long-range vein connectivity, but not so deep that feature representations become over-smoothed. This observation supports the final backbone design used in OpenVeinNet.
 
 \subsection{Comparison with Standard Loss Functions}
 
@@ -1099,8 +1113,42 @@ NLL        &  33.98 \\
 \end{table}
 
 Table~\ref{tab:loss_ablation} compares the proposed CAH loss with standard MSE and NLL losses. The proposed loss achieves a substantially lower EER than both alternatives, confirming that regression-style or likelihood-based objectives are not sufficient for learning highly discriminative finger-vein embeddings. In contrast, the proposed loss explicitly promotes class separability and compact identity-specific embeddings, which are essential for verification.
-
-
+%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sensitivity to Graph Neighbourhood Size $k$}
+\begin{table}[t]
+\centering
+\caption{Sensitivity of the graph neighbourhood size $k$ in 
+the two backbone stages on the \textit{ABDE}$\rightarrow$\textit{C} 
+protocol. Lower EER is better.}
+\begin{tabular}{ccc}
+\hline
+Stage I $k$ & Stage II $k$ & EER (\%) \\
+\hline
+9  & 9  & 10.37 \\
+9  & 18 & 9.42  \\
+18 & 18 & 10.48 \\
+\textbf{18} & \textbf{9 (proposed)} & \textbf{7.44} \\
+\hline
+\end{tabular}
+\label{tab:graph_k_sensitivity}
+\end{table}
+Table~\ref{tab:graph_k_sensitivity} reports the effect of the 
+neighbourhood size $k$ used in the k-NN graph construction 
+across the two backbone stages. Using the same value in both 
+stages, whether $k{=}9$ or $k{=}18$, gives weaker performance 
+than the proposed asymmetric configuration of $k{=}18$ in 
+Stage~I and $k{=}9$ in Stage~II. The symmetric $k{=}18$ 
+configuration performs the worst among all variants, suggesting 
+that using a large neighbourhood in the later stage introduces 
+noise from less relevant nodes as spatial resolution decreases. 
+The proposed decreasing schedule allows Stage~I to aggregate 
+broad vascular connectivity at higher resolution, while 
+Stage~II refines more localised relational evidence at lower 
+resolution. This mirrors the progressively decreasing kernel 
+configuration used in the DSConv stem and reflects a consistent 
+design principle: broader context in early stages, finer 
+discrimination in later stages.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparison with Strong Angular-Margin Losses}
 
 \begin{table}[ht!]
@@ -1120,7 +1168,22 @@ Table~\ref{tab:loss_ablation} compares the proposed CAH loss with standard MSE a
 \end{table}
 
 To further validate the proposed loss, Table~\ref{tab:rebuttal_loss_ablation} compares CAH against strong angular-margin losses, including ArcFace, MagFace, and AdaFace. These losses are widely used for discriminative biometric representation learning. 
-The proposed CAH loss obtains the lowest mean EER of $7.44\%$, compared with ArcFace ($7.83\%$), MagFace ($8.20\%$), and AdaFace ($8.22\%$). This result is important because it shows that the proposed loss is not only better than standard objectives, but also competitive with established angular-margin losses under the same protocol.
+%The proposed CAH loss obtains the lowest mean EER of $7.44\%$, compared with ArcFace ($7.83\%$), MagFace ($8.20\%$), and AdaFace ($8.22\%$). This result is important because it shows that the proposed loss is not only better than standard objectives, but also competitive with established angular-margin losses under the same protocol.
+The proposed CAH loss achieves the lowest mean EER of 7.44\%, 
+compared with 7.83\% for ArcFace, 8.20\% for MagFace, and 
+8.22\% for AdaFace. The numerical differences are modest, 
+reflecting the fact that all compared losses enforce angular 
+separation to some degree. The distinction of the proposed 
+loss lies in its explicit penalisation of intra-class scatter 
+through the centroid alignment term, which complements the 
+inter-class angular margin. In open-set verification, where 
+decisions are made by thresholding cosine similarity against 
+enrolled templates rather than through a fixed classifier, 
+compact intra-class embeddings directly improve genuine score 
+concentration and therefore TAR at strict operating thresholds. 
+This is reflected in the TAR@FAR results in Tables~5 and~6, 
+where the full model with CAH loss achieves competitive or 
+higher TAR than the compared methods across most protocols.
 
 \subsection{Sensitivity to the Balancing Factor $\beta$}
 
@@ -1164,7 +1227,19 @@ This confirms that the angular term is useful, but must be balanced carefully. T
 
 Table~\ref{tab:rebuttal_component_ablation} isolates the contribution of the DSConv stem and the graph-based backbone. The standard convolutional stem without graph modelling gives the weakest performance, with an EER of $13.59\%$. Replacing the standard stem with DSConv reduces the EER to $10.96\%$, showing that adaptive tubular feature extraction is beneficial for finger-vein representation. Similarly, adding the graph backbone to a standard stem improves the EER to $11.64\%$, demonstrating that graph-based relational modelling also contributes positively.
 
-The full model, combining DSConv and graph modelling, achieves the best EER of $7.44\%$. This confirms that the two components are complementary rather than redundant. DSConv improves local modelling of curvilinear vein patterns, while the Grapher backbone captures long-range relationships between vein regions. Their combination produces a more discriminative and generalisable embedding space.
+The full model achieves an EER of 7.44\%, compared with 
+13.59\% for the standard baseline, 10.96\% for DSConv alone, 
+and 11.64\% for the graph backbone alone. The combined 
+improvement is larger than the sum of the individual gains 
+from each component.  This suggests that 
+the two components interact synergistically: graph-based 
+relational reasoning is most effective when node features 
+are already geometrically aligned with vein structures, a 
+condition that DSConv satisfies by design but standard 
+convolution does not. The combination therefore produces 
+gains that neither component achieves in isolation.
+
+
 
 \subsection{Overall Ablation Analysis}
 
@@ -1281,4 +1356,3 @@ Overall, the proposed framework provides a principled and effective solution for
 
 % that's all folks
 \end{document}
-

@@ -457,21 +457,23 @@ To complement the mean and 95\% confidence interval reporting in the main paper,
 We conduct paired significance testing on the \emph{full-subject verification EER} results using two-sided exact sign-flip permutation tests over matched leave-one-dataset-out runs. For each comparison, pairing is performed across seed-matched runs obtained from the five evaluation protocols. Since lower EER indicates better performance, a positive mean $\Delta$EER corresponds to an average reduction in EER in favour of the proposed method.
 To account for multiple comparisons, Holm correction is applied to the resulting $p$-values.
 
+
 \begin{table*}[ht!]
     \centering
-    \begin{tabular}{|l|c|c|c|c|}
+    \begin{tabular}{|l|c|c|c|c|c|}
         \hline
-        Comparison & $n$ & Mean $\Delta$EER (pp) & Holm-adjusted $p$ & Significant \\
+        Comparison & $n$ & Mean $\Delta$EER (pp) & Holm-adjusted $p$ & Wilcoxon $p$ & Significant \\
         \hline
-        Proposed vs ArcVein & 20 & 15.17 & $9.54 \times 10^{-6}$ & Yes \\
-        Proposed vs LGFIN & 20 & 13.33 & $1.14 \times 10^{-5}$ & Yes \\
-        Proposed vs FV-ViT & 20 & 13.66 & $9.54 \times 10^{-6}$ & Yes \\
-        Proposed vs VeinAttNet & 20 & 4.44 & $2 \times 10^{-4}$ & Yes \\
+        Proposed vs ArcVein & 20 & 15.17 & $7.63 \times 10^{-6}$ & $1.91 \times 10^{-6}$ & Yes \\
+        Proposed vs LGFIN & 20 & 13.05 & $7.63 \times 10^{-6}$ & $1.91 \times 10^{-6}$ & Yes \\
+        Proposed vs FV-ViT & 20 & 13.66 & $7.63 \times 10^{-6}$ & $1.91 \times 10^{-6}$ & Yes \\
+        Proposed vs VeinAttNet & 20 & 4.44 & $9.54 \times 10^{-5}$ & $1.68 \times 10^{-4}$ & Yes \\
         \hline
     \end{tabular}
-    \caption{Paired statistical significance testing on full-subject EER. A positive mean $\Delta$EER indicates that the proposed method achieves lower EER than the comparator.}
+    \caption{Paired statistical significance testing on full-subject EER. A positive mean $\Delta$EER indicates that the proposed method achieves lower EER than the comparator. Holm-adjusted $p$ values are computed from the exact paired sign-flip permutation test, while the Wilcoxon column reports the paired two-sided signed-rank test.}
     \label{tab:statistical_significance}
 \end{table*}
+
 
 The results show (see Table \ref{tab:statistical_significance}) that all pairwise comparisons are statistically significant after Holm correction. This confirms that the observed improvements of OpenVeinNet over competing methods are not only reflected in mean performance, but are also consistent across matched evaluation runs.
 
@@ -485,7 +487,8 @@ The results show (see Table \ref{tab:statistical_significance}) that all pairwis
 
 
 
-To complement the cross-dataset evaluation, we further conduct intra-database open-set experiments on FV-300, FV-USM, and MMCBNU. These datasets provide a sufficient number of samples per identity to support identity-disjoint training, validation, enrolment, and probe generation within the same database. PolyU and VERA are not included in this experiment because they contain only four and two samples per identity, respectively, which is insufficient for a reliable intra-database open-set split under the proposed learning protocol. For each dataset, an identity-disjoint split is adopted, where 50\% of the subjects are used for training, 30\% for validation, and the remaining 20\% for testing, ensuring no identity overlap across the three partitions.
+To complement the cross-dataset evaluation, we further conduct intra-database open-set experiments on FV-300, FV-USM, and MMCBNU. These datasets provide a sufficient number of samples per identity to support training and evaluation on identity-disjoint subsets within the same database. For each dataset and statistical seed, the first 80\% of the sorted identities are used for model development, while the remaining 20\% of identities are held out entirely and used only for open-set verification. During evaluation, embeddings are extracted for the held-out identities, and genuine and impostor scores are computed from within-identity and cross-identity image pairs among these unseen subjects. PolyU and VERA are not included in this experiment because they contain only four and two samples per identity, respectively, which is insufficient for a reliable intra-database learning and held-out evaluation split under the proposed protocol.
+
 \begin{table*}[ht!]
 \centering
 \scriptsize
@@ -599,60 +602,30 @@ At the same time, the comparison does not enforce identical hyperparameters acro
 Enforcing identical hyperparameters across fundamentally different architectures would introduce a different form of bias. Therefore, we adopt a \textbf{method-consistent but protocol-aligned} evaluation strategy, which preserves the intended behaviour of each baseline while ensuring comparability across methods.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Subject-Disjoint Train--Validation Split}
-\label{sec:supp_trainval_split}
-To ensure clarity and reproducibility of the training protocol, we report the train--validation statistics used for the source datasets in Table~4. The reviewer specifically requested information about the number of images used for training and validation; therefore, the table reports the approximate number of training and validation images per dataset.
+\section{Subject-Disjoint Intra-Database Train--Test Split}
+\label{sec:supp_intra_split}
+To ensure clarity and reproducibility of the intra-database protocol, we report the subject-disjoint train--test statistics used for FV-300, FV-USM, and MMCBNU in Table~\ref{tab:intra_split_stats}. The table reports the identity-level development/test partition, together with the number of train and test images used within the development identities.
 
-Importantly, the split is performed at the \textbf{subject/identity level}, not by randomly splitting images within the same identity. For each statistical split, the identities in the source datasets are partitioned into disjoint training and validation subsets. All images belonging to identities assigned to the training subset are used only for training, while all images belonging to identities assigned to the validation subset are used only for validation. Thus, no subject or finger identity appears in both the training and validation sets.
+For each dataset and statistical seed, identities are first sorted and partitioned at the \textbf{subject/identity level}. The first 80\% of identities are used for model development, and the remaining 20\% of identities are held out entirely for intra-database open-set testing. Thus, no subject or finger identity used for final open-set testing appears during model development.
 
-The image counts reported in Table~4 are obtained after this subject-disjoint partitioning by counting the images associated with the identities assigned to each subset. These counts are therefore provided only to indicate the amount of training and validation data used; they do not imply image-level splitting within the same identity.
+Within the development identities, the dataset-provided train/test image folders are used for optimisation and validation/model selection, respectively. This image-level train/test split is not the source of open-set subject disjointness; subject disjointness is enforced by excluding the held-out 20\% identities from all model-development steps. During the final intra-database evaluation, embeddings are extracted only for the held-out identities and genuine/impostor scores are computed from within-identity and cross-identity image pairs among those unseen subjects.
 
-For FV-300, the reported counts are approximate because 124 low-quality images were removed before partitioning. Despite these variations, the same subject-disjoint splitting strategy is applied consistently across all experiments and all learned methods, and no dataset-specific tuning is performed on the held-out target set.
-
-%\section{Per-Identity Train--Validation Split}
-%\label{sec:supp_trainval_split}
-
-%To ensure clarity and reproducibility of the training protocol, we report the per-identity train--validation partition used for all source datasets in Table~\ref{tab:rebuttal_trainval_split}. The split is performed at the \emph{image level within each identity}, such that every subject contributes samples to both training and validation sets. This design ensures that the validation set reflects intra-class variability while maintaining identity consistency with the training data.
-
-%The exact split ratio is determined by the number of available samples per identity. For datasets with a sufficient number of samples (e.g., FV-300), an approximate $7{:}3$ split is used to provide a larger training set while retaining enough validation samples for stable model selection. For datasets with limited samples per identity (e.g., MMCBNU, FV-USM, PolyU, and VERA), a balanced split (e.g., $1{:}1$ or equivalent) is adopted to avoid overly small validation sets.
-
-%It is important to note that the FV-300 counts are approximate, as a subset of low-quality images was removed prior to partitioning. Despite these variations, the splitting strategy is applied consistently across all experiments, and no dataset-specific tuning is performed on the held-out target set. This ensures that the reported results reflect generalisation performance rather than optimisation for a particular dataset.
-\begin{table}[ht!]
-    \centering
-    \scriptsize
-    \begin{tabular}{|l|c|c|c|c|}
-        \hline
-        Dataset & Images/Identity & Training & Validation & Split \\
-        \hline
-        FV-300 & 92* & $\sim$64 & $\sim$28 & 7:3 \\
-        MMCBNU & 10 & 5 & 5 & 1:1 \\
-        FV-USM & 12 & 6 & 6 & 1:1 \\
-        PolyU & 4 & 2 & 2 & 1:1 \\
-        VERA & 2 & 1 & 1 & 1:1 \\
-        \hline
-    \end{tabular}
-    \caption{Train--validation image statistics for the source datasets under subject/identity-disjoint partitioning. The split is performed at the identity level; the reported image counts are obtained by counting all images belonging to the identities assigned to each subset. No identity is shared between training and validation. The FV-300 counts are approximate because 124 low-quality images were removed before partitioning.}
-    %\caption{Per-identity image split used for source datasets during training and validation. The FV-300 counts are approximate because 124 low-quality images were removed before partitioning.}
-    \label{tab:rebuttal_trainval_split}
-\end{table}
+For FV-300, the reported counts are approximate because 124 low-quality images were removed before partitioning. Despite these variations, the same subject-disjoint development/test splitting strategy is applied consistently across all intra-database experiments and all learned methods.
 
 \begin{table}[ht!]
 \centering
 \scriptsize
 \resizebox{0.5\textwidth}{!}{
-\begin{tabular}{lccccc}
+\begin{tabular}{lcccc}
 \hline
-Dataset & Total IDs & Train IDs & Val. IDs & Train / Val. imgs & Held-out IDs \\
+Dataset & Total IDs & Development IDs & Dev. train/test imgs & Held-out test IDs \\
 \hline
-FV-300 & 301 & 240 & 240 & 16,536 / 4,954 & 61 \\
-MMCBNU & 600 & 480 & 480 & 2,400 / 2,400 & 120 \\
-FV-USM & 492 & 393 & 393 & 2,358 / 2,358 & 99 \\
-PolyU & 218 & 174 & 174 & 515 / 498 & 44 \\
-VERA & 220 & 176 & 176 & 176 / 176 & 44 \\
+FV-300 & 300 & 240 & 16,536 / 4,954 & 60 \\
+MMCBNU & 600 & 480 & 2,400 / 2,400 & 120 \\
+FV-USM & 492 & 393 & 2,358 / 2,358 & 99 \\
 \hline
 \end{tabular}}
-\caption{Identity-level split statistics for the intra-database open-set experiments. The first 80\% of sorted identities are used for model development, and the remaining identities are held out
-entirely for open-set evaluation.}
+\caption{Identity-level subject-disjoint train--test statistics for the intra-database open-set experiments. The first 80\% of sorted identities are used for model development, and the remaining identities are held out entirely for open-set testing. The development image counts report the dataset-provided train/test folders used for optimisation and validation/model selection within the development identities.}
 \label{tab:intra_split_stats}
 \end{table}
 

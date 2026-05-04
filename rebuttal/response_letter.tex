@@ -255,9 +255,9 @@ We would like to express our sincere gratitude to the Editor and the reviewers f
     
     \item Added threshold-dependent biometric operating-point metrics, including TAR@FAR=0.1\%, TAR@FAR=1\%, and TAR@FAR=10\%, together with AUC and EER, under both half-subject unknown-rejection and full-subject verification protocols. \textbf{(see Main Paper: Section 3.3, Tables 5 and 6)}
     
-    \item Improved reproducibility by correcting the public repository link and providing the implementation, training and evaluation scripts, model definitions, and trained checkpoints required to reproduce the reported results. \textbf{(see Main Paper: Section 1)}
+    \item Improved reproducibility by correcting the public repository link and providing the implementation, training and evaluation scripts, and model definitions required to reproduce the reported results. The repository README links the \texttt{final\_runs.zip} checkpoint archive, for which users can request the required password and access. \textbf{(see Main Paper: Section 1)}
     
-    \item Clarified the experimental repetition strategy by reporting that results are computed over five identity-disjoint statistical splits and are presented as mean values with 95\% confidence intervals. The train--validation partitioning strategy and corresponding image statistics are also reported. \textbf{(see Main Paper: Section 3.2; Supplementary Material: Section 5)}
+    \item Clarified the experimental repetition strategy by reporting that learned-method results are computed over four predefined identity-disjoint statistical seeds for each leave-one-dataset-out setting and are presented as mean values with 95\% confidence intervals. The intra-database subject-disjoint development/test partition and corresponding image statistics are also reported. \textbf{(see Main Paper: Section 3.2; Supplementary Material: Section 5)}
     
     \item Expanded the baseline training and fairness description by reporting the training configurations of all learned baselines, including optimizer, learning rate, number of epochs, batch size, input resolution, and loss function, under a unified leave-one-dataset-out evaluation protocol. \textbf{(see Supplementary Material: Sections 3 and 4)}
     
@@ -292,7 +292,7 @@ We sincerely thank the Co-Editor-in-Chief for the careful editorial assessment a
 
 In the revised manuscript, we have substantially reworked the paper to address these concerns. First, we have strengthened the motivation of the proposed methodological components by explicitly linking each part of OpenVeinNet to the characteristics of finger vein images: Dynamic Snake Convolution is motivated by the curvilinear and tubular nature of vein patterns, the graph-based backbone is motivated by the need to model long-range vascular connectivity, and the Centroid Angular Hybrid Loss is motivated by the need for compact and angularly separable embeddings in open-set verification.
 
-Second, we have revised the experimental section to clearly distinguish between cross-dataset generalisation and enrollment-based unknown-rejection evaluation. We now report results under both full-subject verification and stricter open-set unknown-rejection protocols, including AUC, EER, and TAR at fixed FAR operating points. We have also added identity-disjoint five-fold evaluation with 95\% confidence intervals to improve statistical reliability.
+Second, we have revised the experimental section to clearly distinguish between cross-dataset generalisation and enrollment-based unknown-rejection evaluation. We now report results under both full-subject verification and stricter open-set unknown-rejection protocols, including AUC, EER, and TAR at fixed FAR operating points. The learned-method results are reported over four predefined identity-disjoint statistical seeds for each leave-one-dataset-out setting, with 95\% confidence intervals to improve statistical reliability.
 
 Third, following the reviewers' suggestions, we have added several new analyses, including stronger angular-margin loss comparisons, beta sensitivity analysis, component-level ablations isolating DSConv and graph modelling, runtime and computational-cost evaluation, dataset-quality analysis, intra-database open-set experiments, statistical significance testing, and t-SNE visualisation of the learned embeddings in the supplementary material.
 
@@ -315,7 +315,7 @@ We sincerely thank the Associate Editor for the detailed assessment and for high
 
 In response, we have thoroughly revised the manuscript to address these concerns. First, the methodological formulation has been significantly strengthened by explicitly motivating each component of OpenVeinNet in relation to the characteristics of finger vein patterns and open-set verification requirements. The roles of Dynamic Snake Convolution, graph-based feature modelling, and the Centroid Angular Hybrid Loss are now clearly justified and cohesively integrated.
 
-Second, the experimental design has been substantially improved. We now provide a well-defined evaluation protocol, including both cross-dataset generalisation and intra-dataset open-set verification settings. The experiments are conducted using identity-disjoint splits, five-fold evaluation, and consistent reporting of AUC, EER, and TAR at fixed FAR operating points. In addition, we have included new analyses such as intra-database experiments, dataset-quality analysis, statistical significance testing, computational cost evaluation, and t-SNE-based embedding visualisation to strengthen the empirical validation.
+Second, the experimental design has been substantially improved. We now provide a well-defined evaluation protocol, including both cross-dataset generalisation and intra-dataset open-set verification settings. The experiments are conducted using identity-disjoint predefined statistical splits, with four learned-method runs per leave-one-dataset-out setting and consistent reporting of AUC, EER, and TAR at fixed FAR operating points. In addition, we have included new analyses such as intra-database experiments, dataset-quality analysis, statistical significance testing, computational cost evaluation, and t-SNE-based embedding visualisation to strengthen the empirical validation.
 
 Third, the conclusions have been revised to better reflect the experimental evidence. We have removed over-generalised claims and now present a more precise interpretation of the results, emphasising strong generalisation and robustness rather than uniform superiority across all scenarios.
 
@@ -339,7 +339,7 @@ We believe that these extensive revisions directly address the concerns raised b
 	\item \textbf{Authors' Action:} 
 	We have now made the implementation of the proposed method publicly available at the following repository:
 	\url{https://github.com/Blazkowiz47/deep-vein-gcn}. 
-	The repository includes the training and evaluation pipeline, model definitions, scripts required to reproduce the reported results, and trained checkpoints. We have also updated the manuscript to include the correct repository link.
+	The repository includes the training and evaluation pipeline, model definitions, and scripts required to reproduce the reported results. The repository README links the \texttt{final\_runs.zip} checkpoint archive, and users can request the required password and access for the archive. We have also updated the manuscript to include the correct repository link.
 \end{itemize}
 \color{blue} 
 %%%&&&&&&
@@ -353,9 +353,9 @@ We believe that these extensive revisions directly address the concerns raised b
 	We thank the reviewer for pointing out the need for a clearer specification of the number of experimental runs. We agree that explicitly stating the number of repetitions is important for reproducibility and for correctly interpreting the reported confidence intervals.
 
 	\item \textbf{Authors' Action:} 
-	We have clarified this point in the revised manuscript \textbf{(please refer Section 3.2, last paragraph; Page 8)}. All reported results are obtained using {five independent runs}, corresponding to an identity-disjoint 5-fold cross-validation strategy on the training data. In each fold, four subsets are used for training and one for validation, resulting in five trained models and five corresponding evaluations on the held-out test dataset.
+	We have clarified this point in the revised manuscript \textbf{(please refer Section 3.2, last paragraph; Page 8)}. The reported learned-method results are obtained using four independent predefined statistical seeds for each leave-one-dataset-out setting. Each seed corresponds to a fixed identity partition stored under the corresponding \texttt{data/<dataset>/<stat\_seed>} directory, resulting in four trained models and four corresponding evaluations for each held-out test dataset.
 
-	The final performance is reported as the {mean and 95\% confidence interval over these five runs}. This clarification has been explicitly added to the experimental protocol section to improve transparency and reproducibility.
+	The final performance is reported as the {mean and 95\% confidence interval over these four runs} for each leave-one-dataset-out protocol. For the paired significance analysis, the matched observations are pooled across the five held-out datasets and four statistical seeds, giving \(n=20\) matched runs. This clarification has been explicitly added to the experimental protocol section to improve transparency and reproducibility.
 \end{itemize}
 \color{blue} 
 %%%&&&&&&
@@ -383,28 +383,28 @@ We believe that these extensive revisions directly address the concerns raised b
 
 \begin{itemize}
 	\item \textbf{Authors' Response:} 
-	We thank the reviewer for pointing out this missing protocol detail. We agree that the train--validation partitioning strategy should be explicitly reported, as it affects reproducibility and the interpretation of the training protocol.
+	We thank the reviewer for pointing out this missing protocol detail. We agree that the partitioning strategy should be explicitly reported, as it affects reproducibility and the interpretation of the training protocol.
 
-	In the revised manuscript and supplementary material, we clarify that the train--validation split is performed at the \textbf{subject/identity level}, not by randomly splitting images within the same identity. For each statistical split, identities from the source datasets are partitioned into disjoint training and validation subsets. All images belonging to identities assigned to the training subset are used only for training, while all images belonging to identities assigned to the validation subset are used only for validation. Thus, no subject or finger identity appears in both the training and validation sets.
+	In the revised manuscript and supplementary material, we clarify that the intra-database train--test split is performed at the \textbf{subject/identity level}, not by randomly splitting images within the same identity. For each statistical split, identities are partitioned into disjoint development and held-out test subsets. Images belonging to development identities are used only for model development, while images belonging to held-out test identities are used only for final testing. Thus, no subject or finger identity used for final open-set testing appears during model development.
 
-	The image counts reported in the supplementary material are obtained after this subject/identity-disjoint partitioning by counting the images associated with the identities assigned to each subset. These counts are included to clarify the amount of data used for training and validation, as requested by the reviewer, but they do not imply image-level splitting within the same identity.
+	The image counts reported in the supplementary material are obtained after this subject/identity-disjoint partitioning by counting the images associated with the identities assigned to each subset. These counts are included to clarify the amount of data used for development and held-out testing, as requested by the reviewer, but they do not imply image-level splitting within the same identity.
 
 	\item \textbf{Authors' Action:} 
-	We have clarified the train--validation partitioning strategy in the revised manuscript \textbf{(please refer Section 3.2, last paragraph; Page 8)} and provide the corresponding per-dataset train--validation statistics in the supplementary material \textbf{(please refer Section 5 of the Supplementary Material; Page 5)}. The revised description explicitly states that:
+	We have clarified the train--test partitioning strategy in the revised manuscript \textbf{(please refer Section 3.2, last paragraph; Page 8)} and provide the corresponding per-dataset train--test statistics in the supplementary material \textbf{(please refer Section 5 of the Supplementary Material; Page 5)}. The revised description explicitly states that:
 	\begin{itemize}
 		\item the split is performed at the subject/identity level;
-		\item no subject or finger identity is shared between training and validation;
-		\item all images belonging to a training identity are used only for training;
-		\item all images belonging to a validation identity are used only for validation; and
+		\item no subject or finger identity is shared between model development and held-out testing;
+		\item all images belonging to a development identity are used only for model development;
+		\item all images belonging to a held-out test identity are used only for final testing; and
 		\item the reported image counts are obtained after subject/identity-disjoint partitioning.
 	\end{itemize}
 
-	This clarification ensures that the training and validation protocol is transparent, reproducible, and free from identity leakage.
+	This clarification ensures that the training and testing protocol is transparent, reproducible, and free from identity leakage.
 \end{itemize}
 %%%&&&&&&
 \color{blue} 
 \textbf{\textit{Comment no. \showReviewcounter:}} 
-\textit{The authors state that their approach outperforms all the tested approaches from the literature. However, there are some approaches specifically tailored to open-set vein recognition, e.g. [1] which have not been tested by the authors. Furthermore, no details about the training and parameter optimisation of the tested approaches is provided in the paper. }
+\textit{The authors state that their approach outperforms all the tested approaches from the literature. However, there are some approaches specifically tailored to open-set vein recognition, e.g. [1], which have not been tested by the authors. Furthermore, no details about the training and parameter optimisation of the tested approaches are provided in the paper. }
 \color{black}
 
 \begin{itemize}
@@ -460,7 +460,7 @@ We have revised Section~4 to explicitly state that all ablation experiments are 
 %%%&&&&&&
 
 %%%&&&&&&
-
+\color{blue} 
 %%%&&&&&&
 \textbf{\textit{Comment no. \showReviewcounter:}} 
 \textit{The Fig. 7 plots are too small and hard to read.}
@@ -492,7 +492,7 @@ We have revised Section~4 to explicitly state that all ablation experiments are 
 	\item \textbf{Authors' Response:} 
 	We sincerely thank the reviewer for this important clarification. We agree that the original manuscript did not sufficiently distinguish between cross-dataset subject-disjoint verification and true enrollment-based open-set verification. The reviewer is correct that training on four datasets and testing on a held-out dataset alone mainly evaluates cross-dataset generalisation, unless the evaluation explicitly includes non-enrolled identities that must be rejected.
 
-	To address this concern, we have redesigned and clarified the evaluation protocol in the revised manuscript. We now report two complementary protocols. The first is an \textbf{enrollment-based unknown-rejection protocol}, where only 50\% of the subjects from the held-out test dataset are enrolled, while the remaining 50\% are treated as unknown identities. During inference, a probe is accepted only if its maximum cosine similarity score with the enrolled gallery exceeds the decision threshold; otherwise, it is rejected as unknown. This explicitly evaluates the ability of the system to reject non-enrolled identities. The second protocol is a \textbf{full-subject verification protocol}, where all subjects from the held-out test dataset are enrolled, corresponding to subject-disjoint cross-dataset verification.
+	To address this concern, we have redesigned and clarified the evaluation protocol in the revised manuscript. We now report two complementary protocols. The first is an \textbf{enrollment-based unknown-rejection protocol}, where only 50\% of the subjects from the held-out test dataset are enrolled, while the remaining 50\% are treated as unknown identities. Genuine scores are computed from all within-identity comparisons among enrolled subjects, and impostor scores are computed exhaustively from cross-identity comparisons between enrolled and non-enrolled subjects. FAR, FRR, EER, AUC, and TAR@FAR are then derived from these pairwise score distributions by sweeping the decision threshold. This explicitly evaluates whether enrolled-subject scores can be separated from non-enrolled unknown-subject scores. The second protocol is a \textbf{full-subject verification protocol}, where all subjects from the held-out test dataset are included in the pairwise verification evaluation, corresponding to subject-disjoint cross-dataset verification.
 
 	In addition, following the reviewer’s suggestion, we now report threshold-dependent operating points, including TAR@FAR$=0.1\%$, TAR@FAR$=1\%$, and TAR@FAR$=10\%$, together with AUC and EER. These operating points directly quantify the verification behaviour at fixed false-acceptance regimes and therefore provide a more deployment-relevant assessment of open-set performance.
 
@@ -762,16 +762,16 @@ These revisions aim to better communicate the technical insight and experimental
 
 	First, we would like to clarify that the cross-dataset setting used in Table~5 is intentionally designed to evaluate {open-set generalisation under severe domain shift}, where both the acquisition conditions and subject identities differ between training and testing. In this scenario, higher EER values are expected for all methods, as the task is significantly more challenging than intra-database evaluation. Therefore, these results should be interpreted as a measure of robustness rather than absolute deployment performance.
 
-	Following the reviewer’s suggestion, we have now included {intra-database open-set verification experiments} for three datasets (FV-300, FV-USM, and MMCBNU) in \textbf{Section 2 of supplementary material.} In this protocol, each dataset is split into 50\% training, 30\% validation, and 20\% testing subjects, and open-set evaluation is performed by enrolling a subset of identities and treating the remaining identities as unknown. The results show that the proposed method achieves lower EER and higher TAR across most operating points under intra-database conditions, achieving very strong performance on FV-300 and strong performance on FV-USM and MMCBNU.
+	Following the reviewer’s suggestion, we have now included {intra-database open-set verification experiments} for three datasets (FV-300, FV-USM, and MMCBNU) in \textbf{Section 2 of supplementary material.} In this protocol, the first 80\% of sorted identities are used for model development and the remaining 20\% of identities are held out entirely for open-set evaluation. Within the development identities, the dataset-provided train/test image folders are used for optimisation and validation/model selection. During final evaluation, embeddings are extracted only for the held-out identities, and genuine/impostor scores are computed exhaustively from within-identity and cross-identity image pairs among those unseen subjects. The results show that the proposed method achieves lower EER and higher TAR across most operating points under intra-database conditions, achieving very strong performance on FV-300 and strong performance on FV-USM and MMCBNU.
     
 
-	We note that intra-database experiments were not conducted on PolyU and VERA due to their limited number of samples per identity (4 and 2, respectively), which makes it infeasible to construct meaningful training/validation/test splits for learning-based methods.
+	We note that intra-database experiments were not conducted on PolyU and VERA due to their limited number of samples per identity (4 and 2, respectively), which makes it infeasible to construct a reliable intra-database development and held-out open-set evaluation split for learning-based methods.
 
 	\item \textbf{Authors' Action:} 
 	We have added a new subsection in \textbf{Section~2 of supplementary material} reporting {intra-database open-set verification results}, including:
 	\begin{itemize}
 	    \item A new table presenting AUC, EER, and TAR@FAR with 95\% confidence intervals.
-	    \item A clear description of the intra-database protocol (50\% train, 30\% validation, 20\% test split).
+	    \item A clear description of the intra-database protocol (80\% development identities and 20\% fully held-out open-set test identities).
 	    \item A discussion comparing intra-database and cross-dataset performance, highlighting the trade-off between accuracy and generalisation.
 	\end{itemize}
 
