@@ -6,8 +6,12 @@ This project participates in Sushrut's knowledge-base memory system. These direc
 ### Project Memory Files
 
 - Keep `memory/index.md` as the fast project overview.
-- Keep `memory/notes/YYYY-MM-DD.md` updated during active work.
-- Use `memory/notes/YYYY-MM-DD-<device>.md` if the same project is worked on from multiple devices on the same date.
+- Keep today's project note updated during active work.
+- Prefer `memory/notes/YYYY-MM-DD-<node>.md` for new notes when a stable device/server node name is known.
+- Ask the user for the stable `<node>` name if it is not known before creating or writing a new node-specific note.
+- Continue reading `memory/notes/YYYY-MM-DD.md` for legacy project memory.
+- Continue writing `memory/notes/YYYY-MM-DD.md` only when that legacy file is already the active note for the target date or the user explicitly asks to keep the legacy convention.
+- Treat `memory/notes/YYYY-MM-DD.md` as the legacy/default-node note and `memory/notes/YYYY-MM-DD-<node>.md` as explicit-node notes.
 - Track devices, servers, and paths in `memory/devices.md`.
 - Track experiments and long-running jobs in `memory/runs.md`.
 - Track durable findings in `memory/learnings.md`.
@@ -39,6 +43,7 @@ These command specs are shortcuts. They do not override project-specific instruc
 
 ### What To Record
 
+- Node name when using a node-specific note
 - Device/server
 - Repo path
 - Branch and commit when relevant

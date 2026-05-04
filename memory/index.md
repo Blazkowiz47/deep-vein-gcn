@@ -32,6 +32,7 @@ Next action: Patch the remaining items in `rebuttal/inconsistencies.md`, then re
 - 2026-05-04: Removed the redundant/inconsistent per-identity train/validation table from Supplementary Section 5; the remaining table reports development IDs, development train/test image counts, and held-out test IDs.
 - 2026-05-04: Updated `rebuttal/response_letter.tex` to remove stale five-fold/five-run wording, max-gallery half-subject wording, and intra-database `50/30/20` wording.
 - 2026-05-04: Softened response-letter checkpoint wording: code/scripts/model definitions are in the public repository; `final_runs.zip` checkpoints are linked from README and require password/access request.
+- 2026-05-04: Re-aligned project memory initialization to the current node-aware template: refreshed the Sushrut `AGENTS.md` block, synced six `memory/commands/` specs, and updated `memory/devices.md` node wording.
 
 ## Recent Runs
 
