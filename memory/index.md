@@ -5,12 +5,12 @@
 Status: Active journal-paper work
 Domain: phd
 Tags: phd, journal-paper, biometrics, gcn, vein-recognition
-Project path: /home/ubuntu/sushrut/gcn-deep-vein
+Project path: /home/ubuntu/1Projects/deep-vein-gcn
 Main brain workstream: /home/ubuntu/.sushrut/wiki/workstreams/gcn-deep-vein/index.md
-Devices/servers: raghu2 (SALT servers)
-Latest useful result: `rebuttal/response_letter.tex` now also clarifies that checkpoint archives are README-linked with password/access request, while code/scripts/model definitions are public in GitHub.
-Current blocker: The updated rebuttal still has active mismatches around FV-300 score counts, raw-vs-processed dataset counts, architecture/graph-`k` claims, ablation evidence bases, runtime values, stale response-letter protocol wording, intra-database protocol wording, and access-controlled checkpoint wording.
-Next action: Patch the remaining items in `rebuttal/inconsistencies.md`, then rerun a final consistency pass against local artifacts.
+Devices/servers: raghu2, mobai
+Latest useful result: Older full-FV-USM WLD score artifacts reproduce AUC `83.07`, EER `22.87`, TAR `0.00/0.08/20.58`, but all 5,904 current FV-USM WLD MAT features are zero and came from a different export.
+Current blocker: WLD exports are all zero, and the shared EER helper reverses FAR/FRR arrays used for TAR reporting; FV-300 static features also lack 22--35 held-out image IDs for seeds 1--4.
+Next action: Regenerate valid WLD features and fix/recompute TAR operating points before treating the new handcrafted intra rows as final paper results.
 
 ## Active Threads
 
@@ -33,6 +33,8 @@ Next action: Patch the remaining items in `rebuttal/inconsistencies.md`, then re
 - 2026-05-04: Updated `rebuttal/response_letter.tex` to remove stale five-fold/five-run wording, max-gallery half-subject wording, and intra-database `50/30/20` wording.
 - 2026-05-04: Softened response-letter checkpoint wording: code/scripts/model definitions are in the public repository; `final_runs.zip` checkpoints are linked from README and require password/access request.
 - 2026-05-04: Re-aligned project memory initialization to the current node-aware template: refreshed the Sushrut `AGENTS.md` block, synced six `memory/commands/` specs, and updated `memory/devices.md` node wording.
+- 2026-07-17: Generated and verified exact intra-dataset test manifests for seeds 0--4; confirmed FV-USM/MMCBNU image sets are seed-invariant while FV-300 image counts vary, and identified missing static-feature coverage for FV-300 seeds 1--4.
+- 2026-07-18: Drafted and source-checked the second-round response letter; the Reviewer 3 response retains Sections 3--6 and explains their distinct roles.
 
 ## Recent Runs
 

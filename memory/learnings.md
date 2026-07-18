@@ -19,6 +19,12 @@ Durable findings from this project. Keep this compact and useful for future work
 - Supplementary intra-database split reporting is clearest as a single identity-level table; the old per-identity train/validation table is redundant and easy to misread as the open-set identity split.
 - In the response letter, significance-test `n=20` should be explained as five held-out datasets times four predefined statistical seeds, not as five seeds/five-fold evaluation per held-out split.
 - Checkpoint wording should not imply trained checkpoints are directly included in the GitHub repository; current accurate phrasing is that README links `final_runs.zip` and users can request password/access.
+- Intra-dataset held-out subject IDs are identical across seeds because every seed directory has the same sorted identity list, but FV-300 held-out image lists are not identical: seeds 0--4 contain `5491/5491/5496/5499/5490` images. FV-USM and MMCBNU use identical held-out image lists across all five seeds.
+- The current MCP/RLT/WLD exports match the seed-0 data layout. They fully cover every intra held-out image for FV-USM and MMCBNU, but FV-300 seeds 1--4 contain 22--35 image IDs per seed that are absent from the seed-0 feature export. Fully matched five-seed handcrafted FV-300 results require extracting those missing features.
+- Exact intra held-out manifests can be regenerated with `scripts/generate_intra_test_csvs.py`; static seed-0 image/feature mappings can be regenerated with `scripts/generate_intra_static_test_csvs.py`.
+- The copied `features/wld/` templates are all constant zero for FV-300, FV-USM, and MMCBNU. The repository's `_corr2` convention maps these to zero similarities, producing degenerate AUC `0`, EER `100`, and zero TAR; these are computable but not meaningful WLD performance results.
+- `utils/metrics.calculate_eer` swaps the actual FAR and FRR arrays while merging multiprocessing results. Existing intra-table TAR values therefore use reversed axes; static evaluation records both legacy table-compatible and mathematically correct metrics.
+- The older full-FV-USM WLD artifacts in `tmp/wld/fvusm/` are nonzero and reproduce the paper row (AUC `83.07`, EER `22.87`, TAR `0.00/0.08/20.58`), while all 5,904 current `features/wld/fvusm/` MAT templates are zero. The score and feature artifact sets came from different WLD exports.
 
 ## Likely But Needs Verification
 

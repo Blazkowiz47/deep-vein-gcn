@@ -424,9 +424,32 @@ SAFE Centre, Department of Information Security and Communication Technology (II
 % in the abstract or keywords.
 \IEEEtitleabstractindextext{%
 \begin{abstract}
-Biometric verification systems play a crucial role in secure access control applications. Among different biometric modalities, finger vein recognition has attracted increasing attention because vascular patterns are located beneath the skin, making them difficult to observe externally and relatively resistant to presentation attacks. However, reliable finger vein verification remains challenging under open-set conditions, where evaluation identities are unseen during training and non-enrolled identities must be rejected at inference time.
-In this paper, we present \textit{OpenVeinNet}, an open-set finger vein verification framework that integrates Dynamic Snake Convolution (DSConv) with graph-based feature modelling. DSConv is used to capture the curvilinear and tubular structure of finger vein patterns, while the graph convolutional backbone models long-range topological relationships between vein regions. To improve embedding discrimination, we further introduce a \emph{Centroid Angular Hybrid Loss}, which encourages intra-class compactness and inter-class angular separation in the learned feature space.
-Extensive experiments are conducted on five publicly available finger vein datasets, namely FV-300, MMCBNU, FV-USM, PolyU, and VERA. The proposed method is evaluated against handcrafted and deep learning-based baselines under both enrollment-based unknown-rejection and full-subject verification protocols. The results show that OpenVeinNet achieves strong overall generalisation across datasets, with consistently low EER and competitive threshold-based verification performance at fixed FAR operating points. These findings demonstrate the effectiveness of combining adaptive tubular feature extraction, graph-based relational modelling, and angularly constrained embedding learning for open-set finger vein verification.
+Finger vein verification is a promising biometric modality for secure
+authentication because vascular patterns are internal, difficult to observe
+externally, and relatively resistant to presentation attacks. However, reliable
+verification remains challenging in open-set settings, where test identities are
+unseen during training and non-enrolled probes must be rejected at inference.
+This paper presents OpenVeinNet, a finger vein verification framework designed
+for cross-dataset and open-set evaluation. The proposed model combines Dynamic
+Snake Convolution with graph-based feature modelling. Dynamic Snake
+Convolution extracts local curvilinear and tubular vein structures using
+adaptive sampling, while the graph convolutional backbone models long-range
+topological relationships between vein regions. To improve the discriminative
+quality of the embedding space, we introduce a Centroid Angular Hybrid Loss,
+which jointly encourages intra-class compactness and inter-class angular
+separation for cosine-similarity-based verification. Experiments are conducted
+on five public finger vein datasets: FV-300, MMCBNU, FV-USM, PolyU, and VERA.
+The method is evaluated using leave-one-dataset-out training under both
+enrolment-based unknown-rejection and full-subject verification protocols, and
+is compared with handcrafted and recent deep learning-based baselines. The
+results show that OpenVeinNet achieves strong cross-dataset generalisation,
+consistently low equal error rates, and competitive true accept rates at fixed
+false accept rate operating points. Ablation studies further confirm the
+individual and combined contributions of adaptive tubular feature extraction,
+graph-based relational modelling, and the proposed loss function. These findings
+indicate that explicitly modelling local vein geometry, global vascular
+relationships, and angularly compact embeddings is effective for open-set finger
+vein verification.
 \end{abstract}
 
 % Note that keywords are not normally used for peer review papers.
@@ -496,18 +519,18 @@ Finger vein patterns are typically acquired using cost-effective near-infrared (
                 Weiye Liu et al., \cite{2023_1} (2023) & Inception architecture with residual attention block.\\ \hline
                 Zhongxia Zhang et al., \cite{2023_2} (2023) & CNN with spatial and channel attention module.\\ \hline
                 Chunxin Fang et al., \cite{2023_3} (2023) & Siamese network with attention module.\\ \hline
-                Chih-Hsien Hsia et al. \cite{2023_4} (2023) & Lightweight Convolutional Neural Network with attention and Margin based loss function.\\ \hline 
-                Yiwei Huang et al. \cite{2023_5} (2023) & Axially enhanced local attention network (criss-cross kernel) \\ \hline 
+                Chih-Hsien Hsia et al. \cite{2023_4} (2023) & Lightweight Convolutional Neural Network with attention and Margin based loss function.\\ \hline
+                Yiwei Huang et al. \cite{2023_5} (2023) & Axially enhanced local attention network (criss-cross kernel) \\ \hline
                 Huang, Junduan et al. \cite{2023_6} (2023) & Frequency spatial coupling network with resnet like architecture \\ \hline
                 Bin Wa et al., \cite{binma} (2023) & 3 Sequential convolution layers with bilinear pooling and multiple attention modules.\\ \hline
                 Xiaoye Li et al., \cite{vit} (2023) & Vision Transformer with rigorous regularisation added in mlp.\\ \hline
-                Raghavendra Ramachandra et al., \cite{veinatnnet} (2024) & 3 Sequential convolution layers followed by multi-head attention module connected in parallel with normal and enhanced finger vein images.\\  \hline 
+                Raghavendra Ramachandra et al., \cite{veinatnnet} (2024) & 3 Sequential convolution layers followed by multi-head attention module connected in parallel with normal and enhanced finger vein images.\\  \hline
                 Huafeng Qin et al., \cite{2024_2} (2024) & Generates optimal network using Neural Architecture Search using Gated Recurrent Units with self-attention. \\ \hline
                 Pengyang Zhao et. al. \cite{2024_1} (2024) & Transformer-based view finger vein recognition model which uses enhanced images as attention mask\\ \hline
                 Enyan Li et. al. \cite{lgfin} (2025) & Transformer and convolution-based model processing local and global features.\\ \hline
                 \hline
                 \textbf{Proposed Method} (\textbf{2026}) & \textbf{Dynamic Snake Convolution with Graph Convolution layers for feature extraction and novel Centroid-Angular Hybrid Loss.} \\
-              \hline          
+              \hline
         \end{tabular}
     }
     \medskip
@@ -532,7 +555,7 @@ Attention-based architectures have attracted growing interest because they can m
 
 Despite these advances, two challenges remain central for practical finger vein verification. First, many methods show reduced robustness under cross-dataset evaluation because the learned representations are affected by sensor and acquisition shifts. Second, open-set deployment requires not only matching enrolled identities but also rejecting non-enrolled probes at fixed operating thresholds. This distinction is important because a system that performs well when all test identities are enrolled may still fail when unknown identities are presented during inference \cite{chenresnetarcloss}.
 
-To address these limitations, we propose \emph{OpenVeinNet}, a finger vein verification framework designed for robust cross-dataset and open-set evaluation. The proposed model uses Dynamic Snake Convolution (DSConv) layers to capture the curvilinear and tubular structures of finger vein patterns. These features are then processed by Graph Convolutional Networks (GCNs), which model long-range topological relationships between vein regions. For verification, the extracted embeddings are compared using cosine similarity between enrolment and probe samples. To further improve open-set discrimination, we introduce a Centroid Angular Hybrid Loss that encourages intra-class compactness and inter-class angular separation in the learned embedding space. 
+To address these limitations, we propose \emph{OpenVeinNet}, a finger vein verification framework designed for robust cross-dataset and open-set evaluation. The proposed model uses Dynamic Snake Convolution (DSConv) layers to capture the curvilinear and tubular structures of finger vein patterns. These features are then processed by Graph Convolutional Networks (GCNs), which model long-range topological relationships between vein regions. For verification, the extracted embeddings are compared using cosine similarity between enrolment and probe samples. To further improve open-set discrimination, we introduce a Centroid Angular Hybrid Loss that encourages intra-class compactness and inter-class angular separation in the learned embedding space.
 
 We evaluate the proposed approach on five publicly available finger vein datasets, namely FV-300, FV-USM, MMCBNU, PolyU, and VERA, and compare it against handcrafted and deep learning-based state-of-the-art methods. The evaluation includes both enrollment-based unknown-rejection and full-subject verification protocols, together with threshold-based operating points such as TAR@FAR. The results show that OpenVeinNet achieves  overall generalisation and favourable verification performance across challenging cross-dataset settings. The main contributions of this work are as follows:
 
@@ -546,12 +569,12 @@ We evaluate the proposed approach on five publicly available finger vein dataset
     \url{https://github.com/Blazkowiz47/deep-vein-gcn}
 \end{itemize}
 
-\noindent Beyond architectural design, the experiments yield three 
-analytical observations relevant to finger vein verification. 
-The component ablation shows that graph-based relational modelling 
-is only effective when local node features are geometrically aligned 
-with vein structures, revealing a prerequisite specific to tubular 
-biometric patterns. The loss ablation shows that explicitly penalising intra-class scatter through centroid alignment provides a practical advantage over margin-only losses in cosine-similarity-based open-set 
+\noindent Beyond architectural design, the experiments yield three
+analytical observations relevant to finger vein verification.
+The component ablation shows that graph-based relational modelling
+is only effective when local node features are geometrically aligned
+with vein structures, revealing a prerequisite specific to tubular
+biometric patterns. The loss ablation shows that explicitly penalising intra-class scatter through centroid alignment provides a practical advantage over margin-only losses in cosine-similarity-based open-set
 verification.
 %The loss ablation shows that angular margin losses designed for closed-set recognition are suboptimal for open-set verification, and the cross-dataset analysis demonstrates that structural image coherence is a reliable predictor of relative method performance across acquisition conditions.
 
@@ -625,8 +648,8 @@ The deformed feature map is sampled using bilinear interpolation:
 
 A directional convolution is then applied to the deformed feature map:
 \begin{equation}
-    \bm{X}_{\text{dir}} = 
-    \begin{cases} 
+    \bm{X}_{\text{dir}} =
+    \begin{cases}
     \mathrm{Conv}_{(K, 1)}(\bm{X}_{\text{deformed}}), & \text{if } m = 0 \\
     \mathrm{Conv}_{(1, K)}(\bm{X}_{\text{deformed}}), & \text{if } m = 1
     \end{cases}
@@ -672,7 +695,7 @@ The positional embedding provides spatial context before graph construction, hel
 
 The backbone of \textit{OpenVeinNet} is designed to model long-range connectivity between vein regions using Graph Convolutional Networks (GCNs). The stem output, augmented with positional embeddings, is processed by a sequence of Grapher Blocks. Each Grapher Block constructs a k-nearest-neighbour (k-NN) graph over feature nodes and aggregates information from neighbouring nodes. This enables the model to capture non-local relationships that are difficult to represent using only standard convolutional operations.
 
-\begin{figure}[!ht] 
+\begin{figure}[!ht]
 \centering
 \includegraphics[width=0.325\textwidth]{plots/grapherblock.pdf}
 \caption{GrapherBlock (In: input channels, Out: output channels, K: kernel size, N: nearest neighbours taken into account by graph convolution.)}
@@ -733,7 +756,7 @@ The softmax loss is commonly used for classification tasks and is defined as:
 \mathcal{L}_1 = -\log\frac{e^{W_{y_i}^T x_i + b_{y_i}}}{\sum_{j=1}^{N} e^{W_j^T x_i + b_j}},
 \label{eq:l1}
 \end{equation}
-where \(x_i \in \mathbb{R}^d\) represents the embedding of the \(i\)-th sample with class label \(y_i\), \(W_j \in \mathbb{R}^d\) denotes the \(j\)-th class weight vector from \(W \in \mathbb{R}^{d \times N}\), \(b_j\) is the bias term, and \(N\) is the number of training classes. 
+where \(x_i \in \mathbb{R}^d\) represents the embedding of the \(i\)-th sample with class label \(y_i\), \(W_j \in \mathbb{R}^d\) denotes the \(j\)-th class weight vector from \(W \in \mathbb{R}^{d \times N}\), \(b_j\) is the bias term, and \(N\) is the number of training classes.
 
 Although softmax loss is effective for closed-set classification, it does not explicitly enforce compact intra-class embeddings or angularly separated inter-class representations. This limitation is important in open-set verification, where the model must generalise beyond the identities seen during training and reject non-enrolled probes using a similarity threshold. To address this, we introduce the \textit{Centroid Angular Hybrid Loss} \((\mathcal{L}_2)\), which augments the softmax objective with an angular term between the sample embedding and an independently learned class-direction reference.
 
@@ -814,7 +837,7 @@ We evaluate \textit{OpenVeinNet} using a leave-one-dataset-out strategy. In each
         \cline{2-5}
          & Half & Full & Half & Full \\
         \hline
-        FV-300 (A)~\cite{veinatnnet} & 598,279 & 1,198,364 & 362,208,956 & 543,918,780 \\
+        FV-300 (A)~\cite{veinatnnet} & 598,279 & 1,198,364 & 181,709,824 & 362,208,956 \\
         \hline
         MMCBNU (B)~\cite{mmcbnu} & 13,500 & 27,000 & 9,000,000 & 17,970,000 \\
         \hline
@@ -916,14 +939,14 @@ A similar trend is observed for \(ABCE \rightarrow D\), where the proposed metho
 
 
 \textbf{Full-subject verification performance.}
-Table~\ref{tab:rebuttal_full_thresholds} reports the results when all subjects from the held-out dataset are enrolled. In this setting, the proposed method achieves the lowest EER in 4 of 5 evaluation splits and is competitive in the 5th one. For example, in the \(BCDE \rightarrow A\) setting, OpenVeinNet achieves an EER of \(3.17\%\), compared with \(6.20\%\) for VeinAttNet and substantially higher EER values for other deep learning baselines. In the more difficult \(ABDE \rightarrow C\) and \(ABCE \rightarrow D\) settings, the proposed method obtains EER values of \(7.45\%\) and \(5.20\%\), respectively, while also achieving strong TAR values at low FAR thresholds. These results show that the embedding space learned by OpenVeinNet remains discriminative under substantial dataset shift.
+Table~\ref{tab:rebuttal_full_thresholds} reports the results when all subjects from the held-out dataset are enrolled. In this setting, the proposed method achieves the lowest EER in 4 of 5 evaluation splits and is competitive in the 5th one. For example, in the \(BCDE \rightarrow A\) setting, OpenVeinNet achieves an EER of \(3.17\%\), compared with \(6.20\%\) for VeinAttNet and substantially higher EER values for other deep learning baselines. In the more difficult \(ABDE \rightarrow C\) and \(ABCE \rightarrow D\) settings, the proposed method obtains EER values of \(7.44\%\) and \(5.21\%\), respectively, while also achieving strong TAR values at low FAR thresholds. These results show that the embedding space learned by OpenVeinNet remains discriminative under substantial dataset shift.
 
 \textbf{Behaviour at strict operating points.}
 From a deployment perspective, the low-FAR regime is particularly important because false accepts directly affect security. The proposed method generally achieves higher TAR values at FAR$=0.1\%$ and FAR$=1\%$ than the deep learning baselines, especially in the challenging \(ABDE \rightarrow C\) and \(ABCE \rightarrow D\) protocols. Handcrafted methods such as MCP and WLD can perform strongly on clean and well-controlled data, particularly in \(BCDE \rightarrow A\), but their performance degrades considerably under stronger domain shift. This suggests that handcrafted vessel-enhancement pipelines can be effective when the target data are clean, but their robustness is limited when image quality, sensor characteristics, and acquisition conditions vary.
 
-One exception to the above trend is observed in the \textit{ACDE}$\rightarrow$\textit{B} 
-protocol at FAR$=$0.1\%, where VeinAttNet achieves a higher TAR of 39.09\% compared  with 28.13\% for the proposed method. This can be explained by the score distribution  behaviour on MMCBNU, which has the highest gradient coherence score among all five  datasets (0.5398, Table~7), reflecting strongly defined and structurally consistent vein  patterns. Under such controlled acquisition conditions, VeinAttNet's attention-based 
-architecture produces genuine scores that are more tightly concentrated near the upper  end of the cosine similarity range, which is advantageous specifically at the strict  FAR$=$0.1\% threshold. The graph-based embeddings of OpenVeinNet produce a smoother score distribution that is better calibrated across a wider range of operating points, 
+One exception to the above trend is observed in the \textit{ACDE}$\rightarrow$\textit{B}
+protocol at FAR$=$0.1\%, where VeinAttNet achieves a higher TAR of 39.09\% compared  with 28.13\% for the proposed method. This can be explained by the score distribution  behaviour on MMCBNU, which has the highest gradient coherence score among all five  datasets (0.5398, Table~7), reflecting strongly defined and structurally consistent vein  patterns. Under such controlled acquisition conditions, VeinAttNet's attention-based
+architecture produces genuine scores that are more tightly concentrated near the upper  end of the cosine similarity range, which is advantageous specifically at the strict  FAR$=$0.1\% threshold. The graph-based embeddings of OpenVeinNet produce a smoother score distribution that is better calibrated across a wider range of operating points,
 as evidenced by the lower EER (3.99\% vs.\ 4.35\%) and competitive TAR at FAR$=$1\% and FAR$=$10\%. This trade-off between strict threshold performance and overall operating-point calibration is consistent with the dataset quality analysis in Section~\ref{sec:dataset_quality_analysis}.
 
 \textbf{Challenging dataset analysis.}
@@ -941,7 +964,7 @@ Overall, the experimental results show that OpenVeinNet improves cross-dataset g
     \centering
     \scriptsize
     \resizebox{\textwidth}{!}{
-    \begin{tabular}{|c|c|c|c|c|c|c|}
+        \begin{tabular}{|c|c|c|c|c|c|c|}
         \hline
         $Train \rightarrow Test$ Dataset & Algorithm & AUC (\%) & EER (\%) & TAR@FAR$=0.1\%$ (\%) & TAR@FAR$=1\%$ (\%) & TAR@FAR$=10\%$ (\%) \\
         \hline
@@ -1035,7 +1058,7 @@ where $G_x$ and $G_y$ denote Sobel gradients, $(j_{11}^{(b)}, j_{22}^{(b)}, j_{1
     \label{tab:rebuttal_quality}
 \end{table}
 
-The results in Table~\ref{tab:rebuttal_quality} provide useful insights into the observed performance trends. As observed in Tables~\ref{tab:rebuttal_half_thresholds} and~\ref{tab:rebuttal_full_thresholds}, handcrafted methods such as MCP and WLD outperform several deep learning baselines in the \(BCDE \rightarrow A\) setting. 
+The results in Table~\ref{tab:rebuttal_quality} provide useful insights into the observed performance trends. As observed in Tables~\ref{tab:rebuttal_half_thresholds} and~\ref{tab:rebuttal_full_thresholds}, handcrafted methods such as MCP and WLD outperform several deep learning baselines in the \(BCDE \rightarrow A\) setting.
 First, the $BCDE \rightarrow A$ setting corresponds to evaluation on FV-300, which exhibits relatively high structural quality and, importantly, a significantly larger number of samples per subject compared to other datasets. Under such controlled and high-quality conditions, handcrafted methods based on vessel enhancement and template matching remain highly competitive, as the vein structures are already well-defined and less affected by noise or variability. Therefore, the strong performance of handcrafted approaches in this setting does not contradict the overall findings, but rather highlights that simpler methods can perform well when the data distribution is favourable.
 
 In contrast, the performance drop observed in the $ABCD \rightarrow E$ setting is consistent with both dataset characteristics and the quality analysis. VERA exhibits the lowest gradient-coherence among all datasets, indicating weaker structural continuity of vein patterns, and contains only two images per identity. This results in limited intra-class representation and a sparse score distribution during evaluation. Furthermore, the open-sensor acquisition setup introduces additional variability, increasing the domain shift relative to the training data.
@@ -1060,7 +1083,7 @@ In this section, we present a consolidated ablation study to justify the main de
 \begin{table}[ht!]
     \centering
     \begin{tabular}{| c | c |}
-        \hline 
+        \hline
         Kernel set & EER (\%)  \\
         \hline
         \hline
@@ -1117,8 +1140,8 @@ Table~\ref{tab:loss_ablation} compares the proposed CAH loss with standard MSE a
 \subsection{Sensitivity to Graph Neighbourhood Size $k$}
 \begin{table}[t]
 \centering
-\caption{Sensitivity of the graph neighbourhood size $k$ in 
-the two backbone stages on the \textit{ABDE}$\rightarrow$\textit{C} 
+\caption{Sensitivity of the graph neighbourhood size $k$ in
+the two backbone stages on the \textit{ABDE}$\rightarrow$\textit{C}
 protocol. Lower EER is better.}
 \begin{tabular}{ccc}
 \hline
@@ -1132,21 +1155,21 @@ Stage I $k$ & Stage II $k$ & EER (\%) \\
 \end{tabular}
 \label{tab:graph_k_sensitivity}
 \end{table}
-Table~\ref{tab:graph_k_sensitivity} reports the effect of the 
-neighbourhood size $k$ used in the k-NN graph construction 
-across the two backbone stages. Using the same value in both 
-stages, whether $k{=}9$ or $k{=}18$, gives weaker performance 
-than the proposed asymmetric configuration of $k{=}18$ in 
-Stage~I and $k{=}9$ in Stage~II. The symmetric $k{=}18$ 
-configuration performs the worst among all variants, suggesting 
-that using a large neighbourhood in the later stage introduces 
-noise from less relevant nodes as spatial resolution decreases. 
-The proposed decreasing schedule allows Stage~I to aggregate 
-broad vascular connectivity at higher resolution, while 
-Stage~II refines more localised relational evidence at lower 
-resolution. This mirrors the progressively decreasing kernel 
-configuration used in the DSConv stem and reflects a consistent 
-design principle: broader context in early stages, finer 
+Table~\ref{tab:graph_k_sensitivity} reports the effect of the
+neighbourhood size $k$ used in the k-NN graph construction
+across the two backbone stages. Using the same value in both
+stages, whether $k{=}9$ or $k{=}18$, gives weaker performance
+than the proposed asymmetric configuration of $k{=}18$ in
+Stage~I and $k{=}9$ in Stage~II. The symmetric $k{=}18$
+configuration performs the worst among all variants, suggesting
+that using a large neighbourhood in the later stage introduces
+noise from less relevant nodes as spatial resolution decreases.
+The proposed decreasing schedule allows Stage~I to aggregate
+broad vascular connectivity at higher resolution, while
+Stage~II refines more localised relational evidence at lower
+resolution. This mirrors the progressively decreasing kernel
+configuration used in the DSConv stem and reflects a consistent
+design principle: broader context in early stages, finer
 discrimination in later stages.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Comparison with Strong Angular-Margin Losses}
@@ -1167,22 +1190,22 @@ discrimination in later stages.
     \label{tab:rebuttal_loss_ablation}
 \end{table}
 
-To further validate the proposed loss, Table~\ref{tab:rebuttal_loss_ablation} compares CAH against strong angular-margin losses, including ArcFace, MagFace, and AdaFace. These losses are widely used for discriminative biometric representation learning. 
+To further validate the proposed loss, Table~\ref{tab:rebuttal_loss_ablation} compares CAH against strong angular-margin losses, including ArcFace, MagFace, and AdaFace. These losses are widely used for discriminative biometric representation learning.
 %The proposed CAH loss obtains the lowest mean EER of $7.44\%$, compared with ArcFace ($7.83\%$), MagFace ($8.20\%$), and AdaFace ($8.22\%$). This result is important because it shows that the proposed loss is not only better than standard objectives, but also competitive with established angular-margin losses under the same protocol.
-The proposed CAH loss achieves the lowest mean EER of 7.44\%, 
-compared with 7.83\% for ArcFace, 8.20\% for MagFace, and 
-8.22\% for AdaFace. The numerical differences are modest, 
-reflecting the fact that all compared losses enforce angular 
-separation to some degree. The distinction of the proposed 
-loss lies in its explicit penalisation of intra-class scatter 
-through the centroid alignment term, which complements the 
-inter-class angular margin. In open-set verification, where 
-decisions are made by thresholding cosine similarity against 
-enrolled templates rather than through a fixed classifier, 
-compact intra-class embeddings directly improve genuine score 
-concentration and therefore TAR at strict operating thresholds. 
-This is reflected in the TAR@FAR results in Tables~5 and~6, 
-where the full model with CAH loss achieves competitive or 
+The proposed CAH loss achieves the lowest mean EER of 7.44\%,
+compared with 7.83\% for ArcFace, 8.20\% for MagFace, and
+8.22\% for AdaFace. The numerical differences are modest,
+reflecting the fact that all compared losses enforce angular
+separation to some degree. The distinction of the proposed
+loss lies in its explicit penalisation of intra-class scatter
+through the centroid alignment term, which complements the
+inter-class angular margin. In open-set verification, where
+decisions are made by thresholding cosine similarity against
+enrolled templates rather than through a fixed classifier,
+compact intra-class embeddings directly improve genuine score
+concentration and therefore TAR at strict operating thresholds.
+This is reflected in the TAR@FAR results in Tables~5 and~6,
+where the full model with CAH loss achieves competitive or
 higher TAR than the compared methods across most protocols.
 
 \subsection{Sensitivity to the Balancing Factor $\beta$}
@@ -1227,16 +1250,16 @@ This confirms that the angular term is useful, but must be balanced carefully. T
 
 Table~\ref{tab:rebuttal_component_ablation} isolates the contribution of the DSConv stem and the graph-based backbone. The standard convolutional stem without graph modelling gives the weakest performance, with an EER of $13.59\%$. Replacing the standard stem with DSConv reduces the EER to $10.96\%$, showing that adaptive tubular feature extraction is beneficial for finger-vein representation. Similarly, adding the graph backbone to a standard stem improves the EER to $11.64\%$, demonstrating that graph-based relational modelling also contributes positively.
 
-The full model achieves an EER of 7.44\%, compared with 
-13.59\% for the standard baseline, 10.96\% for DSConv alone, 
-and 11.64\% for the graph backbone alone. The combined 
-improvement is larger than the sum of the individual gains 
-from each component.  This suggests that 
-the two components interact synergistically: graph-based 
-relational reasoning is most effective when node features 
-are already geometrically aligned with vein structures, a 
-condition that DSConv satisfies by design but standard 
-convolution does not. The combination therefore produces 
+The full model achieves an EER of 7.44\%, compared with
+13.59\% for the standard baseline, 10.96\% for DSConv alone,
+and 11.64\% for the graph backbone alone. The combined
+improvement is larger than the sum of the individual gains
+from each component.  This suggests that
+the two components interact synergistically: graph-based
+relational reasoning is most effective when node features
+are already geometrically aligned with vein structures, a
+condition that DSConv satisfies by design but standard
+convolution does not. The combination therefore produces
 gains that neither component achieves in isolation.
 
 
@@ -1356,3 +1379,4 @@ Overall, the proposed framework provides a principled and effective solution for
 
 % that's all folks
 \end{document}
+

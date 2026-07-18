@@ -1,0 +1,359 @@
+\documentclass[11pt]{article}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[utf8]{inputenc}
+\usepackage{subfiles} 
+
+
+\date{}
+\usepackage{color}
+\usepackage{bigstrut}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage[left=2cm,top=3cm,right=2cm,bottom=2cm]{geometry}
+\usepackage{setspace}
+\setstretch{1.2}
+\usepackage{graphicx}
+\date{}
+\newcommand*\ruleline[1]{\par\noindent\raisebox{.8ex}{\makebox[\linewidth]{\hrulefill\hspace{1ex}\raisebox{-.8ex}{#1}\hspace{1ex}\hrulefill}}}
+\def\vhrulefill#1{\leavevmode\leaders\hrule\@height#1\hfill \kern\z@}
+
+\newcommand{\rpm}{\sbox0{$1$}\sbox2{$\scriptstyle\pm$}
+	\raise\dimexpr(\ht0-\ht2)/2\relax\box2 }
+		
+ \usepackage{amsthm}
+ \newtheorem{lemma}{Lemma}
+ \newtheorem{proposition}{Proposition}
+ \theoremstyle{remark}
+ \newtheorem*{remark}{Remark}		
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{gensymb}
+%% The amssymb package provides various useful mathematical symbols
+\usepackage{amssymb}
+\usepackage{tikz,pgfplots}
+\usepackage{dblfloatfix}
+
+\usepackage{setspace}
+
+\renewcommand{\baselinestretch}{1} 
+
+%\usepackage{multibbl}
+\usepackage{xcolor}
+\usepackage{url}
+\definecolor{newcolor}{rgb}{.8,.349,.1}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{multirow}
+\usepackage{bigstrut}
+\usepackage{graphicx}
+\usepackage{subfig}
+\usepackage{caption}
+\usepackage{url}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{subeqnarray}
+\newtheorem{theorem}{Theorem}
+\newcommand{\sign}{\mathrm{sign}}
+\newcommand{\sat}{\mathrm{sat}}
+\usepackage{commath}
+\newcommand*\xor{\mathbin{\oplus}}
+\usepackage{xr}
+\newcommand{\beginsupplement}{%
+	\setcounter{table}{0}
+	\renewcommand{\thetable}{S\arabic{table}}%
+	\setcounter{figure}{0}
+	\renewcommand{\thefigure}{S\arabic{figure}}%
+}
+\usepackage{pgfplots}
+\usepackage{balance}
+\usepackage{booktabs}
+\setlength{\aboverulesep}{-0.2pt}
+\setlength{\belowrulesep}{-0.2pt}
+
+%\usepackage[capitalise, noabbrev]{cleveref}
+%% Cross-reference 
+% \usepackage{xr-hyper}
+%\usepackage{cleveref}
+
+
+%% Custom packages 
+\usepackage{xcolor}
+\usepackage{color}
+\definecolor{mygray}{RGB}{193,203,215}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{colortbl}
+\usepackage{graphicx}
+%\usepackage{subcaption}
+\usepackage{caption}
+\DeclareCaptionFont{blue}{\color{blue}}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{dblfloatfix}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{url}
+%\setlist[enumerate]{itemsep=0mm}
+\usepackage{dingbat}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+
+\usepackage[framemethod=tikz]{mdframed}
+%\definecolor{mycolor}{rgb}{0.9, 0.0, 0.0}
+%\newmdenv[innerlinewidth=0.5pt, roundcorner=4pt,linecolor=mycolor,innerleftmargin=6pt,
+%innerrightmargin=6pt,innertopmargin=6pt,innerbottommargin=6pt]{rolebox}
+%\definecolor{mycolor1}{rgb}{0.0, 0.0, 0.9}
+%\newmdenv[innerlinewidth=0.5pt, roundcorner=4pt,linecolor=mycolor1,innerleftmargin=6pt,
+%innerrightmargin=6pt,innertopmargin=6pt,innerbottommargin=6pt]{commentbox}
+
+\usepackage{bigstrut}
+\usepackage{multirow}
+\usepackage{amsmath}
+\usepackage{subfigure}
+
+\makeatletter
+\long\def\@IEEEtitleabstractindextextbox#1{\parbox{0.922\textwidth}{#1}}
+\makeatother
+
+
+%% Pack the article in compact form
+% \usepackage[compact]{titlesec}
+% \titlespacing{\section}{1pt}{*0}{*0}
+% \titlespacing{\subsection}{1pt}{*0}{*0}
+% \titlespacing{\subsubsection}{1pt}{*0}{*0}
+
+\usepackage[rawfloats=true]{floatrow} 
+\restylefloat{figure} 
+\restylefloat{table} 
+
+\setlength{\textfloatsep}{1\baselineskip plus 0.2\baselineskip minus 0.5\baselineskip}
+ %% Pack references
+ 
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+% \usepackage{caption,subcaption,graphicx}
+\usepackage{caption,graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+\usepackage{pgfplots}
+
+%%%%%%%%%%%%%%
+\usepackage{amssymb}% http://ctan.org/pkg/amssymb
+\usepackage{pifont}% http://ctan.org/pkg/pifont
+\newcommand{\cmark}{\ding{51}}%
+\newcommand{\xmark}{\ding{55}}%
+
+
+
+
+%%%%%%%%%%%%%%%%%
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{url}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{mathrsfs}
+%\usepackage{subfigure}
+\usepackage{booktabs} 
+\usepackage{tikz}
+\usepackage{dblfloatfix}
+\usepackage{bigstrut}
+\usepackage{multirow}
+\usepackage{color}
+\usepackage{fancyhdr}
+\usepackage{listings} %if lstlistings is used
+\usepackage{changepage}
+\usepackage{lipsum}
+\usepackage{floatrow}
+\usepackage{balance}
+\usepackage{enumitem}
+\usepackage{comment}
+\usepackage{breqn}
+\usepackage{dblfloatfix}
+\usepackage{booktabs} %
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+\makeatletter
+\long\def\@IEEEtitleabstractindextextbox#1{\parbox{0.922\textwidth}{#1}}
+\makeatother
+
+
+%\externaldocument{kiran-raja-ocular-si-revision-1-200521} %[kiran-raja-ocular-si-revision-1-200521.pdf]
+%%\externaldocument{kiran-raja-ocular-si-revision-1-200521}
+
+\usepackage{xcite}
+
+\makeatletter
+\newcommand*{\addFileDependency}[1]{% argument=file name and extension
+	\typeout{(#1)}% latexmk will find this if $recorder=0 (however, in that case, it will ignore #1 if it is a .aux or .pdf file etc and it exists! if it doesn't exist, it will appear in the list of dependents regardless)
+	\@addtofilelist{#1}% if you want it to appear in \listfiles, not really necessary and latexmk doesn't use this
+	\IfFileExists{#1}{}{\typeout{No file #1.}}% latexmk will find this message if #1 doesn't exist (yet)
+}
+\makeatother
+
+\newcommand*{\myexternaldocument}[1]{%
+	\externaldocument{#1}%
+	\addFileDependency{#1.tex}%
+	\addFileDependency{#1.aux}%
+}
+%%% END HELPER CODE
+
+% put all the external documents here!
+% put all the external documents here!
+\myexternaldocument{MIPGAN-journal-TBIOM-revision-200831}
+
+
+\newcommand{\Rev}[1]{\textcolor{blue}{#1}}
+
+%% Set counter for review comments 
+\newcounter{mycounter} % create a new counter, called 'mycounter'
+% default def'n of '\themycounter' is '\arabic{mycounter}'
+
+%% command to increment 'mycounter' by 1 and to display its value:
+\newcommand\showReviewcounter{\stepcounter{mycounter}\themycounter}
+
+\usepackage{float}
+\makeatletter
+\def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
+\def\@bstctlcite[#1]#2{\@bsphack
+  \@for\@citeb:=#2\do{%
+    \edef\@citeb{\expandafter\@firstofone\@citeb}%
+    \if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}%
+  \@esphack}
+\makeatother 
+
+\title{List of revisions  - "OpenVeinNet: Robust Open-Set Finger Vein Verification with Dynamic Snake Convolution and Graph Learning"}
+\begin{document}
+\bstctlcite{IEEEexample:BSTcontrol}
+%\blackrule[width=\hsize, height=1pt, depth=0.5ex]
+\maketitle
+\vspace{-2cm}
+%\color{blue}
+%\color{blue} 
+%%%%%%%%%%%% Text goes Below
+%\noindent\hrulefill\\
+\hrule
+\hrulefill
+\hrule
+\noindent\hrulefill\\
+We would like to express our sincere gratitude to the Editor and the reviewers for considering our manuscript for revision. We greatly appreciate the reviewers’ constructive and insightful feedback, which has been invaluable in improving the clarity, technical soundness, and overall quality of the paper. Guided by these comments, we have carefully revised the manuscript and prepared a detailed, point-by-point response addressing each concern. In the following, we summarise the major revisions made to the paper:
+
+\begin{itemize}
+    \item Clarified the public availability of FV-300 and added explicit dataset-access information to the revised manuscript and public repository.
+    \item Clarified the rationale for retaining the present section structure, in which comparative evaluation, ablation studies, computational analysis, and interpretation address distinct experimental questions.
+    \item Expanded the intra-database evaluation with deterministic MCP and RLT results on FV-300, FV-USM, and MMCBNU, enabling direct comparison between within-database and cross-dataset performance.
+    \item Added a focused explanation of why DSConv provides a morphology-aligned inductive bias for thin and curved finger-vein structures, while moderating the text to avoid claiming universal superiority over other adaptive convolution operators.
+\end{itemize}
+
+
+%%------------------
+
+\color{blue}
+\section*{Editor and Associate Editor Comments}
+
+\textit{The remaining comments concern code and dataset reproducibility, manuscript organisation, and further clarification of the methodological motivation.}
+\color{black}
+
+\begin{itemize}
+    \item \textbf{Authors' Response:}
+    We sincerely thank the Editor and Associate Editor for their positive assessment of the revised manuscript and for identifying the remaining points requiring attention. We have carefully addressed every second-round reviewer comment. In particular, we clarified public access to FV-300, explained the rationale for the manuscript's section structure, expanded the intra-database comparison with handcrafted methods, and strengthened the explanation of the structural motivation for DSConv in finger-vein modelling.
+\end{itemize}
+
+%------------------------------------------------------------------------------------------------
+\setcounter{mycounter}{0}
+\color{blue}
+\section*{Reviewer 1:}
+
+\textbf{\textit{Comment no. \showReviewcounter:}}
+\textit{One minor suggestion is that the trained checkpoints are still distributed through a password-protected archive. The authors may consider providing fully open access to the checkpoints to further strengthen reproducibility in the future.}
+\color{black}
+
+\begin{itemize}
+    \item \textbf{Authors' Response:}
+    We thank the reviewer for the positive assessment and this useful suggestion. We agree that fully open checkpoint distribution could further improve reproducibility. The implementation, training and evaluation scripts, and model definitions remain publicly available, while the trained checkpoints can currently be obtained through the access procedure described in the project repository. We have noted the reviewer's suggestion and will consider fully open checkpoint distribution in a future release.
+
+    \item \textbf{Authors' Action:}
+    No manuscript change was required for this optional suggestion; the current checkpoint-access information remains available in the project repository.
+\end{itemize}
+
+%------------------------------------------------------------------------------------------------
+\setcounter{mycounter}{0}
+\color{blue}
+\section*{Reviewer 2:}
+
+\textbf{\textit{Comment no. \showReviewcounter:}}
+\textit{There is just one last point regarding the reproducibility. The abstract states that ``Experiments are conducted on five public finger vein datasets''. However, I was not able to find any information on how to obtain the FV-300 dataset. The original paper also does not state that this is a public dataset. Hence, the results can only be verified based on the remaining four datasets, which are considerably smaller than FV-300. Please clarify this issue.}
+\color{black}
+
+\begin{itemize}
+    \item \textbf{Authors' Response:}
+    We sincerely thank the reviewer for identifying this important reproducibility issue. We agree that citing the original FV-300 publication did not provide a clear acquisition path and that describing the dataset as public without explicit access information was insufficient.
+
+    To resolve this issue, we have now made the FV-300 dataset openly available and have added explicit access information to the revised manuscript and the public project repository. Researchers can therefore obtain the dataset required to reproduce the FV-300 experiments rather than being limited to the four smaller databases. We have also revised the dataset description to distinguish the original source publication from the new public access route provided with this work.
+
+    \item \textbf{Authors' Action:}
+    We added the FV-300 access information to the dataset description in the revised manuscript and to the repository README, thereby making the data source for all five evaluated datasets explicit and reproducible.
+\end{itemize}
+
+%------------------------------------------------------------------------------------------------
+\setcounter{mycounter}{0}
+\color{blue}
+\section*{Reviewer 3:}
+
+\textbf{\textit{Comment no. \showReviewcounter:}}
+\textit{In terms of organization, Sections 3--6 are essentially experimental sections and should be restructured accordingly.}
+\color{black}
+
+\begin{itemize}
+    \item \textbf{Authors' Response:}
+    We thank the reviewer for this helpful organisational suggestion. We carefully considered consolidating Sections 3--6, but respectfully chose to retain the present structure because these sections address distinct questions and play different roles in the manuscript. Section 3 establishes the datasets, protocol, comparative results, and dataset-level interpretation; Section 4 isolates the contributions of individual architectural and loss components; Section 5 evaluates computational cost and deployment efficiency; and Section 6 provides qualitative interpretation of the learned representation. Combining these components into one large experimental section would mix comparative validation, controlled ablation, efficiency analysis, and model interpretation, making the intended progression less clear and individual results harder to locate.
+
+    The current organisation deliberately moves from overall empirical performance, to controlled explanation of where the gains originate, to practical computational implications, and finally to qualitative interpretation. We believe that this progression better reflects the distinct purpose of each analysis while preserving a coherent experimental narrative.
+
+    \item \textbf{Authors' Action:}
+    After reviewing the organisation in light of the comment, we retained Sections 3--6 as separate sections because their scopes are distinct and their present ordering reflects the intended progression of the paper.
+\end{itemize}
+
+\color{blue}
+\textbf{\textit{Comment no. \showReviewcounter:}}
+\textit{The authors claim that handcrafted methods already perform well on relatively clean and controlled datasets, whereas deep learning methods may suffer from domain shift. It should therefore be clarified whether the proposed method was evaluated on Dataset A alone and compared with both handcrafted methods and the cross-domain setting. Such comparisons are necessary to determine whether the performance degradation is caused by domain shift, interference from external datasets, or an inherent limitation of the proposed method.}
+\color{black}
+
+\begin{itemize}
+    \item \textbf{Authors' Response:}
+    We sincerely thank the reviewer for this important suggestion. The supplementary intra-database experiment directly evaluates this question by training and testing within each database while retaining subject-disjoint development and held-out evaluation identities. We have now expanded that table to include deterministic MCP and RLT results on FV-300 (Dataset A), FV-USM, and MMCBNU alongside the learned methods.
+
+    The comparison supports the reviewer's domain-shift interpretation. On FV-300, OpenVeinNet obtains an intra-database EER of $0.39\%$, compared with $3.17\%$ when FV-300 is held out in the cross-dataset $BCDE \rightarrow A$ setting. In the intra-database setting, MCP and RLT obtain EERs of $0.42\%$ and $0.74\%$, respectively. Thus, OpenVeinNet is highly competitive with the handcrafted approaches when trained within Dataset A, while its higher cross-dataset EER is consistent with the additional difficulty of transferring from the other acquisition domains. This evidence is consistent with domain shift being a substantial source of degradation rather than an inherent inability of the proposed architecture to model FV-300.
+
+    \item \textbf{Authors' Action:}
+    We added MCP and RLT rows to the intra-database result table for all three evaluated databases and expanded the accompanying discussion to compare within-database FV-300 performance against the $BCDE \rightarrow A$ cross-dataset result.
+\end{itemize}
+
+\color{blue}
+\textbf{\textit{Comment no. \showReviewcounter:}}
+\textit{The authors clarify that the contribution of DSConv lies in its integration into an open-set finger-vein verification framework. However, they should further explain why DSConv is particularly suitable for vein texture modeling, since deformable convolutions, active convolution units, and rotation- or orientation-adaptive convolutions can also adjust sampling locations to align with local textures or contours.}
+\color{black}
+
+\begin{itemize}
+    \item \textbf{Authors' Response:}
+    We thank the reviewer for this important observation. We agree that the suitability of DSConv does not arise merely from learning sampling offsets, since several adaptive convolution operators provide this capability. Its relevance to finger-vein modelling instead comes from the structural constraint imposed on those offsets.
+
+    Finger-vein patterns are predominantly thin, elongated, and locally curved. DSConv progressively displaces neighbouring sampling locations along a continuous snake-like trajectory, allowing the receptive field to follow gradual changes in vessel direction while preserving the ordering and connectivity of adjacent samples. General deformable convolution permits more independent two-dimensional offsets, active convolution units adapt receptive-field geometry without specifically encoding tubular continuity, and rotation- or orientation-adaptive operators primarily align sampling with a dominant local direction. DSConv therefore provides a useful curvilinear continuity prior for aggregating evidence along narrow and tortuous vein segments.
+
+    We have moderated the revised wording to present this as a morphology-aligned inductive bias rather than claiming that DSConv is the only suitable adaptive operator or that it is universally superior without a direct comparative ablation.
+
+    \item \textbf{Authors' Action:}
+    We added a concise explanation to the DSConv subsection that distinguishes its continuity-preserving sampling trajectory from more general offset adaptation and directional alignment, and we revised the surrounding claims to avoid overstatement.
+\end{itemize}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

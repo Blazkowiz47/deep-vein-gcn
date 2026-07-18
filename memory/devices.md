@@ -7,6 +7,7 @@ Use stable lowercase node slugs for project notes, for example `oslo-laptop`, `w
 | Node | Type | Role | Project path | Environment | Notes |
 |---|---|---|---|---|---|
 | raghu2 | SALT server | development / training / evaluation | /home/ubuntu/sushrut/gcn-deep-vein | Python 3.12, `uv`, `.venv` | Active journal-paper work node. |
+| mobai | development server | data/artifact analysis | /home/ubuntu/1Projects/deep-vein-gcn | Python 3.12, `uv` | Holds the current raw datasets and MCP/RLT/WLD feature exports. |
 
 ## Notes
 
