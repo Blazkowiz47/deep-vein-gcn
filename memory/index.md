@@ -36,6 +36,7 @@ Next action: Regenerate valid WLD features and fix/recompute TAR operating point
 - 2026-07-17: Generated and verified exact intra-dataset test manifests for seeds 0--4; confirmed FV-USM/MMCBNU image sets are seed-invariant while FV-300 image counts vary, and identified missing static-feature coverage for FV-300 seeds 1--4.
 - 2026-07-18: Drafted and source-checked the second-round response letter; the Reviewer 3 response retains Sections 3--6 and explains their distinct roles.
 - 2026-07-20: Added the FV-300 request-by-email access procedure to the README and aligned the Reviewer 2 response letter wording.
+- 2026-07-20: Updated the README and Reviewer 1 response to describe the trained checkpoints as openly available through the published link.
 
 ## Recent Runs
 
