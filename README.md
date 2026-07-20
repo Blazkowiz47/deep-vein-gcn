@@ -2,9 +2,9 @@
 
 ## Checkpoints
 
-Checkpoint archives can be downloaded from:
+Checkpoint archives can be downloaded from [here]{https://studntnu-my.sharepoint.com/:u:/g/personal/sushrutp_ntnu_no/IQD14_dpQ4QbQqTuWxRzh-n9Aat9pV4SBZ7ZlSys2sgquIA?e=2t0xvX}:
 
-<https://studntnu-my.sharepoint.com/:u:/r/personal/sushrutp_ntnu_no/Documents/final_runs.zip?csf=1&web=1&e=qf1Zqe>
+
 
 The trained checkpoints are openly available through the link above.
 
