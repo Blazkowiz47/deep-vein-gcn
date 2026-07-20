@@ -2,7 +2,7 @@
 
 ## Checkpoints
 
-Checkpoint archives can be downloaded from [here]{https://studntnu-my.sharepoint.com/:u:/g/personal/sushrutp_ntnu_no/IQD14_dpQ4QbQqTuWxRzh-n9Aat9pV4SBZ7ZlSys2sgquIA?e=2t0xvX}:
+Checkpoint archives can be downloaded from [here](https://studntnu-my.sharepoint.com/:u:/g/personal/sushrutp_ntnu_no/IQD14_dpQ4QbQqTuWxRzh-n9Aat9pV4SBZ7ZlSys2sgquIA?e=2t0xvX)
 
 
 
